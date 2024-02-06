@@ -8,7 +8,6 @@ public class UserDto {
 	private String phonenumber;
 	private String address;
 	
-	
 	public UserDto() {
 		
 	}
