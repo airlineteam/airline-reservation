@@ -124,21 +124,21 @@ if(bbsdeleteMsg != null && bbsdeleteMsg.equals("") == false){
 	}	
 }
 
-String calwrite = (String)request.getAttribute("calwrite");
-if(calwrite != null && !calwrite.equals("")){
-	if(calwrite.equals("CAL_WRITE_OK")){
+String scheduleMsg  = (String)request.getAttribute("scheduleMsg");
+if(scheduleMsg != null && !scheduleMsg.equals("")){
+	if(scheduleMsg.equals("SCHEDULE_SUCCESS")){
 		%>
 		<script type="text/javascript">
-		alert("성공적으로 추가되었습니다");
-		location.href = "calendar?param=calendarList";
+		alert("조회되었습니다.");
+		location.href = "info.do";
 		</script>
 		<%
 	}
 	else{
 		%>
 		<script type="text/javascript">
-		alert("추가되지 않았습니다");		
-		location.href = "calendar?param=calendarList";
+		alert("조회되지 않았습니다.");		
+		location.href = "schedule.do";
 		</script>
 		<%
 	}	
