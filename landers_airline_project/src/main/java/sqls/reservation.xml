@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reservation">
+
+<insert id="schedule" parameterType="com.landers.airline.dto.ScheduleDto">
+	insert into schedule(departure_airport, arrival_airport, departure_date, person_num)
+	values(#{departure_airport}, #{arrival_airport}, #{departure_date}, #{person_num})
+</insert>
+
+<select id="search" parameterType="com.landers.airline.dto.FlightinfoDto" resultType="com.landers.airline.dto.FlightinfoDto">
+	select flight_id, flight_name, departure_airport, arrival_airport, departure_date, arrival_date, price
+	from flight_info
+	where departure_airport=#{departure_airport} and arrival_airport=#{arrival_airport} and departure_date=#{departure_date}
+</select>
+</mapper>
