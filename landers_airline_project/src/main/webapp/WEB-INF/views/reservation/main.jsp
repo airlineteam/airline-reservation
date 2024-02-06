@@ -48,6 +48,8 @@ footer{
 </head>
 <body>
 
+<h1>수정</h1>
+
 <header>
 	<jsp:include page="header.jsp" flush="false"/>
 </header>
