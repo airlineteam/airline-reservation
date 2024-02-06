@@ -48,7 +48,7 @@
 <tr>
 	<th>패스워드</th>
 	<td>
-		<input type="password" class="form-control" name="password" size="20">
+		<input type="password" class="form-control" name="user_pw" size="20">
 	</td>
 </tr>
 <tr>

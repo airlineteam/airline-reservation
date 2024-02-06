@@ -11,9 +11,9 @@
 </select>
 
 <select id="loginAf" parameterType="com.landers.airline.dto.UserDto" resultType="com.landers.airline.dto.UserDto">
-	select user_id, username, password, phonenumber, address
+	select user_id, user_pw, user_name, user_phone, user_address
 	from user
-	where user_id=#{user_id} and password=#{password}
+	where user_id=#{user_id} and user_pw=#{user_pw}
 </select>
 
 </mapper>
