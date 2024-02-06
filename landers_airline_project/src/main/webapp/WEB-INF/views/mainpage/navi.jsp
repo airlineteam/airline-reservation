@@ -6,7 +6,7 @@
   <div class="container">
     <!-- 서브 컴퍼넌트 -->
     <!-- 브랜드 -->
-    <a class="navbar-brand" href="home.do">Home</a>
+    <a class="navbar-brand" href="home.do" style="color: white">Home</a>
     
     <!-- 전환 버튼 -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,13 +24,9 @@
                  
         <!-- 드롭다운 -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white">
+          <a class="nav-link" href="customerHome.do" style="color: white">
             고객센터
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="customerHome.do">FAQ</a>
-            <a class="dropdown-item" href="customerHome.do">Q&A</a>
-          </div>
         </li>    
         <li class="nav-item">
           <a class="nav-link" href="managerHome.do" style="color: white">관리자페이지</a>

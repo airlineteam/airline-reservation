@@ -36,7 +36,7 @@ if(loginMsg != null && loginMsg.equals("") == false){
 		%>
 		<script type="text/javascript">
 		alert("아이디나 패스워드를 확인해 주세요");
-		location.href = "./home.do";
+		location.href = "./login.do";
 		</script>
 		<%		
 	}	

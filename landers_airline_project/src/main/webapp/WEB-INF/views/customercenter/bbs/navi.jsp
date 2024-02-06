@@ -6,7 +6,7 @@
   <div class="container">
     <!-- 서브 컴퍼넌트 -->
     <!-- 브랜드 -->
-    <a class="navbar-brand" href="customerHome.do" style="color: white">고객센터</a>
+    <a class="navbar-brand" href="bbslist.do" style="color: white">공지사항</a>
     
     <!-- 전환 버튼 -->
     <button class="navbar-toggler" type="button" style="color: white" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
