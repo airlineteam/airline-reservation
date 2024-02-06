@@ -18,6 +18,18 @@ public class LoginServiceImpl implements LoginService{
 		return dao.loginAf(dto);
 	}
 
+	@Override
+	public boolean idcheck(String user_id) {
+		int count = dao.idcheck(user_id);
+		return count>0?true:false;
+	}
+
+	@Override
+	public boolean adduser(UserDto dto) {
+		int count = dao.adduser(dto);
+		return count>0?true:false;
+	}
+
 
 
 

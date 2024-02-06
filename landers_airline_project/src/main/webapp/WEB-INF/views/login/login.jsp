@@ -42,13 +42,13 @@
 <tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" class="form-control" id="id" name="user_id" size="20">
+		<input type="text" class="form-control" id="User_id" name="User_id" size="20">
 	</td>
 </tr>
 <tr>
 	<th>패스워드</th>
 	<td>
-		<input type="password" class="form-control" name="user_pw" size="20">
+		<input type="password" class="form-control" name="User_pw" size="20">
 	</td>
 </tr>
 <tr>
@@ -67,9 +67,9 @@
 </div>
 
 <script type="text/javascript">
-let user_id = $.cookie("user_id");	// 쿠키에서 id를 산출
+let user_id = $.cookie("User_id");	// 쿠키에서 id를 산출
 if(user_id != null){	// 쿠키에 저장한 id가 있다
-	$("#id").val( user_id );
+	$("#User_id").val( User_id );
 	$("#chk_save_id").prop("checked", true);
 }
 
@@ -78,15 +78,15 @@ $("#chk_save_id").click(function () {
 	if( $("#chk_save_id").is(":checked") == true ){	// 첵크가 되었을 때
 		
 		if( $("#id").val().trim() == "" ){	// 빈문자였을 때
-			alert('id를 입력해 주십시오');
+			alert('User_id를 입력해 주십시오');
 			$("#chk_save_id").prop("checked", false);	// 첵크박스를 off
 		}
 		else{	// cookie에 저장
-			$.cookie("user_id", $("#id").val().trim(), { expires:7, path:'/' } );
+			$.cookie("User_id", $("#User_id").val().trim(), { expires:7, path:'/' } );
 		}		
 	}
 	else{
-		$.removeCookie("user_id", { path:'/' });
+		$.removeCookie("User_id", { path:'/' });
 	}		
 });
 </script>
