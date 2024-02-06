@@ -3,7 +3,7 @@ use airline;
 -- user 테이블에 더미 데이터 삽입
 INSERT INTO user (user_id, user_pw, user_name, user_phone, user_address)
 VALUES
-    ('abc', 'abc', '관리자', '01011111111', '서울시 강남구'),
+    ('abc', '123', '관리자', '01011111111', '서울시 강남구'),
     ('user1', 'password1', '홍길동', '01012345678', '서울시 강남구'),
     ('user2', 'password2', '김영희', '01056781234', '서울시 서초구'),
     ('user3', 'password3', '이철수', '01078901234', '서울시 마포구');

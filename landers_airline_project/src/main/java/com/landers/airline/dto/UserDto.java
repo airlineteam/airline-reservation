@@ -3,22 +3,22 @@ package com.landers.airline.dto;
 public class UserDto {
 	
 	private String user_id;
-	private String username;
-	private String password;
-	private String phonenumber;
-	private String address;
+	private String user_pw;
+	private String user_name;
+	private String user_phone;
+	private String user_address;
 	
 	public UserDto() {
 		
 	}
 
-	public UserDto(String user_id, String username, String password, String phonenumber, String address) {
+	public UserDto(String user_id, String user_pw, String user_name, String user_phone, String user_address) {
 		super();
 		this.user_id = user_id;
-		this.username = username;
-		this.password = password;
-		this.phonenumber = phonenumber;
-		this.address = address;
+		this.user_pw = user_pw;
+		this.user_name = user_name;
+		this.user_phone = user_phone;
+		this.user_address = user_address;
 	}
 
 	public String getUser_id() {
@@ -29,43 +29,45 @@ public class UserDto {
 		this.user_id = user_id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUser_pw() {
+		return user_pw;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUser_pw(String user_pw) {
+		this.user_pw = user_pw;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
-	public String getPhonenumber() {
-		return phonenumber;
+	public String getUser_phone() {
+		return user_phone;
 	}
 
-	public void setPhonenumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+	public void setUser_phone(String user_phone) {
+		this.user_phone = user_phone;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getUser_address() {
+		return user_address;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setUser_address(String user_address) {
+		this.user_address = user_address;
 	}
 
 	@Override
 	public String toString() {
-		return "UserDto [user_id=" + user_id + ", username=" + username + ", password=" + password + ", phonenumber="
-				+ phonenumber + ", address=" + address + "]";
+		return "UserDto [user_id=" + user_id + ", user_pw=" + user_pw + ", user_name=" + user_name + ", user_phone="
+				+ user_phone + ", user_address=" + user_address + "]";
 	}
+
+	
 	
 	
 }
