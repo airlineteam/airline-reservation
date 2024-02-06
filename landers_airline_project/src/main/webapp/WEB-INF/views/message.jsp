@@ -5,11 +5,11 @@
 // 회원가입
 String regiMsg = (String)request.getAttribute("regiMsg");
 if(regiMsg != null && regiMsg.equals("") == false){
-	if(regiMsg.equals("REGI_SUCCESS")){
+	if(regiMsg.equals("USER_YES")){
 		%>
 		<script type="text/javascript">
 		alert("성공적으로 가입되었습니다");
-		location.href = "./login.do";
+		location.href = "./home.do";
 		</script>
 		<%
 	}else{
@@ -36,7 +36,7 @@ if(loginMsg != null && loginMsg.equals("") == false){
 		%>
 		<script type="text/javascript">
 		alert("아이디나 패스워드를 확인해 주세요");
-		location.href = "./home.do";
+		location.href = "./login.do";
 		</script>
 		<%		
 	}	

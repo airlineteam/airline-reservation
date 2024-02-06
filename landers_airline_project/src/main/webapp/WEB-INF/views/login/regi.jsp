@@ -38,7 +38,7 @@
 <tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" class="form-control" name="id" id="id" size="20">
+		<input type="text" class="form-control" name="user_id" id="user_id" size="20">
 		<p id="idcheck" style="font-size: 10px"></p>
 		<input type="button" class="btn btn-primary" id="id_chk_btn" value="id확인">		
 	</td>
@@ -46,19 +46,25 @@
 <tr>
 	<th>패스워드</th>
 	<td>
-		<input type="text" class="form-control" name="pw" size="20">
+		<input type="text" class="form-control" name="user_pw" size="20">
 	</td>
 </tr>
 <tr>
 	<th>이름</th>
 	<td>
-		<input type="text" class="form-control" name="name" size="20">
+		<input type="text" class="form-control" name="user_name" size="20">
 	</td>
 </tr>
 <tr>
-	<th>이메일</th>
+	<th>전화번호</th>
 	<td>
-		<input type="text" class="form-control" name="email" size="20">
+		<input type="text" class="form-control" name="user_phone" size="20">
+	</td>
+</tr>
+<tr>
+	<th>주소</th>
+	<td>
+		<input type="text" class="form-control" name="user_address" size="20">
 	</td>
 </tr>
 <tr>
@@ -87,7 +93,7 @@ $(document).ready(function () {
 		$.ajax({
 			url:"idcheck.do",
 			type:"get",
-			data:{ "id":$("#id").val() },
+			data:{ "user_id":$("#user_id").val() },
 			success:function(msg){
 				// alert('success');
 				if(msg === "YES"){
@@ -96,7 +102,7 @@ $(document).ready(function () {
 				}else{
 					$("#idcheck").css("color", "#ff0000");
 					$("#idcheck").text("사용중인 아이디입니다");
-					$("#id").val("");
+					$("#User_id").val("");
 				}
 			},
 			error:function(){
