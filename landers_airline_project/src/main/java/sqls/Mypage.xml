@@ -10,7 +10,8 @@
 	where user_id=#{user_id} and user_pw=#{user_pw}
 </delete>
 
-<!-- 회원정보 변경 -->
+
+<!-- 회원정보 변경 
 <update id="updateInfo" parameterType="com.landers.airline.dto.MypageDto">
 	update user
 	set 
@@ -18,7 +19,7 @@
 	user_phone=#{user_phone}
 	user_address=#{user_address}
 </update>
-
+-->
 
 
 

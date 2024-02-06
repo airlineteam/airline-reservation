@@ -28,9 +28,9 @@ public class ReservationController {
 	}
 	
 	@PostMapping("schedule.do")
-	public String schedule(FlightinfoDto dto, Model model) {
+	public String schedule(FlightinfoDto dto, Model model, String person_num) {
 		System.out.println("ReservationController schedule() " + new Date());
-		
+		System.out.println(person_num);
 		List<FlightinfoDto> list = service.flightlist(dto);
 		
 		System.out.println(list.toString());
@@ -38,7 +38,7 @@ public class ReservationController {
 		model.addAttribute("list",list);
 		
 		return "reservation/search";
-		
+	}
 		//String scheduleMsg = "";
 		//if(isS) {
 		//	scheduleMsg = "SCHEDULE_SUCCESS";
@@ -50,6 +50,12 @@ public class ReservationController {
 		
 		//return "message";
 		
+	@GetMapping("seat.do")
+	public String seat(int flight_id, Model model) {
 		
+		model.addAttribute("flight_id",flight_id);
+		
+		return "reservation/seat";
 	}
+	
 }
