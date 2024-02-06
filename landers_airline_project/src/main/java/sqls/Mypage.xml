@@ -15,18 +15,11 @@
 	update user
 	set 
 	where 
-	user_id=#{user_id} 
-	user_pw=#{user_pw}
-	user_name=#{user_name}
 	user_phone=#{user_phone}
 	user_address=#{user_address}
 </update>
 
-<!-- 예약조회 -->
 
-<select id="searchRes" parameterType="com.landers.airline.dto.MypageDto"
-	resultType="com.landers.airline.dto.MypageDto">
 
-</select>
 
 </mapper>
