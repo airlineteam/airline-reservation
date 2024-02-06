@@ -1,13 +1,4 @@
 ---
-name: "# [FEATURE/FIX/STYLE] 기능"
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
-
----
-
----
 name: 이슈 템플릿
 about: 커스텀 이슈 템플릿
 title: "# [FEATURE/FIX/STYLE] 기능"
