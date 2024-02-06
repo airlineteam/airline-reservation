@@ -1,12 +1,15 @@
 package com.landers.airline.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.service.ReservationService;
 
 @Controller
@@ -22,5 +25,31 @@ public class ReservationController {
 		model.addAttribute("main", "reservationHome");
 		
 		return "reservation/main";
+	}
+	
+	@PostMapping("schedule.do")
+	public String schedule(FlightinfoDto dto, Model model) {
+		System.out.println("ReservationController schedule() " + new Date());
+		
+		List<FlightinfoDto> list = service.flightlist(dto);
+		
+		System.out.println(list.toString());
+		
+		model.addAttribute("list",list);
+		
+		return "reservation/search";
+		
+		//String scheduleMsg = "";
+		//if(isS) {
+		//	scheduleMsg = "SCHEDULE_SUCCESS";
+		//}else {
+		//	scheduleMsg = "SCHEDULE_FAIL";
+		//}
+		
+		//model.addAttribute("scheduleMsg",scheduleMsg);
+		
+		//return "message";
+		
+		
 	}
 }
