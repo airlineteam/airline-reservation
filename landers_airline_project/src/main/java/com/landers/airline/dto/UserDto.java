@@ -8,6 +8,7 @@ public class UserDto {
 	private String user_phone;
 	private String user_address;
 	
+	
 	public UserDto() {
 		
 	}
