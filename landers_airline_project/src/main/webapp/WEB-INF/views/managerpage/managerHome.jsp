@@ -1,5 +1,14 @@
+<%@page import="com.landers.airline.dto.ManagerDto"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+	
+	
+	
+	 
+%>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -144,10 +153,10 @@
                     backgroundColor: '#9A161F',
                     borderColor: '#9A161F',
                     borderWidth: 2,
-                    data: [65, 59, 80, 81, 56, 55,90,85,50,40,70],
+                    data: [45,40,20,30,70,80,40,50,70,10,20],
                 }],
             };
-
+            <%-- for (ManagerDto dto : list) { %><%= dto.getTotalPrice() %>, <% } --%>
             const travelCityData = {
                 labels: ['뉴욕', '오사카', '런던', '다낭', '도쿄','방콕','호치민','삿포로'],
                 datasets: [{
