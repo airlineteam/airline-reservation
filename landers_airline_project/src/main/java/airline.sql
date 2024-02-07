@@ -12,7 +12,7 @@ CREATE TABLE schedule (
     departure_airport  VARCHAR(255) NOT NULL,               		-- 출발 공항
     arrival_airport  VARCHAR(255) NOT NULL,         				-- 도착 공항
     departure_date  VARCHAR(255) NOT NULL,       					-- 출발일
-    person_num  INT NOT NULL			 							-- 인원수
+    person_num VARCHAR(255) NOT NULL			 							-- 인원수
 );
 
 CREATE TABLE flight_info (

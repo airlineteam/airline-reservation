@@ -5,11 +5,11 @@
 // 회원가입
 String regiMsg = (String)request.getAttribute("regiMsg");
 if(regiMsg != null && regiMsg.equals("") == false){
-	if(regiMsg.equals("REGI_SUCCESS")){
+	if(regiMsg.equals("USER_YES")){
 		%>
 		<script type="text/javascript">
 		alert("성공적으로 가입되었습니다");
-		location.href = "./login.do";
+		location.href = "./home.do";
 		</script>
 		<%
 	}else{
@@ -36,7 +36,7 @@ if(loginMsg != null && loginMsg.equals("") == false){
 		%>
 		<script type="text/javascript">
 		alert("아이디나 패스워드를 확인해 주세요");
-		location.href = "./home.do";
+		location.href = "./login.do";
 		</script>
 		<%		
 	}	
@@ -124,21 +124,21 @@ if(bbsdeleteMsg != null && bbsdeleteMsg.equals("") == false){
 	}	
 }
 
-String calwrite = (String)request.getAttribute("calwrite");
-if(calwrite != null && !calwrite.equals("")){
-	if(calwrite.equals("CAL_WRITE_OK")){
+String scheduleMsg  = (String)request.getAttribute("scheduleMsg");
+if(scheduleMsg != null && !scheduleMsg.equals("")){
+	if(scheduleMsg.equals("SCHEDULE_SUCCESS")){
 		%>
 		<script type="text/javascript">
-		alert("성공적으로 추가되었습니다");
-		location.href = "calendar?param=calendarList";
+		alert("조회되었습니다.");
+		location.href = "info.do";
 		</script>
 		<%
 	}
 	else{
 		%>
 		<script type="text/javascript">
-		alert("추가되지 않았습니다");		
-		location.href = "calendar?param=calendarList";
+		alert("조회되지 않았습니다.");		
+		location.href = "schedule.do";
 		</script>
 		<%
 	}	

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.landers.airline.dto.UserDto;
 import com.landers.airline.service.LoginService;
@@ -46,4 +47,39 @@ public class LoginController {
 	}
 	
 	
+	@GetMapping("regi.do")
+	public String regi() {
+		System.out.println("LoginController regi " + new Date());		
+		return "login/regi";
+	}
+	
+	@PostMapping("regiAf.do")
+	public String regiAf(UserDto dto, Model model) {
+		System.out.println("LoginController regiAf " + new Date());
+		System.out.println(dto.toString());
+		
+		boolean isS = service.adduser(dto);
+		String regiMsg = "USER_YES";
+		if(!isS) {
+			regiMsg = "USER_NO";
+		}
+		
+		model.addAttribute("regiMsg", regiMsg);
+		
+		return "message";
+	}
+	
+	
+	@ResponseBody
+	@GetMapping("idcheck.do")
+	public String idcheck(String User_id) {
+		System.out.println("LoginController idcheck " + new Date());
+		
+		boolean isS = service.idcheck(User_id);
+		if(isS) {
+			return "NO";
+		}
+		
+		return "YES";
+	}
 }

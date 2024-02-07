@@ -12,9 +12,21 @@ public class LoginDaoImpl implements LoginDao {
 
 	@Autowired
 	SqlSession sesession;
+	
+	@Override
+	public int idcheck(String user_id) {
+		return sesession.selectOne("Login.idcheck", user_id);
+		
+	}
 
 	@Override
 	public UserDto loginAf(UserDto dto) {
 		return  sesession.selectOne("Login.loginAf", dto);
 	}
+
+	@Override
+	public int adduser(UserDto dto) {
+		return sesession.insert("Login.adduser", dto);
+	}
+
 }
