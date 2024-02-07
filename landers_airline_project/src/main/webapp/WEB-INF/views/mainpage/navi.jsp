@@ -20,6 +20,7 @@
       <ul class="navbar-nav me-auto">
         <li class="nav-item active">
           <a class="nav-link" href="mypageHome.do" style="color: white">마이페이지</a>
+          <a class="nav-link" href="login.do" style="color: white">로그인</a>
         </li>
                  
         <!-- 드롭다운 -->

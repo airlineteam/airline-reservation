@@ -21,4 +21,10 @@
 	where flight_id=#{flight_id}
 </select>
 
+<update id="seatselect" parameterType="String">
+	update seat
+	set is_available = 0
+	where seat_name=#{seat}
+</update>
+
 </mapper>

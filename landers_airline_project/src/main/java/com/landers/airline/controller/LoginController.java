@@ -21,8 +21,11 @@ public class LoginController {
 	LoginService service;	// Login으로 바꿀 것!
 	
 	@GetMapping("login.do")
-	public String login() {
-		return "login/login";
+	public String login(Model model) {
+		
+		model.addAttribute("main", "login/login");
+		
+		return "mainpage/main";
 	}
 	
 	@PostMapping("loginAf.do")

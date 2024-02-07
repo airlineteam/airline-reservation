@@ -34,6 +34,11 @@ public class ReservationServiceImpl implements ReservationService {
 	public List<SeatDto> seatlist(int flight_id) {
 		return dao.seatlist(flight_id);
 	}
+
+	@Override
+	public int seatselect(String seat) {
+		return dao.seatselect(seat);
+	}
 	
 	
 }
