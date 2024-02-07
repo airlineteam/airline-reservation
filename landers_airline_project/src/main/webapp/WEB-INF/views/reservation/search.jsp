@@ -23,7 +23,7 @@ String person_num = (String)request.getAttribute("person_num");
 <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>s
 </head>
 <body>
-<h1>예약 조회 완료</h1>
+<h1>예약 조회 완료!</h1>
 
 
 <table border="1">
