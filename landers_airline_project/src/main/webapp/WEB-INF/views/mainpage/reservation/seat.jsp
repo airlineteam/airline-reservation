@@ -79,8 +79,8 @@
 
         function completeSelection() {
             if (selectedSeats.length > 0) {
-                alert('선택한 좌석: ' + selectedSeats.join(', '));
-                var url = 'processSelectedSeats.jsp?selectedSeats=' + encodeURIComponent(selectedSeats.join(','));
+                alert('선택한 좌석: ' + selectedSeats.join(','));
+                var url = 'seatselect.do?selectedSeats=' + encodeURIComponent(selectedSeats.join(','));
                 window.location.href = url;
             } else {
                 alert('좌석을 선택하세요.');

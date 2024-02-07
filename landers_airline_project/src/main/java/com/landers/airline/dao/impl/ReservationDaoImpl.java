@@ -32,6 +32,11 @@ public class ReservationDaoImpl implements ReservationDao {
 	public List<SeatDto> seatlist(int flight_id) {
 		return session.selectList("reservation.seatlist", flight_id);
 	}
+
+	@Override
+	public int seatselect(String seat) {
+		return session.update(seat);
+	}
 	
 	
 	

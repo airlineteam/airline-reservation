@@ -14,4 +14,6 @@ public interface ReservationDao {
 	int schedule(ScheduleDto dto);
 	
 	List<SeatDto> seatlist(int flight_id);
+	
+	int seatselect(String seat);
 }
