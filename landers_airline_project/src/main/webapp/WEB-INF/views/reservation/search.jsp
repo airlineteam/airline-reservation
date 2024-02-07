@@ -6,6 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 List<FlightinfoDto> list = (List<FlightinfoDto>)request.getAttribute("list");
+String person_num = (String)request.getAttribute("person_num");
 %>
 
 <!DOCTYPE html>
@@ -42,11 +43,17 @@ for(int i = 0; i < list.size(); i++) {
 		<th><%=date_util.toDates(dto.getDeparture_date())%></th>
 		<th><%=date_util.toDates(dto.getArrival_date())%></th>
 		<th><%=dto.getPrice() %>원</th>
-		<th><a href="seat.do?flight_id=<%=dto.getFlight_id() %>">예약하기</a></th>
+		<th>
+			<a href="seat.do?flight_id=<%=dto.getFlight_id() %>&person_num=<%=person_num %>">
+			예약하기
+			</a>
+		</th>
 	</tr>
 	<% 
 }
 %>
 </table>
+
+
 </body>
 </html>

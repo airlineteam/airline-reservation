@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.landers.airline.dto.FlightinfoDto;
+import com.landers.airline.dto.SeatDto;
 import com.landers.airline.service.ReservationService;
 
 @Controller
@@ -36,6 +37,7 @@ public class ReservationController {
 		System.out.println(list.toString());
 		
 		model.addAttribute("list",list);
+		model.addAttribute("person_num",person_num);
 		
 		return "reservation/search";
 	}
@@ -51,9 +53,13 @@ public class ReservationController {
 		//return "message";
 		
 	@GetMapping("seat.do")
-	public String seat(int flight_id, Model model) {
+	public String seat(int flight_id, Model model, String person_num) {
 		
-		model.addAttribute("flight_id",flight_id);
+		List<SeatDto> list = service.seatlist(flight_id);
+		
+		//System.out.println(list.toString());
+		
+		model.addAttribute("list",list);
 		
 		return "reservation/seat";
 	}

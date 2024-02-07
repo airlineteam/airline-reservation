@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.landers.airline.dao.ReservationDao;
 import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
+import com.landers.airline.dto.SeatDto;
 import com.landers.airline.service.ReservationService;
 
 
@@ -27,6 +28,11 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public List<FlightinfoDto> flightlist(FlightinfoDto dto) {
 		return dao.flightlist(dto);
+	}
+
+	@Override
+	public List<SeatDto> seatlist(int flight_id) {
+		return dao.seatlist(flight_id);
 	}
 	
 	

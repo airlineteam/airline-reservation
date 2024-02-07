@@ -15,4 +15,10 @@
     WHERE departure_airport=#{departure_airport} AND arrival_airport=#{arrival_airport} AND departure_date >= #{departure_date}
 </select>
 
+<select id="seatlist" parameterType="Integer" resultType="com.landers.airline.dto.SeatDto" >
+	select seat_id, flight_id, seat_name, seat_price, is_available
+	from seat
+	where flight_id=#{flight_id}
+</select>
+
 </mapper>
