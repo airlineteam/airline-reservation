@@ -10,8 +10,15 @@
 </insert>
 
 <select id="search" parameterType="com.landers.airline.dto.FlightinfoDto" resultType="com.landers.airline.dto.FlightinfoDto">
-	select flight_id, flight_name, departure_airport, arrival_airport, departure_date, arrival_date, price
-	from flight_info
-	where departure_airport=#{departure_airport} and arrival_airport=#{arrival_airport} and departure_date=#{departure_date}
+    SELECT flight_id, flight_name, departure_airport, arrival_airport, departure_date, arrival_date, price
+    FROM flight_info
+    WHERE departure_airport=#{departure_airport} AND arrival_airport=#{arrival_airport} AND departure_date >= #{departure_date}
 </select>
+
+<select id="seatlist" parameterType="Integer" resultType="com.landers.airline.dto.SeatDto" >
+	select seat_id, flight_id, seat_name, seat_price, is_available
+	from seat
+	where flight_id=#{flight_id}
+</select>
+
 </mapper>

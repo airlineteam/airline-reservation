@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.landers.airline.dao.ReservationDao;
 import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
+import com.landers.airline.dto.SeatDto;
 
 
 @Repository
@@ -25,6 +26,11 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public List<FlightinfoDto> flightlist(FlightinfoDto dto) {
 		return session.selectList("reservation.search", dto);
+	}
+
+	@Override
+	public List<SeatDto> seatlist(int flight_id) {
+		return session.selectList("reservation.seatlist", flight_id);
 	}
 	
 	
