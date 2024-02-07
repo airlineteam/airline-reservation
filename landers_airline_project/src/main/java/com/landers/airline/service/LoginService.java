@@ -5,4 +5,8 @@ import com.landers.airline.dto.UserDto;
 public interface LoginService {
 
 	UserDto loginAf(UserDto dto);
+	
+	boolean idcheck(String user_id);	
+	
+	boolean adduser(UserDto dto);
 }
