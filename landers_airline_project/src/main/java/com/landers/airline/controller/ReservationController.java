@@ -23,9 +23,9 @@ public class ReservationController {
 	@GetMapping("reservationHome.do")
 	public String home(Model model) {
 		System.out.println("ReservationController home() " + new Date());
-		model.addAttribute("main", "reservation/reservationHome");
+		model.addAttribute("main", "reservationHome");
 		
-		return "mainpage/main";
+		return "reservation/main";
 	}
 	
 	@PostMapping("schedule.do")
@@ -39,7 +39,7 @@ public class ReservationController {
 		model.addAttribute("list",list);
 		model.addAttribute("person_num",person_num);
 		
-		return "mainpage/reservation/search";
+		return "reservation/search";
 	}
 		//String scheduleMsg = "";
 		//if(isS) {
@@ -61,22 +61,7 @@ public class ReservationController {
 		
 		model.addAttribute("list",list);
 		
-		return "mainpage/reservation/seat";
-	}
-	
-	@GetMapping("seatselect.do")
-	public String seatselect(String selectedSeats, Model model) {
-		System.out.println(selectedSeats);
-		int count = 0;
-		 String[] seatsArray = selectedSeats.split(",");
-
-		    // 각 좌석에 대한 처리
-		    for (String seat : seatsArray) {
-		        System.out.println(seat);
-		        count = service.seatselect(seat);
-		    }
-		
-		return "mainpage/reservation/pay";
+		return "reservation/seat";
 	}
 	
 }
