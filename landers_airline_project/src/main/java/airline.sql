@@ -1,4 +1,3 @@
-use airline;
 
 CREATE TABLE user (
     user_id VARCHAR(255) PRIMARY KEY NOT NULL,               		-- 사용자 ID
@@ -23,14 +22,14 @@ CREATE TABLE flight_info (
     arrival_airport  VARCHAR(255) NOT NULL,         				-- 도착 공항
     departure_date   VARCHAR(255) NOT NULL,         				-- 출발일
     arrival_date   VARCHAR(255) NOT NULL,         					-- 도착일
-    price DECIMAL(12) NOT NULL        								-- 기본 가격
+    price INT NOT NULL        										-- 기본 가격
 );
 
 CREATE TABLE seat (
     seat_id INT AUTO_INCREMENT PRIMARY KEY,           				-- 좌석 ID
     flight_id INT,           										-- 항공편 ID
     seat_name VARCHAR(255) NOT NULL,								-- 좌석 이름
-    seat_price DECIMAL(12) NOT NULL,								-- 좌석 가격
+    seat_price INT NOT NULL,								-- 좌석 가격
     is_available BOOLEAN DEFAULT 1,									-- 좌석 예약 가능?
     FOREIGN KEY (flight_id) REFERENCES flight_info(flight_id)  		-- 외래키 설정
 );
@@ -39,7 +38,8 @@ CREATE TABLE ticket (
     ticket_id INT AUTO_INCREMENT PRIMARY KEY,           			-- 티켓 ID
     user_id VARCHAR(255),           								-- 사용자 ID
     schedule_id INT,												-- 스케쥴 ID
-    final_price DECIMAL(12) NOT NULL,								-- 최종 가격
+    final_price INT NOT NULL,								-- 최종 가격
+    final_date DATETIME NOT NULL,									-- 최종 예약날짜
     flight_id INT,													-- 항공편 id
     seat_id INT,													-- 좌석 id
         
@@ -47,6 +47,7 @@ CREATE TABLE ticket (
     FOREIGN KEY (schedule_id) REFERENCES schedule(schedule_id),  	-- 외래키 설정
     FOREIGN KEY (flight_id) REFERENCES flight_info(flight_id),  	-- 외래키 설정
     FOREIGN KEY (seat_id) REFERENCES seat(seat_id)					-- 외래키 설정
+    										
 );
 
 CREATE TABLE refund (

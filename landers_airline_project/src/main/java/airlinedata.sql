@@ -80,3 +80,33 @@ VALUES
     (3, 'C10', 1, 1),
     (3, 'C11', 1, 1),
     (3, 'C12', 1, 1);
+    
+    
+    
+    
+    -- schedule 테이블에 더미 데이터 삽입
+INSERT INTO schedule (departure_airport, arrival_airport, departure_date, person_num)
+VALUES 
+    ('인천', '제주', '2024-02-10 14:30:00', 1),
+    ('김포', '김해', '2024-02-15 10:00:00', 2),
+    ('김해', '인천', '2024-02-20 18:45:00', 3);
+    
+    
+   -- 여러 개의 티켓 더미 데이터 추가
+-- 티켓 1
+INSERT INTO ticket (user_id, schedule_id, final_price, final_date, flight_id, seat_id)
+VALUES ('abc', 1, 50000, '2024-02-10 14:30:00', 1, 1),
+       ('user1', 1, 60000, '2024-02-15 10:00:00', 2, 2),
+       ('user2', 1, 75000, '2024-02-20 18:45:00', 1, 3);
+
+-- 티켓 2
+INSERT INTO ticket (user_id, schedule_id, final_price, final_date, flight_id, seat_id)
+VALUES ('user1', 2, 55000, '2024-02-12 15:30:00', 1, 5),
+       ('user2', 2, 70000, '2024-02-17 11:30:00', 2, 7),
+       ('user3', 2, 80000, '2024-02-22 20:15:00', 1, 9);
+
+-- 티켓 3
+INSERT INTO ticket (user_id, schedule_id, final_price, final_date, flight_id, seat_id)
+VALUES ('user1', 3, 60000, '2024-02-14 16:45:00', 1, 13),
+       ('user2', 3, 72000, '2024-02-19 14:00:00', 2, 16),
+       ('user3', 3, 85000, '2024-02-24 22:30:00', 1, 18);
