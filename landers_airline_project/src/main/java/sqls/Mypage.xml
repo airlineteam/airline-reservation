@@ -11,15 +11,14 @@
 </delete>
 
 
-<!-- 회원정보 변경 
+<!-- 회원정보변경.
 <update id="updateInfo" parameterType="com.landers.airline.dto.MypageDto">
 	update user
 	set 
 	where 
 	user_phone=#{user_phone}
 	user_address=#{user_address}
-</update>
--->
+</update> -->
 
 
 
