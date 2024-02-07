@@ -19,7 +19,7 @@
       <!-- 왼쪽 메뉴: 톱 페이지의 각 콘텐츠에 대한 링크 -->
       <ul class="navbar-nav me-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="" style="color: white">회원관리</a>
+          <a class="nav-link" href="MemberManager.do" style="color: white">회원관리</a>
         </li>
         
          <li class="nav-item active">
