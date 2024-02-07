@@ -4,12 +4,11 @@
 <%
 	List<SeatDto> list = (List<SeatDto>)request.getAttribute("list");
 %>
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>좌석 선택 창입니다!!</title>
+    <title>좌석 선택</title>
     <style>
         .seat {
             width: 50px;
@@ -34,11 +33,13 @@
     
     <form id="seatForm" action="#" method="post">
         <div id="seatsContainer">
-            <% int seatsPerRow = 4;
+            <% 
+               int seatsPerRow = 4;
+               int personNum = Integer.parseInt(request.getParameter("person_num"));
                for (int i = 0; i < list.size(); i++) { 
                    SeatDto dto = list.get(i);
             %>
-                <div class="seat" onclick="toggleSeat(this, '<%= dto.getSeat_name() %>')">
+                <div class="seat" onclick="toggleSeat(this, '<%= dto.getSeat_name() %>')" data-person-num="<%= personNum %>">
                     <input type="checkbox" name="selectedSeats" value="<%= dto.getSeat_name() %>" style="display:none;">
                     <%= dto.getSeat_name() %>
                 </div>
@@ -56,17 +57,23 @@
 
         function toggleSeat(seatElement, seatName) {
             var checkbox = seatElement.querySelector('input[type="checkbox"]');
-            checkbox.checked = !checkbox.checked;
+            var personNum = seatElement.getAttribute('data-person-num');
+            
+            if (selectedSeats.length < personNum || checkbox.checked) {
+                checkbox.checked = !checkbox.checked;
+                
+                // 좌석 색상 변경
+                seatElement.classList.toggle('selected');
 
-            // 좌석 색상 변경
-            seatElement.classList.toggle('selected');
-
-            // 선택된 좌석 정보 저장 또는 제거
-            var index = selectedSeats.indexOf(seatName);
-            if (index === -1) {
-                selectedSeats.push(seatName);
+                // 선택된 좌석 정보 저장 또는 제거
+                var index = selectedSeats.indexOf(seatName);
+                if (index === -1) {
+                    selectedSeats.push(seatName);
+                } else {
+                    selectedSeats.splice(index, 1);
+                }
             } else {
-                selectedSeats.splice(index, 1);
+                alert('더 이상 좌석을 선택할 수 없습니다.');
             }
         }
 
@@ -83,5 +90,6 @@
 
 </body>
 </html>
+
 
 
