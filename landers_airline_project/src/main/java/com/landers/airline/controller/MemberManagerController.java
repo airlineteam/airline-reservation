@@ -34,7 +34,7 @@ public class MemberManagerController {
 		
 		model.addAttribute("list",list);
 				
-		return "managerpage/MemberManager";
+		return "managerpage/MemberManager"; 
 	}
 	
 	
