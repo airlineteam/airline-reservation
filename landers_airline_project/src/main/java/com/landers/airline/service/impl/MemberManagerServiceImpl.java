@@ -23,6 +23,30 @@ public class MemberManagerServiceImpl implements MemberManagerService {
 	public List<UserDto> managerlist(UserDto dto) {
 				return dao.managerlist(dto);
 	}
+
+
+
+
+	@Override
+	public boolean deleteUser(UserDto dto) {
+		int count = dao.deleteUser(dto);
+		return count>0;
+	}
+
+
+
+	
+
+
+
+	
+
+
+
+
+
+	
+
 	
 	
 }
