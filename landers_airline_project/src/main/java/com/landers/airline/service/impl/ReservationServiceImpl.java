@@ -36,9 +36,16 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public int seatselect(String seat) {
-		return dao.seatselect(seat);
+	public int seatselect(List<String> selectedSeats, int flightId) {
+	    int totalUpdates = 0;
+
+	    for (String seat : selectedSeats) {
+	        int updates = dao.seatselect(seat, flightId);
+	        totalUpdates += updates;
+	    }
+
+	    return totalUpdates;
 	}
-	
+
 	
 }
