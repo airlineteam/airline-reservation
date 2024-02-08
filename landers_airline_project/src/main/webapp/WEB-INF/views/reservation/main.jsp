@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>타이틀 수정</title>
+<title>고객센터</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
  
@@ -37,7 +37,7 @@ main{
 
 header{	
 	height: 100px;
-	background-color: #eeeeee;
+	background-color: #ffffff;
 }
 footer{	
 	height: 100px;
@@ -47,8 +47,6 @@ footer{
 
 </head>
 <body>
-
-<h1>수정</h1>
 
 <header>
 	<jsp:include page="header.jsp" flush="false"/>
