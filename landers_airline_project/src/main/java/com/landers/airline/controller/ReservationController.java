@@ -71,17 +71,17 @@ public class ReservationController {
 	}
 	
 	@RequestMapping(value = "seatselect.do", method = RequestMethod.POST)
-	@ResponseBody
 	public String seatselect(@RequestParam(value = "selectedSeats") List<String> selectedSeats,
-	                         @RequestParam(value = "flightId") int flightId) {
+	                         @RequestParam(value = "flightId") int flightId, Model model) {
 	    for (String string : selectedSeats) {
-	    	System.out.println("string"+string);
+	    	System.out.println("string : "+string);
 		}
 	    
 	    
 	    int count = service.seatselect(selectedSeats,flightId);
-	    
 	    System.out.println(count);
+	    
+	    model.addAttribute("main", "pay");
 	
 	    return "reservation/main";
 	}
