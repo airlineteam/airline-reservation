@@ -12,14 +12,16 @@
 
 
 <insert id="adduser" parameterType="com.landers.airline.dto.UserDto">
-	insert into user(user_id, user_pw, user_name, user_phone, user_address)
-	values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_address})
+	insert into user(user_id, user_pw, user_name, user_phone, user_address, user_role)
+	values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_address}, #{user_role})
 </insert>
 
 <select id="loginAf" parameterType="com.landers.airline.dto.UserDto" resultType="com.landers.airline.dto.UserDto">
-	select user_id, user_pw, user_name, user_phone, user_address
+	select user_id, user_pw, user_name, user_phone, user_address, user_role
 	from user
 	where user_id=#{user_id} and user_pw=#{user_pw}
 </select>
+
+
 
 </mapper>

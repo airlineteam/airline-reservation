@@ -9,4 +9,6 @@ public interface LoginDao {
 	int adduser(UserDto dto);
 
 	UserDto loginAf(UserDto dto);
+	
+	UserDto logOut(UserDto dto);
 }

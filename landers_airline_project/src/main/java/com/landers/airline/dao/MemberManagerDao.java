@@ -9,4 +9,7 @@ public interface MemberManagerDao {
 	
 	List<UserDto> managerlist(UserDto dto);
 
+	int deleteUser(UserDto dto);
+
+
 }
