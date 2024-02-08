@@ -1,20 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객센터</title>
+    <!-- Chart.js CDN 포함 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
 
-<style>
-.home{
-	height: 500px;
-	border: 1px solid;
+.icon--div {
+	border-radius: 50%;
+	background-color: #f0f0f0;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-</style>
 
+.icon--div span {
+	font-size: 27px;
+	color: #657788;
+	cursor: default;
+}
 
-	<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal">고객센터</h1>
-      <p class="lead fw-normal">홈페이지 방문을 환영합니다</p>
-      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
-    </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-  </div>
+.icon--div span:hover {
+	color: #657788;
+}
+
+.middle--board {
+	background-color: white;
+	height: 400px;
+	width: 600px;
+	box-shadow: 0 0 3px 3px #e5e5e5;
+	padding: 12px;
+	float: left;
+}
+
+    </style>
+</head>
+
+</head>
+<body>
+
+메롱
+		
+		
+<script>
+</script>
+</body>
+</html>

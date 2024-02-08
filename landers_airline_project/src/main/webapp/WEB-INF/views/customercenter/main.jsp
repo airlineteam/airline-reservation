@@ -37,7 +37,7 @@ main{
 
 header{	
 	height: 100px;
-	background-color: #eeeeee;
+	background-color: #ffffff;
 }
 footer{	
 	height: 100px;
