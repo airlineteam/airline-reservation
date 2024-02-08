@@ -15,5 +15,5 @@ public interface ReservationDao {
 	
 	List<SeatDto> seatlist(int flight_id);
 	
-	int seatselect(String seat);
+	int seatselect(String seatName, int flightId);
 }

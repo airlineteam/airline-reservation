@@ -6,6 +6,8 @@ public interface LoginService {
 
 	UserDto loginAf(UserDto dto);
 	
+	UserDto loginOut(UserDto dto);
+	
 	boolean idcheck(String user_id);	
 	
 	boolean adduser(UserDto dto);
