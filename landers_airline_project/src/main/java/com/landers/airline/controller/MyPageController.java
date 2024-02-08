@@ -33,7 +33,7 @@ public class MyPageController {
 		System.out.println("MyPageController mylist() " + new Date());
 		System.out.println(dto.toString());
 		UserDto mylist = service.mylist(dto);
-		
+	
 		request.setAttribute("mypage", mylist);
 		
 		return "mypage/mypageHome";

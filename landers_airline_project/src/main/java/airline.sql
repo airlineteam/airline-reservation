@@ -4,8 +4,9 @@ CREATE TABLE user (
     user_pw VARCHAR(255) NOT NULL,         							-- 비밀번호
     user_name VARCHAR(255) NOT NULL,       					 		-- 사용자명
     user_phone VARCHAR(255) NOT NULL,     					 		-- 연락처 정보
-    user_address VARCHAR(255) NOT NULL                            	-- 주소
-);
+    user_address VARCHAR(255) NOT NULL,                             -- 주소
+    user_role INT
+); 
 
 CREATE TABLE schedule (
 	schedule_id	INT AUTO_INCREMENT PRIMARY KEY,						-- 스케쥴 ID

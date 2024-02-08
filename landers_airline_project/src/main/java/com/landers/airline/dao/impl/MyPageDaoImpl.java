@@ -31,7 +31,6 @@ public class MyPageDaoImpl implements MyPageDao {
 
 	@Override
 	public UserDto mylist(UserDto dto) {
-		
 		return session.selectOne("mypage.mylist", dto);
 	}
 
