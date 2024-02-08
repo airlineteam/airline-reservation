@@ -38,16 +38,16 @@ public class FaqServiceImpl implements FaqService{
 		return dao.faqdetail(seq);
 	}
 
-	@Override
-	public boolean commentWrite(BbsComment com) {
-		int count = dao.commentWrite(com);
-		return count>0?true:false;
-	}
-
-	@Override
-	public List<BbsComment> commentList(int seq) {		
-		return dao.commentList(seq);
-	}
+//	@Override
+//	public boolean commentWrite(BbsComment com) {
+//		int count = dao.commentWrite(com);
+//		return count>0?true:false;
+//	}
+//
+//	@Override
+//	public List<BbsComment> commentList(int seq) {		
+//		return dao.commentList(seq);
+//	}
 	
 	@Override
 	public boolean FaqAnswer(FaqDto dto) {

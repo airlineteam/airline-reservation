@@ -69,28 +69,28 @@ public class FaqController {
 		return "customercenter/faq/faqdetail";
 	}
 	
-	@PostMapping("bbsCommentWriteAf.do")
-	public String bbsCommentWriteAf(BbsComment com) {
-		System.out.println("BbsController bbsCommentWriteAf " + new Date());
-		
-		boolean isS = service.commentWrite(com);
-		if(isS) {
-			System.out.println("댓글작성 성공!");
-		}else {
-			System.out.println("댓글작성 실패");
-		}
-		
-		return "redirect:/faqdetail.do?seq=" + com.getSeq();		
-	}
+//	@PostMapping("bbsCommentWriteAf.do")
+//	public String bbsCommentWriteAf(BbsComment com) {
+//		System.out.println("BbsController bbsCommentWriteAf " + new Date());
+//		
+//		boolean isS = service.commentWrite(com);
+//		if(isS) {
+//			System.out.println("댓글작성 성공!");
+//		}else {
+//			System.out.println("댓글작성 실패");
+//		}
+//		
+//		return "redirect:/faqdetail.do?seq=" + com.getSeq();		
+//	}
 	
-	@ResponseBody
-	@GetMapping("commentList.do")
-	public List<BbsComment> commentList(int seq){
-		System.out.println("FaqController commentList " + new Date());
-		
-		List<BbsComment> list = service.commentList(seq);
-		return list;
-	}
+//	@ResponseBody
+//	@GetMapping("commentList.do")
+//	public List<BbsComment> commentList(int seq){
+//		System.out.println("FaqController commentList " + new Date());
+//		
+//		List<BbsComment> list = service.commentList(seq);
+//		return list;
+//	}
 	
 	@GetMapping("faqanswer.do")
 	public String faqanswer(int seq, Model model) {

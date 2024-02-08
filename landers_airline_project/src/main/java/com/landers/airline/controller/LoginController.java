@@ -35,7 +35,7 @@ public class LoginController {
 		
 		UserDto user = service.loginAf(dto);
 			
-		String loginMsg = "LOGIN_FAIL"
+		String loginMsg = "LOGIN_FAIL";
       
 		if(user != null) {	// 로그인 성공
 			request.getSession().invalidate(); //Session 삭제
