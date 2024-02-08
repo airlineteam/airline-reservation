@@ -34,7 +34,7 @@
 	justify-content: space-between;
 	align-items: center;
 	float: left;
-	margin: 20px 15px 20px 15px;
+	margin: 30px 15px 20px 15px;
 }
 
 .icon--div {
@@ -60,19 +60,23 @@
 .middle--board {
 	background-color: white;
 	height: 400px;
-	width: 600px;
+	width: 660px;
 	box-shadow: 0 0 3px 3px #e5e5e5;
-	padding: 12px;
-	float: left;
+	margin: 20px 15px 20px 15px;
+	padding: 14px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 
 .long--board {
 	background-color: white;
 	height: 400px;
-	width: 1300px;
+	width: 1290px;
 	box-shadow: 0 0 3px 3px #e5e5e5;
 	padding: 12px;
+	margin: 20px 15px 20px 15px;
 }
 
 #salesChart {
@@ -80,6 +84,9 @@
 	
 }
 #customerFeedbackChart{
+	width: 600px !important;
+}
+#customerFeedbackData{
 	width: 600px !important;
 }
 

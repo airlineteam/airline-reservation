@@ -50,7 +50,9 @@
 </head>
 <body>
 
-메롱
+<a href="bbslist.do" >공지사항</a><br/>
+<a href="faqlist.do" >FAQ</a><br/>
+<a href="qnalist.do" >QNA</a><br/>
 		
 		
 <script>

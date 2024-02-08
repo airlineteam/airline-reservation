@@ -29,4 +29,9 @@ public class LoginDaoImpl implements LoginDao {
 		return sesession.insert("Login.adduser", dto);
 	}
 
+	@Override
+	public UserDto logOut(UserDto dto) {
+		return sesession.selectOne("Login.loginOut", dto);
+	}
+
 }
