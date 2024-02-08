@@ -20,7 +20,7 @@ String person_num = (String)request.getAttribute("person_num");
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>s
+<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
 </head>
 <body>
 <h1>예약 조회 완료!</h1>
