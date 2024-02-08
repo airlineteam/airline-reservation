@@ -1,5 +1,11 @@
 package com.landers.airline.dao;
 
-public interface MyPageDao {
+import com.landers.airline.dto.UserDto;
 
+public interface MyPageDao {
+	
+	UserDto mylist(UserDto dto);
+	
+	int userUpdate(String user_id);
+	int userDelete(String user_id);
 }

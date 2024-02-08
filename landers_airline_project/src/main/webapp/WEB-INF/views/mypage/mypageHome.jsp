@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.landers.airline.dto.UserDto"%>
+
+<% UserDto mylist = (UserDto)request.getAttribute("mylist"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,14 +34,14 @@
 
 <div class="center">
 
-<form action="regiAf.do" id="frm" method="post">
+<form action="mylist.do" id="frm" method="post">
 <br/>
 
 <table class="table">
 <tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" class="form-control" name="user_id" id="user_id" size="20">
+		<input type="text" class="form-control" name="user_id" id="user_id" size="20" value="">
 		<p id="idcheck" style="font-size: 10px"></p>
 		<input type="button" class="btn btn-primary" id="id_chk_btn" value="id확인">		
 	</td>
@@ -70,7 +73,8 @@
 <tr>
 	<td colspan="2">
 		<div align="center">
-			<input type="button" id="regibtn" class="btn btn-primary" value="회원가입">
+			<input type="button" id="updatebtn" class="btn btn-primary" value="수정">
+			<input type="button" id="deletebtn" class="btn btn-primary" value="삭제">
 		</div>
 	</td>
 </tr>
