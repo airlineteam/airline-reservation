@@ -55,14 +55,13 @@ public class MemberManagerController {
 		return "message"; 
 	}
 
-		
-	
+			
 				
-		return "managerpage/MemberManager";
+	
 	}
 	
 
 
 	
 	
-}
+
