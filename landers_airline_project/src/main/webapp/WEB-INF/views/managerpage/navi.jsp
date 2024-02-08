@@ -23,7 +23,7 @@
         </li>
         
          <li class="nav-item active">
-          <a class="nav-link" href="" style="color: white">환불신청관리</a>
+          <a class="nav-link" href="refundManager.do" style="color: white">환불신청관리</a>
         </li>
                       
         <li class="nav-item">

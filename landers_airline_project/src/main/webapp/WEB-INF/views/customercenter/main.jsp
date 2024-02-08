@@ -61,7 +61,7 @@ footer{
 </main>
 
 <footer>
-	<jsp:include page="footer.jsp" flush="false"/>
+	
 </footer>
 
 </body>

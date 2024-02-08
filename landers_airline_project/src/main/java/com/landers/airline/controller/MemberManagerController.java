@@ -55,10 +55,17 @@ public class MemberManagerController {
 		return "message"; 
 	}
 
+
 }
 	
 
 
 	
 	
+
+
+
+	
+	
+
 

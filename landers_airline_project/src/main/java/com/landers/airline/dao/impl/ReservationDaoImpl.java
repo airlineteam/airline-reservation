@@ -1,7 +1,9 @@
 package com.landers.airline.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,10 +34,10 @@ public class ReservationDaoImpl implements ReservationDao {
 	public List<SeatDto> seatlist(int flight_id) {
 		return session.selectList("reservation.seatlist", flight_id);
 	}
-
+	
 	@Override
-	public int seatselect(String seat) {
-		return session.update(seat);
+	public int seatselect(@Param("seatName") String seatName, @Param("flightId") int flightId) {
+	    return session.update("seatselect", Map.of("seatName", seatName, "flightId", flightId));
 	}
 	
 	
