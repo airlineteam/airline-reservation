@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 import com.landers.airline.dto.UserDto;
 import com.landers.airline.service.MemberManagerService;
 
@@ -33,6 +34,7 @@ public class MemberManagerController {
 		System.out.println(list.toString());
 		
 		model.addAttribute("list",list);
+
 				
 		return "managerpage/MemberManager"; 
 	}
@@ -52,6 +54,15 @@ public class MemberManagerController {
 		
 		return "message"; 
 	}
+
+		
+	
+				
+		return "managerpage/MemberManager";
+	}
+	
+
+
 	
 	
 }

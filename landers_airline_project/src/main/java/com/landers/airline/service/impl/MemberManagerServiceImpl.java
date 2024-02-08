@@ -26,6 +26,7 @@ public class MemberManagerServiceImpl implements MemberManagerService {
 
 
 
+
 	@Override
 	public boolean deleteUser(UserDto dto) {
 		int count = dao.deleteUser(dto);
@@ -45,7 +46,7 @@ public class MemberManagerServiceImpl implements MemberManagerService {
 
 
 	
-	
+
 	
 	
 }

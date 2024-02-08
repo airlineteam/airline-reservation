@@ -4,7 +4,7 @@
 <%
 	String main = (String)request.getAttribute("main");
 	if(main == null || main.equals("")){
-		main = "home";
+		main = "mytripHome";
 	}
 %>        
     
@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>고객센터</title>
+<title>Insert title here</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
  
@@ -26,7 +26,7 @@
 	text-align: center;
 } */
 
-header, main, footer{
+main{
 	margin: 0 auto;
 	width: 1400px;
 	text-align: center;
@@ -35,18 +35,12 @@ main{
 	text-align: left;
 }
 
-header{	
-	height: 100px;
-	background-color: #ffffff;
-}
-footer{	
-	height: 100px;
-	background-color: #eeeeee;
-} 
+
 </style>
 
 </head>
 <body>
+
 
 <header>
 	<jsp:include page="header.jsp" flush="false"/>
@@ -60,9 +54,7 @@ footer{
 	<jsp:include page='<%=main + ".jsp" %>' flush="false"/>
 </main>
 
-<footer>
-	<jsp:include page="footer.jsp" flush="false"/>
-</footer>
+
 
 </body>
 </html>

@@ -13,4 +13,6 @@ public interface ReservationService {
 	List<FlightinfoDto> flightlist(FlightinfoDto dto);
 	
 	List<SeatDto> seatlist(int flight_id);
+	
+	int seatselect(String seat);
 }

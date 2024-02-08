@@ -6,8 +6,7 @@
     pageEncoding="UTF-8"%>
     <%
      List<UserDto> list = (List<UserDto>)request.getAttribute("list");
-    
-    
+
     %>
 <!DOCTYPE html>
 <html>
@@ -16,6 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <h2>회원관리</h2>
 <table border="1">
 <tr>
@@ -25,6 +25,9 @@
                 <th>휴대폰번호</th>
                 <th>주소</th>
 </tr>
+
+<table>
+
 <%
 for(int i = 0; i < list.size(); i++){
 		UserDto dto = list.get(i);
@@ -40,6 +43,7 @@ for(int i = 0; i < list.size(); i++){
 }
 	%>
 </table>
+
 <br><br>
 
 <form action="deleteUserAf.do" method="get">

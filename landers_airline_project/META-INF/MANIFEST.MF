@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: landers_airline_project
+Bundle-SymbolicName: landers_airline_project;singleton:=true
+Bundle-Version: 0.0.1.qualifier
+Bundle-Activator: landers_airline_project.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.modisco.infra.common.core,
+ org.eclipse.modisco.infra.query.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: .,bin
