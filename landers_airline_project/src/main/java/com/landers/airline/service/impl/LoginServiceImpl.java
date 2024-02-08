@@ -30,6 +30,11 @@ public class LoginServiceImpl implements LoginService{
 		return count>0?true:false;
 	}
 
+	@Override
+	public UserDto loginOut(UserDto dto) {
+		return dao.logOut(dto);
+	}
+
 
 
 
