@@ -20,8 +20,14 @@
     
     <select id="MemberManager" parameterType="com.landers.airline.dto.UserDto" resultType="com.landers.airline.dto.UserDto">
     	select user_id, user_pw, user_name, user_phone, user_address
-	from user
-    
+	from user   
     </select>
+    
+    
+    <delete id="deleteUserAf" parameterType="com.landers.airline.dto.UserDto">
+        delete from user
+        where user_id = #{user_id}
+    </delete>
+    
 
 </mapper>

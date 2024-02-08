@@ -22,5 +22,19 @@ public class MemberManagerDaoImpl implements MemberManagerDao {
 	public List<UserDto> managerlist(UserDto dto) {
 				return session.selectList(ns +"MemberManager" , dto);
 	}
+
+	@Override
+	public int deleteUser(UserDto dto) {
+				return session.delete(ns + "deleteUserAf" ,dto);
+	}
+
+
+
+
+	
+
+	
+	
+	
 	
 }
