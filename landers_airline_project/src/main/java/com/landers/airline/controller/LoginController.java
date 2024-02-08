@@ -36,14 +36,13 @@ public class LoginController {
 		UserDto user = service.loginAf(dto);
 			
 		String loginMsg = "LOGIN_FAIL";
-      
+
 		if(user != null) {	// 로그인 성공
 			request.getSession().invalidate(); //Session 삭제
 			System.out.println("세션이 삭제됨:" + new Date());
 	        
 			request.getSession().setAttribute("login", user);
 			System.out.println("세션이 생성됨:" + new Date());
-      
 			request.getSession().setMaxInactiveInterval(60*60*24);
 			loginMsg = "LOGIN_SUCCESS";
 		}else {

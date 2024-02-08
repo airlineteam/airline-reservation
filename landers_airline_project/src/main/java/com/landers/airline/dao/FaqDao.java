@@ -12,10 +12,7 @@ public interface FaqDao {
 	int allfaq(FaqParam param);	
 	int faqwrite(FaqDto dto);	
 	FaqDto faqdetail(int seq);
-	
-//	int commentWrite(BbsComment com);
-//	List<BbsComment> commentList(int seq);
-	
+
 	void FaqAnswerUpdate(FaqDto dto);
 	int FaqAnswerInsert(FaqDto dto);
 	
