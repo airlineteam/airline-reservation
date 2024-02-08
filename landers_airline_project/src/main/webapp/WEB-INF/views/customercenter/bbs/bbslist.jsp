@@ -35,6 +35,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style type="text/css">
 .center{
@@ -80,7 +81,7 @@ footer{
 </header>
 
 <nav>
-	<jsp:include page="navi.jsp" flush="false"/>
+	<jsp:include page="../navi.jsp" flush="false"/>
 </nav>
 
 <br/>
