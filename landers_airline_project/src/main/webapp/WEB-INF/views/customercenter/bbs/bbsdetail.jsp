@@ -4,16 +4,26 @@
     pageEncoding="UTF-8"%>
     
 <%
-	BbsDto dto = (BbsDto)request.getAttribute("dto");
-
-	UserDto login = (UserDto)session.getAttribute("login");
-%>    
+    BbsDto dto = (BbsDto)request.getAttribute("dto");
+    UserDto login = (UserDto)session.getAttribute("login");
+    
+    // login.getUser_id() 값이 null이면 로그인 페이지로 이동
+    if (login == null || login.getUser_id() == null) {
+%>
+        <script type="text/javascript">
+            alert('로그인 후 이용 가능합니다.');
+            location.href = "login.do"; // 로그인 페이지 URL로 변경
+        </script>
+<%
+        return; // 페이지 렌더링 중지
+    }
+%>  
     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title><%=dto.getTitle() %></title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">

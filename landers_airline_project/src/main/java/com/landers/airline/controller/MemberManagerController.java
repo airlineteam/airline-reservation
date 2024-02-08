@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
 import com.landers.airline.dto.UserDto;
@@ -35,12 +34,34 @@ public class MemberManagerController {
 		System.out.println(list.toString());
 		
 		model.addAttribute("list",list);
+
+				
+		return "managerpage/MemberManager"; 
+	}
+	
+	
+	@GetMapping("deleteUserAf.do")
+	public String deleteUser(UserDto dto, Model model) {
+		System.out.println("MemberManagerController 	deleteUser " + new Date());
+			
+		boolean isS = service.deleteUser(dto);
+		String deleteUser = "DELETEUSER_YES";
+		if(!isS) {
+			deleteUser = "DELETEUSER_NO";
+		}
+		
+		model.addAttribute("deleteUser", deleteUser);
+		
+		return "message"; 
+	}
+
 		
 	
 				
 		return "managerpage/MemberManager";
 	}
 	
+
 
 	
 	
