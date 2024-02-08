@@ -8,6 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.SeatDto;
@@ -38,8 +42,9 @@ public class ReservationController {
 		
 		model.addAttribute("list",list);
 		model.addAttribute("person_num",person_num);
+		model.addAttribute("main", "search");
 		
-		return "reservation/search";
+		return "reservation/main";
 	}
 		//String scheduleMsg = "";
 		//if(isS) {
@@ -60,8 +65,25 @@ public class ReservationController {
 		//System.out.println(list.toString());
 		
 		model.addAttribute("list",list);
+		model.addAttribute("main", "seat");
 		
-		return "reservation/seat";
+		return "reservation/main";
 	}
 	
+	@RequestMapping(value = "seatselect.do", method = RequestMethod.POST)
+	public String seatselect(@RequestParam(value = "selectedSeats") List<String> selectedSeats,
+	                         @RequestParam(value = "flightId") int flightId, Model model) {
+	    for (String string : selectedSeats) {
+	    	System.out.println("string : "+string);
+		}
+	    
+	    
+	    int count = service.seatselect(selectedSeats,flightId);
+	    System.out.println(count);
+	    
+	    model.addAttribute("main", "pay");
+	
+	    return "reservation/main";
+	}
+
 }
