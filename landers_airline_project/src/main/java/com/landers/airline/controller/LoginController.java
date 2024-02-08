@@ -3,6 +3,7 @@ package com.landers.airline.controller;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,7 @@ import com.landers.airline.service.LoginService;
 public class LoginController {
 
 	@Autowired
-	LoginService service;	// Login으로 바꿀 것!
-	
+	LoginService service;
 	@GetMapping("login.do")
 	public String login(Model model) {
 		
@@ -36,8 +36,13 @@ public class LoginController {
 		UserDto user = service.loginAf(dto);
 			
 		String loginMsg = "LOGIN_FAIL";
-		if(user != null) {	// 로그인 성공
+		if(user != null) {
+			request.getSession().invalidate(); //Session 삭제
+			System.out.println("세션이 삭제됨:" + new Date());
+	        
 			request.getSession().setAttribute("login", dto);
+			System.out.println("세션이 생성됨:" + new Date());
+			
 			request.getSession().setMaxInactiveInterval(60*60*24);
 			loginMsg = "LOGIN_SUCCESS";
 		}else {
@@ -84,5 +89,12 @@ public class LoginController {
 		}
 		
 		return "YES";
+	}
+	
+	@GetMapping("logOut.do")
+	public String logOut(HttpServletRequest request) {
+		request.getSession().invalidate(); //Session 삭제
+		System.out.println("세션이 삭제됨:" + new Date());
+		return "mainpage/main";
 	}
 }

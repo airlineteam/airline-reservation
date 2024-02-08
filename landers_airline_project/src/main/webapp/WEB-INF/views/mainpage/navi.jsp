@@ -1,7 +1,16 @@
+
+<%@page import="com.landers.airline.dto.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  
-
+ <%
+ UserDto login = (UserDto)session.getAttribute("login");
+ if(login != null){
+ 	System.out.println(login.toString());
+ }
+ %>
+ 
+ 
 <nav class="navbar navbar-light" style="background-color: #9A161F;">
   <div class="container">
     <!-- 서브 컴퍼넌트 -->
@@ -18,10 +27,16 @@
       <!-- 네비게이션메뉴 -->
       <!-- 왼쪽 메뉴: 톱 페이지의 각 콘텐츠에 대한 링크 -->
       <ul class="navbar-nav me-auto">
+      <%if(login == null){ %>
         <li class="nav-item active">
-          <a class="nav-link" href="mypageHome.do" style="color: white">마이페이지</a>
           <a class="nav-link" href="login.do" style="color: white">로그인</a>
         </li>
+	<%}else{ %>
+        <li class="nav-item active">
+          <a class="nav-link" href="mypageHome.do" style="color: white">마이페이지</a>
+          <a class="nav-link" href="logOut.do" style="color: white">로그아웃</a>
+        </li>
+        <%} %>
                  
         <!-- 드롭다운 -->
         <li class="nav-item dropdown">
