@@ -110,3 +110,10 @@ INSERT INTO ticket (user_id, schedule_id, final_price, final_date, flight_id, se
 VALUES ('user1', 3, 60000, '2024-02-14 16:45:00', 1, 13),
        ('user2', 3, 72000, '2024-02-19 14:00:00', 2, 16),
        ('user3', 3, 85000, '2024-02-24 22:30:00', 1, 18);
+       
+      
+             -- 환불리스트
+ INSERT INTO refund (user_id, ticket_id, content, refund_status)
+VALUES
+	( 'user1',8, '단순변심', '대기' ),
+	( 'user2',9, '다른여행일정', '대기' );

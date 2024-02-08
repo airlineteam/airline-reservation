@@ -26,8 +26,6 @@
                 <th>주소</th>
 </tr>
 
-<table>
-
 <%
 for(int i = 0; i < list.size(); i++){
 		UserDto dto = list.get(i);

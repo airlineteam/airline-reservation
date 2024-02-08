@@ -205,6 +205,28 @@ if(deleteUser != null && !deleteUser.equals("")){
 }
 
 
+String refundAf = (String)request.getAttribute("refundAf");
+if(refundAf != null && !refundAf.equals("")){
+	if(refundAf.equals("REFUND_YES")){
+		%>
+		<script type="text/javascript">
+		alert("성공적으로 승인되었습니다");
+		location.href = "./refundManager.do";
+		</script>
+		<%
+	}
+	else{
+		%>
+		<script type="text/javascript">
+		alert("승인되지 않았습니다");		
+		location.href = "./refundManager.do";
+		</script>
+		<%
+	}	
+}
+
+
+
 %>
 
 
