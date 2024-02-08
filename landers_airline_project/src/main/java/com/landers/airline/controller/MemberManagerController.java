@@ -50,7 +50,7 @@ public class MemberManagerController {
 		
 		model.addAttribute("deleteUser", deleteUser);
 		
-		return "message";
+		return "message"; 
 	}
 	
 	
