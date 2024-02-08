@@ -16,6 +16,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h2>회원관리</h2>
 <table border="1">
 <tr>
 				<th>아이디</th>
