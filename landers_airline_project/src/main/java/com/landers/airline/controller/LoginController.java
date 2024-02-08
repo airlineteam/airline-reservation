@@ -37,7 +37,7 @@ public class LoginController {
 			
 		String loginMsg = "LOGIN_FAIL";
 		if(user != null) {	// 로그인 성공
-			request.getSession().setAttribute("login", dto);
+			request.getSession().setAttribute("login", user);
 			request.getSession().setMaxInactiveInterval(60*60*24);
 			loginMsg = "LOGIN_SUCCESS";
 		}else {

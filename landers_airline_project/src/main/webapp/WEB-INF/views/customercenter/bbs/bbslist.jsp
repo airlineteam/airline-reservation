@@ -1,3 +1,5 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="com.landers.airline.dto.BbsParam"%>
 <%@page import="util.BbsUtil"%>
 <%@page import="com.landers.airline.dto.BbsDto"%>
@@ -6,6 +8,10 @@
     pageEncoding="UTF-8"%>
 
 <%
+	UserDto login = (UserDto)session.getAttribute("login");
+
+	System.out.println(login.toString());
+
 	List<BbsDto> list = (List<BbsDto>)request.getAttribute("list");
 	int pageBbs = (Integer)request.getAttribute("pageBbs");
 	
@@ -89,10 +95,10 @@ footer{
 <div class="center">
 
 <table class="table table-hover">
-<col width="70"/><col width="600"/><col width="100"/><col width="150"/>
+<col width="70"/><col width="550"/><col width="100"/><col width="200"/>
 <thead>
 	<tr>
-		<th>번호</th><th>제목</th><th>조회수</th><th>작성자</th>
+		<th>번호</th><th>제목</th><th>조회수</th><th>등록일</th>
 	</tr>
 </thead>
 <tbody>
@@ -108,7 +114,7 @@ if(list == null || list.size() == 0){
 		BbsDto bbs = list.get(i);
 		%>
 		<tr>
-			<td><%=i + 1 %></td>
+			<td><%=list.size() - i %></td>
 			<td style="text-align: left;">
 			<%
 			if(bbs.getDel() == 0){
@@ -128,7 +134,7 @@ if(list == null || list.size() == 0){
 				
 			</td>
 			<td><%=bbs.getReadcount() %></td>
-			<td><%=bbs.getId() %></td>
+			<td><%=bbs.getWdate().substring(0, 10) %></td>
 		</tr>		
 		<%
 	}
@@ -152,25 +158,34 @@ if(list == null || list.size() == 0){
 		<option value="start">검색</option>
 		<option value="title">제목</option>
 		<option value="content">내용</option>
-		<option value="writer">작성자</option>
 	</select>
 	
 	<div class="col-sm-3 my-1" style="width:auto;">
 		<input type="text" class="form-control" id="search" value="<%=search %>">
 	</div>
 	
-	<button type="button" class="btn btn-primary" onclick="searchBtn()" style="background-color: #9A161F">
+	<button type="button" class="btn btn-primary" onclick="searchBtn()" style="background-color: #9A161F; border-color: #9A161F">
 	검색
-	</button>
+	</button><br/>
 </div>
 
-<br/>
-<a href="bbswrite.do" >글쓰기</a>
-
-
+<%
+if (login != null && login.getUser_role() == 0) {
+	System.out.println(login.getUser_role());
+%>	
+    <button type="button" class="btn btn-primary" onclick="writeBbs()" style="background-color: #9A161F; border-color: #9A161F">
+        글쓰기
+    </button>
+<%
+}
+%>
 </div>
 
 <script type="text/javascript">
+function writeBbs() {
+	location.href = "bbswrite.do";
+}
+
 let search = "<%=search %>";
 if(search != null){
 	let choice = document.getElementById("choice");
