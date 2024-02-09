@@ -48,6 +48,54 @@
             outline: 0;
             box-shadow: 0 0 0 0.25rem rgba(154, 22, 31, 0.25);
         }
+        
+        .form-control:focus {
+            border-color: #9A161F;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(154, 22, 31, 0.25);
+        }
+
+        /* Autocomplete styles */
+        .autocomplete-list {
+            position: absolute;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            max-height: 120px;
+            overflow-y: auto;
+            z-index: 1000;
+            background-color: #fff;
+        }
+
+        .autocomplete-list div {
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .autocomplete-list div:hover {
+            background-color: #f8f9fa;
+        }
+
+        .search-input-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.375rem 2rem 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .search-input:focus {
+            border-color: #9A161F;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(154, 22, 31, 0.25);
+        }
     </style>
 </head>
 
@@ -73,23 +121,19 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="departureAirport" class="form-label">출발지:</label>
-                            <select class="form-select" name="departure_airport" required>
-                                <option value="" disabled selected>선택</option>
-                                <option value="인천">인천</option>
-                                <option value="제주">제주</option>
-                                <option value="김해">김해</option>
-                                <option value="김포">김포</option>
-                            </select>
+                            <div class="search-input-container">
+                                <input type="text" class="search-input" name="departure_airport" required>
+                                <!-- Autocomplete suggestions for departure airport -->
+                                <div id="departure-autocomplete-list" class="autocomplete-list"></div>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="arrivalAirport" class="form-label">도착지:</label>
-                            <select class="form-select" name="arrival_airport" required>
-                                <option value="" disabled selected>선택</option>
-                                <option value="인천">인천</option>
-                                <option value="제주">제주</option>
-                                <option value="김해">김해</option>
-                                <option value="김포">김포</option>
-                            </select>
+                            <div class="search-input-container">
+                                <input type="text" class="search-input" name="arrival_airport" required>
+                                <!-- Autocomplete suggestions for arrival airport -->
+                                <div id="arrival-autocomplete-list" class="autocomplete-list"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -113,6 +157,42 @@
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 var form = document.querySelector("form");
+                var departureInput = document.querySelector("input[name='departure_airport']");
+                var arrivalInput = document.querySelector("input[name='arrival_airport']");
+                var departureAutocompleteList = document.getElementById("departure-autocomplete-list");
+                var arrivalAutocompleteList = document.getElementById("arrival-autocomplete-list");
+                
+                
+                var airportNames = ["인천", "제주", "김해", "김포"];
+
+                function autocomplete(input, autocompleteList, airportList) {
+                    autocompleteList.innerHTML = '';
+
+                    var inputText = input.value.toLowerCase();
+
+                    var matchingAirports = airportList.filter(function (airport) {
+                        return airport.toLowerCase().startsWith(inputText);
+                    });
+
+                    // Display matching airports in the autocomplete list
+                    matchingAirports.forEach(function (airport) {
+                        var option = document.createElement("div");
+                        option.innerHTML = "<strong>" + airport.substr(0, inputText.length) + "</strong>" + airport.substr(inputText.length);
+                        option.addEventListener("click", function () {
+                            input.value = airport;
+                            autocompleteList.innerHTML = '';
+                        });
+                        autocompleteList.appendChild(option);
+                    });
+                }
+
+                departureInput.addEventListener("input", function () {
+                    autocomplete(departureInput, departureAutocompleteList, airportNames);
+                });
+
+                arrivalInput.addEventListener("input", function () {
+                    autocomplete(arrivalInput, arrivalAutocompleteList, airportNames);
+                });
 
                 form.addEventListener("submit", function (event) {
                     event.preventDefault(); // 기본 제출 동작을 막음

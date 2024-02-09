@@ -89,8 +89,7 @@ String person_num = (String)request.getAttribute("person_num");
                 <thead>
                     <tr>
                         <th>번호</th>
-                        <th>비행기 번호</th>
-                        <th>비행기 코드</th>
+                        <th>비행기</th>
                         <th>출발지</th>
                         <th>도착지</th>
                         <th>출발시간</th>
@@ -106,7 +105,6 @@ String person_num = (String)request.getAttribute("person_num");
                     %>
                     <tr>
                         <td><%=i + 1 %></td>
-                        <td><%=dto.getFlight_id() %></td>
                         <td><%=dto.getFlight_name() %></td>
                         <td><%=dto.getDeparture_airport() %></td>
                         <td><%=dto.getArrival_airport() %></td>
