@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
  
 
-<nav class="navbar navbar-light" style="background-color: #9A161F;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9A161F;">
   <div class="container">
     <!-- 서브 컴퍼넌트 -->
     <!-- 브랜드 -->
-    <a class="navbar-brand" href="customerHome.do" style="color: white">항공권 예약</a>
+    <a class="navbar-brand" href="reservationHome.do" style="color: white">항공권 예약</a>
     
     <!-- 전환 버튼 -->
     <button class="navbar-toggler" type="button" style="color: white" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +24,8 @@
     </div>
     
   </div>
-</nav>    
+</nav>
+
     
     
     
