@@ -77,12 +77,7 @@ String person_num = (String)request.getAttribute("person_num");
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             z-index: 1;
         }
-
-        td a {
-            position: relative;
-            z-index: 2;
-            color: #9A161F;
-        }
+        
     </style>
 </head>
 <body>
@@ -119,9 +114,15 @@ String person_num = (String)request.getAttribute("person_num");
                         <td><%=date_util.toDates(dto.getArrival_date())%></td>
                         <td><%=dto.getPrice() %>원</td>
                         <td>
-                            <a href="seat.do?flight_id=<%=dto.getFlight_id() %>&person_num=<%=person_num %>">
-                                예약하기
-                            </a>
+                            <form action="seat.do" method="post">
+       							 <input type="hidden" name="flight_id" value="<%=dto.getFlight_id() %>">
+       							 <input type="hidden" name="person_num" value="<%=person_num %>">
+        						 <input type="hidden" name="departure_date" value="<%=dto.getDeparture_date()%>">
+        						 <input type="hidden" name="arrival_date" value="<%=dto.getArrival_date()%>">
+        						 <input type="hidden" name="departure_airport" value="<%=dto.getDeparture_airport()%>">
+        						 <input type="hidden" name="arrival_airport" value="<%=dto.getArrival_airport()%>">
+        						 <input type="submit" value="예약하기">
+    						</form>
                         </td>
                     </tr>
                     <%

@@ -61,3 +61,7 @@ CREATE TABLE refund (
     FOREIGN KEY (user_id) REFERENCES user(user_id), 				-- 외래키 설정
     FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)  			-- 외래키 설정
 );
+
+ALTER TABLE schedule AUTO_INCREMENT=1;
+SET @COUNT = 0;
+UPDATE schedule SET schedule_id = @COUNT:=@COUNT+1;

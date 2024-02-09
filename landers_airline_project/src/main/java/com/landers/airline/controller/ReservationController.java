@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.landers.airline.dto.FlightinfoDto;
+import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
 import com.landers.airline.service.ReservationService;
 
@@ -33,7 +34,7 @@ public class ReservationController {
 	}
 	
 	@PostMapping("schedule.do")
-	public String schedule(FlightinfoDto dto, Model model, String person_num) {
+	public String schedule(FlightinfoDto dto,Model model, String person_num) {
 		System.out.println("ReservationController schedule() " + new Date());
 		System.out.println(person_num);
 		List<FlightinfoDto> list = service.flightlist(dto);
@@ -57,10 +58,12 @@ public class ReservationController {
 		
 		//return "message";
 		
-	@GetMapping("seat.do")
-	public String seat(int flight_id, Model model, String person_num) {
+	@PostMapping("seat.do")
+	public String seat(int flight_id, Model model, ScheduleDto dto) {
 		
+		boolean isS = service.schedule(dto);
 		List<SeatDto> list = service.seatlist(flight_id);
+		
 		
 		//System.out.println(list.toString());
 		
