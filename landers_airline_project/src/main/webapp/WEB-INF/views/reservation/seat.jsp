@@ -1,115 +1,109 @@
 <%@page import="com.landers.airline.dto.SeatDto"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
-    List<SeatDto> list = (List<SeatDto>)request.getAttribute("list");
-    String flightId = request.getParameter("flight_id");
-    List<String> selectedSeats = (List<String>)request.getAttribute("selectedSeats");
+List<SeatDto> list = (List<SeatDto>) request.getAttribute("list");
+String flightId = request.getParameter("flight_id");
+List<String> selectedSeats = (List<String>) request.getAttribute("selectedSeats");
 
-    // selectedSeats가 null인 경우 초기화
-    if (selectedSeats == null) {
-        selectedSeats = new java.util.ArrayList<>();
-    }
+// selectedSeats가 null인 경우 초기화
+if (selectedSeats == null) {
+	selectedSeats = new java.util.ArrayList<>();
+}
 %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>좌석 선택</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .seat-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Ensure space between columns */
+            gap: 10px;
+            margin-top: 20px;
+        }
+
         .seat {
-            width: 70px;
-            height: 70px;
-            border: 1px solid #dee2e6;
-            margin: 5px;
+            width: 23%; /* Approximately 4 columns in a row */
+            height: 60px;
+            border: 2px solid #3498db;
+            margin-bottom: 10px;
             text-align: center;
+            line-height: 50px;
             cursor: pointer;
-            transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
         }
 
         .seat:hover {
-            border-color: #adb5bd; /* lighter shade of grey */
-            background-color:#adb5bd;
-            transform: scale(0.85);
+            transform: scale(1.1);
+            background-color: #3498db;
+            color: white;
+            border-color: #2980b9;
         }
 
         .selected {
-            background-color: #28a745;
+            background-color: #2ecc71;
             color: white;
-            border-color: #28a745;
+            border-color: #27ae60;
         }
 
         .unavailable {
-            background-color: #dc3545;
+            background-color: #e74c3c;
             color: white;
             cursor: not-allowed;
+            border-color: #c0392b;
         }
 
-        .chair-icon {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        #seatsContainer {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .card {
-            text-align: center;
-        }
-
-        .btn-primary {
+        .btn-submit {
+            margin-top: 20px;
             background-color: #9A161F;
-            border-color: #9A161F;
+        }
+
+        .btn-submit:hover {
+            background-color: #7F0E16; /* Darker color on hover */
         }
     </style>
 </head>
-<body class="bg-light">
-
-    <div class="container">
-        <h2 class="mb-4">좌석 선택</h2>
+<body>
+    <div class="container text-center mt-5">
+        <h2>항공 좌석 선택</h2>
 
         <form id="seatForm" action="seatselect.do" method="post">
-            <div id="seatsContainer" class="row row-cols-4 justify-content-center">
-                <% 
-                   int personNum = Integer.parseInt(request.getParameter("person_num"));
-                   for (int i = 0; i < list.size(); i++) { 
-                       SeatDto dto = list.get(i);
-                       String seatName = dto.getSeat_name();
-                       String seatClass = "seat";
+            <div class="seat-container">
+                <%
+                int personNum = Integer.parseInt(request.getParameter("person_num"));
+                for (int i = 0; i < list.size(); i++) {
+                    SeatDto dto = list.get(i);
+                    String seatName = dto.getSeat_name();
+                    String seatClass = "seat";
 
-                       if (!dto.isIs_available()) {
-                           seatClass += " unavailable";
-                       } else if (selectedSeats.contains(seatName)) {
-                           seatClass += " selected";
-                       }
+                    if (!dto.isIs_available()) {
+                        seatClass += " unavailable";
+                    } else if (selectedSeats.contains(seatName)) {
+                        seatClass += " selected";
+                    }
                 %>
-                    <div class="col mb-4">
-                        <div class="card seat <%= seatClass %>" onclick="toggleSeat(this, '<%= seatName %>', '<%= dto.isIs_available() %>')" data-person-num="<%= personNum %>">
-                            <div class="card-body">
-                                <input type="checkbox" name="selectedSeats" value="<%= seatName %>" style="display:none;" <%= dto.isIs_available() ? "" : "disabled" %>>
-                                <i class="bi bi-chair chair-icon"></i>
-                                <p class="card-text"><%= seatName %></p>
-                            </div>
-                        </div>
+                    <div class="rounded-pill border <%= seatClass %>" onclick="toggleSeat(this, '<%= seatName %>', '<%= dto.isIs_available() %>')" data-person-num="<%= personNum %>">
+                        <input type="checkbox" name="selectedSeats" value="<%= seatName %>" style="display: none;" <%= dto.isIs_available() ? "" : "disabled" %>>
+                        <%= seatName %>
                     </div>
                 <% } %>
             </div>
-           <input type="hidden" name="flightId" value="<%= flightId %>">
-           <input type="submit" class="btn btn-primary mt-3" value="선택완료">
+            <input type="hidden" name="flightId" value="<%= flightId %>">
+            <button type="submit" class="btn btn-danger btn-submit">선택 완료</button>
         </form>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         var selectedSeats = <%= (selectedSeats != null) ? new org.json.JSONArray(selectedSeats).toString() : "null" %>;
 
@@ -141,9 +135,9 @@
             }
         }
     </script>
-
 </body>
 </html>
+
 
 
 
