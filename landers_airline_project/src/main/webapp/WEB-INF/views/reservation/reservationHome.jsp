@@ -48,6 +48,12 @@
             outline: 0;
             box-shadow: 0 0 0 0.25rem rgba(154, 22, 31, 0.25);
         }
+        
+        .form-control:focus {
+            border-color: #9A161F;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(154, 22, 31, 0.25);
+        }
 
         /* Autocomplete styles */
         .autocomplete-list {
@@ -67,6 +73,28 @@
 
         .autocomplete-list div:hover {
             background-color: #f8f9fa;
+        }
+
+        .search-input-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.375rem 2rem 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .search-input:focus {
+            border-color: #9A161F;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(154, 22, 31, 0.25);
         }
     </style>
 </head>
@@ -93,15 +121,19 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="departureAirport" class="form-label">출발지:</label>
-                            <input type="text" class="form-control" name="departure_airport" required>
-                            <!-- Autocomplete suggestions for departure airport -->
-                            <div id="departure-autocomplete-list" class="autocomplete-list"></div>
+                            <div class="search-input-container">
+                                <input type="text" class="search-input" name="departure_airport" required>
+                                <!-- Autocomplete suggestions for departure airport -->
+                                <div id="departure-autocomplete-list" class="autocomplete-list"></div>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="arrivalAirport" class="form-label">도착지:</label>
-                            <input type="text" class="form-control" name="arrival_airport" required>
-                            <!-- Autocomplete suggestions for arrival airport -->
-                            <div id="arrival-autocomplete-list" class="autocomplete-list"></div>
+                            <div class="search-input-container">
+                                <input type="text" class="search-input" name="arrival_airport" required>
+                                <!-- Autocomplete suggestions for arrival airport -->
+                                <div id="arrival-autocomplete-list" class="autocomplete-list"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -138,7 +170,6 @@
 
                     var inputText = input.value.toLowerCase();
 
-                    // Filter airport names based on user input
                     var matchingAirports = airportList.filter(function (airport) {
                         return airport.toLowerCase().startsWith(inputText);
                     });
