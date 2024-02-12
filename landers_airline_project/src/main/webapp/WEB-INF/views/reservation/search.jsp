@@ -218,6 +218,9 @@ html {
                 <input type="hidden" name="arrival_date" value="<%=dto.getArrival_date()%>">
                 <input type="hidden" name="departure_airport" value="<%=dto.getDeparture_airport()%>">
                 <input type="hidden" name="arrival_airport" value="<%=dto.getArrival_airport()%>">
+                <input type="hidden" name="price_A" value="<%=price_util.price_numA(dto.getPrice()) %>">
+                <input type="hidden" name="price_B" value="<%=price_util.price_numB(dto.getPrice())%>">
+                <input type="hidden" name="price_C" value="<%=dto.getPrice()%>">
                 <input type="submit" class="btn btn-danger" style="background-color: #9A161F" value="예약하기">
             </form></div>
             </div>
