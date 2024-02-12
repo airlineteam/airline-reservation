@@ -1,10 +1,14 @@
+use airline;
+create database airline;
+
 
 CREATE TABLE user (
     user_id VARCHAR(255) PRIMARY KEY NOT NULL,               		-- 사용자 ID
     user_pw VARCHAR(255) NOT NULL,         							-- 비밀번호
     user_name VARCHAR(255) NOT NULL,       					 		-- 사용자명
     user_phone VARCHAR(255) NOT NULL,     					 		-- 연락처 정보
-    user_address VARCHAR(255) NOT NULL                            	-- 주소
+    user_address VARCHAR(255) NOT NULL,                            	-- 주소
+    user_role INT
 );
 
 CREATE TABLE schedule (
@@ -12,7 +16,7 @@ CREATE TABLE schedule (
     departure_airport  VARCHAR(255) NOT NULL,               		-- 출발 공항
     arrival_airport  VARCHAR(255) NOT NULL,         				-- 도착 공항
     departure_date  VARCHAR(255) NOT NULL,       					-- 출발일
-    person_num VARCHAR(255) NOT NULL			 							-- 인원수
+    person_num  INT NOT NULL			 							-- 인원수
 );
 
 CREATE TABLE flight_info (
@@ -55,8 +59,57 @@ CREATE TABLE refund (
     user_id VARCHAR(255),      										-- 사용자 ID
     ticket_id INT,           										-- 티켓 ID
     content VARCHAR(2000) NOT NULL,									-- 환불 사유
-    refund_status ENUM('승인', '대기', '거부') DEFAULT '대기',			-- 환불 진행 상태
+    refund_status VARCHAR(25) NOT NULL,								-- 환불 진행 상태
     
     FOREIGN KEY (user_id) REFERENCES user(user_id), 				-- 외래키 설정
     FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)  			-- 외래키 설정
 );
+
+
+CREATE TABLE bbs (
+  seq int NOT NULL AUTO_INCREMENT,
+  id varchar(50) COLLATE utf8mb3_bin NOT NULL,
+  ref decimal(8,0) NOT NULL,
+  step decimal(8,0) NOT NULL,
+  depth decimal(8,0) NOT NULL,
+  title varchar(200) COLLATE utf8mb3_bin NOT NULL,
+  content varchar(4000) COLLATE utf8mb3_bin NOT NULL,
+  wdate timestamp NOT NULL,
+  del decimal(1,0) NOT NULL,
+  readcount decimal(8,0) NOT NULL,
+  PRIMARY KEY (seq)
+);
+
+
+CREATE TABLE faq (
+  seq int NOT NULL AUTO_INCREMENT,
+  id varchar(50) COLLATE utf8mb3_bin NOT NULL,
+  ref decimal(8,0) NOT NULL,
+  step decimal(8,0) NOT NULL,
+  depth decimal(8,0) NOT NULL,
+  title varchar(200) COLLATE utf8mb3_bin NOT NULL,
+  content varchar(4000) COLLATE utf8mb3_bin NOT NULL,
+  wdate timestamp NOT NULL,
+  del decimal(1,0) NOT NULL,
+  readcount decimal(8,0) NOT NULL,
+  PRIMARY KEY (seq)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_bin;
+
+
+
+CREATE TABLE qna (
+  seq INT NOT NULL AUTO_INCREMENT,
+  id VARCHAR(50) NOT NULL,
+  ref DECIMAL(8,0) NOT NULL,
+  step DECIMAL(8,0) NOT NULL,
+  depth DECIMAL(8,0) NOT NULL,
+  title VARCHAR(200) NOT NULL,
+  content VARCHAR(4000) NOT NULL,
+  wdate TIMESTAMP NOT NULL,
+  del DECIMAL(1,0) NOT NULL,
+  readcount DECIMAL(8,0) NOT NULL,
+  category VARCHAR(100) NOT NULL,
+  PRIMARY KEY (seq)
+  );
+
+ALTER TABLE qna MODIFY category VARCHAR(255) DEFAULT '문의';

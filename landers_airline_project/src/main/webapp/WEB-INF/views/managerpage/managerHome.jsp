@@ -1,12 +1,24 @@
+<%@page import="com.landers.airline.dto.QnaChartDto"%>
+<%@page import="java.util.stream.Collectors"%>
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="com.landers.airline.dto.cityChartDto"%>
 <%@page import="com.landers.airline.dto.ManagerDto"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
 	
+	List<ManagerDto> list = (List<ManagerDto>)request.getAttribute("list");
+
+	List<cityChartDto> city = (List<cityChartDto>)request.getAttribute("city");
 	
+	List<QnaChartDto> qna =(List<QnaChartDto>)request.getAttribute("qna");
 	
+
 	 
 %>
 <html lang="ko">
@@ -47,16 +59,21 @@
 	align-items: center;
 }
 
-.icon--div span {
-	font-size: 27px;
-	color: #657788;
-	cursor: default;
-}
 
-.icon--div span:hover {
-	color: #657788;
-}
+.img1{
+	width: 75%; 
 
+}
+.img2{
+	width: 80%;
+}
+.img3{
+	width: 100%;
+	height: 115%;
+}
+.img4{
+	width: 65%;
+}
 .middle--board {
 	background-color: white;
 	height: 400px;
@@ -98,38 +115,77 @@
 
 <div class="small--board">
 			<div>
-				<h5 class="small--board--title">월 매출액</h5>
-				<p class="number--value--p">원</p>
-			</div>
+				<h5 class="small--board--title">올해 총매출액</h5>
+			 <p class="number--value--p">
+            <%
+                ManagerDto totalSalesDto = list.get(list.size() - 1);
+                out.print(totalSalesDto.getTotalPrice());
+            %>
+            	원
+        </p>
+    </div>
 			<div class="icon--div">
-				<span style="margin-left: 2px;" class="material-symbols-outlined material-symbols-outlined-fill"></span>
+			<img class="img1" src="./images/money.png" alt="Image  Text">	
 			</div>
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">월 신규 회원 수</h5>
-				<p class="number--value--p">명</p>
+				<h5 class="small--board--title">올해 고객의 문의</h5>
+				<p class="number--value--p">
+				<%
+                // 문의 카테고리의 총 카운트 계산
+                int totalInquiryCount = 0;
+                for (QnaChartDto qnaDto : qna) {
+                    if ("문의".equals(qnaDto.getCategory())) {
+                        totalInquiryCount++;
+                    }
+                }
+                out.print(totalInquiryCount);
+            %>
+				건</p>
 			</div>
 			<div class="icon--div">
-				<span style="margin-left: 5px;" class="material-symbols-outlined material-symbols-outlined-fill"></span>
+				<img class="img2" src="./images/cs.png" alt="Image  Text">	
 			</div>
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">월 탈퇴 회원 수</h5>
-				<p class="number--value--p">명</p>
+				<h5 class="small--board--title">올해 고객의 칭찬</h5>
+				<p class="number--value--p">
+				 <%
+                // 칭찬 카테고리의 총 카운트 계산
+                int totalComplimentCount = 0;
+                for (QnaChartDto qnaDto : qna) {
+                    if ("칭찬".equals(qnaDto.getCategory())) {
+                        totalComplimentCount++;
+                    }
+                }
+                out.print(totalComplimentCount);
+            %>
+				건</p>
 			</div>
 			<div class="icon--div">
-				<span style="margin-left: 5px;" class="material-symbols-outlined material-symbols-outlined-fill"></span>
+				<img class="img3" src="./images/best.png" alt="Image  Text">	
 			</div>
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">월 고객의 말씀</h5>
-				<p class="number--value--p">건</p>
+				<h5 class="small--board--title">올해 고객의 불만</h5>
+				<p class="number--value--p">
+				 <%
+                // 불만 카테고리의 총 카운트 계산
+                int totalComplaintCount = 0;
+                for (QnaChartDto qnaDto : qna) {
+                    if ("불만".equals(qnaDto.getCategory())) {
+                        totalComplaintCount++;
+                    }
+                }
+                out.print(totalComplaintCount);
+            %>
+				건</p>
 			</div>
 			<div class="icon--div">
-				<span class="material-symbols-outlined material-symbols-outlined-fill"></span>
+				<img class="img4" src="./images/worst.png" alt="Image  Text">	
 			</div>
 		</div>	
 	
@@ -142,7 +198,7 @@
               	
              <div class="d-flex justify-content-between"style="width: 100%; margin-bottom: 20px;">
              	<div class="middle--board">
-            <canvas id="travelCityChart"></canvas>
+            <canvas id="cityChart"></canvas>
             	<div class="middle--board">
             <canvas id="customerFeedbackChart"></canvas>
             	</div>
@@ -153,28 +209,64 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // 매출 및 도시 랭킹을 위한 목 데이터
-            const salesData = {
-                labels: ['2월', '3월', '4월', '5월', '6월', '7월','8월','9월','10월','11월','12월'],
-                datasets: [{
-                    label: '월별 총 매출',
-                    backgroundColor: '#9A161F',
-                    borderColor: '#9A161F',
-                    borderWidth: 2,
-                    data: [45,40,20,30,70,80,40,50,70,10,20],
-                }],
-            };
-            <%-- for (ManagerDto dto : list) { %><%= dto.getTotalPrice() %>, <% } --%>
-            const travelCityData = {
-                labels: ['뉴욕', '오사카', '런던', '다낭', '도쿄','방콕','호치민','삿포로'],
-                datasets: [{
-                    label: '도착지별 이용객 도시',
-                    backgroundColor: '#BDBDBD',
-                    borderColor: '#BDBDBD',
-                    borderWidth: 1,
-                    data: [30, 45, 60, 25, 50,80,30,40],
-                }],
-            };
+		var salesLabels = [];
+        var salesData = [];
+       
+    
+        <% for (int i = list.size() - 1; i >= 0; i--) { 
+               ManagerDto dto = list.get(i); %>
+               salesLabels.push('<%= dto.getMonth() %>');
+               salesData.push('<%= dto.getTotalPrice() %>');
+        <% } %>
 
+        var salesData = {
+            labels: salesLabels,
+            datasets: [{
+                label: '월별 총 매출',
+                backgroundColor: '#9A161F',
+                borderColor: '#9A161F',
+                borderWidth: 2,
+                data: salesData,
+            }],
+        };
+        
+
+        var cityLabels = [];
+        var cityData = [];
+
+        <%
+            // 각 도시의 발생 횟수를 계산하기 위한 맵 생성
+            Map<String, Integer> cityCounts = new HashMap<>();
+            for (cityChartDto cdto : city) {
+                String cityName = cdto.getCityName();
+                int count = cityCounts.getOrDefault(cityName, 0) + 1;
+                cityCounts.put(cityName, count);
+            }
+
+            // 리스트의 각 항목을 반복하여 배열에 추가
+            for (cityChartDto cdto : city) {
+                String cityName = cdto.getCityName();
+                int count = cityCounts.get(cityName);
+        %>
+                // 도시 이름을 배열에 추가하고 중복 횟수를 나타내는 값 설정
+                cityLabels.push('<%= cityName %>');
+                cityData.push(<%= count %>); // 도시의 발생 횟수를 나타내는 값 설정
+        <%
+            }
+        %>
+
+        // 도시 차트 데이터 구성
+        var cityChartData = {
+            labels: cityLabels,
+            datasets: [{
+                label: '인기 도시 순위',
+                backgroundColor: '#BDBDBD',
+                borderColor: '#BDBDBD',
+                borderWidth: 1,
+                data: cityData,
+            }],
+        };
+  
             const customerFeedbackData = {
                 labels: ['문의', '칭찬', '불만'],
                 datasets: [{
@@ -182,7 +274,20 @@
                     backgroundColor: ['#BDBDBD', '#78909C', '#8D6E63'],
                     borderColor: '#ffffff',
                     borderWidth: 2,
-                    data: [20, 50, 30],
+                    data: [<% 
+                        // 각 카테고리에 대한 카운트를 가져와서 데이터 배열에 추가
+                        int complimentCount = 0, complaintCount = 0, inquiryCount = 0;
+                        for (QnaChartDto qnaDto : qna) {
+                            if (qnaDto.getCategory().equals("칭찬")) {
+                                complimentCount++;
+                            } else if (qnaDto.getCategory().equals("불만")) {
+                                complaintCount++;
+                            } else if (qnaDto.getCategory().equals("문의")) {
+                                inquiryCount++;
+                            }
+                        }
+                        out.print(complimentCount + ", " + complaintCount + ", " + inquiryCount);
+                    %>],
                 }],
             };
 
@@ -203,18 +308,17 @@
                     },
                     scales: {
                       y: { 
-                        min: 0,
-                        max: 100
+                    	  beginAtZero: true
                       }
                     }
                   }
             });
 
             // 도시 랭킹 차트 생성
-            const travelCityCtx = document.getElementById('travelCityChart').getContext('2d');
+            const travelCityCtx = document.getElementById('cityChart').getContext('2d');
             const travelCityChart = new Chart(travelCityCtx, {
                 type: 'bar',
-                data: travelCityData,
+                data: cityChartData,
                 options: {
                     scales: {
                         y: {

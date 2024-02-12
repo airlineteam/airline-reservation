@@ -28,9 +28,10 @@ public class ManagerRefundController {
 	System.out.println(list.toString());
 	
 	model.addAttribute("list",list);
+	model.addAttribute("main","refundManager");
 
 			
-	return "managerpage/refundManager"; 
+	return "managerpage/main";
 	}
 	
 	
