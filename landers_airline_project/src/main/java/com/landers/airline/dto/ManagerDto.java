@@ -6,6 +6,7 @@ public class ManagerDto {
 
     private String month;
     private long totalPrice;
+
     
     public ManagerDto() {
 	}
@@ -15,6 +16,8 @@ public class ManagerDto {
 		this.month = month;
 		this.totalPrice = totalPrice;
 	}
+	
+
 
 	public String getMonth() {
 		return month;

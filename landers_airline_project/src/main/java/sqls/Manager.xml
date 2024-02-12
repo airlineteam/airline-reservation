@@ -4,8 +4,8 @@
 
 <mapper namespace="manager">
 
-<!-- select id="managerHome" parameterType="com.landers.airline.dto.TicketDto" resultType="com.landers.airline.dto.ManagerDto">
-총매출
+<select id="managerHome" parameterType="com.landers.airline.dto.TicketDto" resultType="com.landers.airline.dto.ManagerDto">
+
         SELECT
             DATE_FORMAT(final_date, '%Y-%m') AS month,
             SUM(final_price) AS totalPrice
@@ -16,7 +16,25 @@
         ORDER BY
             month DESC
  
-    </select-->
+    </select>
+    
+    <select id="cityChart" parameterType="com.landers.airline.dto.ScheduleDto" resultType="com.landers.airline.dto.cityChartDto">
+    SELECT
+        arrival_airport AS cityName
+    FROM
+        schedule
+    GROUP BY
+        cityName
+    ORDER BY
+        cityName ASC
+	</select>
+	
+	<select id="qnaChart" parameterType="com.landers.airline.dto.QnaChartDto" resultType="com.landers.airline.dto.QnaChartDto">
+	SELECT 
+		category
+	FROM
+		qna
+	</select>
     
     <select id="MemberManager" parameterType="com.landers.airline.dto.UserDto" resultType="com.landers.airline.dto.UserDto">
     	select user_id, user_pw, user_name, user_phone, user_address
@@ -30,5 +48,10 @@
         where user_id = #{user_id}
     </delete>
     
+
+
+
+
+
 
 </mapper>

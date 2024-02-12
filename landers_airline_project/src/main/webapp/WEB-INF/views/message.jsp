@@ -392,6 +392,7 @@ if(refundAf != null && !refundAf.equals("")){
 	}	
 }
 
+
 //회원수정
 String updateMsg = (String)request.getAttribute("updateMsg");
 if(updateMsg != null && updateMsg.equals("") == false){
@@ -411,6 +412,7 @@ if(updateMsg != null && updateMsg.equals("") == false){
 		<%
 	}
 }
+
 
 
 

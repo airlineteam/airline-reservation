@@ -34,9 +34,10 @@ public class MemberManagerController {
 		System.out.println(list.toString());
 		
 		model.addAttribute("list",list);
+		model.addAttribute("main", "MemberManager");
 
 				
-		return "managerpage/MemberManager"; 
+		return "managerpage/main"; 
 	}
 	
 	
@@ -56,5 +57,18 @@ public class MemberManagerController {
 	}
 }
 
+
+
+
+			
+				
+	
+	}
+	
+
+
+
+	
+	
 
 

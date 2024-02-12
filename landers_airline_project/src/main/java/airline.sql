@@ -2,6 +2,7 @@ use airline;
 create database airline;
 
 
+
 CREATE TABLE user (
     user_id VARCHAR(255) PRIMARY KEY NOT NULL,               		-- 사용자 ID
     user_pw VARCHAR(255) NOT NULL,         							-- 비밀번호
@@ -65,8 +66,7 @@ CREATE TABLE refund (
     FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)  			-- 외래키 설정
 );
 
-<<<<<<< Updated upstream
-=======
+
 ALTER TABLE schedule AUTO_INCREMENT=1;
 SET @COUNT = 0;
 UPDATE schedule SET schedule_id = @COUNT:=@COUNT+1;
@@ -85,6 +85,7 @@ create table calendar (
 drop schema airline;
 use airline;
 create database airline;
+
 
 
 CREATE TABLE user (
@@ -150,7 +151,8 @@ CREATE TABLE refund (
     FOREIGN KEY (ticket_id) REFERENCES ticket(ticket_id)  			-- 외래키 설정
 );
 
->>>>>>> Stashed changes
+
+
 
 CREATE TABLE bbs (
   seq int NOT NULL AUTO_INCREMENT,

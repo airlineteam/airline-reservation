@@ -1,3 +1,4 @@
+
 create schema airlinedata;
 
 use airline;
