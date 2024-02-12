@@ -39,8 +39,5 @@ public class ReservationDaoImpl implements ReservationDao {
 	public int seatselect(@Param("seatName") String seatName, @Param("flightId") int flightId) {
 	    return session.update("seatselect", Map.of("seatName", seatName, "flightId", flightId));
 	}
-	
-	
-	
-	
+
 }
