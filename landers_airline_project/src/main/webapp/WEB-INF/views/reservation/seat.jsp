@@ -55,7 +55,7 @@ if (selectedSeats == null) {
 
         .seat:hover {
             transform: scale(1.1);
-            background-color: #3498db;
+            background-color: lightgray;
             color: white;
             border-color: #2980b9;
         }
@@ -67,7 +67,7 @@ if (selectedSeats == null) {
         }
 
         .unavailable {
-            background-color: #e74c3c;
+            background-color: #9A161F;
             color: white;
             cursor: not-allowed;
             border-color: #c0392b;
@@ -80,7 +80,7 @@ if (selectedSeats == null) {
         }
 
         .btn-submit:hover {
-            background-color: #7F0E16; /* Darker color on hover */
+            background-color: #7F0E16; 
         }
     </style>
 </head>
