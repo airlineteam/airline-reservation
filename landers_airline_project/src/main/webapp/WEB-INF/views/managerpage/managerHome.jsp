@@ -87,6 +87,7 @@
 }
 
 
+
 .long--board {
 	background-color: white;
 	height: 400px;
