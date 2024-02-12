@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQ 등록</title>
+<title>QnA 등록</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -52,6 +52,16 @@ th{
 	</td>
 </tr>
 <tr>
+    <th>카테고리</th>
+	<td>
+		<select name="category" class="form-control">
+		<option value="문의" selected>문의</option>
+		<option value="칭찬">칭찬</option>
+		<option value="불만">불만</option>
+		</select>
+	</td>
+</tr>
+<tr>
 	<th>제목</th>
 	<td>
 		<input type="text" id="title" name="title" class="form-control" placeholder="제목을 기입">
@@ -88,7 +98,7 @@ $(document).ready(function(){
 			return;
 		}
 		
-		$("#frm").attr("action", "faqwriteAf.do").submit();
+		$("#frm").attr("action", "qnawriteAf.do").submit();
 	});	
 })
 

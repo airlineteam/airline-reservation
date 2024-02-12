@@ -1,10 +1,10 @@
 <%@page import="com.landers.airline.dto.UserDto"%>
-<%@page import="com.landers.airline.dto.BbsDto"%>
+<%@page import="com.landers.airline.dto.FaqDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
-    BbsDto dto = (BbsDto)request.getAttribute("dto");
+	FaqDto dto = (FaqDto)request.getAttribute("dto");
     UserDto login = (UserDto)session.getAttribute("login");
     
     // login.getUser_id() 값이 null이면 로그인 페이지로 이동
@@ -74,15 +74,6 @@ pre{
 </tr>
 <tr>
 	<td colspan="2" style="font-size: 120%">		
-		<%-- <textarea rows="12" cols="35" class="form-control"
-			style="background-color: #fff; font: 20px" readonly><%=dto.getContent() %></textarea> --%>
-			
-		<%-- <%=dto.getContent() %> --%>
-		
-		<%-- <pre>
-			<%=dto.getContent() %>
-		</pre> --%>		
-		
 		<pre style="font-size: 20px;font-family: 고딕, arial;background-color: white"><%=dto.getContent() %></pre>
 	</td>
 </tr>
@@ -90,34 +81,34 @@ pre{
 
 <div align="right">
 
-<button type="button" class="btn btn-primary" onclick="answerBbs(<%=dto.getSeq() %>)">답글</button>
+<button type="button" class="btn btn-primary" onclick="answerFaq(<%=dto.getSeq() %>)">답글</button>
 
 <%
 if(login.getUser_id().equals(dto.getId())){
 	%>	
-	<button type="button" class="btn btn-primary" onclick="updateBbs(<%=dto.getSeq() %>)">수정</button>
+	<button type="button" class="btn btn-primary" onclick="updateFaq(<%=dto.getSeq() %>)">수정</button>
 	
-	<button type="button" class="btn btn-primary" onclick="deleteBbs(<%=dto.getSeq() %>)">삭제</button>
+	<button type="button" class="btn btn-primary" onclick="deleteFaq(<%=dto.getSeq() %>)">삭제</button>
 	<%
 }
 
 %>
-<button type="button" class="btn btn-primary" onclick="backToList_Bbs()">목록</button>
+<button type="button" class="btn btn-primary" onclick="backToList_Faq()">목록</button>
 
 </div>
 
 <script type="text/javascript">
-function answerBbs( seq ) {
-	location.href = "bbsanswer.do?seq=" + seq;	
+function answerFaq( seq ) {
+	location.href = "faqanswer.do?seq=" + seq;	
 }
-function updateBbs( seq ) {
-	location.href = "bbsupdate.do?seq=" + seq;
+function updateFaq( seq ) {
+	location.href = "faqupdate.do?seq=" + seq;
 }
-function deleteBbs( seq ) {
-	location.href = "bbsdelete.do?seq=" + seq;
+function deleteFaq( seq ) {
+	location.href = "faqdelete.do?seq=" + seq;
 }
-function backToList_Bbs() {
-	location.href = "bbslist.do";
+function backToList_Faq() {
+	location.href = "faqlist.do";
 }
 </script>
 
@@ -126,7 +117,7 @@ function backToList_Bbs() {
 <%-- 댓글 --%>
 <div id="app" class="container">
 
-<form action="bbsCommentWriteAf.do" method="post">
+<form action="faqCommentWriteAf.do" method="post">
 <input type="hidden" name="seq" value="<%=dto.getSeq() %>">
 <input type="hidden" name="id" value="<%=login.getUser_id() %>">
 

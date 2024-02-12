@@ -60,7 +60,7 @@ public class FaqController {
 	}
 	
 	@GetMapping("faqdetail.do")
-	public String bbsdetail(int seq, Model model) {
+	public String faqdetail(int seq, Model model) {
 		System.out.println("FaqController faqdetail " + new Date());
 		
 		FaqDto dto = service.faqdetail(seq);
@@ -72,7 +72,7 @@ public class FaqController {
 	
 	@GetMapping("faqanswer.do")
 	public String faqanswer(int seq, Model model) {
-		System.out.println("FaqController faqdetail() " + new Date());
+		System.out.println("FaqController faqanswer() " + new Date());
 		
 		FaqDto dto = service.faqdetail(seq);		
 		model.addAttribute("faqdto", dto);
@@ -89,7 +89,7 @@ public class FaqController {
 		if(isS == false) {
 			answerMsg = "ANSWER_FAIL";
 		}
-		model.addAttribute("answerMsg", answerMsg);
+		model.addAttribute("faqanswerMsg", answerMsg);
 		model.addAttribute("seq", dto.getSeq());
 		
 		return "message";
