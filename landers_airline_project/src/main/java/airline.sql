@@ -39,7 +39,7 @@ CREATE TABLE ticket (
     ticket_id INT AUTO_INCREMENT PRIMARY KEY,           			-- 티켓 ID
     user_id VARCHAR(255),           								-- 사용자 ID
     schedule_id INT,												-- 스케쥴 ID
-    final_price INT NOT NULL,								-- 최종 가격
+    final_price INT NOT NULL,								        -- 최종 가격
     final_date DATETIME NOT NULL,									-- 최종 예약날짜
     flight_id INT,													-- 항공편 id
     seat_id INT,													-- 좌석 id
