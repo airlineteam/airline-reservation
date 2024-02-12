@@ -1,8 +1,8 @@
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.landers.airline.dto.UserDto"%>
-<%@page import="com.landers.airline.dto.BbsParam"%>
+<%@page import="com.landers.airline.dto.FaqParam"%>
 <%@page import="util.BbsUtil"%>
-<%@page import="com.landers.airline.dto.BbsDto"%>
+<%@page import="com.landers.airline.dto.FaqDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,10 +10,10 @@
 <%
 	UserDto login = (UserDto)session.getAttribute("login");
 
-	List<BbsDto> list = (List<BbsDto>)request.getAttribute("list");
-	int pageBbs = (Integer)request.getAttribute("pageBbs");
+	List<FaqDto> list = (List<FaqDto>)request.getAttribute("list");
+	int pageFaq = (Integer)request.getAttribute("pageFaq");
 	
-	BbsParam param = (BbsParam)request.getAttribute("param");
+	FaqParam param = (FaqParam)request.getAttribute("param");
 	int pageNumber = param.getPageNumber();
 	String choice = param.getChoice();	
 	String search = param.getSearch();
@@ -28,7 +28,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>FAQ</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -109,30 +109,30 @@ if(list == null || list.size() == 0){
 	<%
 }else{
 	for(int i = 0;i < list.size(); i++){
-		BbsDto bbs = list.get(i);
+		FaqDto faq = list.get(i);
 		%>
 		<tr>
 			<td><%=list.size() - i %></td>
 			<td style="text-align: left;">
 			<%
-			if(bbs.getDel() == 0){
+			if(faq.getDel() == 0){
 				%>			
-				<a href="bbsdetail.do?seq=<%=bbs.getSeq() %>">
-					<%=BbsUtil.arrow(bbs.getDepth()) %>
-					<%=BbsUtil.dot3(bbs.getTitle()) %>
+				<a href="faqdetail.do?seq=<%=faq.getSeq() %>">
+					<%=BbsUtil.arrow(faq.getDepth()) %>
+					<%=BbsUtil.dot3(faq.getTitle()) %>
 				</a>
 				<%
 			}else{
 				%>	
-				<%=BbsUtil.arrow(bbs.getDepth()) %>
+				<%=BbsUtil.arrow(faq.getDepth()) %>
 				<font color="#ff0000">***** 이 글은 작성자에 의해서 삭제되었습니다 *****</font>	
 				<%
 			}
 			%>
 				
 			</td>
-			<td><%=bbs.getReadcount() %></td>
-			<td><%=bbs.getWdate().substring(0, 10) %></td>
+			<td><%=faq.getReadcount() %></td>
+			<td><%=faq.getWdate().substring(0, 10) %></td>
 		</tr>		
 		<%
 	}
@@ -171,7 +171,7 @@ if(list == null || list.size() == 0){
 if (login != null && login.getUser_role() == 0) {
 	System.out.println(login.getUser_role());
 %>	
-    <button type="button" class="btn btn-primary" onclick="writeBbs()" style="background-color: #9A161F; border-color: #9A161F">
+    <button type="button" class="btn btn-primary" onclick="writeFaq()" style="background-color: #9A161F; border-color: #9A161F">
         글쓰기
     </button>
 <%
@@ -180,8 +180,8 @@ if (login != null && login.getUser_role() == 0) {
 </div>
 
 <script type="text/javascript">
-function writeBbs() {
-	location.href = "bbswrite.do";
+function writeFaq() {
+	location.href = "faqwrite.do";
 }
 
 let search = "<%=search %>";
@@ -195,13 +195,13 @@ function searchBtn() {
 	let choice = document.getElementById("choice").value;
 	let search = document.getElementById("search").value;
 	
-	location.href = "bbslist.do?choice=" + choice + "&search=" + search;
+	location.href = "faqlist.do?choice=" + choice + "&search=" + search;
 }
 
 
 $("#pagination").twbsPagination({
 	startPage: <%=pageNumber+1 %>,
-	totalPages: <%=pageBbs %>,
+	totalPages: <%=pageFaq %>,
 	visiblePages: 10,
 	first: '<span sris-hidden="true">«</span>',
 	prev:"이전",
@@ -213,7 +213,7 @@ $("#pagination").twbsPagination({
 		let choice = document.getElementById("choice").value;
 		let search = document.getElementById("search").value;
 		
-		location.href = "bbslist.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1);
+		location.href = "faqlist.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1);
 	}	
 });
 </script>

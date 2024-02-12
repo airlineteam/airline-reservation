@@ -12,10 +12,7 @@ public interface FaqService {
 	int allfaq(FaqParam param);	
 	boolean faqwrite(FaqDto dto);	
 	FaqDto faqdetail(int seq);
-	
-	boolean commentWrite(BbsComment com);
-	List<BbsComment> commentList(int seq);
-	
+
 	boolean FaqAnswer(FaqDto dto);
 	
 	boolean faqupdate(FaqDto dto);

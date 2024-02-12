@@ -26,7 +26,7 @@
 </select>
 
 <!-- 글의 총수 -->
-<select id="allbbs" parameterType="com.landers.airline.dto.FaqParam" resultType="Integer">
+<select id="allfaq" parameterType="com.landers.airline.dto.FaqParam" resultType="Integer">
 	select count(*)
 	from faq
 	<if test="choice != null and choice != '' and search != null and search != ''">
@@ -44,7 +44,7 @@
 
 <insert id="faqwrite" parameterType="com.landers.airline.dto.FaqDto">
 	insert into faq(id, ref, step, depth, title, content, wdate, del, readcount)
-	values(#{id}, (select ifnull(max(ref), 0)+1 from bbs b), 0, 0, 
+	values(#{id}, (select ifnull(max(ref), 0)+1 from faq b), 0, 0, 
 					#{title}, #{content}, now(), 0, 0)
 </insert>
 
@@ -56,13 +56,13 @@
 
 
 <!-- 답글 -->
-<update id="BbsAnswerUpdate" parameterType="com.landers.airline.dto.FaqDto">
+<update id="FaqAnswerUpdate" parameterType="com.landers.airline.dto.FaqDto">
 	update faq
 	set step=step+1
 	where ref=(select ref from (select ref from faq a where seq=#{seq}) A)
 		and step>(select step from (select step from faq b where seq=#{seq}) B)
 </update>
-<insert id="BbsAnswerInsert" parameterType="com.landers.airline.dto.FaqDto">
+<insert id="FaqAnswerInsert" parameterType="com.landers.airline.dto.FaqDto">
 	insert into faq(id, ref, step, depth, title, content, wdate, del, readcount)
 	values(#{id}, (select ref from faq a where seq=#{seq}),
 				  (select step from faq b where seq=#{seq})+1,

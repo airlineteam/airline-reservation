@@ -40,15 +40,6 @@ public class FaqDaoImpl implements FaqDao{
 		return session.selectOne(ns + "faqdetail", seq);
 	}
 
-	@Override
-	public int commentWrite(BbsComment com) {		
-		return session.insert(ns + "commentWrite", com);
-	}
-
-	@Override
-	public List<BbsComment> commentList(int seq) {		
-		return session.selectList(ns + "commentList", seq);
-	}
 	
 	@Override
 	public void FaqAnswerUpdate(FaqDto dto) {

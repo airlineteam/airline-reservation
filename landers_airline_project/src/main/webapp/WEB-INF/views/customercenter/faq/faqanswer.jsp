@@ -1,10 +1,10 @@
 <%@page import="com.landers.airline.dto.UserDto"%>
-<%@page import="com.landers.airline.dto.BbsDto"%>
+<%@page import="com.landers.airline.dto.FaqDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
-	BbsDto dto = (BbsDto)request.getAttribute("bbsdto");
+	FaqDto dto = (FaqDto)request.getAttribute("faqdto");
 %>
 <!DOCTYPE html>
 <html>
@@ -72,7 +72,7 @@ pre{
 
 <h2>답글</h2>
 
-<form action="bbsanswerAf.do" method="post">
+<form action="faqanswerAf.do" method="post">
 <input type="hidden" name="seq" value="<%=dto.getSeq() %>">
 
 <table class="table table-sm">

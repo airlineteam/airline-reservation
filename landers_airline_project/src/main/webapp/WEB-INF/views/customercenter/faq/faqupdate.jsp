@@ -1,9 +1,9 @@
-<%@page import="com.landers.airline.dto.BbsDto"%>
+<%@page import="com.landers.airline.dto.FaqDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
-BbsDto dto = (BbsDto)request.getAttribute("dto");
+FaqDto dto = (FaqDto)request.getAttribute("dto");
 System.out.println(dto.toString());
 %>    
     
@@ -11,7 +11,7 @@ System.out.println(dto.toString());
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FAQ 수정</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -34,10 +34,10 @@ th{
 
 
 <div id="app" class="container">
-<h1>글수정</h1>
+<h1>FAQ 수정</h1>
 <br/>
 
-<form action="bbsupdateAf.do" id="frm" method="get">
+<form action="faqupdateAf.do" id="frm" method="get">
 <input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
 
 <table class="table table-sm">

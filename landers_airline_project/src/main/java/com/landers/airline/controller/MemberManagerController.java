@@ -55,6 +55,9 @@ public class MemberManagerController {
 		
 		return "message"; 
 	}
+}
+
+
 
 
 			
@@ -67,4 +70,5 @@ public class MemberManagerController {
 
 	
 	
+
 

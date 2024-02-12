@@ -11,27 +11,27 @@ import com.landers.airline.dto.UserDto;
 public class LoginDaoImpl implements LoginDao {
 
 	@Autowired
-	SqlSession sesession;
+	SqlSession session;
 	
 	@Override
 	public int idcheck(String user_id) {
-		return sesession.selectOne("Login.idcheck", user_id);
+		return session.selectOne("Login.idcheck", user_id);
 		
 	}
 
 	@Override
 	public UserDto loginAf(UserDto dto) {
-		return  sesession.selectOne("Login.loginAf", dto);
+		return  session.selectOne("Login.loginAf", dto);
 	}
 
 	@Override
 	public int adduser(UserDto dto) {
-		return sesession.insert("Login.adduser", dto);
+		return session.insert("Login.adduser", dto);
 	}
 
 	@Override
 	public UserDto logOut(UserDto dto) {
-		return sesession.selectOne("Login.loginOut", dto);
+		return session.selectOne("Login.loginOut", dto);
 	}
 
 }

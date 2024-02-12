@@ -1,3 +1,6 @@
+
+create schema airlinedata;
+
 use airline;
 select * from seat;
 -- user 테이블에 더미 데이터 삽입

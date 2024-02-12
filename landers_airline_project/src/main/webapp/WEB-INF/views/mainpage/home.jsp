@@ -102,6 +102,7 @@ body, ul, li {
 .slider-2>.side-btns>div:last-child>span > i {
     transform:translateX(-20%) translateY(-50%);
 }
+
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
