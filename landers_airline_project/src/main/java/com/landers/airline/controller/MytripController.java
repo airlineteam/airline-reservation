@@ -1,5 +1,6 @@
 package com.landers.airline.controller;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,12 +32,30 @@ public class MytripController {
 	@PostMapping("calendarlist.do")
 	public String calendarlist(CalendarDto dto, Model model, CalendarUtil util) {
 		System.out.println("MytripController calendarlist() " + new Date());
+
 		List<CalendarDto> list = service.calendarlist(dto);
+
+		String pp = service.pp(dto);
+		String p = service.p(dto);
+		String nn = service.nn(dto);
+		String n = service.n(dto);
+		
+		int year = service.year(dto);
+		int month = service.month(dto);
+		int dayOfWeek = service.dayOfWeek(dto);
+		
+		Calendar cal = Calendar.getInstance();
 		
 		System.out.println(list.toString());
 		
 		model.addAttribute("list", list);
-		model.addAttribute("util", util);
+		model.addAttribute("pp", pp);
+		model.addAttribute("p", p);
+		model.addAttribute("n", n);
+		model.addAttribute("nn", nn);
+		model.addAttribute("year", year);
+		model.addAttribute("month", month);
+		model.addAttribute("dayOfWeek", dayOfWeek);
 		
 		return "mytrip/main";
 	}

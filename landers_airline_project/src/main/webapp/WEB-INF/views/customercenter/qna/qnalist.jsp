@@ -1,8 +1,8 @@
+<%@page import="com.landers.airline.dto.QnaParam"%>
+<%@page import="com.landers.airline.dto.QnaDto"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.landers.airline.dto.UserDto"%>
-<%@page import="com.landers.airline.dto.FaqParam"%>
 <%@page import="util.BbsUtil"%>
-<%@page import="com.landers.airline.dto.FaqDto"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -10,10 +10,10 @@
 <%
 	UserDto login = (UserDto)session.getAttribute("login");
 
-	List<FaqDto> list = (List<FaqDto>)request.getAttribute("list");
-	int pageFaq = (Integer)request.getAttribute("pageFaq");
+	List<QnaDto> list = (List<QnaDto>)request.getAttribute("list");
+	int pageQna = (Integer)request.getAttribute("pageQna");
 	
-	FaqParam param = (FaqParam)request.getAttribute("param");
+	QnaParam param = (QnaParam)request.getAttribute("param");
 	int pageNumber = param.getPageNumber();
 	String choice = param.getChoice();	
 	String search = param.getSearch();
@@ -28,7 +28,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQ</title>
+<title>QnA</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -93,10 +93,10 @@ footer{
 <div class="center">
 
 <table class="table table-hover">
-<col width="70"/><col width="550"/><col width="100"/><col width="200"/>
+<col width="70"/><col width="550"/><col width="100"/><col width="100"/><col width="200"/>
 <thead>
 	<tr>
-		<th>번호</th><th>제목</th><th>조회수</th><th>등록일</th>
+		<th>번호</th><th>제목</th><th>조회수</th><th>작성자</th><th>등록일</th>
 	</tr>
 </thead>
 <tbody>
@@ -109,30 +109,40 @@ if(list == null || list.size() == 0){
 	<%
 }else{
 	for(int i = 0;i < list.size(); i++){
-		FaqDto faq = list.get(i);
+		QnaDto qna = list.get(i);
 		%>
 		<tr>
 			<td><%=list.size() - i %></td>
 			<td style="text-align: left;">
 			<%
-			if(faq.getDel() == 0){
+			if(qna.getDel() == 0){
 				%>			
-				<a href="faqdetail.do?seq=<%=faq.getSeq() %>">
-					<%=BbsUtil.arrow(faq.getDepth()) %>
-					<%=BbsUtil.dot3(faq.getTitle()) %>
+				<a href="qnadetail.do?seq=<%=qna.getSeq() %>">
+				<%
+				if(qna.getDepth() == 0){
+					%>	
+					<!-- 카테고리 앞에 추가 [문의]제목~~ -->
+					<span style="color: #9A161F; font-weight: bold;">[<%=qna.getCategory() %>]</span>
+					<%}%>					
+				
+					<span style="color: #000000;">
+					<%=BbsUtil.arrow(qna.getDepth()) %>
+					<%=BbsUtil.dot3(qna.getTitle()) %>
+					</span>
 				</a>
 				<%
 			}else{
 				%>	
-				<%=BbsUtil.arrow(faq.getDepth()) %>
+				<%=BbsUtil.arrow(qna.getDepth()) %>
 				<font color="#ff0000">***** 이 글은 작성자에 의해서 삭제되었습니다 *****</font>	
 				<%
 			}
 			%>
 				
 			</td>
-			<td><%=faq.getReadcount() %></td>
-			<td><%=faq.getWdate().substring(0, 10) %></td>
+			<td><%=qna.getReadcount() %></td>
+			<td><%=qna.getId() %></td>
+			<td><%=qna.getWdate().substring(0, 10) %></td>
 		</tr>		
 		<%
 	}
@@ -168,10 +178,9 @@ if(list == null || list.size() == 0){
 </div>
 
 <%
-if (login != null && login.getUser_role() == 0) {
-	System.out.println(login.getUser_role());
+if (login != null) {
 %>	
-    <button type="button" class="btn btn-primary" onclick="writeFaq()" style="background-color: #9A161F; border-color: #9A161F">
+    <button type="button" class="btn btn-primary" onclick="writeQna()" style="background-color: #9A161F; border-color: #9A161F">
         글쓰기
     </button>
 <%
@@ -180,8 +189,8 @@ if (login != null && login.getUser_role() == 0) {
 </div>
 
 <script type="text/javascript">
-function writeFaq() {
-	location.href = "faqwrite.do";
+function writeQna() {
+	location.href = "qnawrite.do";
 }
 
 let search = "<%=search %>";
@@ -195,13 +204,13 @@ function searchBtn() {
 	let choice = document.getElementById("choice").value;
 	let search = document.getElementById("search").value;
 	
-	location.href = "faqlist.do?choice=" + choice + "&search=" + search;
+	location.href = "qnalist.do?choice=" + choice + "&search=" + search;
 }
 
 
 $("#pagination").twbsPagination({
 	startPage: <%=pageNumber+1 %>,
-	totalPages: <%=pageFaq %>,
+	totalPages: <%=pageQna %>,
 	visiblePages: 10,
 	first: '<span sris-hidden="true">«</span>',
 	prev:"이전",
@@ -213,7 +222,7 @@ $("#pagination").twbsPagination({
 		let choice = document.getElementById("choice").value;
 		let search = document.getElementById("search").value;
 		
-		location.href = "faqlist.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1);
+		location.href = "qnalist.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1);
 	}	
 });
 </script>

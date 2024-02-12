@@ -35,6 +35,7 @@ public class MyPageController {
 		UserDto mylist = service.mylist(user_id);
 		
 		model.addAttribute("mylist",mylist);
+
 		
 		return "mypage/mypageHome";
 	}

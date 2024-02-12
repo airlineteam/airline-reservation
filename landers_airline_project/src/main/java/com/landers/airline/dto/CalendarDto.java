@@ -12,6 +12,18 @@ public class CalendarDto implements Serializable{
 	
 	public CalendarDto() {
 	}
+	
+	
+
+	public CalendarDto(int calendar_id, String title, String content, String wdate) {
+		super();
+		this.calendar_id = calendar_id;
+		this.title = title;
+		this.content = content;
+		this.wdate = wdate;
+	}
+
+
 
 	public CalendarDto(int calendar_id, int ticket_id, String title, String content, String wdate) {
 		super();

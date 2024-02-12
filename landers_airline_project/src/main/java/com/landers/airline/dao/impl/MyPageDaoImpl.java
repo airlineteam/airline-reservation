@@ -33,6 +33,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	public UserDto mylist(String user_id) {
 		
 		return session.selectOne("mypage.mylist", user_id);
+
 	}
 
 

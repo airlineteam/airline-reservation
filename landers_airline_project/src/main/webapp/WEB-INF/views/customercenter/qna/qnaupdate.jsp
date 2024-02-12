@@ -1,9 +1,9 @@
-<%@page import="com.landers.airline.dto.FaqDto"%>
+<%@page import="com.landers.airline.dto.QnaDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
-FaqDto dto = (FaqDto)request.getAttribute("dto");
+QnaDto dto = (QnaDto)request.getAttribute("dto");
 System.out.println(dto.toString());
 %>    
     
@@ -11,7 +11,7 @@ System.out.println(dto.toString());
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FAQ 수정</title>
+<title>QnA 수정</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -34,10 +34,10 @@ th{
 
 
 <div id="app" class="container">
-<h1>FAQ 수정</h1>
+<h1>QnA 수정</h1>
 <br/>
 
-<form action="faqupdateAf.do" id="frm" method="get">
+<form action="qnaupdateAf.do" id="frm" method="get">
 <input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
 
 <table class="table table-sm">
@@ -48,6 +48,13 @@ th{
 	<td>		
 		<%=dto.getId() %>
 		<input type="hidden" id="id" name="id" value="<%=dto.getId() %>">		
+	</td>
+</tr>
+<tr>
+	<th>카테고리</th>
+	<td>		
+		<%=dto.getCategory() %>
+		<input type="hidden" id="category" name="category" value="<%=dto.getCategory() %>">		
 	</td>
 </tr>
 <tr>

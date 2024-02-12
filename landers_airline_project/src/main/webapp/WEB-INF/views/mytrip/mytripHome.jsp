@@ -49,10 +49,24 @@ th, td{
 	String n = (String)request.getAttribute("n");
 	String nn = (String)request.getAttribute("nn");
 	
-	int year = (Integer)request.getAttribute("year");
-	int month = (Integer)request.getAttribute("month");
-	int dayOfWeek = (Integer)request.getAttribute("dayOfWeek");
-	
+	Integer year = (Integer) request.getAttribute("year");
+	if (year != null) {
+	    // 'year'이 null이 아닐 때의 로직
+	} else {
+	    // 'year'이 null일 때의 처리
+	}
+	Integer month = (Integer) request.getAttribute("month");
+	if (month != null) {
+	    // 'month'이 null이 아닐 때의 로직
+	} else {
+	    // 'month'이 null일 때의 처리
+	}
+	Integer dayOfWeek = (Integer) request.getAttribute("dayOfWeek");
+	if (dayOfWeek != null) {
+	    // 'dayOfWeek'이 null이 아닐 때의 로직
+	} else {
+	    // 'dayOfWeek'이 null일 때의 처리
+	}
 	
 	Calendar cal = (Calendar)request.getAttribute("cal");
 %>
@@ -87,28 +101,52 @@ th, td{
 
 <tr height="120" align="left" valign="top">
 <%
-// 윗쪽 빈칸
-for(int i = 1;i < dayOfWeek; i++){
-	%>
-	<td style="background-color: #eeeeee">&nbsp;</td>
-	<%
+    // 윗쪽 빈칸
+    if (dayOfWeek == null || dayOfWeek <= 0) {
+        dayOfWeek = 1; // dayOfWeek가 null이거나 음수일 경우 1로 설정
+    }
+
+    for (int i = 1; i < dayOfWeek; i++) {
+%>
+    <td style="background-color: #eeeeee">&nbsp;</td>
+<%
+    }
+  
+// 날짜
+    // cal이 null이거나 초기화되지 않은 경우 현재 시간으로 초기화
+    if (cal == null) {
+        cal = Calendar.getInstance();
+    }
+
+    int lastday = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+    
+
+    for (int i = 1; i <= lastday; i++) {
+%>
+    <td style="color: #3c3c3c;padding-top: 5px">
+        <%-- 결과가 null이 아닐 때에만 출력 --%>
+        <% if (CalendarUtil.daylist(year, month, i) != null) { %>
+            <%=CalendarUtil.daylist(year, month, i) %>
+        <% } %>
+        &nbsp;&nbsp;
+        <%-- 결과가 null이 아닐 때에만 출력 --%>
+        <% if (CalendarUtil.calwrite(year, month, i) != null) { %>
+            <%=CalendarUtil.calwrite(year, month, i) %>
+        <% } %>
+        <%-- 결과가 null이 아닐 때에만 출력 --%>
+        <% if (CalendarUtil.makeTable(year, month, i, list) != null) { %>
+            <%=CalendarUtil.makeTable(year, month, i, list) %>
+        <% } %>
+    </td>
+<%
+    if ((i + dayOfWeek - 1) % 7 == 0 && i != lastday) {
+%>    
+    </tr><tr height="120" align="left" valign="top">        
+<%
+    }   
 }
 
-// 날짜
-int lastday = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-for(int i = 1;i <= lastday; i++){
-	%>
-	<td style="color: #3c3c3c;padding-top: 5px">
-		<%=CalendarUtil.daylist(year, month, i) %>&nbsp;&nbsp;<%=CalendarUtil.calwrite(year, month, i) %>
-		<%=CalendarUtil.makeTable(year, month, i, list) %>
-	</td>
-	<%
-	if((i + dayOfWeek -1) % 7 == 0 && i != lastday){
-		%>	
-		</tr><tr height="120" align="left" valign="top">		
-		<%
-	}	
-}
+
 
 // 아래쪽 빈칸
 cal.set(Calendar.DATE, lastday);

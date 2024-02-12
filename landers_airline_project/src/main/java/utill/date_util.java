@@ -1,23 +1,50 @@
 package utill;
 
-import java.sql.Timestamp;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+
+import javax.xml.crypto.Data;
 
 public class date_util {
 
-    // 날짜와 시간을 사용자가 보기 쉽게 출력하는 함수
-    // 202401181622 -> 2024년 01월 18일 16시 22분
-    public static String toDates(String mdate) {
-        // 날짜형식
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
-
-        String s = mdate.substring(0, 4) + "-" // yyyy
-                + mdate.substring(4, 6) + "-" // MM
-                + mdate.substring(6, 8) + " " // dd
-                + mdate.substring(8, 10) + ":" // HH
-                + mdate.substring(10, 12) + ":00"; // mm:ss
-
-        Timestamp d = Timestamp.valueOf(s);
-        return sdf.format(d);
+    
+    public static String tooDates(String mdate) {
+    	String s = mdate.substring(8, 10) + ":"
+    			 + mdate.substring(10,12);
+    	
+    	return s;
     }
+    
+    public static String travel_time(String ddate, String adate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
+
+        try {
+            Date date1 = sdf.parse(ddate);
+            Date date2 = sdf.parse(adate);
+
+            long diff = date2.getTime() - date1.getTime();
+
+            long diffHours = diff / (60 * 60 * 1000);
+            long diffMinutes = (diff / (60 * 1000)) % 60;
+
+            // Format the result
+            String result = "";
+            if (diffHours > 0) {
+                result += diffHours + "시간 ";
+            }
+            if (diffMinutes > 0) {
+                result += diffMinutes + "분";
+            }
+
+            return result.trim(); // Remove trailing space if any
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return ""; // Handle the exception appropriately
+        }
+    }
+
+
 }
