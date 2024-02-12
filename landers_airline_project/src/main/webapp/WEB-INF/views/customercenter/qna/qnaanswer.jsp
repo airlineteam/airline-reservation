@@ -1,10 +1,10 @@
 <%@page import="com.landers.airline.dto.UserDto"%>
-<%@page import="com.landers.airline.dto.FaqDto"%>
+<%@page import="com.landers.airline.dto.QnaDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
-	FaqDto dto = (FaqDto)request.getAttribute("faqdto");
+	QnaDto dto = (QnaDto)request.getAttribute("qnadto");
 %>
 <!DOCTYPE html>
 <html>
@@ -48,6 +48,10 @@ pre{
 	<td><%=dto.getId() %></td>
 </tr>
 <tr>
+	<th>카테고리</th>
+	<td><%=dto.getCategory() %></td>
+</tr>
+<tr>
 	<th>작성일</th>
 	<td><%=dto.getWdate() %></td>
 </tr>
@@ -72,7 +76,7 @@ pre{
 
 <h2>답글</h2>
 
-<form action="faqanswerAf.do" method="post">
+<form action="qnaanswerAf.do" method="post">
 <input type="hidden" name="seq" value="<%=dto.getSeq() %>">
 
 <table class="table table-sm">
@@ -87,7 +91,7 @@ pre{
 <tr>
 	<th>제목</th>
 	<td>
-		<input type="text" name="title" class="form-control">
+		<input type="text" name="title" class="form-control"  value="[Re:] <%=dto.getTitle() %>">
 	</td>
 </tr>
 <tr>	
@@ -102,12 +106,7 @@ pre{
 </div>
 
 </form>
-
-
-
 </div>
-
-
 
 </body>
 </html>
