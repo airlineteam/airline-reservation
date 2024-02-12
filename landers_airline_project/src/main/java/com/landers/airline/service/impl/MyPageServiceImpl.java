@@ -17,9 +17,9 @@ public class MyPageServiceImpl implements MyPageService {
 	MyPageDao dao;
 
 	@Override
-	public boolean userUpdate(String user_id) {
+	public boolean userUpdate(UserDto dto) {
 		
-		int count = dao.userUpdate(user_id);
+		int count = dao.userUpdate(dto);
 		return count>0?true:false;
 	}
 
@@ -27,12 +27,11 @@ public class MyPageServiceImpl implements MyPageService {
 	public boolean userDelete(String user_id) {
 		
 		int count = dao.userDelete(user_id);
-		
 		return count>0?true:false;
 	}
 
 	@Override
-	public UserDto mylist(UserDto dto) {
-		return dao.mylist(dto);
+	public UserDto mylist(String user_id) {
+		return dao.mylist(user_id);
 	}
 }

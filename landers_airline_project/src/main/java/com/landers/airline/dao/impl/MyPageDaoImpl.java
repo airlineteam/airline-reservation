@@ -19,19 +19,21 @@ public class MyPageDaoImpl implements MyPageDao {
 	SqlSession session;
 
 	@Override
-	public int userUpdate(String user_id) {
-		return session.selectOne("mypage.userUpdate", user_id);
-	}
+	public int userUpdate(UserDto dto) {
+		return session.update("mypage.userUpdate", dto);
+}
 
 	@Override
 	public int userDelete(String user_id) {
 		
-		return session.selectOne("mypage.userDelete", user_id);
+		return session.delete("mypage.userDelete", user_id);
 	}
 
 	@Override
-	public UserDto mylist(UserDto dto) {
-		return session.selectOne("mypage.mylist", dto);
+	public UserDto mylist(String user_id) {
+		
+		return session.selectOne("mypage.mylist", user_id);
+
 	}
 
 
