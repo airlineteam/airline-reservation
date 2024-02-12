@@ -33,11 +33,7 @@ public class ManagerRefundController {
 
 			
 	return "managerpage/main";
-
-
-			
-	return "managerpage/refundManager"; 
-
+ 
 	}
 	
 	

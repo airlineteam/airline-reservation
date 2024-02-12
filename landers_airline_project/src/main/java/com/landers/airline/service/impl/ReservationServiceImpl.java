@@ -1,5 +1,6 @@
 package com.landers.airline.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,14 @@ public class ReservationServiceImpl implements ReservationService {
 
 	    return totalUpdates;
 	}
+	
+
+	@Override
+	public FlightinfoDto flightInfo(int flight_id) {
+		return dao.flightInfo(flight_id);
+	}
+	
+	
 
 	
 }

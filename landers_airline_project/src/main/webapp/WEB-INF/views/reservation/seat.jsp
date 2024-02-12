@@ -111,6 +111,7 @@ if (selectedSeats == null) {
                     <% } %>
                 </div>
                 <input type="hidden" name="flightId" value="<%= flightId %>">
+                <input type="hidden" name="person_num" value="<%= personNum %>">
                 <button type="submit" class="btn btn-danger btn-submit">선택 완료</button>
             </form>
         </div>
