@@ -34,47 +34,45 @@
 
 <div class="center">
 
-<form action="mylist.do" id="frm" method="post">
+<form action="userUpdate.do" id="frm" method="post">
 <br/>
 
 <table class="table">
 <tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" class="form-control" name="user_id" id="user_id" size="20" value="">
-		<p id="idcheck" style="font-size: 10px"></p>
-		<input type="button" class="btn btn-primary" id="id_chk_btn" value="id확인">		
+		<input type="text" class="form-control" name="user_id" id="user_id" size="20" value="<%= mylist.getUser_id()%>" readonly>
 	</td>
 </tr>
 <tr>
 	<th>패스워드</th>
 	<td>
-		<input type="text" class="form-control" name="user_pw" size="20">
+		<input type="text" class="form-control" name="user_pw" size="20" value="<%= mylist.getUser_pw()%>">
 	</td>
 </tr>
 <tr>
 	<th>이름</th>
 	<td>
-		<input type="text" class="form-control" name="user_name" size="20">
+		<input type="text" class="form-control" name="user_name" size="20" value="<%= mylist.getUser_name()%>">
 	</td>
 </tr>
 <tr>
 	<th>전화번호</th>
 	<td>
-		<input type="text" class="form-control" name="user_phone" size="20">
+		<input type="text" class="form-control" name="user_phone" size="20" value="<%= mylist.getUser_phone()%>">
 	</td>
 </tr>
 <tr>
 	<th>주소</th>
 	<td>
-		<input type="text" class="form-control" name="user_address" size="20">
+		<input type="text" class="form-control" name="user_address" size="20" value="<%= mylist.getUser_address()%>">
 	</td>
 </tr>
 <tr>
 	<td colspan="2">
 		<div align="center">
-			<input type="button" id="updatebtn" class="btn btn-primary" value="수정">
-			<input type="button" id="deletebtn" class="btn btn-primary" value="삭제">
+			<input type="submit" class="btn btn-primary" value="수정">
+			<button type="button" class="btn btn-primary"  onclick="deleteUser(<%= mylist.getUser_id()%>)">삭제</button>
 		</div>
 	</td>
 </tr>
@@ -83,6 +81,14 @@
 </div>
 
 <script type="text/javascript">
+
+function deleteUser() {
+	location.href = "userDelete.do?user_id=" + user_id;
+}
+</script>
+
+<script type="text/javascript">
+
 $(document).ready(function () {
 	
 	$("#id_chk_btn").click(function () {

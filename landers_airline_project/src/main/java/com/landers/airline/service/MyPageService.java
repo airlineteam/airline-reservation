@@ -5,10 +5,11 @@ import com.landers.airline.dto.UserDto;
 
 public interface MyPageService {
 	
-	UserDto mylist(UserDto dto);
+	UserDto mylist(String user_id);
 	
-	boolean userUpdate(String user_id);
+	boolean userUpdate(UserDto dto);
 	
 	boolean userDelete(String user_id);
+
 
 }

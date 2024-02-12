@@ -5,14 +5,20 @@
 <mapper namespace="mypage">
 
 <!-- 회원정보 삭제 -->
-<delete id="deleteInfo" parameterType="com.landers.airline.dto.UserDto">
+<delete id="userDelete" parameterType="com.landers.airline.dto.UserDto">
 	delete from user
-	where user_id=#{user_id} and user_pw=#{user_pw}
+	where user_id=#{user_id}
 </delete>
 
-<select id="mylist" parameterType="String" resultType="java.lang.Integer">
-	select count(*)
-	from user
+<update id="userUpdate" parameterType="com.landers.airline.dto.UserDto">
+	update user 
+	set user_pw = #{user_pw}, user_name = #{user_name}, user_phone = #{user_phone}, user_address = #{user_address}
+	where user_id=#{user_id}
+</update>
+
+<select id="mylist" parameterType="String" resultType="com.landers.airline.dto.UserDto">
+    	select user_id, user_pw, user_name, user_phone, user_address
+	from user   
 	where user_id=#{user_id}
 </select>
 

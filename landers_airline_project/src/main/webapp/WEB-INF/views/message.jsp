@@ -225,6 +225,26 @@ if(refundAf != null && !refundAf.equals("")){
 	}	
 }
 
+//회원수정
+String updateMsg = (String)request.getAttribute("updateMsg");
+if(updateMsg != null && updateMsg.equals("") == false){
+	if(updateMsg.equals("UPDATE_SUCCESS")){
+		%>
+		<script type="text/javascript">
+		alert("회원 수정되었습니다");
+		location.href = "./login.do";
+		</script>
+		<%
+	}else{
+		%>
+		<script type="text/javascript">
+		alert("회원수정 실패");
+		location.href = "./userUpdate.do;
+		</script>
+		<%
+	}
+}
+
 
 
 %>
