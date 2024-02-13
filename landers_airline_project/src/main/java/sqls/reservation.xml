@@ -28,5 +28,12 @@
 </update>
 
 
+<select id="flightInfo" parameterType="Integer" resultType="com.landers.airline.dto.FlightinfoDto">
+	SELECT flight_id, flight_name, departure_airport, arrival_airport, departure_date, arrival_date, price
+    FROM flight_info
+    WHERE flight_id=#{flight_id}
+</select>
+
+
 
 </mapper>

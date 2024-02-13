@@ -63,8 +63,9 @@ public class QnaController {
 		
 		QnaDto dto = service.qnadetail(seq);
 		model.addAttribute("dto", dto);
+		model.addAttribute("main","qna/qnadetail");
 		
-		return "customercenter/qna/qnadetail";
+		return "customercenter/main";
 	}
 
 	
