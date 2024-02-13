@@ -2,6 +2,7 @@ package com.landers.airline.dao;
 
 import java.util.List;
 
+import com.landers.airline.dto.QnaComment;
 import com.landers.airline.dto.QnaDto;
 import com.landers.airline.dto.QnaParam;
 
@@ -11,6 +12,9 @@ public interface QnaDao {
 	int allqna(QnaParam param);	
 	int qnawrite(QnaDto dto);	
 	QnaDto qnadetail(int seq);
+	
+	int commentWrite(QnaComment com);
+	List<QnaComment> commentList(int seq);
 
 	void QnaAnswerUpdate(QnaDto dto);
 	int QnaAnswerInsert(QnaDto dto);

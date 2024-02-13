@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.landers.airline.dao.FaqDao;
-import com.landers.airline.dto.BbsComment;
 import com.landers.airline.dto.FaqDto;
 import com.landers.airline.dto.FaqParam;
 

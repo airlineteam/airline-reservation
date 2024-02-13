@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.landers.airline.dao.QnaDao;
+import com.landers.airline.dto.QnaComment;
 import com.landers.airline.dto.QnaDto;
 import com.landers.airline.dto.QnaParam;
 
@@ -39,7 +40,16 @@ public class QnaDaoImpl implements QnaDao{
 		return session.selectOne(ns + "qnadetail", seq);
 	}
 
-	
+	@Override
+	public int commentWrite(QnaComment com) {		
+		return session.insert(ns + "commentWrite", com);
+	}
+
+	@Override
+	public List<QnaComment> commentList(int seq) {		
+		return session.selectList(ns + "commentList", seq);
+	}
+		
 	@Override
 	public void QnaAnswerUpdate(QnaDto dto) {
 		session.update(ns + "QnaAnswerUpdate", dto);
