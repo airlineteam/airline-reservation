@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reservation">
+
+<insert id="schedule" parameterType="com.landers.airline.dto.ScheduleDto">
+	insert into schedule(departure_airport, arrival_airport, departure_date, person_num)
+	values(#{departure_airport}, #{arrival_airport}, #{departure_date}, #{person_num})
+</insert>
+
+<select id="search" parameterType="com.landers.airline.dto.FlightinfoDto" resultType="com.landers.airline.dto.FlightinfoDto">
+    SELECT flight_id, flight_name, departure_airport, arrival_airport, departure_date, arrival_date, price
+    FROM flight_info
+    WHERE departure_airport=#{departure_airport} AND arrival_airport=#{arrival_airport} AND departure_date >= #{departure_date}
+</select>
+
+<select id="seatlist" parameterType="Integer" resultType="com.landers.airline.dto.SeatDto" >
+	select seat_id, flight_id, seat_name, seat_price, is_available
+	from seat
+	where flight_id=#{flight_id}
+</select>
+
+<update id="seatselect" parameterType="map">
+    update seat
+    set is_available = 0
+    where seat_name = #{seatName} and flight_id = #{flightId}
+</update>
+
+
+
+</mapper>
