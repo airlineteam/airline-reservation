@@ -1,15 +1,13 @@
 <%@page import="com.landers.airline.dto.CalendarDto"%>
-<%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="java.util.List"%>
 <%@page import="util.CalendarUtil"%>
 <%@page import="java.util.Calendar"%>
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-	UserDto login = (UserDto)session.getAttribute("login");
-%>
+<%--
+	MemberDto login = (MemberDto)session.getAttribute("login");
+--%>    
     
 <!DOCTYPE html>
 <html>
@@ -37,42 +35,80 @@ th, td{
 </head>
 <body>
 
-<h1>여행일정</h1>
+<h1>일정관리</h1>
 <br/>
 
-
 <%
-	List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
+	Calendar cal = Calendar.getInstance();
+	cal.set(Calendar.DATE, 1);
+	
+	String syear = request.getParameter("year");
+	String smonth = request.getParameter("month");
+	
+	// 현재 연도와 월을 구한다	-> 처음 이 페이지가 실행시에 적용
+	int year = cal.get(Calendar.YEAR);
+	if(CalendarUtil.nvl(syear) == false){	// 넘어 온 파라미터 값이 있음
+		year = Integer.parseInt(syear);
+	}
+	int month = cal.get(Calendar.MONTH) + 1;	// 0 ~ 11 까지이므로
+	if(CalendarUtil.nvl(smonth) == false){
+		month = Integer.parseInt(smonth);
+	}
+	
+	if(month < 1){
+		month = 12;
+		year--;
+	}
+	if(month > 12){
+		month = 1;
+		year++;
+	}
+	
+	System.out.println(year + " " + month);
+	cal.set(year, month-1, 1);
+	
+	// 요일
+	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+	
+	// <<	year--
+	String pp = String.format("<a href='calendarList.jsp?year=%d&month=%d' style='text-decoration:none'>"
+							+ 		"<img src='./images/left.png' width='20px' height='20px'>"
+							+ "</a>",  year-1, month);
+	
+	// <	month--
+	String p = String.format("<a href='calendarList.jsp?year=%d&month=%d' style='text-decoration:none'>"
+							+ 		"<img src='./images/prev.png' width='20px' height='20px'>"
+							+ "</a>",  year, month-1);
+	
+	// >	month++
+	String n = String.format("<a href='calendarList.jsp?year=%d&month=%d' style='text-decoration:none'>"
+							+ 		"<img src='./images/next.png' width='20px' height='20px'>"
+							+ "</a>",  year, month+1);
+	
+	// >>	year++
+	String nn = String.format("<a href='calendarList.jsp?year=%d&month=%d' style='text-decoration:none'>"
+							+ 		"<img src='./images/last.png' width='20px' height='20px'>"
+							+ "</a>",  year+1, month);
+	
+//	CalendarDao dao = CalendarDao.getInstance();			// 202401
+//	List<CalendarDto> list = dao.getCalendarList(login.getId(), year + CalendarUtil.two(month + ""));
 
+	List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
+/*
 	String pp = (String)request.getAttribute("pp");
 	String p = (String)request.getAttribute("p");
 	String n = (String)request.getAttribute("n");
 	String nn = (String)request.getAttribute("nn");
 	
-	Integer year = (Integer) request.getAttribute("year");
-	if (year != null) {
-	    // 'year'이 null이 아닐 때의 로직
-	} else {
-	    // 'year'이 null일 때의 처리
-	}
-	Integer month = (Integer) request.getAttribute("month");
-	if (month != null) {
-	    // 'month'이 null이 아닐 때의 로직
-	} else {
-	    // 'month'이 null일 때의 처리
-	}
-	Integer dayOfWeek = (Integer) request.getAttribute("dayOfWeek");
-	if (dayOfWeek != null) {
-	    // 'dayOfWeek'이 null이 아닐 때의 로직
-	} else {
-	    // 'dayOfWeek'이 null일 때의 처리
-	}
-	
-	Calendar cal = (Calendar)request.getAttribute("cal");
+	int year = (Integer)request.getAttribute("year");
+	int month = (Integer)request.getAttribute("month");
+	int dayOfWeek = (Integer)request.getAttribute("dayOfWeek");
+*/	
+//	Calendar cal = (Calendar)request.getAttribute("cal");
 %>
 
-<div class="center">
-	<form action="calendarlist.do" method="post">
+<div align="center">
+
 <table border="1">
 <col width="120"/><col width="120"/><col width="120"/><col width="120"/>
 <col width="120"/><col width="120"/><col width="120"/>
@@ -101,52 +137,28 @@ th, td{
 
 <tr height="120" align="left" valign="top">
 <%
-    // 윗쪽 빈칸
-    if (dayOfWeek == null || dayOfWeek <= 0) {
-        dayOfWeek = 1; // dayOfWeek가 null이거나 음수일 경우 1로 설정
-    }
-
-    for (int i = 1; i < dayOfWeek; i++) {
-%>
-    <td style="background-color: #eeeeee">&nbsp;</td>
-<%
-    }
-  
-// 날짜
-    // cal이 null이거나 초기화되지 않은 경우 현재 시간으로 초기화
-    if (cal == null) {
-        cal = Calendar.getInstance();
-    }
-
-    int lastday = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-    
-
-    for (int i = 1; i <= lastday; i++) {
-%>
-    <td style="color: #3c3c3c;padding-top: 5px">
-        <%-- 결과가 null이 아닐 때에만 출력 --%>
-        <% if (CalendarUtil.daylist(year, month, i) != null) { %>
-            <%=CalendarUtil.daylist(year, month, i) %>
-        <% } %>
-        &nbsp;&nbsp;
-        <%-- 결과가 null이 아닐 때에만 출력 --%>
-        <% if (CalendarUtil.calwrite(year, month, i) != null) { %>
-            <%=CalendarUtil.calwrite(year, month, i) %>
-        <% } %>
-        <%-- 결과가 null이 아닐 때에만 출력 --%>
-        <% if (CalendarUtil.makeTable(year, month, i, list) != null) { %>
-            <%=CalendarUtil.makeTable(year, month, i, list) %>
-        <% } %>
-    </td>
-<%
-    if ((i + dayOfWeek - 1) % 7 == 0 && i != lastday) {
-%>    
-    </tr><tr height="120" align="left" valign="top">        
-<%
-    }   
+// 윗쪽 빈칸
+for(int i = 1;i < dayOfWeek; i++){
+	%>
+	<td style="background-color: #eeeeee">&nbsp;</td>
+	<%
 }
 
-
+// 날짜
+int lastday = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+for(int i = 1;i <= lastday; i++){
+	%>
+	<td style="color: #3c3c3c;padding-top: 5px">
+		<%=CalendarUtil.daylist(year, month, i) %>&nbsp;&nbsp;<%=CalendarUtil.calwrite(year, month, i) %>
+		<%=CalendarUtil.makeTable(year, month, i, list) %>
+	</td>
+	<%
+	if((i + dayOfWeek -1) % 7 == 0 && i != lastday){
+		%>	
+		</tr><tr height="120" align="left" valign="top">		
+		<%
+	}	
+}
 
 // 아래쪽 빈칸
 cal.set(Calendar.DATE, lastday);
@@ -160,8 +172,15 @@ for(int i = 0;i < 7 - weekday; i++){
 </tr>
 
 </table>
-</form>
+
 </div>
 
 </body>
 </html>
+
+
+
+
+
+
+

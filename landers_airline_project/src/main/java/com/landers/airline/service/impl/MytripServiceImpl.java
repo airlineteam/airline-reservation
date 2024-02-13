@@ -16,43 +16,10 @@ public class MytripServiceImpl implements MytripService{
 	MytripDao dao;
 
 	@Override
-	public List<CalendarDto> calendarlist(CalendarDto dto) {
-		return dao.calendarlist(dto);
+	public List<CalendarDto> insertmytrip(String user_id) {
+		
+		return dao.insertmytrip(user_id);
 	}
 
-	@Override
-	public String pp(CalendarDto dto) {
-		return dao.pp(dto);
-	}
-
-	@Override
-	public String p(CalendarDto dto) {
-		return dao.p(dto);
-	}
-
-	@Override
-	public String nn(CalendarDto dto) {
-		return dao.nn(dto);
-	}
-
-	@Override
-	public String n(CalendarDto dto) {
-		return dao.n(dto);
-	}
-
-	@Override
-	public int year(CalendarDto dto) {
-		return dao.year(dto);
-	}
-
-	@Override
-	public int month(CalendarDto dto) {
-		return dao.month(dto);
-	}
-
-	@Override
-	public int dayOfWeek(CalendarDto dto) {
-		return dao.dayOfWeek(dto);
-	}
-
+	
 }
