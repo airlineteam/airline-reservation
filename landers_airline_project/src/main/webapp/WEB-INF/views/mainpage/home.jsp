@@ -9,7 +9,7 @@ body, ul, li {
 }
 
 .slider-2 {
-    height:400px;
+    height:700px;
     position:relative;
 }
 

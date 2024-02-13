@@ -1,10 +1,10 @@
 <%@page import="com.landers.airline.dto.UserDto"%>
-<%@page import="com.landers.airline.dto.QnaDto"%> 
+<%@page import="com.landers.airline.dto.ManagerQnaDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<!DOCTYPE html>
 <%
-	QnaDto dto = (QnaDto)request.getAttribute("dto");
+	ManagerQnaDto dto = (ManagerQnaDto)request.getAttribute("dto");
     UserDto login = (UserDto)session.getAttribute("login");
     
     // login.getUser_id() 값이 null이면 로그인 페이지로 이동
@@ -18,8 +18,6 @@
         return; // 페이지 렌더링 중지
     }
 %>  
-    
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -86,21 +84,13 @@ if (login != null && login.getUser_role() == 0) {
 	System.out.println(login.getUser_role());
 %>
 	<button type="button" class="btn btn-primary" onclick="answerQna(<%=dto.getSeq() %>)">답글</button>
-<%
-}
-%>
-
-<%
-if(login.getUser_id().equals(dto.getId())){
-	%>	
-	<button type="button" class="btn btn-primary" onclick="updateQna(<%=dto.getSeq() %>)">수정</button>
-	
 	<button type="button" class="btn btn-primary" onclick="deleteQna(<%=dto.getSeq() %>)">삭제</button>
-	<%
-}
-
-%>
 <button type="button" class="btn btn-primary" onclick="backToList_Qna()">목록</button>
+<%
+}
+%>
+
+
 
 </div>
 
@@ -112,10 +102,10 @@ function updateQna( seq ) {
 	location.href = "qnaupdate.do?seq=" + seq;
 }
 function deleteQna( seq ) {
-	location.href = "qnadelete.do?seq=" + seq;
+	location.href = "mqnadelete.do?seq=" + seq;
 }
 function backToList_Qna() {
-	location.href = "qnalist.do";
+	location.href = "mqnalist.do";
 }
 </script>
 
@@ -124,16 +114,3 @@ function backToList_Qna() {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
