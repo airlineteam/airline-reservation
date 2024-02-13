@@ -7,7 +7,6 @@ import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
 
 public interface ReservationDao {
-	
 	List<FlightinfoDto> flightlist(FlightinfoDto dto);
 	
 	int schedule(ScheduleDto dto);
