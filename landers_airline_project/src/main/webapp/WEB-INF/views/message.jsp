@@ -407,7 +407,48 @@ if(updateMsg != null && updateMsg.equals("") == false){
 		%>
 		<script type="text/javascript">
 		alert("회원수정 실패");
-		location.href = "./userUpdate.do;
+		location.href = "./home.do";
+		</script>
+		<%
+	}
+}
+
+//회원삭제
+String deleteMsg = (String)request.getAttribute("deleteMsg");
+if(deleteMsg != null && deleteMsg.equals("") == false){
+	if(deleteMsg.equals("DELETE_SUCCESS")){
+		%>
+		<script type="text/javascript">
+		alert("회원 삭제되었습니다");
+		location.href = "./home.do";
+		</script>
+		<%
+	}else{
+		%>
+		<script type="text/javascript">
+		alert("회원삭제 실패");
+		location.href = "./home.do";
+		</script>
+		<%
+	}
+}
+
+
+//환불요청
+String refundMsg = (String)request.getAttribute("refundMsg");
+if(refundMsg != null && refundMsg.equals("") == false){
+	if(refundMsg.equals("REFUND_SUCCESS")){
+		%>
+		<script type="text/javascript">
+		alert("환불요청 되었습니다");
+		location.href = "./home.do";
+		</script>
+		<%
+	}else{
+		%>
+		<script type="text/javascript">
+		alert("환불요청에 실패하였습니다.");
+		location.href = "./home.do";
 		</script>
 		<%
 	}

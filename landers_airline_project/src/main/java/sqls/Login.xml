@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 
 <mapper namespace="Login">
 
@@ -13,7 +13,7 @@
 
 <insert id="adduser" parameterType="com.landers.airline.dto.UserDto">
 	insert into user(user_id, user_pw, user_name, user_phone, user_address, user_role)
-	values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_address}, #{user_role})
+	values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_address}, 1)
 </insert>
 
 <select id="loginAf" parameterType="com.landers.airline.dto.UserDto" resultType="com.landers.airline.dto.UserDto">
