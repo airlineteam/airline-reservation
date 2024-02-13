@@ -57,13 +57,6 @@ public class MemberManagerController {
 	}
 }
 
-
-
-
-
-			
-				
-	
 	
 
 

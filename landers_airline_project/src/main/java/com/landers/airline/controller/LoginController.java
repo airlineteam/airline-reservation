@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.landers.airline.dto.UserDto;
@@ -20,6 +22,8 @@ public class LoginController {
 
 	@Autowired
 	LoginService service;
+	
+	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	@GetMapping("login.do")
 	public String login(Model model) {
 		
@@ -27,6 +31,7 @@ public class LoginController {
 		
 		return "mainpage/main";
 	}
+	
 	
 	@PostMapping("loginAf.do")
 	public String loginAf(UserDto dto, Model model, HttpServletRequest request) {
@@ -56,9 +61,12 @@ public class LoginController {
 	
 	
 	@GetMapping("regi.do")
-	public String regi() {
-		System.out.println("LoginController regi " + new Date());		
-		return "login/regi";
+	public String regi(Model model) {
+		System.out.println("LoginController regi " + new Date());	
+		
+		model.addAttribute("main", "mainpage/login/regi");
+		
+		return "mainpage/login/regi";
 	}
 	
 	@PostMapping("regiAf.do")
