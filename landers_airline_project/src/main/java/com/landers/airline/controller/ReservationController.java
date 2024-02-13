@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
+import com.landers.airline.dto.TicketDto;
 import com.landers.airline.service.ReservationService;
 
 @Controller
@@ -80,18 +81,38 @@ public class ReservationController {
 	    	System.out.println("string : "+string);
 		}
 	    
-	    int count = service.seatselect(selectedSeats,flightId);
+	   //int count = service.seatselect(selectedSeats,flightId);
 	    FlightinfoDto dto = service.flightInfo(flightId);
 	    
+	   
 	    
-	    System.out.println(count);
-	    
+	    model.addAttribute("flightId",flightId);
 	    model.addAttribute("selectedSeats",selectedSeats);
 	    model.addAttribute("person_num",person_num);
 	    model.addAttribute("main", "pay");
 	    model.addAttribute("dto",dto);
 	
 	    return "reservation/main";
+	}
+	
+	@RequestMapping(value = "payresult.do", method = RequestMethod.GET)
+	public String payresult(@RequestParam(value = "selectedSeats") List<String> selectedSeats,
+	                         @RequestParam(value = "flight_id") int flight_id, Model model,
+	                         TicketDto dto) {
+		
+		 for (String string : selectedSeats) {
+		    	System.out.println("string : "+string);
+			}
+		 System.out.println(flight_id);
+		 
+		 int count = service.seatselect(selectedSeats,flight_id);
+		 System.out.println(count);
+		 int ccount = service.ticket(dto);
+		 System.out.println(ccount);
+		 
+		 model.addAttribute("main", "payresult");
+		 
+		 return "reservation/main";
 	}
 
 }

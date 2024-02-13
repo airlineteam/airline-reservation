@@ -24,7 +24,7 @@
 <update id="seatselect" parameterType="map">
     update seat
     set is_available = 0
-    where seat_name = #{seatName} and flight_id = #{flightId}
+    where seat_name = #{seatName} and flight_id = #{flight_id}
 </update>
 
 
@@ -34,6 +34,9 @@
     WHERE flight_id=#{flight_id}
 </select>
 
-
+<insert id="ticket" parameterType="com.landers.airline.dto.TicketDto">
+	insert into ticket(user_id, schedule_id, final_price, final_date, flight_id, seat_id)
+	values(#{user_id} , null, #{final_price}, now(), #{flight_id}, null)
+</insert>
 
 </mapper>

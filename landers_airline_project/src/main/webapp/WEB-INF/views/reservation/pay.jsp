@@ -17,7 +17,7 @@
 	int person_num = (Integer)request.getAttribute("person_num");
 	FlightinfoDto dto = (FlightinfoDto)request.getAttribute("dto");
 	List<String> selectedSeats = (List<String>)request.getAttribute("selectedSeats");
-	List<SeatDto> seatIdlist = (List<SeatDto>)request.getAttribute("seatIdlist");
+	int flightId = (Integer)request.getAttribute("flightId");
 	
 	UserDto login = (UserDto)session.getAttribute("login");
 	if(login == null){
@@ -77,7 +77,6 @@
             function (rsp) {
                 if (rsp.success) {
                     console.log(rsp);
-                    alert('결제가 완료되었습니다!');
                     moveToMainPage(totalAmount);
                 } else {
                     console.log(rsp);
@@ -92,9 +91,33 @@
     }
 
     function moveToMainPage(totalAmount) {
-       alert(totalAmount+"원이 결제되었습니다!!");
-       location.href = "home.do";
+        alert(totalAmount + "원이 결제되었습니다!!");
+
+      
+        var selectedSeats = <%
+        List<String> selectedSeatsList = (List<String>) request.getAttribute("selectedSeats");
+        if (selectedSeatsList != null) {
+            out.print("[\"" + String.join("\",\"", selectedSeatsList) + "\"]");
+        } else {
+            out.print("[]");
+        }
+    %>;
+
+        var flightId = '<%= request.getAttribute("flightId") %>';
+        var userId = '<%=login.getUser_id() %>';
+
+   
+        selectedSeats = encodeURIComponent(selectedSeats);
+        flightId = encodeURIComponent(flightId);
+
+      
+        var redirectUrl = "payresult.do?selectedSeats=" + selectedSeats + "&flight_id=" + flightId +"&user_id=" + userId
+        		+ "&final_price=" + totalAmount;
+
+        
+        location.href = redirectUrl;
     }
+
 
    
 </script>

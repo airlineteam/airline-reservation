@@ -5,6 +5,7 @@ import java.util.List;
 import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
+import com.landers.airline.dto.TicketDto;
 
 public interface ReservationDao {
 	
@@ -14,8 +15,9 @@ public interface ReservationDao {
 	
 	List<SeatDto> seatlist(int flight_id);
 	
-	int seatselect(String seatName, int flightId);
+	int seatselect(String seatName, int flight_id);
 	
 	FlightinfoDto flightInfo(int flight_id);
 	
+	int ticket (TicketDto dto);
 }
