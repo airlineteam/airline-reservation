@@ -1,15 +1,5 @@
-<%@page import="com.landers.airline.dto.TicketDto"%>
-<%@page import="utill.date_util"%>
-<%@page import="com.landers.airline.dto.UserDto"%>
-<%@page import="com.landers.airline.dto.FlightinfoDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	FlightinfoDto flight = (FlightinfoDto)request.getAttribute("flight");
-	UserDto login = (UserDto)session.getAttribute("login");
-	String final_price = (String)request.getAttribute("final_price");
-%>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -49,7 +39,7 @@
             
             .ticket-wrapper {
                 border: 2px solid #999;
-                border-top: 12px solid #9A161F;
+                border-top: 12px solid rgb(33,150,243);
                 margin: 15px auto 0;
                 padding-bottom: 15px;
                 width: 650px;
@@ -191,7 +181,7 @@
             }
         </style>
     </head>
-<body>
+    <body>
         <!-- Start Ticket -->
         <div class="ticket-wrapper">
             <table class="ticket-table">
@@ -199,7 +189,7 @@
                     <td class="first-col">
                         <!-- title -->
                         <div class="ticket-name-div">
-                            <span class="ticket-event-longtitle"><%=flight.getDeparture_airport() %> <img alt="#" src="./images/icon_target_arrow.png"> <%=flight.getArrival_airport() %></span>
+                            <span class="ticket-event-longtitle">Ticket Title</span>
                         </div>
                         <!-- /.ticket-name-div -->
                         <!-- venue details start -->
@@ -218,20 +208,24 @@
                                         </div>
                                         <!-- /.ticket-title -->
                                         <div class="ticket-info">
-                                            <%=date_util.tooDates(flight.getDeparture_date()) %>
+                                            8:00 AM
                                         </div>
                                         <!-- /.ticket-info -->
                                     </td>
                                     <!-- /.first-col -->
                                     <td class="second-col">
                                         <div class="ticket-venue">
-                                            
+                                            Place's name
                                         </div>
                                         <!-- /.ticket-venue -->
                                         <div class="ticket-venue">
-                                            홍길동
+                                            Street
                                         </div>
-               
+                                        <!-- /.ticket-venue -->
+                                        <div class="ticket-venue">
+                                            City, State
+                                        </div>
+                                        <!-- /.ticket-venue -->
                                     </td>
                                     <!-- /.second-col -->
                                 </tr>
@@ -248,7 +242,7 @@
                                         </div>
                                         <!-- /.ticket-title -->
                                         <div class="ticket-info">
-                                            홍길동
+                                            0000000001
                                         </div>
                                         <!-- /.ticket-info -->
                                         <div class="ticket-title">
@@ -256,7 +250,7 @@
                                         </div>
                                         <!-- /.ticket-title -->
                                         <div class="ticket-info">
-                                            <%=final_price %>
+                                            $00.00
                                         </div>
                                         <!-- /.ticket-info -->
                                     </td>
@@ -267,7 +261,7 @@
                                         </div>
                                         <!-- /.ticket-title -->
                                         <div class="ticket-info">
-                                            <%=login.getUser_name() %>
+                                            John Doe
                                         </div>
                                         <!-- /.ticket-info -->
                                         <div class="ticket-title">

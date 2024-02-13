@@ -20,4 +20,6 @@ public interface ReservationService {
 	FlightinfoDto flightInfo(int flight_id);
 	
 	int ticket(TicketDto dto);
+	
+	TicketDto ticketinfo(int flight_id);
 }

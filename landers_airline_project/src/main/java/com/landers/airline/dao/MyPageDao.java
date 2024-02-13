@@ -10,5 +10,6 @@ public interface MyPageDao {
 	int userDelete(String user_id);
 	
 	int userUpdate(UserDto dto);
+	
 
 }

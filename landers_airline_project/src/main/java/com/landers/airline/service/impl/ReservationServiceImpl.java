@@ -49,7 +49,6 @@ public class ReservationServiceImpl implements ReservationService {
 	    return totalUpdates;
 	}
 	
-
 	@Override
 	public FlightinfoDto flightInfo(int flight_id) {
 		return dao.flightInfo(flight_id);
@@ -58,6 +57,11 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public int ticket(TicketDto dto) {
 		return dao.ticket(dto);
+	}
+
+	@Override
+	public TicketDto ticketinfo(int flight_id) {
+		return dao.ticketinfo(flight_id);
 	}
 	
 	

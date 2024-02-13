@@ -51,6 +51,11 @@ public class ReservationDaoImpl implements ReservationDao {
 	public int ticket(TicketDto dto) {
 		return session.insert("reservation.ticket",dto);
 	}
+
+	@Override
+	public TicketDto ticketinfo(int flight_id) {
+		return session.selectOne("reservation.ticketinfo", flight_id);
+	}
 	
 	
 
