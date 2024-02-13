@@ -10,6 +10,7 @@ import com.landers.airline.dao.ReservationDao;
 import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
+import com.landers.airline.dto.TicketDto;
 import com.landers.airline.service.ReservationService;
 
 
@@ -37,11 +38,11 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public int seatselect(List<String> selectedSeats, int flightId) {
+	public int seatselect(List<String> selectedSeats, int flight_id) {
 	    int totalUpdates = 0;
 
 	    for (String seat : selectedSeats) {
-	        int updates = dao.seatselect(seat, flightId);
+	        int updates = dao.seatselect(seat, flight_id);
 	        totalUpdates += updates;
 	    }
 
@@ -52,6 +53,11 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public FlightinfoDto flightInfo(int flight_id) {
 		return dao.flightInfo(flight_id);
+	}
+
+	@Override
+	public int ticket(TicketDto dto) {
+		return dao.ticket(dto);
 	}
 	
 	
