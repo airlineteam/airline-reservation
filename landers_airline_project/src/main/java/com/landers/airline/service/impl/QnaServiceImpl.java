@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.landers.airline.dao.QnaDao;
+import com.landers.airline.dto.QnaComment;
 import com.landers.airline.dto.QnaDto;
 import com.landers.airline.dto.QnaParam;
 import com.landers.airline.service.QnaService;
@@ -36,6 +37,17 @@ public class QnaServiceImpl implements QnaService{
 		return dao.qnadetail(seq);
 	}
 
+	@Override
+	public boolean commentWrite(QnaComment com) {
+		int count = dao.commentWrite(com);
+		return count>0?true:false;
+	}
+
+	@Override
+	public List<QnaComment> commentList(int seq) {		
+		return dao.commentList(seq);
+	}
+	
 	@Override
 	public boolean QnaAnswer(QnaDto dto) {
 		dao.QnaAnswerUpdate(dto);		

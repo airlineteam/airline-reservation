@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.landers.airline.dto.BbsComment;
 import com.landers.airline.dto.BbsDto;
 import com.landers.airline.dto.BbsParam;
 import com.landers.airline.service.BbsService;
+
+
 
 @Controller
 public class BbsController {
@@ -40,14 +41,18 @@ public class BbsController {
 		model.addAttribute("list", list);
 		model.addAttribute("pageBbs", pageBbs);
 		model.addAttribute("param", param);
+		model.addAttribute("main","bbs/bbslist");
 		
-		return "customercenter/bbs/bbslist";
+		return "customercenter/main";
 	}
 	
 	@GetMapping("bbswrite.do")
-	public String bbwrite() {
+	public String bbwrite(Model model) {
 		System.out.println("BbsController bbswrite " + new Date());
-		return "customercenter/bbs/bbswrite";
+
+		model.addAttribute("main","bbs/bbswrite");
+		
+		return "customercenter/main";
 	}
 	
 	@PostMapping("bbswriteAf.do")
@@ -55,21 +60,13 @@ public class BbsController {
 		System.out.println("BbsController bbswriteAf " + new Date());
 		
 		boolean isS = service.bbswrite(dto);
-		
-		/*
 		String bbswriteMsg = "BBSWRITE_SUCCESS";
-		if(!isS) {
+		if(isS == false) {
 			bbswriteMsg = "BBSWRITE_FAIL";
 		}
-		
 		model.addAttribute("bbswriteMsg", bbswriteMsg);
 		
 		return "message";
-		*/
-		
-		// controller 에서 controller 이동
-		// redirect == sendRedirect
-		return "redirect:/bbslist.do";
 	}
 	
 	@GetMapping("bbsdetail.do")
@@ -78,31 +75,9 @@ public class BbsController {
 		
 		BbsDto dto = service.bbsdetail(seq);
 		model.addAttribute("dto", dto);
+		model.addAttribute("main","bbs/bbsdetail");
 		
-		return "customercenter/bbs/bbsdetail";
-	}
-	
-	@PostMapping("bbsCommentWriteAf.do")
-	public String bbsCommentWriteAf(BbsComment com) {
-		System.out.println("BbsController bbsCommentWriteAf " + new Date());
-		
-		boolean isS = service.commentWrite(com);
-		if(isS) {
-			System.out.println("댓글작성 성공!");
-		}else {
-			System.out.println("댓글작성 실패");
-		}
-		
-		return "redirect:/bbsdetail.do?seq=" + com.getSeq();		
-	}
-	
-	@ResponseBody
-	@GetMapping("commentList.do")
-	public List<BbsComment> commentList(int seq){
-		System.out.println("BbsController commentList " + new Date());
-		
-		List<BbsComment> list = service.commentList(seq);
-		return list;
+		return "customercenter/main";
 	}
 	
 	@GetMapping("bbsanswer.do")
@@ -111,8 +86,9 @@ public class BbsController {
 		
 		BbsDto dto = service.bbsdetail(seq);		
 		model.addAttribute("bbsdto", dto);
+		model.addAttribute("main","bbs/bbsanswer");
 		
-		return "customercenter/bbs/bbsanswer";
+		return "customercenter/main";
 	}
 	
 	@PostMapping("bbsanswerAf.do")

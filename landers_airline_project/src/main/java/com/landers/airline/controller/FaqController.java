@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.landers.airline.dto.BbsComment;
 import com.landers.airline.dto.FaqDto;
 import com.landers.airline.dto.FaqParam;
 import com.landers.airline.service.FaqService;
@@ -40,14 +39,18 @@ public class FaqController {
 		model.addAttribute("list", list);
 		model.addAttribute("pageFaq", pageFaq);
 		model.addAttribute("param", param);
+		model.addAttribute("main", "faq/faqlist");
 		
-		return "customercenter/faq/faqlist";
+		return "customercenter/main";
 	}
 	
 	@GetMapping("faqwrite.do")
-	public String faqwrite() {
+	public String faqwrite(Model model) {
 		System.out.println("FaqController faqwrite " + new Date());
-		return "customercenter/faq/faqwrite";
+
+		model.addAttribute("main", "faq/faqwrite");
+		
+		return "customercenter/main";
 	}
 	
 	@PostMapping("faqwriteAf.do")
@@ -55,8 +58,13 @@ public class FaqController {
 		System.out.println("FaqController faqwriteAf " + new Date());
 		
 		boolean isS = service.faqwrite(dto);
+		String faqwriteMsg = "FAQWRITE_SUCCESS";
+		if(isS == false) {
+			faqwriteMsg = "FAQWRITE_FAIL";
+		}
+		model.addAttribute("faqwriteMsg", faqwriteMsg);
 		
-		return "redirect:/faqlist.do";
+		return "message";
 	}
 	
 	@GetMapping("faqdetail.do")
@@ -65,19 +73,21 @@ public class FaqController {
 		
 		FaqDto dto = service.faqdetail(seq);
 		model.addAttribute("dto", dto);
+		model.addAttribute("main", "faq/faqdetail");
 		
-		return "customercenter/faq/faqdetail";
+		return "customercenter/main";
 	}
 
-	
+
 	@GetMapping("faqanswer.do")
 	public String faqanswer(int seq, Model model) {
 		System.out.println("FaqController faqanswer() " + new Date());
 		
 		FaqDto dto = service.faqdetail(seq);		
 		model.addAttribute("faqdto", dto);
+		model.addAttribute("main", "faq/faqanswer");
 		
-		return "customercenter/faq/faqanswer";
+		return "customercenter/main";
 	}
 	
 	@PostMapping("faqanswerAf.do")
@@ -101,8 +111,9 @@ public class FaqController {
 		
 		FaqDto dto = service.faqdetail(seq);		
 		model.addAttribute("dto", dto);
+		model.addAttribute("main", "faq/faqupdate");
 		
-		return "customercenter/faq/faqupdate";
+		return "customercenter/main";
 	}
 	
 	@GetMapping("faqupdateAf.do")

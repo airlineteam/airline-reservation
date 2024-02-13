@@ -78,20 +78,10 @@ footer{
 </head>
 <body>
 
-<header>
-<a href="home.do">
-      <img src="images/logo.png" style="height: 100px">
-</a>
-</header>
-
-<nav>
-	<jsp:include page="../navi.jsp" flush="false"/>
-</nav>
-
 <br/>
 
 <div class="center">
-
+<br/> <h2>자주 묻는 질문</h2> <br/>
 <table class="table table-hover">
 <col width="70"/><col width="550"/><col width="100"/><col width="200"/>
 <thead>

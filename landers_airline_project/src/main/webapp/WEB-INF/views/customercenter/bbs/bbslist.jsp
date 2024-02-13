@@ -55,43 +55,15 @@ tr{
 	line-height: 12px;
 }
 
-header, main, footer{
-	margin: 0 auto;
-	width: 1400px;
-	text-align: center;
-}
-main{
-	text-align: left;
-}
-
-header{	
-	height: 100px;
-	background-color: #ffffff;
-}
-footer{	
-	height: 100px;
-	background-color: #eeeeee;
-} 
-
 </style>
 
 </head>
 <body>
 
-<header>
-<a href="home.do">
-      <img src="images/logo.png" style="height: 100px">
-</a>
-</header>
-
-<nav>
-	<jsp:include page="../navi.jsp" flush="false"/>
-</nav>
-
 <br/>
 
 <div class="center">
-
+<br/> <h2>공지사항</h2> <br/>
 <table class="table table-hover">
 <col width="70"/><col width="550"/><col width="100"/><col width="200"/>
 <thead>
