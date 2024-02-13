@@ -87,7 +87,7 @@
         );
     }
     function generateRandomMerchantUid() {
-        // You can customize this function based on your requirements
+
         return "merchant_" + Math.floor(Math.random() * 1000000);
     }
 
@@ -115,7 +115,7 @@
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         margin-top: 20px; /* Add margin to the top */
-        max-width: 600px; /* Adjust the max-width as per your design */
+        max-width: 1000px; /* Adjust the max-width as per your design */
         margin: 0 auto; /* Center the container */
     }
 
