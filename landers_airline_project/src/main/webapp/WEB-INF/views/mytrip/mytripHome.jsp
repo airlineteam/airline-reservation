@@ -63,7 +63,8 @@ th, td{
 		month = 1;
 		year++;
 	}
-	
+
+	System.out.println(year + " " + month);
 	System.out.println(year + " " + month);
 	cal.set(year, month-1, 1);
 	

@@ -1,6 +1,9 @@
 package com.landers.airline.controller;
 
 import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.landers.airline.dto.RefundDto;
+import com.landers.airline.dto.TicketDto;
 import com.landers.airline.dto.UserDto;
 import com.landers.airline.service.MyPageService;
 
@@ -35,9 +40,10 @@ public class MyPageController {
 		UserDto mylist = service.mylist(user_id);
 		
 		model.addAttribute("mylist",mylist);
+		model.addAttribute("main", "mypageHome");
 
 		
-		return "mypage/mypageHome";
+		return "mypage/main";
 	}
 	
 	
@@ -69,18 +75,75 @@ public class MyPageController {
 		 return "message";
 	}
 	 
+	/*
+	 * @GetMapping("userDelete.do") public String userDelete(String user_id) {
+	 * System.out.println("mypageController userDelete()" + new Date());
+	 * 
+	 * boolean isS = service.userDelete(user_id); if(isS) {
+	 * System.out.println("회원이 삭제 성공."); }else { System.out.println("회원 삭제 실패."); }
+	 * 
+	 * return "mainpage/home"; }
+	 */
+	 
 	 @GetMapping("userDelete.do")
-		public String userDelete(String user_id) {
-			System.out.println("mypageController userDelete()" + new Date());
+	 public String userDelete(String user_id, Model model, HttpServletRequest request) { 
+		 
+		 System.out.println("mypageController userDelete() " + new Date());
+	 
+		 boolean isS = service.userDelete(user_id); 
+		 String deleteMsg = "DELETE_SUCCESS";
+		 if(isS == false) { deleteMsg = "DELETE_FAIL"; }
+		 
+		 model.addAttribute("deleteMsg", deleteMsg);
+		 model.addAttribute("user_id", user_id);
+		 
+		 request.getSession().invalidate(); //Session 삭제
+		 
+	 
+		 return "message";
+	}
+	 
+	 @GetMapping("myTicket.do")
+		public String myTicket(TicketDto dto, Model model) {
+			System.out.println("mypageController TicketList " + new Date());
+			List<TicketDto> list = service.myTicket(dto);
+			System.out.println(list.toString());
 			
-			boolean isS = service.userDelete(user_id);
-			if(isS) {
-				System.out.println("회원이 삭제 성공.");
-			}else {
-				System.out.println("회원 삭제 실패.");
-			}
-			
-			return "mainpage/home";	
+			model.addAttribute("list",list);
+			model.addAttribute("main", "userReservation");
+
+					
+			return "mypage/main"; 
 		}
+	 
+	 @GetMapping("myRefund.do")
+		public String myRefund(RefundDto dto, Model model) {
+			System.out.println("mypageController myRefund " + new Date());
+			List<RefundDto> list = service.myRefund(dto);
+			System.out.println(list.toString());
+			
+			model.addAttribute("list",list);
+			model.addAttribute("main", "userRefund");
+
+					
+			return "mypage/main"; 
+		}
+	 
+	 
+	 @GetMapping("userRefund.do")
+	 public String userRefund(RefundDto dto, Model model, HttpServletRequest request) { 
+		 
+		 System.out.println("mypageController userRefund() " + new Date());
+	 
+		 boolean isS = service.userRefund(dto); 
+		 String refundMsg = "REFUND_SUCCESS";
+		 if(isS == false) { refundMsg = "REFUND_FAIL"; }
+		 
+		 model.addAttribute("refundMsg", refundMsg);
+		 model.addAttribute("user_id", dto);
+		 
+	 
+		 return "message";
+	}
 	 
 }

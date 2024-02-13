@@ -42,6 +42,7 @@ public class MytripController {
 		List<CalendarDto> list = service.insertmytrip(login.getUser_id());
 		
 		System.out.println(list.toString());
+		System.out.println(list.toString());
 	
 		model.addAttribute("main", "mytripHome");
 		

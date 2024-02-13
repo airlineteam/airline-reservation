@@ -5,10 +5,11 @@
 <mapper namespace="mypage">
 
 <!-- 회원정보 삭제 -->
-<delete id="userDelete" parameterType="com.landers.airline.dto.UserDto">
-	delete from user
+<update id="userDelete" parameterType="com.landers.airline.dto.UserDto">
+	update user 
+	set user_role = 9
 	where user_id=#{user_id}
-</delete>
+</update>
 
 <update id="userUpdate" parameterType="com.landers.airline.dto.UserDto">
 	update user 
@@ -21,6 +22,31 @@
 	from user   
 	where user_id=#{user_id}
 </select>
+
+<select id="myTicket" parameterType="com.landers.airline.dto.TicketDto" resultType="com.landers.airline.dto.TicketDto">
+    select user_id, schedule_id, final_price, final_date, flight_id, seat_id
+	from ticket
+	where user_id=#{user_id}
+</select>
+
+<select id="myRefund" parameterType="com.landers.airline.dto.RefundDto" resultType="com.landers.airline.dto.RefundDto">
+    select user_id, ticket_id, content
+	from refund
+	where user_id=#{user_id}
+</select>
+
+<update id="userRefund" parameterType="com.landers.airline.dto.RefundDto">
+	update refund
+	set content = #{content}
+	where user_id = #{user_id}
+</update>
+
+
+
+<!-- <insert  id="myRefund" parameterType="com.landers.airline.dto.RefundDto">
+    insert into refund (refund_id, user_id, ticket_id, content, refund_status)
+	values(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_address}, 1)
+</insert> -->
 
 <!-- 회원정보변경.
 <update id="updateInfo" parameterType="com.landers.airline.dto.MypageDto">

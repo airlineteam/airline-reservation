@@ -21,16 +21,40 @@
 .center{
 	margin: auto;
 	width: 400px;
-	border: 1px solid #a1a1a1;
-	padding: 10px;
-	border-radius: 30px;
+	text-align: center;
 }
+th{
+	background: #e0757d;
+	color: white;
+}
+tr{
+	line-height: 12px;
+}
+
+header, main, footer{
+	margin: 0 auto;
+	text-align: center;
+}
+main{
+	text-align: left;
+}
+
+header{	
+	height: 100px;
+	background-color: #ffffff;
+}
+footer{	
+	height: 100px;
+	background-color: #eeeeee;
+} 
+
+
+
 </style>
 
 </head>
 <body>
 
-<h2>마이페이지</h2>
 
 <div class="center">
 
@@ -71,18 +95,20 @@
 <tr>
 	<td colspan="2">
 		<div align="center">
-			<input type="submit" class="btn btn-primary" value="수정">
-			<button type="button" class="btn btn-primary"  onclick="deleteUser(<%= mylist.getUser_id()%>)">삭제</button>
+			<input type="submit" class="btn btn-danger" value="수정">
+			<button type="button" class="btn btn-danger"  onclick="deleteUser('<%=mylist.getUser_id()%>')">삭제</button>
 		</div>
 	</td>
 </tr>
 </table>
+
+
 </form>
 </div>
 
 <script type="text/javascript">
 
-function deleteUser() {
+function deleteUser(user_id) {
 	location.href = "userDelete.do?user_id=" + user_id;
 }
 </script>
