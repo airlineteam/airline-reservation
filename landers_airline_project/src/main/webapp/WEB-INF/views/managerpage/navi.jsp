@@ -27,7 +27,7 @@
         </li>
                       
         <li class="nav-item">
-          <a class="nav-link" href="" style="color: white">고객문의관리</a>
+          <a class="nav-link" href="mqnalist.do" style="color: white">고객문의관리</a>
         </li>
         
       </ul>

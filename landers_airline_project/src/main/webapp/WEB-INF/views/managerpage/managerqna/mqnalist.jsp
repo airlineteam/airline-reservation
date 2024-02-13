@@ -1,19 +1,19 @@
-<%@page import="com.landers.airline.dto.QnaParam"%> 
-<%@page import="com.landers.airline.dto.QnaDto"%>
-<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
-<%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="util.BbsUtil"%>
+<%@page import="com.landers.airline.dto.ManagerQnaParam"%>
+<%@page import="com.landers.airline.dto.ManagerQnaDto"%>
 <%@page import="java.util.List"%>
+<%@page import="com.landers.airline.dto.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 
 <%
 	UserDto login = (UserDto)session.getAttribute("login");
 
-	List<QnaDto> list = (List<QnaDto>)request.getAttribute("list");
-	int pageQna = (Integer)request.getAttribute("pageQna");
+	List<ManagerQnaDto> list = (List<ManagerQnaDto>)request.getAttribute("list");
+	int mpageQna = (Integer)request.getAttribute("mpageQna");
 	
-	QnaParam param = (QnaParam)request.getAttribute("param");
+	ManagerQnaParam param = (ManagerQnaParam)request.getAttribute("param");
 	int pageNumber = param.getPageNumber();
 	String choice = param.getChoice();	
 	String search = param.getSearch();
@@ -22,9 +22,7 @@
 		choice = "start";
 	}
 
-%>    
-   
-<!DOCTYPE html>
+%>   
 <html>
 <head>
 <meta charset="UTF-8">
@@ -68,6 +66,8 @@ header{
 	height: 100px;
 	background-color: #ffffff;
 }
+
+
 footer{	
 	height: 100px;
 	background-color: #eeeeee;
@@ -79,8 +79,10 @@ footer{
 <body>
 
 
+
+<br/>
+
 <div class="center">
-<br/> <h2>Q & A 게시판</h2> <br/>
 
 <table class="table table-hover">
 <col width="70"/><col width="550"/><col width="100"/><col width="100"/><col width="200"/>
@@ -99,15 +101,15 @@ if(list == null || list.size() == 0){
 	<%
 }else{
 	for(int i = 0;i < list.size(); i++){
-		QnaDto qna = list.get(i);
+		ManagerQnaDto qna = list.get(i);
 		%>
 		<tr>
 			<td><%=list.size() - i %></td>
 			<td style="text-align: left;">
 			<%
 			if(qna.getDel() == 0){
-				%>
-				<a href="qnadetail.do?seq=<%=qna.getSeq() %>">
+				%>			
+				<a href="mqnadetail.do?seq=<%=qna.getSeq() %>">
 				<%
 				if(qna.getDepth() == 0){
 					%>	
@@ -124,7 +126,7 @@ if(list == null || list.size() == 0){
 			}else{
 				%>	
 				<%=BbsUtil.arrow(qna.getDepth()) %>
-				<font color="#ff0000">***** 이 글은 작성자에 의해서 삭제되었습니다 *****</font>	
+				<font color="#ff0000">***** 이 글은 관리자에 의해서 삭제되었습니다 *****</font>	
 				<%
 			}
 			%>
@@ -169,19 +171,13 @@ if(list == null || list.size() == 0){
 
 <%
 if (login != null) {
-%>	
-    <button type="button" class="btn btn-primary" onclick="writeQna()" style="background-color: #9A161F; border-color: #9A161F">
-        글쓰기
-    </button>
-<%
+
 }
 %>
 </div>
 
 <script type="text/javascript">
-function writeQna() {
-	location.href = "qnawrite.do";
-}
+
 
 let search = "<%=search %>";
 if(search != null){
@@ -194,13 +190,13 @@ function searchBtn() {
 	let choice = document.getElementById("choice").value;
 	let search = document.getElementById("search").value;
 	
-	location.href = "qnalist.do?choice=" + choice + "&search=" + search;
+	location.href = "mqnalist.do?choice=" + choice + "&search=" + search;
 }
 
 
 $("#pagination").twbsPagination({
 	startPage: <%=pageNumber+1 %>,
-	totalPages: <%=pageQna %>,
+	totalPages: <%=mpageQna %>,
 	visiblePages: 10,
 	first: '<span sris-hidden="true">«</span>',
 	prev:"이전",
@@ -212,15 +208,10 @@ $("#pagination").twbsPagination({
 		let choice = document.getElementById("choice").value;
 		let search = document.getElementById("search").value;
 		
-		location.href = "qnalist.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1);
+		location.href = "mqnalist.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1);
 	}	
 });
 </script>
 
 </body>
 </html>
-
-
-
-
-

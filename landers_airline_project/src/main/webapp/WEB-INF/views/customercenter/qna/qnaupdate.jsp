@@ -1,5 +1,8 @@
+
+<%@page import="com.landers.airline.dto.QnaDto"%> 
 <%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="com.landers.airline.dto.QnaDto"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 

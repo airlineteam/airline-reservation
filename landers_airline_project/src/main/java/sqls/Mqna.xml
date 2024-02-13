@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+
+<mapper namespace="managerqna">
+
+<select id="qnalist"
+	 	parameterType="com.landers.airline.dto.ManagerQnaParam"
+			resultType="com.landers.airline.dto.ManagerQnaDto">
+	select seq, id, ref, step, depth, 
+			title, content, wdate, del, readcount, category
+	from qna
+	<if test="choice != null and choice != '' and search != null and search != ''">
+		<if test="choice == 'title'">
+			where title like concat('%', #{search}, '%')
+		</if>
+		<if test="choice == 'content'">
+			where content like concat('%', #{search}, '%')
+		</if>
+		<if test="choice == 'writer'">
+			where id=#{search}
+		</if>
+	</if>
+	order by ref desc, step asc
+	limit ${(pageNumber * 10)}, 10
+</select>
+
+<!-- 글의 총수 -->
+<select id="allqna" parameterType="com.landers.airline.dto.ManagerQnaParam" resultType="Integer">
+	select count(*)
+	from qna
+	<if test="choice != null and choice != '' and search != null and search != ''">
+		<if test="choice == 'title'">
+			where title like concat('%', #{search}, '%')
+		</if>
+		<if test="choice == 'content'">
+			where content like concat('%', #{search}, '%')
+		</if>
+		<if test="choice == 'writer'">
+			where id=#{search}
+		</if>
+	</if>
+</select>
+
+<select id="qnadetail" parameterType="Integer" resultType="com.landers.airline.dto.ManagerQnaDto">
+	select seq, id, ref, step, depth, title, content, wdate, del, readcount, category
+	from qna
+	where seq=#{seq}
+</select>
+
+<!-- 삭제 -->
+<update id="qnadelete" parameterType="Integer">
+	update qna
+	set del=1
+	where seq=#{seq}
+</update>
+
+</mapper>

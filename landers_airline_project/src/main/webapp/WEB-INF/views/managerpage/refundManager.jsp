@@ -44,7 +44,7 @@
 <div class="table-responsive">
     <table class="table table-hover" id="refundTable">
 
-    <table border="1" id="refundTable">
+
 
         <tr>
             <th>환불번호</th>
@@ -70,7 +70,7 @@
                 <a class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" 
                 href="refundAf.do?refund_id=<%=dto.getRefund_id()%>">승인하기</a>
 
-                <a href="refundAf.do?refund_id=<%=dto.getRefund_id()%>">승인하기</a>
+            
 
             </td>
         </tr>
@@ -78,12 +78,11 @@
             }
         %>
     </table>
-
-</div>
+<div>
     <button class="btn btn-outline-secondary" onclick="deleteApprovedRefunds()">승인된 데이터 가리기</button>
+</div>
 
 
-    <button onclick="deleteApprovedRefunds()">승인된 데이터 삭제</button>
 
 </body>
 </html>
