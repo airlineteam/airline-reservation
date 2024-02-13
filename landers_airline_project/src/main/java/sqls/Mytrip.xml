@@ -3,13 +3,11 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mytrip">
-
-<select id="insertmytrip" parameterType="com.landers.airline.dto.CalendarDto" resultType="com.landers.airline.dto.UserDto">
-select c.calendar_id,c.ticket_id, c.title, c.content, c.wdate, t.user_id
+<select id="insertmytrip" parameterType="String" resultType="com.landers.airline.dto.CalendarDto">
+select c.calendar_id as calendar_id, c.ticket_id as ticket_id, c.title as title, c.content as content, c.wdate as wdate
 		from calendar c
         inner join ticket t 
         on c.ticket_id = t.ticket_id
-        where t.user_id = #{t.user_id};
+        where t.user_id = #{user_id}
 </select>
-
 </mapper>

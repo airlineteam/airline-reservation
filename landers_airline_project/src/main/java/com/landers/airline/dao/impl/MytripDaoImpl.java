@@ -18,42 +18,8 @@ public class MytripDaoImpl implements MytripDao{
 	SqlSession session;
 
 	@Override
-	public List<CalendarDto> calendarlist(CalendarDto dto) {
-		return session.selectList("mytrip.calendarlist", dto);
+	public List<CalendarDto> insertmytrip(String user_id) {
+		return session.selectList("mytrip.insertmytrip", user_id);
 	}
 
-	@Override
-	public String pp(CalendarDto dto) {
-		return session.selectOne("pp", dto);
-	}
-
-	@Override
-	public String p(CalendarDto dto) {
-		return session.selectOne("p", dto);
-	}
-
-	@Override
-	public String nn(CalendarDto dto) {
-		return session.selectOne("nn", dto);
-	}
-
-	@Override
-	public String n(CalendarDto dto) {
-		return session.selectOne("n", dto);
-	}
-
-	@Override
-	public int year(CalendarDto dto) {
-		return session.insert("year", dto);
-	}
-
-	@Override
-	public int month(CalendarDto dto) {
-		return session.insert("month", dto);
-	}
-
-	@Override
-	public int dayOfWeek(CalendarDto dto) {
-		return session.insert("dayOfWeek", dto);
-	}
 }
