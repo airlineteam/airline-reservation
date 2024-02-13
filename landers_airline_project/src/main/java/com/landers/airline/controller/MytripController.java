@@ -32,22 +32,22 @@ public class MytripController {
 		
 		return "mytrip/main";
 	}
-//	
-//	@PostMapping("calendarlist.do")
-//	public String calendarlist(Model model, HttpSession session) {
-//		System.out.println("MytripController calendarlist() " + new Date());
-//		
-//		UserDto login = (UserDto)session.getAttribute("login");
-//
-//		List<CalendarDto> list = service.insertmytrip(login.getUser_id());
-//		
-//		System.out.println(list.toString());
-//		
-//		model.addAttribute("main", "mytripHome");
-//		
-//		model.addAttribute("list", list);
-//				
-//		return "mytrip/main";
-//	}
+	
+	@PostMapping("calendarlist.do")
+	public String calendarlist(Model model, HttpSession session) {
+		System.out.println("MytripController calendarlist() " + new Date());
+		
+		UserDto login = (UserDto)session.getAttribute("login");
+
+		List<CalendarDto> list = service.insertmytrip(login.getUser_id());
+		
+		System.out.println(list.toString());
+	
+		model.addAttribute("main", "mytripHome");
+		
+		model.addAttribute("list", list);
+				
+	return "mytrip/main";
+	}
 
 }

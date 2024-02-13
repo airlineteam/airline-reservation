@@ -97,14 +97,16 @@ public class ReservationController {
 	
 	@RequestMapping(value = "payresult.do", method = RequestMethod.GET)
 	public String payresult(@RequestParam(value = "selectedSeats") List<String> selectedSeats,
-	                         @RequestParam(value = "flight_id") int flight_id, Model model,
-	                         TicketDto dto, String final_prcie) {
+	                         @RequestParam(value = "flight_id") int flight_id, 
+	                         @RequestParam(value = "final_price") String final_price,
+	                         Model model,
+	                         TicketDto dto) {
 		
 		 for (String string : selectedSeats) {
 		    	System.out.println("string : "+string);
 			}
 		 System.out.println(flight_id);
-		 System.out.println(final_prcie);
+		 System.out.println(final_price);
 		 
 		 
 		 int count = service.seatselect(selectedSeats,flight_id);
@@ -117,7 +119,8 @@ public class ReservationController {
 		// TicketDto ticket = service.ticketinfo(flight_id);
 		 
 		// model.addAttribute("ticket",ticket);
-		 model.addAttribute("final_price", final_prcie);
+		 model.addAttribute("selectedSeats", selectedSeats);
+		 model.addAttribute("final_price", final_price);
 		 model.addAttribute("flight",flight);
 		 model.addAttribute("main", "payresult");
 		 

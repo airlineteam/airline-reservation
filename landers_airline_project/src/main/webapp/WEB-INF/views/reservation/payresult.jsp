@@ -1,3 +1,5 @@
+<%@page import="com.landers.airline.dto.SeatDto"%>
+<%@page import="java.util.List"%>
 <%@page import="com.landers.airline.dto.TicketDto"%>
 <%@page import="utill.date_util"%>
 <%@page import="com.landers.airline.dto.UserDto"%>
@@ -8,6 +10,7 @@
 	FlightinfoDto flight = (FlightinfoDto)request.getAttribute("flight");
 	UserDto login = (UserDto)session.getAttribute("login");
 	String final_price = (String)request.getAttribute("final_price");
+	List<SeatDto> selectedSeats = (List<SeatDto>)request.getAttribute("selectedSeats");
 %>
 
 <!DOCTYPE html>
@@ -256,7 +259,7 @@
                                         </div>
                                         <!-- /.ticket-title -->
                                         <div class="ticket-info">
-                                            <%=final_price %>
+                                            <%=final_price %>원
                                         </div>
                                         <!-- /.ticket-info -->
                                     </td>
@@ -275,7 +278,13 @@
                                         </div>
                                         <!-- /.ticket-title -->
                                         <div class="ticket-info">
-                                            Showroom + VIP access
+                                            <%for(int i = 0; i < selectedSeats.size(); i++) {
+                                            	SeatDto seat = selectedSeats.get(i);
+                                            	%>
+                                            	<%=seat.getSeat_name() %>
+                                            	<% 
+                                            }
+                                            %>
                                         </div>
                                         <!-- /.ticket-info -->
                                     </td>

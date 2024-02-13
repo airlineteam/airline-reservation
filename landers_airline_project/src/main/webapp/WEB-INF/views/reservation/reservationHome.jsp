@@ -411,7 +411,7 @@ button, input[type=password], input[type=text], select, textarea {
 				var arrivalAutocompleteList = document
 						.getElementById("arrival-autocomplete-list");
 
-				var airportNames = [ "인천", "제주", "김해", "김포" ];
+				var airportNames = [ "인천", "제주", "김해", "김포", "양양", "청주", "대구", "무안" ];
 
 				function autocomplete(input, autocompleteList, airportList) {
 					autocompleteList.innerHTML = '';
