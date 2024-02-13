@@ -55,20 +55,22 @@ if (selectedSeats == null) {
 
         .seat:hover {
             transform: scale(1.1);
-            background-color: lightgray;
+            background-color: #c95f66;
             color: white;
             border-color: #2980b9;
         }
+        
+      
 
         .selected {
-            background-color: #2ecc71;
+            background-color: #9A161F;
             color: white;
             border-color: #27ae60;
         }
 
         .unavailable {
-            background-color: #9A161F;
-            color: white;
+            background-color: lightgray;
+            color: black;
             cursor: not-allowed;
             border-color: #c0392b;
         }
@@ -111,6 +113,7 @@ if (selectedSeats == null) {
                     <% } %>
                 </div>
                 <input type="hidden" name="flightId" value="<%= flightId %>">
+                <input type="hidden" name="person_num" value="<%= personNum %>">
                 <button type="submit" class="btn btn-danger btn-submit">선택 완료</button>
             </form>
         </div>

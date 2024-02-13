@@ -25,11 +25,11 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="" style="color: white">FAQ</a>
+          <a href="faqlist.do" class="nav-link" href="" style="color: white">FAQ</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="" style="color: white">Q&A</a>
+          <a href="qnalist.do" class="nav-link" href="" style="color: white">Q&A</a>
         </li>
         
       </ul>

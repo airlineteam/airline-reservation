@@ -12,6 +12,7 @@ import com.landers.airline.dao.ReservationDao;
 import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
+import com.landers.airline.dto.TicketDto;
 
 
 @Repository
@@ -36,8 +37,26 @@ public class ReservationDaoImpl implements ReservationDao {
 	}
 	
 	@Override
-	public int seatselect(@Param("seatName") String seatName, @Param("flightId") int flightId) {
-	    return session.update("seatselect", Map.of("seatName", seatName, "flightId", flightId));
+	public int seatselect(@Param("seatName") String seatName, @Param("flight_id") int flight_id) {
+	    return session.update("seatselect", Map.of("seatName", seatName, "flight_id", flight_id));
 	}
+	
+
+	@Override
+	public FlightinfoDto flightInfo(int flight_id) {
+		return session.selectOne("reservation.flightInfo",flight_id);
+	}
+
+	@Override
+	public int ticket(TicketDto dto) {
+		return session.insert("reservation.ticket",dto);
+	}
+
+	@Override
+	public TicketDto ticketinfo(int flight_id) {
+		return session.selectOne("reservation.ticketinfo", flight_id);
+	}
+	
+	
 
 }

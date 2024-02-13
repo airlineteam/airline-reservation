@@ -1,10 +1,25 @@
+
 <%@page import="com.landers.airline.dto.QnaDto"%> 
+<%@page import="com.landers.airline.dto.UserDto"%>
+<%@page import="com.landers.airline.dto.QnaDto"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
 QnaDto dto = (QnaDto)request.getAttribute("dto");
-System.out.println(dto.toString());
+UserDto login = (UserDto)session.getAttribute("login");
+
+// 본인 QnA만 수정 가능 !
+if ( login == null || !login.getUser_id().equals(dto.getId()) ) {
+%>
+    <script type="text/javascript">
+        alert('본인 글만 수정할 수 있습니다!');
+        location.href = "qnalist.do";
+    </script>
+<%
+    return; // 페이지 렌더링 중지
+}
 %>    
     
 <!DOCTYPE html>

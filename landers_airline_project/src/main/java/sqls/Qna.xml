@@ -85,6 +85,21 @@
 	where seq=#{seq}
 </update>
 
+<!-- 댓글 -->
+<!-- 댓글추가 -->
+<insert id="commentWrite" parameterType="com.landers.airline.dto.QnaComment">
+	insert into qnacomment(seq, id, content, wdate)
+	values(#{seq}, #{id}, #{content}, now())
+</insert>
+
+<!-- 댓글목록 -->
+<select id="commentList" parameterType="Integer" resultType="com.landers.airline.dto.QnaComment">
+	select seq, id, content, wdate
+	from qnacomment 
+	where seq=#{seq}
+	order by wdate desc;
+</select>
+
 </mapper>
 
 
