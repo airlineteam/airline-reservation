@@ -36,8 +36,6 @@ th, td{
 <body>
 
 <h1>일정관리</h1>
-<br/>
-
 <%
 	Calendar cal = Calendar.getInstance();
 	cal.set(Calendar.DATE, 1);
