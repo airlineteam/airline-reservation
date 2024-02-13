@@ -28,10 +28,11 @@
 
 header, main, footer{
 	margin: 0 auto;
-	width: 1400px;
+	width: 1700px;
 	text-align: center;
 }
 main{
+	height : 800px;
 	text-align: left;
 }
 
@@ -40,7 +41,7 @@ header{
 	background-color: #ffffff;
 }
 footer{	
-	height: 100px;
+	height: 350px;
 	background-color: #eeeeee;
 } 
 </style>

@@ -4,7 +4,18 @@
 
 <%
 	UserDto login = (UserDto)session.getAttribute("login");
-%>    
+
+	// 본인 QnA만 확인 가능 !
+	if ( login == null ) {
+	%>
+	    <script type="text/javascript">
+	        alert('로그인이 필요합니다.');
+	        location.href = "login.do";
+	    </script>
+	<%
+	    return; // 페이지 렌더링 중지
+	}
+%>  
     
 <!DOCTYPE html>
 <html>

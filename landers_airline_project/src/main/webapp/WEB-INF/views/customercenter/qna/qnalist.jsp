@@ -1,4 +1,4 @@
-<%@page import="com.landers.airline.dto.QnaParam"%>
+<%@page import="com.landers.airline.dto.QnaParam"%> 
 <%@page import="com.landers.airline.dto.QnaDto"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.landers.airline.dto.UserDto"%>
@@ -78,19 +78,9 @@ footer{
 </head>
 <body>
 
-<header>
-<a href="home.do">
-      <img src="images/logo.png" style="height: 100px">
-</a>
-</header>
-
-<nav>
-	<jsp:include page="../navi.jsp" flush="false"/>
-</nav>
-
-<br/>
 
 <div class="center">
+<br/> <h2>Q & A 게시판</h2> <br/>
 
 <table class="table table-hover">
 <col width="70"/><col width="550"/><col width="100"/><col width="100"/><col width="200"/>
@@ -116,7 +106,7 @@ if(list == null || list.size() == 0){
 			<td style="text-align: left;">
 			<%
 			if(qna.getDel() == 0){
-				%>			
+				%>
 				<a href="qnadetail.do?seq=<%=qna.getSeq() %>">
 				<%
 				if(qna.getDepth() == 0){

@@ -14,11 +14,12 @@ public interface MyPageDao {
 	int userDelete(String user_id);
 	
 	int userUpdate(UserDto dto);
-	
+
 	List<TicketDto> myTicket(TicketDto dto);
 	
 	List<RefundDto> myRefund(RefundDto dto);
 	
 	int userRefund(RefundDto dto);
+
 
 }

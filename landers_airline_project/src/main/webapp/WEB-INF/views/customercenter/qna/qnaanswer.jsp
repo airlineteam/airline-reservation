@@ -1,11 +1,23 @@
 <%@page import="com.landers.airline.dto.UserDto"%>
-<%@page import="com.landers.airline.dto.QnaDto"%>
+<%@page import="com.landers.airline.dto.QnaDto"%> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
 	QnaDto dto = (QnaDto)request.getAttribute("qnadto");
+	UserDto login = (UserDto)session.getAttribute("login");
+
+    // login.getUser_role() 값이 0(관리자)이 아니면 사용 불가 !
+    if (login == null || login.getUser_role() != 0) {
 %>
+        <script type="text/javascript">
+            alert('관리자만 접근 가능합니다!');
+            location.href = "qnalist.do";
+        </script>
+<%
+        return; // 페이지 렌더링 중지
+    }
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,9 +79,6 @@ pre{
 </tr>
 </table>
 
-<%
-	UserDto login = (UserDto)session.getAttribute("login");
-%>
 
 <hr/>
 <br/>

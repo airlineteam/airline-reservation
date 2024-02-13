@@ -1,5 +1,12 @@
+<%@page import="com.landers.airline.dto.UserDto"%>
+<%@page import="com.landers.airline.dto.QnaDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%
+QnaDto dto = (QnaDto)request.getAttribute("dto");
+UserDto login = (UserDto)session.getAttribute("login");
+%>  
 
 <%
 // 회원가입
@@ -228,10 +235,12 @@ if(qnaupdateMsg.equals("UPDATE_SUCCESS")){
 }
 }
 
+	
 // 공지사항 글 삭제
 String bbsdeleteMsg = (String)request.getAttribute("bbsdeleteMsg");
+
 if(bbsdeleteMsg != null && bbsdeleteMsg.equals("") == false){
-	if(bbsdeleteMsg.equals("DELETE_SUCCESS")){
+	if(bbsdeleteMsg.equals("DELETE_SUCCESS") && login.getUser_role() == 0){
 		%>
 		<script type="text/javascript">
 		alert("글이 성공적으로 삭제되었습니다");
@@ -242,7 +251,7 @@ if(bbsdeleteMsg != null && bbsdeleteMsg.equals("") == false){
 		Integer seq = (Integer)request.getAttribute("seq");
 		%>
 		<script type="text/javascript">
-		alert("글이 삭제되지 않았습니다");
+		alert("글 삭제는 관리자에게만 허용됩니다!");
 		location.href = "./bbslist.do?seq=" + <%=seq %>;
 		</script>
 		<%
@@ -252,7 +261,7 @@ if(bbsdeleteMsg != null && bbsdeleteMsg.equals("") == false){
 //	FAQ 글 삭제
 String faqdeleteMsg = (String)request.getAttribute("faqdeleteMsg");
 if(faqdeleteMsg != null && faqdeleteMsg.equals("") == false){
-	if(faqdeleteMsg.equals("DELETE_SUCCESS")){
+	if(faqdeleteMsg.equals("DELETE_SUCCESS") && login.getUser_role() == 0){
 		%>
 		<script type="text/javascript">
 		alert("글이 성공적으로 삭제되었습니다");
@@ -263,7 +272,7 @@ if(faqdeleteMsg != null && faqdeleteMsg.equals("") == false){
 		Integer seq = (Integer)request.getAttribute("seq");
 		%>
 		<script type="text/javascript">
-		alert("글이 삭제되지 않았습니다");
+		alert("글 삭제는 관리자에게만 허용됩니다!");
 		location.href = "./faqlist.do?seq=" + <%=seq %>;
 		</script>
 		<%
@@ -273,7 +282,7 @@ if(faqdeleteMsg != null && faqdeleteMsg.equals("") == false){
 // QnA 글 삭제
 String qnadeleteMsg = (String)request.getAttribute("qnadeleteMsg");
 if(qnadeleteMsg != null && qnadeleteMsg.equals("") == false){
-if(qnadeleteMsg.equals("DELETE_SUCCESS")){
+if(qnadeleteMsg.equals("DELETE_SUCCESS") && login.getUser_id().equals(dto.getId())){
 	%>
 	<script type="text/javascript">
 	alert("글이 성공적으로 삭제되었습니다");
@@ -284,7 +293,7 @@ if(qnadeleteMsg.equals("DELETE_SUCCESS")){
 	Integer seq = (Integer)request.getAttribute("seq");
 	%>
 	<script type="text/javascript">
-	alert("글이 삭제되지 않았습니다");
+	alert("본인 글만 삭제할 수 있습니다!");
 	location.href = "./qnalist.do?seq=" + <%=seq %>;
 	</script>
 	<%

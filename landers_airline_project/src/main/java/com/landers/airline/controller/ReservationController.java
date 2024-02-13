@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
+import com.landers.airline.dto.TicketDto;
 import com.landers.airline.service.ReservationService;
 
 @Controller
@@ -75,18 +76,55 @@ public class ReservationController {
 	
 	@RequestMapping(value = "seatselect.do", method = RequestMethod.POST)
 	public String seatselect(@RequestParam(value = "selectedSeats") List<String> selectedSeats,
-	                         @RequestParam(value = "flightId") int flightId, Model model) {
+	                         @RequestParam(value = "flightId") int flightId, int person_num, Model model) {
 	    for (String string : selectedSeats) {
 	    	System.out.println("string : "+string);
 		}
 	    
+	   //int count = service.seatselect(selectedSeats,flightId);
+	    FlightinfoDto dto = service.flightInfo(flightId);
 	    
-	    int count = service.seatselect(selectedSeats,flightId);
-	    System.out.println(count);
+	   
 	    
+	    model.addAttribute("flightId",flightId);
+	    model.addAttribute("selectedSeats",selectedSeats);
+	    model.addAttribute("person_num",person_num);
 	    model.addAttribute("main", "pay");
+	    model.addAttribute("dto",dto);
 	
 	    return "reservation/main";
+	}
+	
+	@RequestMapping(value = "payresult.do", method = RequestMethod.GET)
+	public String payresult(@RequestParam(value = "selectedSeats") List<String> selectedSeats,
+	                         @RequestParam(value = "flight_id") int flight_id, 
+	                         @RequestParam(value = "final_price") String final_price,
+	                         Model model,
+	                         TicketDto dto) {
+		
+		 for (String string : selectedSeats) {
+		    	System.out.println("string : "+string);
+			}
+		 System.out.println(flight_id);
+		 System.out.println(final_price);
+		 
+		 
+		 int count = service.seatselect(selectedSeats,flight_id);
+		 System.out.println(count);
+		 int ccount = service.ticket(dto);
+		 System.out.println(ccount);
+		 
+		 FlightinfoDto flight = service.flightInfo(flight_id);
+		 
+		// TicketDto ticket = service.ticketinfo(flight_id);
+		 
+		// model.addAttribute("ticket",ticket);
+		 model.addAttribute("selectedSeats", selectedSeats);
+		 model.addAttribute("final_price", final_price);
+		 model.addAttribute("flight",flight);
+		 model.addAttribute("main", "payresult");
+		 
+		 return "reservation/main";
 	}
 
 }

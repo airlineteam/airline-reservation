@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.landers.airline.dao.BbsDao;
-import com.landers.airline.dto.BbsComment;
 import com.landers.airline.dto.BbsDto;
 import com.landers.airline.dto.BbsParam;
 
@@ -38,16 +37,6 @@ public class BbsDaoImpl implements BbsDao{
 	@Override
 	public BbsDto bbsdetail(int seq) {		
 		return session.selectOne(ns + "bbsdetail", seq);
-	}
-
-	@Override
-	public int commentWrite(BbsComment com) {		
-		return session.insert(ns + "commentWrite", com);
-	}
-
-	@Override
-	public List<BbsComment> commentList(int seq) {		
-		return session.selectList(ns + "commentList", seq);
 	}
 	
 	@Override

@@ -1,3 +1,4 @@
+<%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="com.landers.airline.dto.QnaChartDto"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="java.util.Arrays"%>
@@ -17,10 +18,23 @@
 	List<cityChartDto> city = (List<cityChartDto>)request.getAttribute("city");
 	
 	List<QnaChartDto> qna =(List<QnaChartDto>)request.getAttribute("qna");
-	
-
 	 
 %>
+
+<%
+   UserDto login = (UserDto)session.getAttribute("login");
+
+    // login.getUser_role() 값이 0(관리자)이 아니면 사용 불가 !
+    if (login == null || login.getUser_role() != 0) {
+%>
+        <script type="text/javascript">
+            alert('관리자만 접근 가능합니다!');
+            location.href = "home.do";
+        </script>
+<%
+        return; // 페이지 렌더링 중지
+    }
+%>    
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -230,43 +244,50 @@
                 data: salesData,
             }],
         };
-        
+           
 
-        var cityLabels = [];
-        var cityData = [];
-
-        <%
-            // 각 도시의 발생 횟수를 계산하기 위한 맵 생성
-            Map<String, Integer> cityCounts = new HashMap<>();
-            for (cityChartDto cdto : city) {
-                String cityName = cdto.getCityName();
-                int count = cityCounts.getOrDefault(cityName, 0) + 1;
-                cityCounts.put(cityName, count);
-            }
-
-            // 리스트의 각 항목을 반복하여 배열에 추가
-            for (cityChartDto cdto : city) {
-                String cityName = cdto.getCityName();
-                int count = cityCounts.get(cityName);
-        %>
-                // 도시 이름을 배열에 추가하고 중복 횟수를 나타내는 값 설정
-                cityLabels.push('<%= cityName %>');
-                cityData.push(<%= count %>); // 도시의 발생 횟수를 나타내는 값 설정
-        <%
-            }
-        %>
-
-        // 도시 차트 데이터 구성
         var cityChartData = {
-            labels: cityLabels,
-            datasets: [{
-                label: '인기 도시 순위',
-                backgroundColor: '#BDBDBD',
-                borderColor: '#BDBDBD',
-                borderWidth: 1,
-                data: cityData,
-            }],
-        };
+        	    labels: ['인천', '김포', '양양', '청주', '대구', '무안', '김해', '제주'],
+        	    datasets: [{
+        	        label: '인기 도시 순위',
+        	        backgroundColor: '#BDBDBD',
+        	        borderColor: '#BDBDBD',
+        	        borderWidth: 1,
+        	        data: [<%
+        	            // 각 도시에 대한 카운터 초기화
+        	            int incheonCount = 0, gimpoCount = 0, yangyangCount = 0, cheongjuCount = 0;
+        	            int daeguCount = 0, muanCount = 0, gimhaeCount = 0, jejuCount = 0;
+
+        	            // QnaChartDto 목록을 순회하며 카운터 업데이트
+        	            for (cityChartDto cdto:city) {
+        	                String cityName = cdto.getCityName(); // 도시 이름을 가져오는 메서드가 있다고 가정합니다.
+        	                if ("인천".equals(cityName)) {
+        	                    incheonCount++;
+        	                } else if ("김포".equals(cityName)) {
+        	                    gimpoCount++;
+        	                } else if ("양양".equals(cityName)) {
+        	                    yangyangCount++;
+        	                } else if ("청주".equals(cityName)) {
+        	                    cheongjuCount++;
+        	                } else if ("대구".equals(cityName)) {
+        	                    daeguCount++;
+        	                } else if ("무안".equals(cityName)) {
+        	                    muanCount++;
+        	                } else if ("김해".equals(cityName)) {
+        	                    gimhaeCount++;
+        	                } else if ("제주".equals(cityName)) {
+        	                    jejuCount++;
+        	                }
+        	                // 다른 도시에 대한 추가적인 if 문을 필요에 따라 추가합니다.
+        	            }
+
+        	            // 도시 레이블 순서로 카운터 출력
+        	            out.print(incheonCount + ", " + gimpoCount + ", " + yangyangCount + ", " + cheongjuCount + ", " +
+        	                      daeguCount + ", " + muanCount + ", " + gimhaeCount + ", " + jejuCount);
+        	        %>],
+        	    }],
+        	};
+
   
             const customerFeedbackData = {
                 labels: ['문의', '칭찬', '불만'],

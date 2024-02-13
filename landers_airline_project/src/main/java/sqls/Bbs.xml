@@ -72,27 +72,6 @@
 
 
 <!-- 수정 -->
-
-<!-- 삭제 -->
-
-
-<!-- 댓글 -->
-<!-- 댓글추가 -->
-<insert id="commentWrite" parameterType="com.landers.airline.dto.BbsComment">
-	insert into bbscomment(seq, id, content, wdate)
-	values(#{seq}, #{id}, #{content}, now())
-</insert>
-
-<!-- 댓글목록 -->
-<select id="commentList" parameterType="Integer" resultType="com.landers.airline.dto.BbsComment">
-	select seq, id, content, wdate
-	from bbscomment 
-	where seq=#{seq}
-	order by wdate desc;
-</select>
-
-
-<!-- 수정 -->
 <update id="bbsupdate" parameterType="com.landers.airline.dto.BbsDto">
 	update bbs
 	set title=#{title}, content=#{content}, wdate=now()

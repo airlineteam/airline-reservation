@@ -2,7 +2,6 @@ package com.landers.airline.service;
 
 import java.util.List;
 
-import com.landers.airline.dto.BbsComment;
 import com.landers.airline.dto.FaqDto;
 import com.landers.airline.dto.FaqParam;
 

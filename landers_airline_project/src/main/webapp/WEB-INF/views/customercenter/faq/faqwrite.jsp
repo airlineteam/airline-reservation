@@ -4,6 +4,17 @@
 
 <%
 	UserDto login = (UserDto)session.getAttribute("login");
+
+    // login.getUser_role() 값이 0(관리자)이 아니면 사용 불가 !
+    if (login == null || login.getUser_role() != 0) {
+%>
+        <script type="text/javascript">
+            alert('관리자만 접근 가능합니다!');
+            location.href = "faqlist.do";
+        </script>
+<%
+        return; // 페이지 렌더링 중지
+    }
 %>    
     
 <!DOCTYPE html>

@@ -23,10 +23,7 @@
         arrival_airport AS cityName
     FROM
         schedule
-    GROUP BY
-        cityName
-    ORDER BY
-        cityName ASC
+
 	</select>
 	
 	<select id="qnaChart" parameterType="com.landers.airline.dto.QnaChartDto" resultType="com.landers.airline.dto.QnaChartDto">
