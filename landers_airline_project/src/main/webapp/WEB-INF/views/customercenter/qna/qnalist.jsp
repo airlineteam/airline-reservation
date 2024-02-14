@@ -41,18 +41,155 @@
 <script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<!-- pagination 색상 - 회색으로 변경 -->
+<style>
+.page-link {
+  color: #000; 
+  background-color: #fff;
+  border: 1px solid #ccc; 
+}
+
+.page-item.active .page-link {
+ z-index: 1;
+ color: #555;
+ font-weight:bold;
+ background-color: #f1f1f1;
+ border-color: #ccc;
+ 
+}
+
+.page-link:focus, .page-link:hover {
+  color: #000;
+  background-color: #fafafa; 
+  border-color: #ccc;
+}
+</style>
+
+
+
+
 <style type="text/css">
 .center{
 	margin: auto;
 	width: 1000px;
 	text-align: center;
 }
-th{
-	background: #e0757d;
-	color: white;
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
-tr{
-	line-height: 12px;
+
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 200px;
+  margin: auto;
+  max-width: 1000px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#ffffff;
+  background: #a12a32;
+  font-size:18px;
+  font-weight: 100;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  color:#666B85;
+  font-size:15px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#9E9E9E;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#9E9E9E;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:15px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:17px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
 }
 
 header, main, footer{
@@ -69,9 +206,14 @@ header{
 	background-color: #ffffff;
 }
 footer{	
-	height: 100px;
+	height: 350px;
 	background-color: #eeeeee;
 } 
+
+a:hover {
+  text-decoration: none;
+}
+
 
 </style>
 
@@ -82,8 +224,7 @@ footer{
 <div class="center">
 <br/> <h2 style="text-align: left;">Q & A 게시판</h2> <br/>
 
-<table class="table table-hover">
-<col width="70"/><col width="550"/><col width="100"/><col width="100"/><col width="200"/>
+<table class="table-fill" id="refundTable">
 <thead>
 	<tr>
 		<th>번호</th><th>제목</th><th>조회수</th><th>작성자</th><th>등록일</th>
@@ -176,6 +317,7 @@ if (login != null) {
 <%
 }
 %>
+<br/><br/><br/>
 </div>
 
 <script type="text/javascript">
