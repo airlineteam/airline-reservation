@@ -50,7 +50,7 @@ pre{
 <div id="app" class="container">
 <br/>
 
-<h2>상세 글보기</h2>
+
 
 <table class="table table-sm">
 <col width="150px"/><col width="500px"/>
@@ -83,9 +83,9 @@ pre{
 if (login != null && login.getUser_role() == 0) {
 	System.out.println(login.getUser_role());
 %>
-	<button type="button" class="btn btn-primary" onclick="answerQna(<%=dto.getSeq() %>)">답글</button>
-	<button type="button" class="btn btn-primary" onclick="deleteQna(<%=dto.getSeq() %>)">삭제</button>
-<button type="button" class="btn btn-primary" onclick="backToList_Qna()">목록</button>
+	<button type="button" class="btn btn-primary" style=" background-color: #9a161f; border-color: #9a161f" onclick="answerQna(<%=dto.getSeq() %>)">댓글작성하기</button>
+	<button type="button" class="btn btn-primary"  style=" background-color: #9a161f ; border-color: #9a161f" onclick="deleteQna(<%=dto.getSeq() %>)">관리자권한삭제</button>
+<button type="button" class="btn btn-primary" style=" background-color: #9a161f ; border-color: #9a161f" onclick="backToList_Qna()">목록</button>
 <%
 }
 %>
@@ -96,7 +96,7 @@ if (login != null && login.getUser_role() == 0) {
 
 <script type="text/javascript">
 function answerQna( seq ) {
-	location.href = "qnaanswer.do?seq=" + seq;	
+	location.href = "qnadetail.do?seq=" + seq;	
 }
 function updateQna( seq ) {
 	location.href = "qnaupdate.do?seq=" + seq;
