@@ -6,7 +6,17 @@
 <%
 	QnaDto dto = (QnaDto)request.getAttribute("dto");
 	UserDto login = (UserDto)session.getAttribute("login");
-
+	
+	if (login.getUser_id() == null) {
+		%>
+		    <script type="text/javascript">
+		        alert('로그인 후 이용 가능합니다!');
+		        location.href = "login.do";
+		    </script>
+		<%
+		    return; // 페이지 렌더링 중지
+		}
+	
 	// 관리자가 아니면, 본인 QnA만 확인 가능 !
 	if ((login == null || !login.getUser_id().equals(dto.getId())) && login.getUser_role() != 0) {
 	%>
@@ -34,6 +44,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <style type="text/css">
+
+.center{
+	margin: auto;
+	width: 1000px;
+	text-align: center;
+}
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
 th{
 	background: #9A161F;
 	color: white;
@@ -50,11 +74,10 @@ pre{
 </head>
 <body>
 
-
+<div class="center">
 <div id="app" class="container">
-<br/>
 
-<h2>상세 글보기</h2>
+<br/> <h2 style="text-align: left;">Q & A 게시판</h2> <br/>
 
 <table class="table table-sm">
 <col width="150px"/><col width="500px"/>
@@ -102,6 +125,7 @@ if(login.getUser_id().equals(dto.getId())){
 %>
 <button type="button" class="btn btn-primary" onclick="backToList_Qna()">목록</button>
 
+</div>
 </div>
 
 <script type="text/javascript">

@@ -6,8 +6,8 @@ public class BbsUtil {
 	public static String dot3(String title){	
 		String str = "";
 		
-		if(title.length() >= 35){
-			str = title.substring(0, 35);
+		if(title.length() >= 30){
+			str = title.substring(0, 30);
 			str += "...";
 		}else{
 			str = title.trim();
