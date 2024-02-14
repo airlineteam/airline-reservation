@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
+<title>Insert title here</title> -->
+<!-- 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
@@ -15,7 +15,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
-
+ -->
 <style type="text/css">
 .center{
     position: absolute;
@@ -34,10 +34,10 @@
 }
 </style>
 
-</head>
-<body>
+<!-- </head>
+<body> -->
 
-<div class="center">
+<!-- <div class="center"> -->
     <div class="login-header">
         <h2 style="color: #9A161F">LoginPage</h2>
     </div>
@@ -68,7 +68,7 @@
             </tr>
         </table>
     </form>
-</div>
+<!-- </div> -->
 <script>
 	function regi() {
 		location.href = "regi.do";
@@ -99,6 +99,6 @@ $("#chk_save_id").click(function () {
     }       
 });
 </script>
-
+<!-- 
 </body>
-</html>
+</html> -->

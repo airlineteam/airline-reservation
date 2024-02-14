@@ -7,9 +7,9 @@
  if(login != null){
  	System.out.println(login.toString());
  }
+ %>
  
- 
-
+<%
 	String main = (String)request.getAttribute("main");
 	if(main == null || main.equals("")){
 		main = "home";

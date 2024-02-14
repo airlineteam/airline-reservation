@@ -27,9 +27,9 @@ public class LoginController {
 	@GetMapping("login.do")
 	public String login(Model model) {
 		
-		model.addAttribute("main", "login/login");
+		model.addAttribute("main", "login");
 		
-		return "mainpage/main";
+		return "login/main";
 	}
 	
 	
@@ -64,9 +64,9 @@ public class LoginController {
 	public String regi(Model model) {
 		System.out.println("LoginController regi " + new Date());	
 		
-		model.addAttribute("main", "mainpage/login/regi");
+		model.addAttribute("main", "regi");
 		
-		return "mainpage/login/regi";
+		return "login/main";
 	}
 	
 	@PostMapping("regiAf.do")
