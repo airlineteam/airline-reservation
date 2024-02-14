@@ -56,7 +56,7 @@ td {
 	border-top: 12px solid #9A161F;
 	margin: 15px auto 0;
 	padding-bottom: 15px;
-	width: 650px;
+	width: 700px;
 }
 
 .ticket-wrapper:first-child {
@@ -205,7 +205,7 @@ td {
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 10px;
+    margin: 10px;
 }
 .home-button:hover{
 	background-color: #7F0E16;
@@ -220,17 +220,20 @@ td {
 				<td class="first-col">
 					<!-- title -->
 					<div class="ticket-name-div">
-						<span class="ticket-event-longtitle"><%=flight.getDeparture_airport()%>
-							<img alt="#" src="./images/icon_target_arrow.png"> <%=flight.getArrival_airport()%></span>
-					</div> <!-- /.ticket-name-div --> <!-- venue details start -->
+					<img src="./images/logo.png" alt="#" style="width: 200px;height: 50px" />
+					</div> 
 					<div class="ticket-event-details">
 						<table>
 							<tr>
 								<td class="first-col">
 									<div class="ticket-info"><%=date_util.toDates(flight.getDeparture_date()) %></div> <!-- /.ticket-info -->
-									<div class="ticket-title">TIME</div> <!-- /.ticket-title -->
+									<div class="ticket-title">출발시간</div> <!-- /.ticket-title -->
 									<div class="ticket-info">
 										<%=date_util.tooDates(flight.getDeparture_date())%>
+									</div> <!-- /.ticket-info -->
+									<div class="ticket-title">도착시간</div> <!-- /.ticket-title -->
+									<div class="ticket-info">
+										<%=date_util.tooDates(flight.getArrival_date())%>
 									</div> <!-- /.ticket-info -->
 								</td>
 								<!-- /.first-col -->
@@ -289,8 +292,9 @@ td {
 					</div> <!-- /.ticket-ticket-details -->
 				</td>
 				<!-- /.first-col -->
-				<td class="ticket-logo"><img
-					src="./images/logo.png" alt="#" style="width: 100px;height: 50px" /></td>
+				<td class="ticket-logo">
+					<span class="ticket-event-longtitle"><%=flight.getDeparture_airport()%><br/><img alt="#" src="./images/arrow_down.png" style="width: 30px;height: 100px;">
+						<br/><%=flight.getArrival_airport()%></span></td>
 				<!-- /.ticket-logo -->
 			</tr>
 		</table>

@@ -138,9 +138,8 @@
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-top: 20px; /* Add margin to the top */
-        max-width: 1000px; /* Adjust the max-width as per your design */
-        margin: 0 auto; /* Center the container */
+        margin-bottom: 100px; 
+        max-width: 1000px; 
     }
 
     h1 {
