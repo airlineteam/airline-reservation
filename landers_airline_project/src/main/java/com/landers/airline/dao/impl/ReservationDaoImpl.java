@@ -13,6 +13,7 @@ import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.flightParam;
 
 
 @Repository
@@ -56,6 +57,21 @@ public class ReservationDaoImpl implements ReservationDao {
 	public TicketDto ticketinfo(int flight_id) {
 		return session.selectOne("reservation.ticketinfo", flight_id);
 	}
+
+	@Override
+	public int emptynumcount(flightParam param) {
+		return session.update("reservation.emptynum", param);
+	}
+
+	
+
+	
+//	@Override
+//	public List<Integer> searchId(FlightinfoDto dto) {
+//		return session.selectList("reservation.searchId",dto);
+//	}
+
+	
 	
 	
 

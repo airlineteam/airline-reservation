@@ -17,6 +17,7 @@ import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.flightParam;
 import com.landers.airline.service.ReservationService;
 
 @Controller
@@ -39,7 +40,10 @@ public class ReservationController {
 		System.out.println("ReservationController schedule() " + new Date());
 		System.out.println(person_num);
 		List<FlightinfoDto> list = service.flightlist(dto);
-		
+//		List<Integer> flightIds = service.searchId(dto);
+//		for (Integer integer : flightIds) {
+//			System.out.print("flight_id = " + integer);
+//		}
 		System.out.println(list.toString());
 		
 		model.addAttribute("list",list);
@@ -64,7 +68,6 @@ public class ReservationController {
 		
 		boolean isS = service.schedule(dto);
 		List<SeatDto> list = service.seatlist(flight_id);
-		
 		
 		//System.out.println(list.toString());
 		
@@ -98,9 +101,10 @@ public class ReservationController {
 	@RequestMapping(value = "payresult.do", method = RequestMethod.GET)
 	public String payresult(@RequestParam(value = "selectedSeats") List<String> selectedSeats,
 	                         @RequestParam(value = "flight_id") int flight_id, 
+	                         @RequestParam(value = "person_num") int person_num, 
 	                         @RequestParam(value = "final_price") String final_price,
 	                         Model model,
-	                         TicketDto dto) {
+	                         TicketDto dto,flightParam param) {
 		
 		 for (String string : selectedSeats) {
 		    	System.out.println("string : "+string);
@@ -115,6 +119,8 @@ public class ReservationController {
 		 System.out.println(ccount);
 		 
 		 FlightinfoDto flight = service.flightInfo(flight_id);
+		 
+		 int emptynum = service.emptynumcount(param);
 		 
 		// TicketDto ticket = service.ticketinfo(flight_id);
 		 

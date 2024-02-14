@@ -27,7 +27,8 @@ CREATE TABLE flight_info (
     arrival_airport  VARCHAR(255) NOT NULL,         				-- 도착 공항
     departure_date   VARCHAR(255) NOT NULL,         				-- 출발일
     arrival_date   VARCHAR(255) NOT NULL,         					-- 도착일
-    price INT NOT NULL        										-- 기본 가격
+    price INT NOT NULL,        										-- 기본 가격
+    emptynum INT
 );
 
 CREATE TABLE seat (

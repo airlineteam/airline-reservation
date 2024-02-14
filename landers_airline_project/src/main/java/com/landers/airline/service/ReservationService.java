@@ -6,6 +6,7 @@ import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.flightParam;
 
 public interface ReservationService {
 
@@ -22,4 +23,8 @@ public interface ReservationService {
 	int ticket(TicketDto dto);
 	
 	TicketDto ticketinfo(int flight_id);
+	
+	int emptynumcount(flightParam param);
+	
+//	List<Integer> searchId(FlightinfoDto dto);
 }
