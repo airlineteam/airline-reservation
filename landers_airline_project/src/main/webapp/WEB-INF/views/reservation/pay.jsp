@@ -128,7 +128,7 @@
 <title>결제</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
-    body {
+    .cont {
         background-color: #f8f9fa;
         padding-top: 56px; /* Height of the fixed navbar */
     }
@@ -177,10 +177,19 @@
 </style>
 </head>
 <body>
+<div class="cont">
 <div class="container mt-5 custom-container">
     <div class="container mt-5">
-        <h1 class="text-center">결제 페이지입니다!!!</h1>
-
+    <h3 style="text-align: center;">좌석선택이 완료되었습니다. 결제를 진행해주세요</h3>
+    	<div style="display: flex; justify-content: center;">
+    	
+    	<i class="bi bi-credit-card-fill">
+    	<svg xmlns="http://www.w3.org/2000/svg" width="200px" height="100px" fill="currentColor" class="bi bi-credit-card-fill" viewBox="0 0 16 16">
+  			<path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1"/>
+		</svg>
+    	</i>
+    	
+    	</div>
         <form>
             <div class="form-group">
                 <label for="buyerName">아이디:</label>
@@ -225,6 +234,7 @@
            <button type="button" class="custom-btn" onclick="requestPay()">결제하기</button>
         </form>
     </div>
+</div>
 </div>
     <!-- Add Bootstrap JS and Popper.js scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

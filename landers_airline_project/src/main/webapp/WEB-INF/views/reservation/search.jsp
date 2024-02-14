@@ -36,12 +36,12 @@ if(list == null || list.isEmpty()) {
 <style type="text/css">
 .fare-list {
 	margin: auto;
-	margin-top: 8px; /* Adjust the top margin as needed */
-	max-width: 1000px; /* Set a maximum width for the container */
+	max-width: 1000px;
 }
 
-body {
-	color: #333
+.cont {
+	color: #333;
+	background-color: #f8f9fa;
 }
 
 ol, ul, li {
@@ -56,7 +56,7 @@ time, mark, audio, video, p {
 	font-family: inherit;
 	font-weight: inherit;
 	vertical-align: baseline;
-	line-height: 1.5;
+	line-height: 1.0;
 	letter-spacing: -.2px;
 }
 
@@ -215,7 +215,7 @@ html {
 </style>
 </head>
 <body class="text-center">
-	<h1>예약조회완료!</h1>
+	<div class="cont">
 	<div class="container fare-container">
 		<div align="center">
 			<strong><h2><%=info.getDeparture_airport()%>
@@ -287,6 +287,7 @@ html {
 	<%
 	}
 	%>
+	</div>
 	</div>
 </body>
 </html>

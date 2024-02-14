@@ -14,7 +14,7 @@
 <title>항공조회</title>
 
 <style>
-body {
+.cont {
 	background-color: #f8f9fa;
 }
 
@@ -295,7 +295,7 @@ button, input[type=password], input[type=text], select, textarea {
 </head>
 
 <body>
-
+<div class="cont">
 	<div class="container mt-5">
 		<div class="card">
 			<div class="card-body">
@@ -515,7 +515,7 @@ button, input[type=password], input[type=text], select, textarea {
 			}
 		</script>
 	</div>
-
+</div>
 </body>
 
 </html>
