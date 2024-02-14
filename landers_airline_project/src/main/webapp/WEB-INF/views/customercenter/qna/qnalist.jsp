@@ -19,7 +19,7 @@
 	String search = param.getSearch();
 	if(search == null || search.equals("")){
 		search = "";
-		choice = "start";
+		choice = "title";
 	}
 
 %>    
@@ -192,11 +192,6 @@ td.text-right {
   text-align: right;
 }
 
-header, main, footer{
-	margin: 0 auto;
-	width: 1400px;
-	text-align: center;
-}
 main{
 	text-align: left;
 }
@@ -287,14 +282,20 @@ if(list == null || list.size() == 0){
 <div class="container">
     <nav aria-label="Page navigation">
         <ul class="pagination" id="pagination" style="justify-content:center"></ul>
-    </nav>
+        <%
+		if (login != null) {
+		%>	
+		    <button type="button" class="btn btn-primary" onclick="writeQna()" style="background-color: #9A161F; border-color: #9A161F">
+		        글쓰기
+		    </button>
+		<% } %>
+    </nav>   
 </div>
 
 
-<br/>
+<br/><br/>
 <div class="form-row align-items-center d-flex justify-content-center align-items-center container">
 	<select id="choice" class="form-control" style="width:auto;">
-		<option value="start">검색</option>
 		<option value="title">제목</option>
 		<option value="content">내용</option>
 	</select>
@@ -308,15 +309,6 @@ if(list == null || list.size() == 0){
 	</button><br/>
 </div>
 
-<%
-if (login != null) {
-%>	
-    <button type="button" class="btn btn-primary" onclick="writeQna()" style="background-color: #9A161F; border-color: #9A161F">
-        글쓰기
-    </button>
-<%
-}
-%>
 <br/><br/><br/>
 </div>
 

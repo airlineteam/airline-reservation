@@ -42,7 +42,13 @@ public class QnaServiceImpl implements QnaService{
 		int count = dao.commentWrite(com);
 		return count>0?true:false;
 	}
-
+	
+	@Override
+	public boolean commentDelete(int seq) {
+		int count = dao.commentDelete(seq);
+		return count>0?true:false;
+	}
+	
 	@Override
 	public List<QnaComment> commentList(int seq) {		
 		return dao.commentList(seq);

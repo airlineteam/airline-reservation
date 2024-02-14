@@ -13,14 +13,13 @@
 	<if test="choice != null and choice != '' and search != null and search != ''">
 		<if test="choice == 'title'">
 			where title like concat('%', #{search}, '%')
+			and del = 0
 		</if>
 		<if test="choice == 'content'">
 			where content like concat('%', #{search}, '%')
+			and del = 0
 		</if>
-		<if test="choice == 'writer'">
-			where id=#{search}
-		</if>
-	</if>
+	</if>	
 	order by ref desc, step asc
 	limit ${(pageNumber * 10)}, 10
 </select>
@@ -88,15 +87,15 @@
 <!-- 댓글 -->
 <!-- 댓글추가 -->
 <insert id="commentWrite" parameterType="com.landers.airline.dto.QnaComment">
-	insert into qnacomment(seq, id, content, wdate)
-	values(#{seq}, #{id}, #{content}, now())
+	insert into qnacomment(comseq, id, content, wdate)
+	values(#{comseq}, #{id}, #{content}, now())
 </insert>
 
 <!-- 댓글목록 -->
 <select id="commentList" parameterType="Integer" resultType="com.landers.airline.dto.QnaComment">
 	select seq, id, content, wdate
 	from qnacomment 
-	where seq=#{seq}
+	where comseq=#{comseq}
 	order by wdate desc;
 </select>
 

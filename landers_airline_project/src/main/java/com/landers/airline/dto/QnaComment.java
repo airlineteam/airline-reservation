@@ -8,6 +8,7 @@ public class QnaComment implements Serializable{
 	private String id;
 	private String content;
 	private String wdate;
+	private int comseq;
 	
 	public QnaComment() {
 	}
@@ -18,6 +19,7 @@ public class QnaComment implements Serializable{
 		this.id = id;
 		this.content = content;
 		this.wdate = wdate;
+		this.comseq = comseq;
 	}
 
 	public int getSeq() {
@@ -52,9 +54,20 @@ public class QnaComment implements Serializable{
 		this.wdate = wdate;
 	}
 
+	
+	public int getComseq() {
+		return comseq;
+	}
+
+	public void setComseq(int comseq) {
+		this.comseq = comseq;
+	}
+
 	@Override
 	public String toString() {
-		return "QnaComment [seq=" + seq + ", id=" + id + ", content=" + content + ", wdate=" + wdate + "]";
+		return "QnaComment [seq=" + seq + ", id=" + id + ", content=" + content + ", wdate=" + wdate + ", comseq="
+				+ comseq + "]";
 	}
+
 	
 }
