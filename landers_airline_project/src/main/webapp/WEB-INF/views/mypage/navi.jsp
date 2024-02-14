@@ -2,12 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.landers.airline.dto.UserDto"%>
     
- <%
- UserDto login = (UserDto)session.getAttribute("login");
- if(login != null){
- 	System.out.println(login.toString());
- }
- %>
+<%
+	UserDto login = (UserDto)session.getAttribute("login");
+%>
  
 
 <nav class="navbar navbar-light" style="background-color: #9A161F;">
@@ -33,8 +30,6 @@
          <li class="nav-item active">
           <a class="nav-link" href="myTicket.do?user_id=<%=login.getUser_id() %>" style="color: white">예약정보</a>
         </li>
-                      
-        
       </ul>
       
     </div>
