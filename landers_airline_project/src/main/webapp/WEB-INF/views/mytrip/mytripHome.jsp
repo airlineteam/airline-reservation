@@ -71,22 +71,22 @@ th, td{
 	int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 	
 	// <<	year--
-	String pp = String.format("<a href='calendarList.jsp?year=%d&month=%d' style='text-decoration:none'>"
+	String pp = String.format("<a href='calendarlist.jsp?year=%d&month=%d' style='text-decoration:none'>"
 							+ 		"<img src='./images/left.png' width='20px' height='20px'>"
 							+ "</a>",  year-1, month);
 	
 	// <	month--
-	String p = String.format("<a href='calendarList.jsp?year=%d&month=%d' style='text-decoration:none'>"
+	String p = String.format("<a href='calendarlist.jsp?year=%d&month=%d' style='text-decoration:none'>"
 							+ 		"<img src='./images/prev.png' width='20px' height='20px'>"
 							+ "</a>",  year, month-1);
 	
 	// >	month++
-	String n = String.format("<a href='calendarList.jsp?year=%d&month=%d' style='text-decoration:none'>"
+	String n = String.format("<a href='calendarlist.jsp?year=%d&month=%d' style='text-decoration:none'>"
 							+ 		"<img src='./images/next.png' width='20px' height='20px'>"
 							+ "</a>",  year, month+1);
 	
 	// >>	year++
-	String nn = String.format("<a href='calendarList.jsp?year=%d&month=%d' style='text-decoration:none'>"
+	String nn = String.format("<a href='calendarlist.jsp?year=%d&month=%d' style='text-decoration:none'>"
 							+ 		"<img src='./images/last.png' width='20px' height='20px'>"
 							+ "</a>",  year+1, month);
 	

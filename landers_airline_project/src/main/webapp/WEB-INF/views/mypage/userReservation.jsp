@@ -22,8 +22,12 @@
 
 </head>
 <body>
+
 	<table>
 		<tr>
+			<th>
+				티켓번호
+			</th>
 			<th>
 				아이디
 			</th>
@@ -50,6 +54,9 @@
 				%>
 				<tr>
 					<th>
+						<%=dto.getTicket_id() %>
+					</th>
+					<th>
 						<%=dto.getUser_id() %>
 					</th>
 					<th>
@@ -68,7 +75,7 @@
 						<%=dto.getSeat_id() %>
 					</th>
 					<th>
-						<button type="button" class="btn btn-danger"  onclick="myRefund('<%=dto.getUser_id()%>')">환불요청</button>
+						<button type="button" class="btn btn-danger"  onclick="myRefund(<%=dto.getTicket_id() %>)">환불요청</button>
 					</th>
 				</tr>
 				<%		
@@ -78,8 +85,8 @@
 	
 <script type="text/javascript">
 
-function myRefund(user_id) {
-	location.href = "myRefund.do?user_id=" + user_id;
+function myRefund(ticket_id) {
+	location.href = "myRefund.do?ticket_id=" + ticket_id;
 }
 </script>
 

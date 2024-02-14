@@ -1,10 +1,8 @@
 package com.landers.airline.controller;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.landers.airline.dto.CalendarDto;
 import com.landers.airline.dto.UserDto;
 import com.landers.airline.service.MytripService;
-
-import util.CalendarUtil;
 
 @Controller
 public class MytripController {

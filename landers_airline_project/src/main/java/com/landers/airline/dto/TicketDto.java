@@ -2,6 +2,7 @@ package com.landers.airline.dto;
 
 public class TicketDto {
 
+	private  int ticket_id;
 	private String user_id;
 	private  int schedule_id;
 	private int final_price;
@@ -18,14 +19,23 @@ public class TicketDto {
 		this.final_date = final_date;
 	}
 
-	public TicketDto(String user_id, int schedule_id, int final_price, String final_date, int flight_id, int seat_id) {
+	public TicketDto(int ticket_id, String user_id, int schedule_id, int final_price, String final_date, int flight_id, int seat_id) {
 		super();
+		this.ticket_id = ticket_id;
 		this.user_id = user_id;
 		this.schedule_id = schedule_id;
 		this.final_price = final_price;
 		this.final_date = final_date;
 		this.flight_id = flight_id;
 		this.seat_id = seat_id;
+	}
+	
+	public int getTicket_id() {
+		return ticket_id;
+	}
+
+	public void setTicket_id(int ticket_id) {
+		this.ticket_id = ticket_id;
 	}
 
 	public String getUser_id() {

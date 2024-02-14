@@ -53,4 +53,5 @@ public class MyPageServiceImpl implements MyPageService {
 		int count = dao.userRefund(dto);
 		return count>0?true:false;
 	}
+
 }
