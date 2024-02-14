@@ -62,7 +62,7 @@ th {
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-size:18px;
-  font-weight: 100;
+  font-weight: 300;
   padding:20px;
   text-align:left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -122,7 +122,7 @@ td {
   padding:15px;
   text-align:left;
   vertical-align:middle;
-  font-weight:300;
+  font-weight:400;
   font-size:17px;
   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
   border-right: 1px solid #C1C3D1;
