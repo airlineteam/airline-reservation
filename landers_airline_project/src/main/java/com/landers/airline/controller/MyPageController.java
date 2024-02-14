@@ -63,13 +63,15 @@ public class MyPageController {
 	
 	
 	 @PostMapping("userUpdate.do")
-	 public String userUpdate(UserDto dto, Model model) { 
+	 public String userUpdate(UserDto dto, Model model, HttpServletRequest request) { 
 		 
 		 System.out.println("mypageController userUpdate() " + new Date());
 	 
 		 boolean isS = service.userUpdate(dto); 
 		 String updateMsg = "UPDATE_SUCCESS";
 		 if(isS == false) { updateMsg = "UPDATE_FAIL"; }
+		 
+		 request.getSession().invalidate(); //Session 삭제
 		 
 		 model.addAttribute("updateMsg", updateMsg);
 		 model.addAttribute("user_id", dto);

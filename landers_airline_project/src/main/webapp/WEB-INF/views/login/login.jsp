@@ -52,7 +52,7 @@ td{
 
 <!-- <div class="center"> -->
     <div class="login-header">
-        <h2 style="color: #9A161F; margin: 50px auto;">LoginPage</h2>
+        <h2 style="color: #9A161F; margin: 50px auto;">Login</h2>
     </div>
 
     <form action="loginAf.do" method="post">

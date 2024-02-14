@@ -84,21 +84,20 @@ table{
 </form>
 </div>
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $(document).ready(function(){
 	
 	$("#refundBtn").on("click", function () {
 		// 환불사유 첵크
 		if( $("#content").val().trim() === "" ){
-			alert("환불사유를 작성해 주세요.");
-			return;
-		}		
-		
-		$("#frm").submit();
+            alert("환불사유를 작성해 주세요.");
+            return false; // 페이지 넘기지 않음
+        }   
+        $("#frm").submit();
 	});	
 })
 
-</script> -->
+</script>
 
 </body>
 </html>
