@@ -20,12 +20,8 @@ if (selectedSeats == null) {
     <title>좌석 선택</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body {
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-            background-color: #f8f9fa;
-        }
 
+	
         /* White background layout with effects */
         .white-layout {
             background-color: #ffffff;
@@ -60,8 +56,6 @@ if (selectedSeats == null) {
             border-color: #2980b9;
         }
         
-      
-
         .selected {
             background-color: #9A161F;
             color: white;
@@ -87,6 +81,7 @@ if (selectedSeats == null) {
     </style>
 </head>
 <body>
+<div class="cont" style="background-color: #f8f9fa;">
     <div class="white-layout">
         <div class="container text-center mt-5">
             <h2>항공 좌석 선택</h2>
@@ -118,7 +113,7 @@ if (selectedSeats == null) {
             </form>
         </div>
     </div>
-
+</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
