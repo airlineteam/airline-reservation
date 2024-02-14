@@ -14,6 +14,7 @@ public interface QnaService {
 	QnaDto qnadetail(int seq);
 
 	boolean commentWrite(QnaComment com);
+	boolean commentDelete(int seq);
 	List<QnaComment> commentList(int seq);
 	
 	boolean QnaAnswer(QnaDto dto);

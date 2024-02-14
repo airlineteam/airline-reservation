@@ -15,6 +15,7 @@ public interface QnaDao {
 	
 	int commentWrite(QnaComment com);
 	List<QnaComment> commentList(int seq);
+	int commentDelete(int seq);
 
 	void QnaAnswerUpdate(QnaDto dto);
 	int QnaAnswerInsert(QnaDto dto);

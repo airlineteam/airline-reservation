@@ -80,18 +80,25 @@ public class QnaController {
 	}
 
 
+	@ResponseBody
 	@PostMapping("qnaCommentWriteAf.do")
 	public String qnaCommentWriteAf(QnaComment com) {
 		System.out.println("QnaController qnaCommentWriteAf() " + new Date());
 		
 		boolean isS = service.commentWrite(com);
-		if(isS) {
+	/*	if(isS) {
 			System.out.println("댓글작성 성공!");
 		}else {
 			System.out.println("댓글작성 실패");
 		}
 		
-		return "redirect:/qnadetail.do?seq=" + com.getSeq();		
+		return "redirect:/qnadetail.do?seq=" + com.getSeq();	*/
+		
+		if(isS) {
+			return "OK";
+		}else {
+			return "NO";
+		}		
 	}
 	
 	@ResponseBody
@@ -103,6 +110,20 @@ public class QnaController {
 		return list;
 	}
 	
+	@ResponseBody
+	@GetMapping("commentDelete.do")
+	public String commentDelete(int seq) {
+		System.out.println("QnaController commentDelete() " + new Date());
+		
+		boolean isS = service.commentDelete(seq);
+		if(isS) {
+			System.out.println("글삭제 성공!");
+		}else {
+			System.out.println("글삭제 실패");
+		}
+		
+		return "redirect:/qnalist.do";	
+	}
 	
 	
 	@GetMapping("qnaanswer.do")

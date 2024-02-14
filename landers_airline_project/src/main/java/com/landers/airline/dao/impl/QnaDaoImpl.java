@@ -44,7 +44,12 @@ public class QnaDaoImpl implements QnaDao{
 	public int commentWrite(QnaComment com) {		
 		return session.insert(ns + "commentWrite", com);
 	}
-
+	
+	@Override
+	public int commentDelete(int seq) {
+		return session.delete(ns + "commentDelete", seq);
+	}
+	
 	@Override
 	public List<QnaComment> commentList(int seq) {		
 		return session.selectList(ns + "commentList", seq);

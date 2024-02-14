@@ -36,6 +36,7 @@ header{
 }
 footer{	
 	height: 350px;
+	width: 100%;
 	background-color: #eeeeee;
 } 
 </style>
