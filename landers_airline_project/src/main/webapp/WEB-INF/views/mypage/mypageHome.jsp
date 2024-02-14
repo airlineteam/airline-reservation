@@ -11,7 +11,6 @@
 
 <style type="text/css">
 .center{
-	margin: auto;
 	width: 100%;
 	text-align: center;
 }
@@ -30,13 +29,15 @@ td{
 }
 .table {
         width: 500px;
-        margin: auto;
+        margin: 100px auto;
         border-collapse: collapse;
         border: none;
     
     }
 
-
+.thh{
+	line-height: 30px;
+}
 
 
 
@@ -51,9 +52,9 @@ td{
 <form action="userUpdate.do" id="frm" method="post">
 <br/>
 
-<table class="table">
+<table class="table table-hover">
 <tr>
-	<th colspan = 2 style="background: #9A161F; color: white;">
+	<th class="thh" colspan = 2 style="background: rgb(220,53,69); color: white;">
 		회원정보
 	</th>
 </tr>
