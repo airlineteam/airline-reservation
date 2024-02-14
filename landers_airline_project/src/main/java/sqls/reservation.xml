@@ -4,46 +4,78 @@
 
 <mapper namespace="reservation">
 
-<insert id="schedule" parameterType="com.landers.airline.dto.ScheduleDto">
-	insert into schedule(departure_airport, arrival_airport, departure_date, person_num)
-	values(#{departure_airport}, #{arrival_airport}, #{departure_date}, #{person_num})
-</insert>
+	<insert id="schedule"
+		parameterType="com.landers.airline.dto.ScheduleDto">
+		insert into schedule(departure_airport, arrival_airport, departure_date,
+		person_num)
+		values(#{departure_airport}, #{arrival_airport}, #{departure_date}, #{person_num})
+	</insert>
 
-<select id="search" parameterType="com.landers.airline.dto.FlightinfoDto" resultType="com.landers.airline.dto.FlightinfoDto">
-    SELECT flight_id, flight_name, departure_airport, arrival_airport, departure_date, arrival_date, price
-    FROM flight_info
-    WHERE departure_airport=#{departure_airport} AND arrival_airport=#{arrival_airport} AND departure_date >= #{departure_date}
-</select>
+	<select id="search"
+		parameterType="com.landers.airline.dto.FlightinfoDto"
+		resultType="com.landers.airline.dto.FlightinfoDto">
+		SELECT flight_id, flight_name, departure_airport, arrival_airport,
+		departure_date, arrival_date, price, emptynum
+		FROM flight_info
+		WHERE departure_airport = #{departure_airport}
+		AND arrival_airport = #{arrival_airport}
+		AND emptynum >= #{person_num}
+		AND SUBSTRING(departure_date, 1, 8) = SUBSTRING(#{departure_date}, 1, 8)
+		AND SUBSTRING(departure_date, 9, 4) >= SUBSTRING(#{departure_date}, 9, 4);
+	</select>
 
-<select id="seatlist" parameterType="Integer" resultType="com.landers.airline.dto.SeatDto" >
-	select seat_id, flight_id, seat_name, seat_price, is_available
-	from seat
-	where flight_id=#{flight_id}
-</select>
-
-<update id="seatselect" parameterType="map">
-    update seat
-    set is_available = 0
-    where seat_name = #{seatName} and flight_id = #{flight_id}
+	<update id="emptynum" parameterType="com.landers.airline.dto.flightParam">
+    update flight_info
+    set emptynum = emptynum - #{person_num}
+    where flight_id = #{flight_id}
 </update>
 
 
-<select id="flightInfo" parameterType="Integer" resultType="com.landers.airline.dto.FlightinfoDto">
-	SELECT flight_id, flight_name, departure_airport, arrival_airport, departure_date, arrival_date, price
-    FROM flight_info
-    WHERE flight_id=#{flight_id}
-</select>
+	<!-- <select id="searchId" parameterType="com.landers.airline.dto.FlightinfoDto" 
+		resultType="Integer"> SELECT flight_id FROM flight_info WHERE departure_airport=#{departure_airport} 
+		AND arrival_airport=#{arrival_airport} AND departure_date >= #{departure_date} 
+		</select> -->
 
-<insert id="ticket" parameterType="com.landers.airline.dto.TicketDto">
-	insert into ticket(user_id, schedule_id, final_price, final_date, flight_id, seat_id)
-	values(#{user_id} , null, #{final_price}, now(), #{flight_id}, null)
-</insert>
+	<!-- <select id="emptyseat" parameterType="Integer" resultType="Integer"> 
+		SELECT count(*) FROM seat WHERE flight_id = #{flight_id} AND is_available 
+		= 1 </select> -->
+
+	<select id="seatlist" parameterType="Integer"
+		resultType="com.landers.airline.dto.SeatDto">
+		select seat_id, flight_id, seat_name, seat_price, is_available
+		from seat
+		where flight_id=#{flight_id}
+	</select>
+
+	<update id="seatselect" parameterType="map">
+		update seat
+		set is_available = 0
+		where seat_name = #{seatName} and flight_id = #{flight_id}
+	</update>
 
 
-<select id="ticketinfo" parameterType="Integer" resultType="com.landers.airline.dto.TicketDto">
-	SELECT ticket_id, user_id, schedule_id, final_price, final_date, flight_id, seat_id
-	FROM ticket
-	WHERE flight_id=#{flight_id}
-</select> 
+	<select id="flightInfo" parameterType="Integer"
+		resultType="com.landers.airline.dto.FlightinfoDto">
+		SELECT flight_id, flight_name, departure_airport, arrival_airport,
+		departure_date, arrival_date, price
+		FROM flight_info
+		WHERE flight_id=#{flight_id}
+	</select>
+
+	<insert id="ticket"
+		parameterType="com.landers.airline.dto.TicketDto">
+		insert into ticket(user_id, schedule_id, final_price, final_date, flight_id,
+		seat_id)
+		values(#{user_id} , null, #{final_price}, now(), #{flight_id}, null)
+	</insert>
+
+
+	<select id="ticketinfo" parameterType="Integer"
+		resultType="com.landers.airline.dto.TicketDto">
+		SELECT ticket_id, user_id, schedule_id, final_price, final_date, flight_id,
+		seat_id
+		FROM ticket
+		WHERE flight_id=#{flight_id}
+	</select>
 
 </mapper>

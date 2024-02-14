@@ -20,15 +20,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style type="text/css">
-/* body{
-	margin: 0 auto;
-	width: 1000px;
-	text-align: center;
-} */
 
 header, main, footer{
 	margin: 0 auto;
-	width: 1400px;
+	width: 100%;
 	text-align: center;
 }
 main{
@@ -40,13 +35,17 @@ header{
 	background-color: #ffffff;
 }
 footer{	
-	height: 100px;
+	height: 350px;
 	background-color: #eeeeee;
 } 
 </style>
 
 </head>
 <body>
+
+<nav>
+	<jsp:include page="topbar.jsp" flush="false"/>
+</nav>
 
 <header>
 	<jsp:include page="header.jsp" flush="false"/>
@@ -61,7 +60,7 @@ footer{
 </main>
 
 <footer>
-	
+	<jsp:include page="footer.jsp" flush="false"/>
 </footer>
 
 </body>

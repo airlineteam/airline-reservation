@@ -26,7 +26,7 @@
 	text-align: center;
 } */
 
-main{
+header, main, footer{
 	margin: 0 auto;
 	width: 1400px;
 	text-align: center;
@@ -35,7 +35,14 @@ main{
 	text-align: left;
 }
 
-
+header{	
+	height: 100px;
+	background-color: #ffffff;
+}
+footer{	
+	height: 100px;
+	background-color: #eeeeee;
+} 
 </style>
 
 </head>
@@ -53,6 +60,10 @@ main{
 <main>
 	<jsp:include page='<%=main + ".jsp" %>' flush="false"/>
 </main>
+
+<footer>
+	<jsp:include page="footer.jsp" flush="false"/>
+</footer>
 
 
 

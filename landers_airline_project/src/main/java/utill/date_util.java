@@ -8,6 +8,8 @@ import java.util.Date;
 
 import javax.xml.crypto.Data;
 
+import com.google.protobuf.Timestamp;
+
 public class date_util {
 
     
@@ -45,6 +47,17 @@ public class date_util {
             return ""; // Handle the exception appropriately
         }
     }
+    
+    public static String toDates(String mdate) {
+	   
+    	String y = mdate.substring(0,4);
+    	String m = mdate.substring(4,6);
+    	String d = mdate.substring(6,8);
+    	
+    	String ymd = y + "년 " + m +"월 " + d + "일";
+    			
+    	return ymd;
+	}
 
 
 }

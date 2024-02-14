@@ -20,15 +20,15 @@
 	int flightId = (Integer)request.getAttribute("flightId");
 	
 	UserDto login = (UserDto)session.getAttribute("login");
-	if(login == null){
+	if ( login == null ) {
 		%>
-			<script type="text/javascript">
-			alert('로그인 해 주십시오');
-			</script>
+		    <script type="text/javascript">
+		        alert('로그인이 필요합니다.');
+		        location.href = "login.do";
+		    </script>
 		<%
-		response.sendRedirect("login.do");
-        return; 
-	}
+		    return; // 페이지 렌더링 중지
+		}
 %>
 
 <!DOCTYPE html>
@@ -105,6 +105,7 @@
 
         var flightId = '<%= request.getAttribute("flightId") %>';
         var userId = '<%=login.getUser_id() %>';
+        var person_num = '<%=request.getAttribute("person_num") %>'
 
    
         selectedSeats = encodeURIComponent(selectedSeats);
@@ -112,7 +113,7 @@
 
       
         var redirectUrl = "payresult.do?selectedSeats=" + selectedSeats + "&flight_id=" + flightId +"&user_id=" + userId
-        		+ "&final_price=" + totalAmount;
+        		+ "&final_price=" + totalAmount + "&person_num=" + person_num;
 
         
         location.href = redirectUrl;

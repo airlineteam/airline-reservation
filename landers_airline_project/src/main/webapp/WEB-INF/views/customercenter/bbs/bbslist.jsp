@@ -41,6 +41,33 @@
 <script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<!-- pagination 색상 - 회색으로 변경 -->
+<style>
+.page-link {
+  color: #000; 
+  background-color: #fff;
+  border: 1px solid #ccc; 
+}
+
+.page-item.active .page-link {
+ z-index: 1;
+ color: #555;
+ font-weight:bold;
+ background-color: #f1f1f1;
+ border-color: #ccc;
+ 
+}
+
+.page-link:focus, .page-link:hover {
+  color: #000;
+  background-color: #fafafa; 
+  border-color: #ccc;
+}
+</style>
+
+
+
+
 <style type="text/css">
 .center{
 	margin: auto;
@@ -48,11 +75,13 @@
 	text-align: center;
 }
 th{
-	background: #e0757d;
 	color: white;
+	border: 2px solid #dddddd;
 }
 tr{
+	background-color: #e0757d;
 	line-height: 12px;
+	border: 1px solid #dddddd;
 }
 
 </style>
@@ -63,7 +92,7 @@ tr{
 <br/>
 
 <div class="center">
-<br/> <h2>공지사항</h2> <br/>
+<br/> <h2 style="text-align: left;">공지사항</h2> <br/>
 <table class="table table-hover">
 <col width="70"/><col width="550"/><col width="100"/><col width="200"/>
 <thead>
@@ -149,6 +178,7 @@ if (login != null && login.getUser_role() == 0) {
 <%
 }
 %>
+<br/><br/><br/>
 </div>
 
 <script type="text/javascript">

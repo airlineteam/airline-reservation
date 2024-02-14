@@ -36,8 +36,6 @@ th, td{
 <body>
 
 <h1>일정관리</h1>
-<br/>
-
 <%
 	Calendar cal = Calendar.getInstance();
 	cal.set(Calendar.DATE, 1);
@@ -63,7 +61,8 @@ th, td{
 		month = 1;
 		year++;
 	}
-	
+
+	System.out.println(year + " " + month);
 	System.out.println(year + " " + month);
 	cal.set(year, month-1, 1);
 	

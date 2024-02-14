@@ -9,6 +9,8 @@ public class FlightinfoDto {
 	private String departure_date;
 	private String arrival_date;
 	private String price;
+	private int emptynum;
+	private String person_num;
 	
 	public FlightinfoDto() {
 		
@@ -22,7 +24,7 @@ public class FlightinfoDto {
 	}
 
 	public FlightinfoDto(int flight_id, String flight_name, String departure_airport, String arrival_airport,
-			String departure_date, String arrival_date, String price) {
+			String departure_date, String arrival_date, String price, int emptynum) {
 		super();
 		this.flight_id = flight_id;
 		this.flight_name = flight_name;
@@ -31,6 +33,21 @@ public class FlightinfoDto {
 		this.departure_date = departure_date;
 		this.arrival_date = arrival_date;
 		this.price = price;
+		this.emptynum = emptynum;
+	}
+    
+	public FlightinfoDto(int flight_id, String flight_name, String departure_airport, String arrival_airport,
+			String departure_date, String arrival_date, String price, int emptynum, String person_num) {
+		super();
+		this.flight_id = flight_id;
+		this.flight_name = flight_name;
+		this.departure_airport = departure_airport;
+		this.arrival_airport = arrival_airport;
+		this.departure_date = departure_date;
+		this.arrival_date = arrival_date;
+		this.price = price;
+		this.emptynum = emptynum;
+		this.person_num = person_num;
 	}
 
 	public int getFlight_id() {
@@ -89,12 +106,30 @@ public class FlightinfoDto {
 		this.price = price;
 	}
 
+	public int getEmptynum() {
+		return emptynum;
+	}
+
+	public void setEmptynum(int emptynum) {
+		this.emptynum = emptynum;
+	}
+
+	public String getPerson_num() {
+		return person_num;
+	}
+
+	public void setPerson_num(String person_num) {
+		this.person_num = person_num;
+	}
+
 	@Override
 	public String toString() {
 		return "FlightinfoDto [flight_id=" + flight_id + ", flight_name=" + flight_name + ", departure_airport="
 				+ departure_airport + ", arrival_airport=" + arrival_airport + ", departure_date=" + departure_date
-				+ ", arrival_date=" + arrival_date + ", price=" + price + "]";
+				+ ", arrival_date=" + arrival_date + ", price=" + price + ", emptynum=" + emptynum + "]";
 	}
+
+	
 	
 	
 }

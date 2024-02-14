@@ -21,33 +21,40 @@ import util.CalendarUtil;
 
 @Controller
 public class MytripController {
-	
-	@Autowired
-	MytripService service;
-	
-	@GetMapping("mytrip.do")
-	public String home(Model model) {
-		System.out.println("MytripController home() " + new Date());
-		model.addAttribute("main", "mytripHome");
-		
-		return "mytrip/main";
-	}
-	
-	@PostMapping("calendarlist.do")
-	public String calendarlist(Model model, HttpSession session) {
-		System.out.println("MytripController calendarlist() " + new Date());
-		
-		UserDto login = (UserDto)session.getAttribute("login");
+   
+   @Autowired
+   MytripService service;
+   
+   @GetMapping("mytrip.do")
+   public String home(Model model, HttpSession session) {
+      System.out.println("MytripController home() " + new Date());
+      
+      UserDto login = (UserDto)session.getAttribute("login");
+      
+      // login check
+      
+      List<CalendarDto> list = service.insertmytrip(login.getUser_id());
+      
+      model.addAttribute("list", list);      
+      model.addAttribute("main", "mytripHome");
+      
+      return "mytrip/main";
+   }
+   
+   @PostMapping("calendarlist.do")
+   public String calendarlist(Model model, HttpSession session) {
+      System.out.println("MytripController calendarlist() " + new Date());
+      
+      UserDto login = (UserDto)session.getAttribute("login");
 
-		List<CalendarDto> list = service.insertmytrip(login.getUser_id());
-		
-		System.out.println(list.toString());
-	
-		model.addAttribute("main", "mytripHome");
-		
-		model.addAttribute("list", list);
-				
-	return "mytrip/main";
-	}
-
+      List<CalendarDto> list = service.insertmytrip(login.getUser_id());
+      
+      System.out.println(list.toString());
+      
+      model.addAttribute("main", "mytripHome");
+      
+      model.addAttribute("list", list);
+            
+      return "mytrip/main";
+   }
 }

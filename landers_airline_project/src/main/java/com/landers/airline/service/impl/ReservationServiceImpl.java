@@ -11,6 +11,7 @@ import com.landers.airline.dto.FlightinfoDto;
 import com.landers.airline.dto.ScheduleDto;
 import com.landers.airline.dto.SeatDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.flightParam;
 import com.landers.airline.service.ReservationService;
 
 
@@ -63,6 +64,19 @@ public class ReservationServiceImpl implements ReservationService {
 	public TicketDto ticketinfo(int flight_id) {
 		return dao.ticketinfo(flight_id);
 	}
+
+	@Override
+	public int emptynumcount(flightParam param) {
+		return dao.emptynumcount(param);
+	}
+
+	
+//	@Override
+//	public List<Integer> searchId(FlightinfoDto dto) {
+//		return dao.searchId(dto);
+//	}
+
+
 	
 	
 
