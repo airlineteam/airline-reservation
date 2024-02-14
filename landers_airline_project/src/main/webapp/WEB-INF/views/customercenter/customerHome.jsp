@@ -6,45 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<link rel="canonical" href="http://www.airbusan.com">
-<meta name="naver-site-verification" content="505d04bbedb2c73e34fb052d3c765ec9eeae5dbb">
 
 <title>자주묻는 질문 &lt; 고객센터</title>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,user-scalable=yes">
-<link rel="shortcut icon" type="image/png" href="//story.airbusan.com/content/assets/images/favicon.png">
-<link rel="stylesheet" type="text/css" href="//story.airbusan.com/content/assets/stylesheets/common.min.css?ver=1707799551521">
-<link rel="stylesheet" type="text/css" href="//story.airbusan.com/content/assets/stylesheets/plugin.min.css">
-<link rel="stylesheet" type="text/css" href="//story.airbusan.com/content/assets/stylesheets/main.min.css">
-<link rel="stylesheet" type="text/css" href="//story.airbusan.com/content/assets/stylesheets/contents.min.css?ver=1707799551521">
-<link rel="stylesheet" type="text/css" href="//story.airbusan.com/content/assets/stylesheets/event.min.css">
-<!--[if IE]>
-			<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/iefix.js"></script>
-		<![endif]-->
-<script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=AW-822065883&amp;l=dataLayer&amp;cx=c"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-TQNWXLQ"></script><script type="text/javascript" src="//story.airbusan.com/web/assets/javascripts/polyfill.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/moment-with-locales.min.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/json2.min.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.form.min.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.validate.min.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.cookie.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.base64.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.progress.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.datePicker.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.bxAlert.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.showAsPopup.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/jquery.bxAjax.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/mustache.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/ICanHaz-no-mustache.min.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/web/assets/javascripts/cached/i18n_ko.js"></script>
-
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/StringUtil.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/common.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/default.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/js.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/netfunnel.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/content/assets/javascripts/netfunnel_skin_ko.js"></script>
-<script type="text/javascript" src="//story.airbusan.com/web/assets/javascripts/js.js"></script>
-
 
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 				new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -80,33 +43,29 @@
 </ul>
 </div>
 </div>
-<div class="hrGroup">
-<em class="language">Language :</em>
-<div class="global">
-<a class="shorcut" href="#">
-한국어
-</a>
+</div>
+</div>
+</div>
+
+<div id="container" class="container_2018 container_2019">
+<div id="snb">
+<div class="depth01">
 <ul>
-<li><a href="#" onclick="NetFunnel_Action({action_id:'main'},'/content/en')">ENGLISH</a></li>
-<li><a href="#" onclick="NetFunnel_Action({action_id:'main'},'/content/ja')">日本語</a></li>
-<li><a href="#" onclick="NetFunnel_Action({action_id:'main'},'/content/zh-TW')">繁體中文</a></li>
-<li><a href="#" onclick="NetFunnel_Action({action_id:'main'},'/content/zh-CN')">简体中文</a></li>
-<li><a href="#" onclick="NetFunnel_Action({action_id:'main'},'/content/ru')">русский</a></li>
-<li><a href="#" onclick="NetFunnel_Action({action_id:'main'},'/content/vi')">tiếng Việt</a></li>
+<li class="depth01Lists depth01List06" style="display: list-item;">
+<div class="subTitBox">
+<h2 class="snbTit">고객센터</h2>
+</div>
+<div class="depth02">
+<ul>
+<li class="depth02Lists depth02List01 off on"><a href="/content/common/customercenter/faq">자주묻는질문</a></li>
+<li class="depth02Lists depth02List02 off"><a href="/content/common/customercenter/qna">고객문의</a></li>
+<li class="depth02Lists depth02List03 off"><a href="/content/common/customercenter/noticeList">공지사항</a></li>
+<li class="depth02Lists depth02List03 off"><a href="/content/common/customercenter/newsList">변경운항공지</a></li>
+<li class="depth02Lists depth02List04 off"><a href="/content/common/customercenter/info">에어부산 예약센터</a></li>
 </ul>
 </div>
-</div>
-</div>
-
-
-<div class="hShortcut">
-<a href="#" onclick="NetFunnel_Action({action_id:'login'},'/web/common/login/')">로그인</a>
-<a href="/web/common/join/">회원가입</a>
-<a class="none" href="/content/common/flynjoy/flyNEvent/">이벤트</a>
-<a href="/content/common/customercenter/">고객센터</a>
-<a class="none" href="/content/common/customercenter/">FAQ</a>
-<a href="/content/common/sitemap/">사이트맵</a>
-</div>
+</li>
+</ul>
 </div>
 </div>
 
