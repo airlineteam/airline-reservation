@@ -1,6 +1,14 @@
+<%@page import="com.landers.airline.dto.UserDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+ <%
+ UserDto login = (UserDto)session.getAttribute("login");
+ if(login != null){
+ 	System.out.println(login.toString());
+ }
+ %>
+ 
 <%
 	String main = (String)request.getAttribute("main");
 	if(main == null || main.equals("")){
@@ -12,7 +20,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>메인페이지</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
  
@@ -20,15 +28,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <style type="text/css">
-/* body{
-	margin: 0 auto;
-	width: 1000px;
-	text-align: center;
-} */
 
 header, main, footer{
 	margin: 0 auto;
-	width: 1400px;
+	width: 100%;
 	text-align: center;
 }
 main{
@@ -37,16 +40,20 @@ main{
 
 header{	
 	height: 100px;
-	background-color: #eeeeee;
+	background-color: #ffffff;
 }
 footer{	
-	height: 100px;
+	height: 350px;
 	background-color: #eeeeee;
-} 
+}
 </style>
 
 </head>
 <body>
+
+<nav>
+	<jsp:include page="topbar.jsp" flush="false"/>
+</nav>
 
 <header>
 	<jsp:include page="header.jsp" flush="false"/>

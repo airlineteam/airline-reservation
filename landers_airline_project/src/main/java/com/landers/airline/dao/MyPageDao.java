@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.landers.airline.dto.RefundDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.TicketParam;
 import com.landers.airline.dto.UserDto;
 
 public interface MyPageDao {
@@ -20,6 +21,8 @@ public interface MyPageDao {
 	List<RefundDto> myRefund(RefundDto dto);
 	
 	int userRefund(RefundDto dto);
+	
+	int allTicket(TicketParam param);
 
 
 }

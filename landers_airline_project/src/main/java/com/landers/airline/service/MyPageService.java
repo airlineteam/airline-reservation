@@ -3,8 +3,10 @@ package com.landers.airline.service;
 
 import java.util.List;
 
+import com.landers.airline.dto.BbsParam;
 import com.landers.airline.dto.RefundDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.TicketParam;
 import com.landers.airline.dto.UserDto;
 
 public interface MyPageService {
@@ -20,6 +22,8 @@ public interface MyPageService {
 	List<RefundDto> myRefund(RefundDto dto);
 	
 	boolean userRefund(RefundDto dto);
+	
+	int allTicket(TicketParam param);
 
 
 }

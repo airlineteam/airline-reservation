@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.landers.airline.dao.MyPageDao;
+import com.landers.airline.dto.BbsParam;
 import com.landers.airline.dto.RefundDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.TicketParam;
 import com.landers.airline.dto.UserDto;
 
 
@@ -52,6 +54,11 @@ public class MyPageDaoImpl implements MyPageDao {
 	public int userRefund(RefundDto dto) {
 		return session.update("mypage.userRefund", dto);
 }
+
+	@Override
+	public int allTicket(TicketParam param) {
+		return session.selectOne("mypage.allTicket", param);
+	}
 
 
 	

@@ -11,4 +11,5 @@ public interface LoginService {
 	boolean idcheck(String user_id);	
 	
 	boolean adduser(UserDto dto);
+	
 }

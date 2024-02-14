@@ -23,10 +23,11 @@
 	where user_id=#{user_id}
 </select>
 
-<select id="myTicket" parameterType="com.landers.airline.dto.TicketDto" resultType="com.landers.airline.dto.TicketDto">
+<select id="myTicket" parameterType="com.landers.airline.dto.TicketParam" resultType="com.landers.airline.dto.TicketDto">
     select ticket_id, user_id, schedule_id, final_price, final_date, flight_id, seat_id
 	from ticket
 	where user_id=#{user_id}
+	order by final_date ASC
 </select>
 
 <select id="myRefund" parameterType="com.landers.airline.dto.RefundDto" resultType="com.landers.airline.dto.RefundDto">
@@ -39,6 +40,23 @@
 	insert into refund(refund_id, user_id, ticket_id, content, refund_status)
 	values(null ,#{user_id}, #{ticket_id}, #{content}, "대기")
 </insert>
+
+<!-- 글의 총수 -->
+<select id="allTicket" parameterType="com.landers.airline.dto.TicketParam" resultType="Integer">
+	select count(*)
+	from ticket
+	<if test="choice != null and choice != '' and search != null and search != ''">
+		<if test="choice == 'ticket_id'">
+			where title like concat('%', #{search}, '%')
+		</if>
+		<if test="choice == 'schedule_id'">
+			where content like concat('%', #{search}, '%')
+		</if>
+		<if test="choice == 'user_id'">
+			where user_id=#{search}
+		</if>
+	</if>
+</select>
 
 
 

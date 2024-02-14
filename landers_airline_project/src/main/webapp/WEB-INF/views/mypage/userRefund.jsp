@@ -36,16 +36,16 @@
 	width: 800px;
 	text-align: center;
 }
-th{
-	background: #9A161F;
-	color: white;
+
+
+table{
+	margin: 10px;
 }
 </style>
 
 </head>
 <body>
 
-<h2>환불사유</h2>
 
 <div class="center">
 
@@ -55,6 +55,11 @@ th{
 <col width="200"/><col width="500"/>
 
 <tbody>
+<tr>
+	<th colspan = 2 style="background: #9A161F; color: white;">
+		환불
+	</th>
+</tr>
 <tr>
 	<th>아이디</th>
 	<td>
