@@ -104,6 +104,37 @@ body, ul, li {
     transform:translateX(-20%) translateY(-50%);
 }
 
+.intro{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 1200px;
+	margin: auto;
+}
+
+.intro .card{
+	flex: 1;
+	text-align: center;
+	margin: 150px 40px;
+	 border: none;
+}
+
+.intro .card img{
+	width: 70px;
+	height: 70px;
+	margin: auto;
+	color: #444;
+	margin-bottom: 30px;
+}
+
+.intro .card h2{
+	letter-spacing: 0.2em;
+}
+
+.intro .card p{
+	font-size: 13px;
+}
+
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -120,10 +151,10 @@ body, ul, li {
     </div>
     
     <div class="slides">
-        <div class="active" style="background-image:url(./images/main2.jpg);"></div>
-        <div style="background-image:url(./images/main1.jpeg)"></div>
-        <div style="background-image:url(https://images.prismic.io/stayfolio-production/038914a1-9b23-4f26-9b10-84669d9a1339_banner.jpg?auto=compress,format);"></div>
-        <div style="background-image:url(https://images.prismic.io/stayfolio-production/3b4bf417-3c41-4d05-b62c-f02a293ba115_banner.jpg?auto=compress,format);"></div>
+        <div class="active" style="background-image:url(./images/main10.jpg);"></div>
+        <div style="background-image:url(./images/main1.jpg)"></div>
+        <div style="background-image:url(./images/main11.jpg)"></div>
+        <div style="background-image:url(./images/main12.jpg)"></div>
     </div>
     
     <div class="page-nav">
@@ -133,6 +164,27 @@ body, ul, li {
         <div></div>
     </div>
 </div>
+
+<section class="intro">
+	<div class="card">
+		<img src="./images/airplane.svg">
+		<h2>LANDERS</h2>
+		<p>무엇과도 바꿀 수 없는 핵심 가치인 '안전'과 '고객중심서비스'를 등대삼아, 앞으로도 고객 여러분들이 선택한 Landers Airline이 항공업계를 주도하는 글로벌 선도 항공사로 자리매김할 수 있도록 최선의 노력을 다 하겠습니다.</p>
+	</div>
+	<div class="card">
+		<img src="./images/fan.svg">
+		<h2>IEEOLOGY</h2>
+		<p>Landers Airline은 국내에 색동날개를 펼치는 항공사로 성장하고있습니다. 기존 항공사의 획일적인 항공 서비스에서 벗어나 새롭고 고객이 직접 선택할 수 있는 폭넓은 서비스를 제공하고자 끊임없이 도전하겠습니다.
+		</p>
+	</div>
+	<div class="card">
+		<img src="./images/clipboard-data.svg">
+		<h2>BUSINESS</h2>
+		<p>글로벌 협력 강화, 신규 노선 개발 등 당사 고객들에게 보다 다양한 네트워크를 제공하기 위한 노력을 지속하고 있습니다. 뿐만 아니라 고객 만족도 제고를 위해 차세대 항공기 도입, 마케팅 제휴 확대 등을 적극 추진하고 있습니다.</p>
+	</div>
+</section>
+
+
 
 
 <script>

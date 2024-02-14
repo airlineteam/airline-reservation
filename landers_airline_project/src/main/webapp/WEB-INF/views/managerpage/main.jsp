@@ -28,7 +28,7 @@
 
 header, main, footer{
 	margin: 0 auto;
-	width: 1400px;
+	width: 1330px;
 	text-align: center;
 }
 main{
@@ -49,6 +49,9 @@ footer{
 </head>
 <body>
 
+<nav>
+	<jsp:include page="topbar.jsp" flush="false"/>
+</nav>
 
 <header>
 	<jsp:include page="header.jsp" flush="false"/>

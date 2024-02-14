@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<footer class="bg-dark text-light pt-5">
+<footer class="bg-wirte text-dark pt-5">
     <div class="container px-5">
         <div class="row">
             <div class="col-6 col-lg-4">
@@ -38,7 +38,7 @@
             <div class="col-6 col-lg-3 text-lg-end">
                 <h4>Social Media Links</h4>
                 <div class="social-media pt-2">
-                    <a href="#" class="text-light fs-2 me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="./images/instagram.svg" class="text-light fs-2 me-3"><i class="bi bi-instagram"></i></a>
                     <a href="#" class="text-light fs-2 me-3"><i class="bi bi-pinterest"></i></a>
                     <a href="#" class="text-light fs-2 me-3"><i class="bi bi-instagram"></i></a>
                     <a href="#" class="text-light fs-2"><i class="bi bi-linkedin"></i></a>
@@ -49,8 +49,8 @@
         <div class="d-sm-flex justify-content-between py-1">
             <p>2024 © Coding Yaar. All Rights Reserved. </p>
             <p>
-                <a href="#" class="text-light text-decoration-none pe-4">Terms of use</a>
-                <a href="#" class="text-light text-decoration-none"> Privacy policy</a>
+                <a href="#" class="text-dark text-decoration-none pe-4">Terms of use</a>
+                <a href="#" class="text-dark text-decoration-none"> Privacy policy</a>
             </p>
         </div>
     </div>
