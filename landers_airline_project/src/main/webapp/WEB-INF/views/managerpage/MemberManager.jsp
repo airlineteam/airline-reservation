@@ -19,14 +19,14 @@ body {
   background-color: #9E9E9E;
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 300;
   text-rendering: optimizeLegibility;
 }
 
 div.table-title {
    display: block;
   margin: auto;
-  max-width: 600px;
+  max-width: 400px;
   padding:5px;
   width: 100%;
 }
@@ -58,7 +58,7 @@ div.table-title {
  
 th {
   color:#ffffff;
-  background:#9A161F;
+  background: #a12a32;
   border-bottom:4px solid #9ea7af;
   border-right: 1px solid #343a45;
   font-size:18px;

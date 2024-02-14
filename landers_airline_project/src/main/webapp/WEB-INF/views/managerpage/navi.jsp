@@ -6,7 +6,7 @@
   <div class="container">
     <!-- 서브 컴퍼넌트 -->
     <!-- 브랜드 -->
-    <a class="navbar-brand" href="managerHome.do">ManagerPage</a>
+    <a class="navbar-brand" href="managerHome.do" style="color: white">ManagerPage</a>
     
     <!-- 전환 버튼 -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">

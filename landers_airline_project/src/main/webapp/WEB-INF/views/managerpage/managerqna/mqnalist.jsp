@@ -40,63 +40,193 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style type="text/css">
-.center{
-	margin: auto;
-	width: 1000px;
-	text-align: center;
-}
-th{
-	background: #e0757d;
-	color: white;
-}
-tr{
-	line-height: 12px;
+body {
+  background-color: #ffffff;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
 
-header, main, footer{
-	margin: 0 auto;
-	width: 1400px;
-	text-align: center;
-}
-main{
-	text-align: left;
-}
-
-header{	
-	height: 100px;
-	background-color: #ffffff;
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 400px;
+  padding:5px;
+  width: 100%;
 }
 
+.table-title h3 {
+   color: #9A161F;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
 
-footer{	
-	height: 100px;
-	background-color: #eeeeee;
-} 
 
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 200px;
+  margin: auto;
+  max-width: 1000px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#ffffff;
+  background: #a12a32;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:18px;
+  font-weight: 100;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:15px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#9E9E9E;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#9E9E9E;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:15px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:17px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+<style>
+.page-link {
+  color: #000; 
+  background-color: #fff;
+  border: 1px solid #ccc; 
+}
+
+.page-item.active .page-link {
+ z-index: 1;
+ color: #555;
+ font-weight:bold;
+ background-color: #f1f1f1;
+ border-color: #ccc;
+ 
+}
+
+.page-link:focus, .page-link:hover {
+  color: #000;
+  background-color: #fafafa; 
+  border-color: #ccc;
+}
 </style>
+
+
 
 </head>
 <body>
 
+<br><br>
 
+<table class="table-fill">
 
-<br/>
-
-<div class="center">
-
-<table class="table table-hover">
-<col width="70"/><col width="550"/><col width="100"/><col width="100"/><col width="200"/>
 <thead>
 	<tr>
-		<th>번호</th><th>제목</th><th>조회수</th><th>작성자</th><th>등록일</th>
+		<th class="text-left">번호</th>
+		<th class="text-left">제목</th>
+		<th class="text-left">조회수</th>
+		<th class="text-left">작성자</th>
+		<th class="text-left">등록일</th>
 	</tr>
 </thead>
-<tbody>
+<tbody class="table-hover">
 <%
 if(list == null || list.size() == 0){
 	%>
 	<tr>
-		<td colspan="4">작성된 글이 없습니다</td>
+		<td class="text-left" colspan="4">작성된 글이 없습니다</td>
 	</tr>
 	<%
 }else{
@@ -104,8 +234,8 @@ if(list == null || list.size() == 0){
 		ManagerQnaDto qna = list.get(i);
 		%>
 		<tr>
-			<td><%=list.size() - i %></td>
-			<td style="text-align: left;">
+			<td class="text-left"><%=list.size() - i %></td>
+			<td class="text-left" style="text-align: left;">
 			<%
 			if(qna.getDel() == 0){
 				%>			
@@ -126,15 +256,15 @@ if(list == null || list.size() == 0){
 			}else{
 				%>	
 				<%=BbsUtil.arrow(qna.getDepth()) %>
-				<font color="#ff0000">***** 이 글은 관리자에 의해서 삭제되었습니다 *****</font>	
+				<font color="#9A161F">***** 이 글은 관리자에 의해서 삭제되었습니다 *****</font>	
 				<%
 			}
 			%>
 				
 			</td>
-			<td><%=qna.getReadcount() %></td>
-			<td><%=qna.getId() %></td>
-			<td><%=qna.getWdate().substring(0, 10) %></td>
+			<td class="text-left"><%=qna.getReadcount() %></td>
+			<td class="text-left"><%=qna.getId() %></td>
+			<td class="text-left"><%=qna.getWdate().substring(0, 10) %></td>
 		</tr>		
 		<%
 	}
@@ -143,31 +273,37 @@ if(list == null || list.size() == 0){
 </tbody>
 </table>
 
-<br/>
+<br><br>
 
 <div class="container">
-    <nav aria-label="Page navigation">
-        <ul class="pagination" id="pagination" style="justify-content:center"></ul>
+    <nav aria-label="Page navigation" >
+        <ul class="pagination" id="pagination" style="justify-content:center "></ul>
     </nav>
 </div>
 
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-row align-items-center d-flex justify-content-center align-items-center">
+                            <select id="choice" class="form-control" style="width:auto;">
+                                <option value="start">검색</option>
+                                <option value="title">제목</option>
+                                <option value="content">내용</option>
+                            </select>
+                            
+                            <div class="col-sm-3 my-1" style="width:auto;">
+                                <input type="text" class="form-control" id="search" value="<%=search %>">
+                            </div>
+                            
+                            <button type="button" class="btn btn-primary" onclick="searchBtn()" style="background-color: #9A161F; border-color: #9A161F">
+                                검색
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
 
-<br/>
-<div class="form-row align-items-center d-flex justify-content-center align-items-center container">
-	<select id="choice" class="form-control" style="width:auto;">
-		<option value="start">검색</option>
-		<option value="title">제목</option>
-		<option value="content">내용</option>
-	</select>
-	
-	<div class="col-sm-3 my-1" style="width:auto;">
-		<input type="text" class="form-control" id="search" value="<%=search %>">
-	</div>
-	
-	<button type="button" class="btn btn-primary" onclick="searchBtn()" style="background-color: #9A161F; border-color: #9A161F">
-	검색
-	</button><br/>
-</div>
 
 <%
 if (login != null) {
