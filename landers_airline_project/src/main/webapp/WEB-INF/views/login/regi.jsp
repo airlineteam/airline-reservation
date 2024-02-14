@@ -16,29 +16,64 @@
 
 <style type="text/css">
 .center{
-	margin: auto;
-	width: 400px;
-	border: 1px solid #a1a1a1;
-	padding: 10px;
-	border-radius: 30px;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    border: 1px solid #a1a1a1;
+    padding: 10px;
+    border-radius: 30px;
+}
+.login-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+th{
+	background: #e0757d;
+	color: white;
+	border: none;
+}
+tr{
+	line-height: 12px;
+}
+td{
+	line-height: 12px;
+	border: none;
+}
+.table {
+        width: 550px;
+        margin: 20px auto;
+        border-collapse: collapse;
+    }
+    
+ .table th, .table td {
+    border: none; /* 테두리 제거 */
 }
 </style>
 
 </head>
 <body>
 
-<h2>회원가입</h2>
+<!-- <div class="center"> -->
 
-<div class="center">
+<!-- <div class="login-header">
+        <h2 style="color: #9A161F; margin: 50px auto;">회원가입</h2>
+    </div> -->
 
 <form action="regiAf.do" id="frm" method="post">
 <br/>
 
 <table class="table">
 <tr>
+	<th colspan = 2 style="background: rgb(220,53,69); color: white; text-align:center;">
+		회원가입
+	</th>
+</tr>
+<tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" class="form-control" name="user_id" id="user_id" size="20">
+		<input type="text" class="form-control" name="user_id" id="user_id" size="20" style="width:200px;">
 		<p id="idcheck" style="font-size: 10px"></p>
 		<input type="button" class="btn btn-danger" id="id_chk_btn" value="id확인">		
 	</td>
@@ -46,25 +81,25 @@
 <tr>
 	<th>패스워드</th>
 	<td>
-		<input type="text" class="form-control" name="user_pw" size="20">
+		<input type="text" class="form-control" name="user_pw" size="20" style="width:200px;">
 	</td>
 </tr>
 <tr>
 	<th>이름</th>
 	<td>
-		<input type="text" class="form-control" name="user_name" size="20">
+		<input type="text" class="form-control" name="user_name" size="20" style="width:200px;">
 	</td>
 </tr>
 <tr>
 	<th>전화번호</th>
 	<td>
-		<input type="text" class="form-control" name="user_phone" size="20">
+		<input type="text" class="form-control" name="user_phone" size="20" style="width:200px;">
 	</td>
 </tr>
 <tr>
 	<th>주소</th>
 	<td>
-		<input type="text" class="form-control" name="user_address" size="20">
+		<input type="text" class="form-control" name="user_address" size="20" style="width:200px;">
 	</td>
 </tr>
 <tr>
@@ -76,7 +111,7 @@
 </tr>
 </table>
 </form>
-</div>
+<!-- </div> -->
 
 <script type="text/javascript">
 $(document).ready(function () {

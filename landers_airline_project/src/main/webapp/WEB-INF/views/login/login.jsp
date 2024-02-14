@@ -16,6 +16,7 @@
     border: 1px solid #a1a1a1;
     padding: 10px;
     border-radius: 30px;
+
 }
 
 .login-header {
@@ -30,7 +31,6 @@ th{
 }
 tr{
 	line-height: 12px;
-	border: none;
 }
 td{
 	line-height: 12px;
@@ -38,11 +38,13 @@ td{
 }
 .table {
         width: 550px;
-        margin: auto;
+        margin: 20px auto;
         border-collapse: collapse;
-        border: none;
-    
     }
+    
+ .table th, .table td {
+    border: none; /* 테두리 제거 */
+}
 </style>
 
 <!-- </head>
@@ -50,7 +52,7 @@ td{
 
 <!-- <div class="center"> -->
     <div class="login-header">
-        <h2 style="color: #9A161F">LoginPage</h2>
+        <h2 style="color: #9A161F; margin: 50px auto;">LoginPage</h2>
     </div>
 
     <form action="loginAf.do" method="post">
@@ -58,13 +60,13 @@ td{
             <tr>
                 <th>아이디</th>
                 <td>
-                    <input type="text" class="form-control" id="User_id" name="User_id" size="20">
+                    <input type="text" class="form-control" id="User_id" name="User_id" size="20" style="width:300px;">
                 </td>
             </tr>
             <tr>
                 <th>패스워드</th>
                 <td>
-                    <input type="password" class="form-control" name="User_pw" size="20">
+                    <input type="password" class="form-control" name="User_pw" size="20" style="width:300px;">
                 </td>
             </tr>
             <tr>
