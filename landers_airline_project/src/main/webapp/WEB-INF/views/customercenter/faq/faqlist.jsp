@@ -81,7 +81,7 @@ footer{
 <br/>
 
 <div class="center">
-<br/> <h2>자주 묻는 질문</h2> <br/>
+<br/> <h2 style="text-align: left;">자주 묻는 질문</h2> <br/>
 <table class="table table-hover">
 <col width="70"/><col width="550"/><col width="100"/><col width="200"/>
 <thead>
