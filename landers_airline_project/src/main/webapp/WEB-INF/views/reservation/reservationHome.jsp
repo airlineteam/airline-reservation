@@ -15,7 +15,7 @@
 
 <style>
 .cont {
-	background-color: #f8f9fa;
+	background-color: #ffffff;
 }
 
 .card {
@@ -23,6 +23,7 @@
 	border: 1px solid rgba(0, 0, 0, 0.125);
 	border-radius: 0.25rem;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin-bottom: 100px;
 }
 
 .btn-primary {
