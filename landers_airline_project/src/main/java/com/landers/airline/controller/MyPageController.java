@@ -11,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.landers.airline.dto.BbsParam;
 import com.landers.airline.dto.RefundDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.TicketParam;
 import com.landers.airline.dto.UserDto;
 import com.landers.airline.service.MyPageService;
 
@@ -104,12 +106,22 @@ public class MyPageController {
 	}
 	 
 	 @GetMapping("myTicket.do")
-		public String myTicket(TicketDto dto, Model model) {
+		public String myTicket(TicketDto dto, Model model, TicketParam param) {
 			System.out.println("mypageController TicketList " + new Date());
 			List<TicketDto> list = service.myTicket(dto);
 			System.out.println(list.toString());
 			
+			// 글의 총수
+			int count = service.allTicket(param);	// 23		
+			// 페이지 계산
+			int pageTicket = count / 10;	// 2
+			if((count % 10) > 0) {
+				pageTicket = pageTicket + 1;	// 2 + 1
+			}	
+			
 			model.addAttribute("list",list);
+			model.addAttribute("pageTicket", pageTicket);
+			model.addAttribute("param", param);
 			model.addAttribute("main", "userReservation");
 
 					

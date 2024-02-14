@@ -9,44 +9,34 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 <style type="text/css">
 .center{
 	margin: auto;
-	width: 400px;
+	width: 100%;
 	text-align: center;
 }
 th{
 	background: #e0757d;
 	color: white;
+	border: none;
 }
 tr{
 	line-height: 12px;
+	border: none;
 }
+td{
+	line-height: 12px;
+	border: none;
+}
+.table {
+        width: 500px;
+        margin: auto;
+        border-collapse: collapse;
+        border: none;
+    
+    }
 
-header, main, footer{
-	margin: 0 auto;
-	text-align: center;
-}
-main{
-	text-align: left;
-}
 
-header{	
-	height: 100px;
-	background-color: #ffffff;
-}
-footer{	
-	height: 100px;
-	background-color: #eeeeee;
-} 
 
 
 
@@ -63,9 +53,14 @@ footer{
 
 <table class="table">
 <tr>
+	<th colspan = 2 style="background: #9A161F; color: white;">
+		회원정보
+	</th>
+</tr>
+<tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" class="form-control" name="user_id" id="user_id" size="20" value="<%= mylist.getUser_id()%>" readonly>
+		<input type="text" class="form-control" name="user_id" id="user_id" size="20" value="<%= mylist.getUser_id()%>" readonly style="background:#a0a0a0;">
 	</td>
 </tr>
 <tr>
@@ -105,6 +100,8 @@ footer{
 
 </form>
 </div>
+
+
 
 <script type="text/javascript">
 

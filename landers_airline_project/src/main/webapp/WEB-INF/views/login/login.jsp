@@ -5,17 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title> -->
-<!-- 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
- -->
 <style type="text/css">
 .center{
     position: absolute;
@@ -32,6 +22,27 @@
     margin-bottom: 20px;
     text-align: center;
 }
+
+th{
+	background: #e0757d;
+	color: white;
+	border: none;
+}
+tr{
+	line-height: 12px;
+	border: none;
+}
+td{
+	line-height: 12px;
+	border: none;
+}
+.table {
+        width: 550px;
+        margin: auto;
+        border-collapse: collapse;
+        border: none;
+    
+    }
 </style>
 
 <!-- </head>
@@ -76,8 +87,8 @@
 </script>
 
 <script type="text/javascript">
-let user_id = $.cookie("User_id");    // 쿠키에서 id를 산출
-if(user_id != null){    // 쿠키에 저장한 id가 있다
+let User_id = $.cookie("User_id");    // 쿠키에서 id를 산출
+if(User_id != null){    // 쿠키에 저장한 id가 있다
     $("#User_id").val( User_id );
     $("#chk_save_id").prop("checked", true);
 }
@@ -86,7 +97,7 @@ $("#chk_save_id").click(function () {
     
     if( $("#chk_save_id").is(":checked") == true ){    // 첵크가 되었을 때
         
-        if( $("#id").val().trim() == "" ){    // 빈문자였을 때
+        if( $("#User_id").val().trim() == "" ){    // 빈문자였을 때
             alert('User_id를 입력해 주십시오');
             $("#chk_save_id").prop("checked", false);    // 첵크박스를 off
         }

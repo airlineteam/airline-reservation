@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.landers.airline.dao.MyPageDao;
+import com.landers.airline.dto.BbsParam;
 import com.landers.airline.dto.RefundDto;
 import com.landers.airline.dto.TicketDto;
+import com.landers.airline.dto.TicketParam;
 import com.landers.airline.dto.UserDto;
 import com.landers.airline.service.MyPageService;
 
@@ -52,6 +54,11 @@ public class MyPageServiceImpl implements MyPageService {
 		
 		int count = dao.userRefund(dto);
 		return count>0?true:false;
+	}
+
+	@Override
+	public int allTicket(TicketParam param) {
+		return dao.allTicket(param);
 	}
 
 }
