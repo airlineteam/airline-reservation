@@ -69,6 +69,33 @@
 </div>
 </div>
 
+<div class="qnaTabMenuFull list05 mgt60">
+<ul>
+<li class="buttonCategory on" cata-category=""><a href="#" title="현재 선택 됨">전체</a></li>
+<li class="buttonCategory" data-category="30"><a href="#">영수증/확인서/증빙</a></li>
+<li class="buttonCategory" data-category="29"><a href="#">공항서비스</a></li>
+<li class="buttonCategory" data-category="27"><a href="#">부가서비스</a></li>
+<li class="buttonCategory" data-category="24"><a href="#">탈퇴</a></li>
+
+<li class="buttonCategory" data-category="22"><a href="#">홈페이지 이용</a></li>
+
+<li class="buttonCategory" data-category="20"><a href="#">예약</a></li>
+
+<li class="buttonCategory" data-category="17"><a href="#">인터넷 예약</a></li>
+<li class="buttonCategory" data-category="16"><a href="#">아이디 찾기</a></li>
+
+<li class="buttonCategory" data-category="13"><a href="#">환불</a></li>
+
+<li class="buttonCategory" data-category="7"><a href="#">운송</a></li>
+<li class="buttonCategory" data-category="6"><a href="#">예약/변경</a></li>
+<li class="buttonCategory" data-category="5"><a href="#">스탬프</a></li>
+<li class="buttonCategory" data-category="4"><a href="#">서비스</a></li>
+<li class="buttonCategory" data-category="3"><a href="#">모바일</a></li>
+<li class="buttonCategory" data-category="2"><a href="#">결제</a></li>
+<li class="buttonCategory" data-category="1"><a href="#">기타</a></li>
+</ul>
+</div>
+
 <a href="bbslist.do" >공지사항</a><br/>
 <a href="faqlist.do" >FAQ</a><br/>
 <a href="qnalist.do" >QNA</a><br/>
