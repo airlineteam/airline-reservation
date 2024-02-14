@@ -3,18 +3,19 @@
 
 <%@page import="com.landers.airline.dto.TicketDto"%>
 
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <%
 	UserDto login = (UserDto)session.getAttribute("login");
-%>    
 
-<%
-    List<TicketDto> list = (List<TicketDto>)request.getAttribute("list");
-%>
-    
+
+
+	String ticket_id_str = request.getParameter("ticket_id");
+	int ticket_id = Integer.parseInt(ticket_id_str);
+
+
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +49,7 @@ th{
 
 <div class="center">
 
-<form action="userRefund.do?user_id=<%=login.getUser_id()%>" id="frm" method="get">
+<form action="userRefund.do?ticket_id=<%=ticket_id %>" id="frm" method="post">
 
 <table class="table table-bordered">
 <col width="200"/><col width="500"/>
@@ -57,7 +58,7 @@ th{
 <tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" name="id" class="form-control" value="<%=login.getUser_id() %>" readonly />
+		<input type="text" id="user_id" name="user_id" class="form-control" value="<%=login.getUser_id() %>" readonly />
 	</td>
 </tr>
 <tr>
@@ -72,12 +73,13 @@ th{
 </table>
 <br/>
 
-<button type="button" id="refundBtn" class="btn btn-danger">환불요청</button>
+<input type="submit" id="refundBtn" class="btn btn-danger" value="환불요청"/>
+
 
 </form>
 </div>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function(){
 	
 	$("#refundBtn").on("click", function () {
@@ -91,7 +93,7 @@ $(document).ready(function(){
 	});	
 })
 
-</script>
+</script> -->
 
 </body>
 </html>

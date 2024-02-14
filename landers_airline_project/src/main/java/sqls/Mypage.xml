@@ -24,7 +24,7 @@
 </select>
 
 <select id="myTicket" parameterType="com.landers.airline.dto.TicketDto" resultType="com.landers.airline.dto.TicketDto">
-    select user_id, schedule_id, final_price, final_date, flight_id, seat_id
+    select ticket_id, user_id, schedule_id, final_price, final_date, flight_id, seat_id
 	from ticket
 	where user_id=#{user_id}
 </select>
@@ -35,11 +35,10 @@
 	where user_id=#{user_id}
 </select>
 
-<update id="userRefund" parameterType="com.landers.airline.dto.RefundDto">
-	update refund
-	set content = #{content}
-	where user_id = #{user_id}
-</update>
+<insert id="userRefund" parameterType="com.landers.airline.dto.RefundDto">
+	insert into refund(refund_id, user_id, ticket_id, content, refund_status)
+	values(null ,#{user_id}, #{ticket_id}, #{content}, "대기")
+</insert>
 
 
 

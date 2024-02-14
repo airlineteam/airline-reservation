@@ -40,7 +40,7 @@
 	<td>
 		<input type="text" class="form-control" name="user_id" id="user_id" size="20">
 		<p id="idcheck" style="font-size: 10px"></p>
-		<input type="button" class="btn btn-primary" id="id_chk_btn" value="id확인">		
+		<input type="button" class="btn btn-danger" id="id_chk_btn" value="id확인">		
 	</td>
 </tr>
 <tr>
@@ -70,7 +70,7 @@
 <tr>
 	<td colspan="2">
 		<div align="center">
-			<input type="button" id="regibtn" class="btn btn-primary" value="회원가입">
+			<input type="button" id="regibtn" class="btn btn-danger" value="회원가입">
 		</div>
 	</td>
 </tr>

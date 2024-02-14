@@ -119,6 +119,7 @@ public class MyPageController {
 	 @GetMapping("myRefund.do")
 		public String myRefund(RefundDto dto, Model model) {
 			System.out.println("mypageController myRefund " + new Date());
+			
 			List<RefundDto> list = service.myRefund(dto);
 			System.out.println(list.toString());
 			
@@ -130,15 +131,17 @@ public class MyPageController {
 		}
 	 
 	 
-	 @GetMapping("userRefund.do")
+	 @PostMapping("userRefund.do")
 	 public String userRefund(RefundDto dto, Model model, HttpServletRequest request) { 
 		 
 		 System.out.println("mypageController userRefund() " + new Date());
+
 	 
 		 boolean isS = service.userRefund(dto); 
 		 String refundMsg = "REFUND_SUCCESS";
 		 if(isS == false) { refundMsg = "REFUND_FAIL"; }
 		 
+
 		 model.addAttribute("refundMsg", refundMsg);
 		 model.addAttribute("user_id", dto);
 		 
