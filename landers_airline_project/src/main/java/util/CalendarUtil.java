@@ -27,8 +27,8 @@ public class CalendarUtil {
 	public static String calwrite(int year, int month, int day) {
 		String str = "";
 		
-		String img = "<img src='./images/pen2.png' width='18px' height='18px' title='일정추가'>";
-		str = String.format("<a href='calendar?param=calwrite&year=%d&month=%d&day=%d'>%s</a>", 
+		String img = "<img src='./images/airplane-fill.svg' width='10px' height='10px' title='일정추가'>";
+		str = String.format("<a href='calendarwrite.do?year=%d&month=%d&day=%d'>%s</a>", 
 										year, month, day, img);
 		return str;		
 	}
@@ -70,7 +70,7 @@ public class CalendarUtil {
 			if(dto.getWdate().substring(0, 8).equals(dates)) {
 				str += "<tr>";
 				str += "	<td class='tdlist'>";
-				str += "		<a href='calendar?param=caldetail&seq=" + dto.getCalendar_id() + "'>";
+				str += "		<a href='calendardetail.do?seq=" + dto.getSeq() + "'>";
 				str += "			<font style='font-size:10px;color:blue'>";
 				str += 					dot3( dto.getTitle() );
 				str += "			</font>";
