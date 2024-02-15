@@ -1,13 +1,23 @@
+<%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="com.landers.airline.dto.CalendarDto"%>
 <%@page import="java.util.List"%>
 <%@page import="util.CalendarUtil"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+UserDto login = (UserDto)session.getAttribute("login");
+if ( login == null ) {
+	%>
+	    <script type="text/javascript">
+	        alert('로그인이 필요합니다.');
+	        location.href = "login.do";
+	    </script>
+	<%
+	    return; // 페이지 렌더링 중지
+	}
+%>
 
-<%--
-   MemberDto login = (MemberDto)session.getAttribute("login");
---%>    
     
 <!DOCTYPE html>
 <html>
@@ -30,11 +40,59 @@ th, td{
    padding-left:5px;
    border: 0px;
 }
+.center {
+}
+p.h1{
+	margin-left: 500px;
+	padding-top: 50px;
+}
+.img{
+	position: relative;
+}
+
+.intro{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 400px;
+	float: left;
+}
+
+.intro .card{
+	flex: 1;
+	text-align: center;
+	margin: 150px 40px;
+	 border: none;
+}
+
+.intro .card img{
+	width: 70px;
+	height: 70px;
+	margin: auto;
+	color: #444;
+	margin-bottom: 30px;
+}
+
+.intro .card h2{
+	letter-spacing: 0.2em;
+}
+
+.intro .card p{
+	font-size: 13px;
+}
+
+.ttt{
+	margin-top : 20px;
+	margin-bottom: 20px;
+}
+
 </style>
+
+
+
 
 </head>
 <body>
-
 
 <%
 List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
@@ -52,188 +110,19 @@ Calendar cal = (Calendar)request.getAttribute("cal");
 
 System.out.println(year + " " + month);
 
+
+
 %>
+<section class="intro">
+	<div class="card">
+		<img src="./images/airplane.svg">
+		<h2>LANDERS</h2>
+		<p>무엇과도 바꿀 수 없는 핵심 가치인 '안전'과 '고객중심서비스'를 등대삼아, 앞으로도 고객 여러분들이 선택한 Landers Airline이 항공업계를 주도하는 글로벌 선도 항공사로 자리매김할 수 있도록 최선의 노력을 다 하겠습니다.</p>
+	</div>
+</section>
+<div class="center">
 
-<%--
-   Calendar cal = Calendar.getInstance();
-   cal.set(Calendar.DATE, 1);
-   
-   String syear = (String)request.getAttribute("year");
-   String smonth = (String)request.getAttribute("month");
-   
-   // 현재 연도와 월을 구한다   -> 처음 이 페이지가 실행시에 적용
-   int year = cal.get(Calendar.YEAR);
-   if(syear != null){   // 넘어 온 파라미터 값이 있음
-      year = Integer.parseInt(syear);
-   }
-   int month = cal.get(Calendar.MONTH) + 1;   // 0 ~ 11 까지이므로
-   if(syear != null){
-      month = Integer.parseInt(smonth);
-   }
-   
-   if(month < 1){
-      month = 12;
-      year--;
-   }
-   if(month > 12){
-      month = 1;
-      year++;
-   }
-
-   System.out.println(year + " " + month);
-   System.out.println(year + " " + month);
-   cal.set(year, month-1, 1);
-   
-   // 요일
-   int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-   
-   // <<   year--
-   String pp = String.format("<a href='calendarlist.do?year=%d&month=%d' style='text-decoration:none'>"
-                     +       "<img src='./images/left.png' width='20px' height='20px'>"
-                     + "</a>",  year-1, month);
-   
-   // <   month--
-   String p = String.format("<a href='calendarlist.do?year=%d&month=%d' style='text-decoration:none'>"
-                     +       "<img src='./images/prev.png' width='20px' height='20px'>"
-                     + "</a>",  year, month-1);
-   
-   // >   month++
-   String n = String.format("<a href='calendarlist.do?year=%d&month=%d' style='text-decoration:none'>"
-                     +       "<img src='./images/next.png' width='20px' height='20px'>"
-                     + "</a>",  year, month+1);
-   
-   // >>   year++
-   String nn = String.format("<a href='calendarlist.do?year=%d&month=%d' style='text-decoration:none'>"
-                     +       "<img src='./images/last.png' width='20px' height='20px'>"
-                     + "</a>",  year+1, month);
-   
-//   CalendarDao dao = CalendarDao.getInstance();         // 202401
-//   List<CalendarDto> list = dao.getCalendarList(login.getId(), year + CalendarUtil.two(month + ""));
-
-   List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
-/*
-   String pp = (String)request.getAttribute("pp");
-   String p = (String)request.getAttribute("p");
-   String n = (String)request.getAttribute("n");
-   String nn = (String)request.getAttribute("nn");
-   
-   int year = (Integer)request.getAttribute("year");
-   int month = (Integer)request.getAttribute("month");
-   int dayOfWeek = (Integer)request.getAttribute("dayOfWeek");
-*/   
-//   Calendar cal = (Calendar)request.getAttribute("cal");
---%>
-<!-- <div class="calendar">
-  <div class="month"><a href="#" class="nav"><i class="fas fa-angle-left"></i></a><div>January <span class="year">2019</span></div><a href="#" class="nav"><i class="fas fa-angle-right"></i></a></div>
-  <div class="days">
-    <span>Mon</span>
-    <span>Tue</span>
-    <span>Wed</span>
-    <span>Thu</span>
-    <span>Fri</span>
-    <span>Sat</span>
-    <span>Sun</span>
-  </div>
-  <div class="dates">
-      <button>
-        <time>1</time>
-      </button>
-      <button>
-        <time>2</time>
-      </button>
-      <button>
-        <time>3</time>
-      </button>
-      <button>
-        <time>4</time>
-      </button>
-      <button>
-        <time>5</time>
-      </button>
-      <button>
-        <time>6</time>
-      </button>
-      <button>
-        <time>7</time>
-      </button>
-      <button>
-        <time>8</time>
-      </button>
-      <button>
-        <time>9</time>
-      </button>
-      <button>
-        <time>10</time>
-      </button>
-      <button>
-        <time>11</time>
-      </button>
-      <button>
-        <time>12</time>
-      </button>
-      <button>
-        <time>13</time>
-      </button>
-      <button>
-        <time>14</time>
-      </button>
-      <button>
-        <time>15</time>
-      </button>
-      <button>
-        <time>16</time>
-      </button>
-      <button>
-        <time>17</time>
-      </button>
-      <button class="today">
-        <time>18</time>
-      </button>
-      <button>
-        <time>19</time>
-      </button>
-      <button>
-        <time>20</time>
-      </button>
-      <button>
-        <time>21</time>
-      </button>
-      <button>
-        <time>22</time>
-      </button>
-      <button>
-        <time>23</time>
-      </button>
-      <button>
-        <time>24</time>
-      </button>
-      <button>
-        <time>25</time>
-      </button>
-      <button>
-        <time>26</time>
-      </button>
-      <button>
-        <time>27</time>
-      </button>
-      <button>
-        <time>28</time>
-      </button>
-      <button>
-        <time>29</time>
-      </button>
-      <button>
-        <time>30</time>
-      </button>
-      <button>
-        <time>31</time>
-      </button>
-  </div>
-</div>
- -->
-
-<div class="month"><font size="100px"><a href="#" class="nav"><i class="fas fa-angle-left"></i></a><div><%=month %></font>  <span class="year"><%=year %> </span></div><a href="#" class="nav"><i class="fas fa-angle-right"></i></a>
-<table border="1">
+<table class="ttt" border="1">
 <col width="120"/><col width="120"/><col width="120"/><col width="120"/>
 <col width="120"/><col width="120"/><col width="120"/>
 
@@ -295,9 +184,11 @@ for(int i = 0;i < 7 - weekday; i++){
 %>
 </tr>
 
+</div>
+</div>
 </table>
 
-</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
 </body>
 </html>

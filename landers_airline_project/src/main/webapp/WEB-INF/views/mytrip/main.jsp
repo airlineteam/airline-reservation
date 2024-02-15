@@ -26,21 +26,19 @@
 	text-align: center;
 } */
 
-header, main, footer{
+header,footer{
 	margin: 0 auto;
-	width: 1400px;
+	width:100%;
 	text-align: center;
 }
-main{
-	text-align: left;
-}
+
 
 header{	
 	height: 100px;
 	background-color: #ffffff;
 }
 footer{	
-	height: 100px;
+	height: 350px;
 	background-color: #eeeeee;
 } 
 </style>
@@ -48,6 +46,9 @@ footer{
 </head>
 <body>
 
+<nav>
+	<jsp:include page="topbar.jsp" flush="false"/>
+</nav>
 
 <header>
 	<jsp:include page="header.jsp" flush="false"/>
