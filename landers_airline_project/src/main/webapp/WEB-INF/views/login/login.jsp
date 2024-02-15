@@ -38,7 +38,7 @@ td{
 }
 .table {
         width: 550px;
-        margin: 20px auto;
+        margin: 25px auto;
         border-collapse: collapse;
     }
     
@@ -47,10 +47,7 @@ td{
 }
 </style>
 
-<!-- </head>
-<body> -->
 
-<!-- <div class="center"> -->
     <div class="login-header">
         <h2 style="color: #9A161F; margin: 50px auto;">Login</h2>
     </div>
@@ -81,7 +78,7 @@ td{
             </tr>
         </table>
     </form>
-<!-- </div> -->
+
 <script>
 	function regi() {
 		location.href = "regi.do";

@@ -18,6 +18,7 @@ th{
 	background: #e0757d;
 	color: white;
 	border: none;
+	line-height: 40px;
 }
 tr{
 	line-height: 12px;
@@ -28,7 +29,7 @@ td{
 	border: none;
 }
 .table {
-        width: 500px;
+        width: 700px;
         margin: 100px auto;
         border-collapse: collapse;
         border: none;
@@ -36,10 +37,17 @@ td{
     }
 
 .thh{
-	line-height: 30px;
+	line-height: 50px;
+	
+
 }
 
-
+.btn {
+    padding: 10px 40px;
+    font-size: 16px;
+    background: #a12a32;
+    color: white;
+}
 
 </style>
 
@@ -54,14 +62,14 @@ td{
 
 <table class="table table-hover">
 <tr>
-	<th class="thh" colspan = 2 style="background: rgb(220,53,69); color: white;">
+	<th class="thh" colspan = 2 style="background: #a12a32; color: white; height: 60px; font-size: 25px;">
 		회원정보
 	</th>
 </tr>
 <tr>
 	<th>아이디</th>
 	<td>
-		<input type="text" class="form-control" name="user_id" id="user_id" size="20" value="<%= mylist.getUser_id()%>" readonly style="background:#a0a0a0;">
+		<input type="text" class="form-control" name="user_id" id="user_id" size="20" value="<%= mylist.getUser_id()%>" readonly style="background:#9E9E9E;">
 	</td>
 </tr>
 <tr>
@@ -91,8 +99,8 @@ td{
 <tr>
 	<td colspan="2">
 		<div align="center">
-			<input type="submit" class="btn btn-danger" value="수정">
-			<button type="button" class="btn btn-danger"  onclick="deleteUser('<%=mylist.getUser_id()%>')">삭제</button>
+			<input type="submit" class="btn" value="수정">&nbsp;&nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn"  onclick="deleteUser('<%=mylist.getUser_id()%>')">삭제</button>
 		</div>
 	</td>
 </tr>

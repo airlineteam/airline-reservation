@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.landers.airline.dao.MyPageDao;
 import com.landers.airline.dto.BbsParam;
+import com.landers.airline.dto.ManagerQnaDto;
+import com.landers.airline.dto.ManagerQnaParam;
 import com.landers.airline.dto.RefundDto;
 import com.landers.airline.dto.TicketDto;
 import com.landers.airline.dto.TicketParam;
@@ -58,6 +60,11 @@ public class MyPageDaoImpl implements MyPageDao {
 	@Override
 	public int allTicket(TicketParam param) {
 		return session.selectOne("mypage.allTicket", param);
+	}
+	
+	@Override
+	public List<TicketDto> Ticketlist(TicketParam param) {
+		return session.selectList("mypage.Ticketlist", param);
 	}
 
 
