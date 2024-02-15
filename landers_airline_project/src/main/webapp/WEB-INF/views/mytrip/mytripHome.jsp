@@ -5,18 +5,7 @@
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-UserDto login = (UserDto)session.getAttribute("login");
-if ( login == null ) {
-	%>
-	    <script type="text/javascript">
-	        alert('로그인이 필요합니다.');
-	        location.href = "login.do";
-	    </script>
-	<%
-	    return; // 페이지 렌더링 중지
-	}
-%>
+
 
     
 <!DOCTYPE html>
