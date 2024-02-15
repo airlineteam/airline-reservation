@@ -5,10 +5,10 @@
     <div class="container px-5">
         <div class="row">
             <div class="col-6 col-lg-4">
-                <h3 class="fw-bold">Coding Yaar</h3>
-                <p class="pt-2">321, Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <p class="mb-2">0987654321</p>
-                <p>1234567890</p>
+                <h3 class="fw-bold">Landers Airline</h3>
+                <p class="pt-2">17, APEC-ro, Haeundae-gu, Busan, Republic of Korea</p>
+                <p class="mb-2">02-3397-1234</p>
+                <p>02-5713-4421</p>
             </div>
             <div class="col">
                 <h4>Menu</h4>
@@ -38,10 +38,10 @@
             <div class="col-6 col-lg-3 text-lg-end">
                 <h4>Social Media Links</h4>
                 <div class="social-media pt-2">
-                    <a href="./images/instagram.svg" class="text-light fs-2 me-3"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-light fs-2 me-3"><i class="bi bi-pinterest"></i></a>
-                    <a href="#" class="text-light fs-2 me-3"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="text-light fs-2"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-light fs-2 me-3"><img src="./images/instagram.svg"></a>
+                    <a href="#" class="text-light fs-2 me-3"><img src="./images/threads.svg"></a>
+                    <a href="#" class="text-light fs-2 me-3"><img src="./images/envelope-fill.svg"></a>
+                    <a href="#" class="text-light fs-2"><img src="./images/facebook.svg"></a>
                 </div>
             </div>
         </div>
