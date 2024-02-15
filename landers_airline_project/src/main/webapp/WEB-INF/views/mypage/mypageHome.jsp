@@ -93,8 +93,9 @@ td{
 <tr>
 	<th>주소</th>
 	<td style="text-align: left;">
-		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" size="5" readonly style="background:lightgray;">
-		<input type="button" class="btn btn-danger" onclick="sample6_execDaumPostcode()" size="20" value="우편번호 찾기"><br>
+		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" size="5" readonly style="background:lightgray; width:150px;">
+		<br>
+		<input type="button" class="btn btn-danger" onclick="sample6_execDaumPostcode()" size="20" value="우편번호 찾기" style="padding: 5px 20px;"><br><br>
 		<input type="text" class="form-control" name="user_address" id="user_address" size="20" placeholder="주소" value="<%= mylist.getUser_address()%>">
 		<input type="text" class="form-control"  name="user_address" id="user_address" size="20" placeholder="상세주소">
 	</td>

@@ -6,6 +6,7 @@ public class TicketParam{
 	private String choice;
 	private String search;
 	private int pageNumber;
+	private String user_id;
 	
 	public TicketParam() {
 	}
@@ -41,8 +42,20 @@ public class TicketParam{
 		this.pageNumber = pageNumber;
 	}
 
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
 	@Override
 	public String toString() {
-		return "BbsParam [choice=" + choice + ", search=" + search + ", pageNumber=" + pageNumber + "]";
+		return "TicketParam [choice=" + choice + ", search=" + search + ", pageNumber=" + pageNumber + ", user_id="
+				+ user_id + "]";
 	}
+	
+	
 }
