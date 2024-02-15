@@ -71,6 +71,18 @@ public class QnaServiceImpl implements QnaService{
 		int count = dao.qnadelete(seq);
 		return count>0?true:false;
 	}
+
+	@Override
+	public boolean qnareadcount(int seq) {
+		int count = dao.qnareadcount(seq);
+		return count>0?true:false;
+	}
+
+	@Override
+	public boolean qnacomplete(int seq) {
+		int count = dao.qnacomplete(seq);
+		return count>0?true:false;
+	}
 	
 	
 }

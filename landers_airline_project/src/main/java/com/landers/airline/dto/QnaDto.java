@@ -17,6 +17,7 @@ public class QnaDto implements Serializable{
 	private int del;
 	private int readcount;
 	private String category;
+	private int complete;
 	
 	public QnaDto() {
 	}
@@ -44,7 +45,7 @@ public class QnaDto implements Serializable{
 	}
 	
 	public QnaDto(int seq, String id, int ref, int step, int depth, String title, String content, String wdate, int del,
-			int readcount, String category) {
+			int readcount, String category, int complete) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -57,6 +58,7 @@ public class QnaDto implements Serializable{
 		this.del = del;
 		this.readcount = readcount;
 		this.category = category;
+		this.complete = complete;
 	}
 
 	public int getSeq() {
@@ -139,8 +141,6 @@ public class QnaDto implements Serializable{
 		this.readcount = readcount;
 	}
 	
-	
-
 	public String getCategory() {
 		return category;
 	}
@@ -148,13 +148,23 @@ public class QnaDto implements Serializable{
 	public void setCategory(String category) {
 		this.category = category;
 	}
+	
+	public int getComplete() {
+		return complete;
+	}
+
+	public void setComplete(int complete) {
+		this.complete = complete;
+	}
 
 	@Override
 	public String toString() {
 		return "QnaDto [seq=" + seq + ", id=" + id + ", ref=" + ref + ", step=" + step + ", depth=" + depth + ", title="
 				+ title + ", content=" + content + ", wdate=" + wdate + ", del=" + del + ", readcount=" + readcount
-				+ ", category=" + category + "]";
+				+ ", category=" + category + ", complete=" + complete + "]";
 	}
+
+	
 	
 	
 	
