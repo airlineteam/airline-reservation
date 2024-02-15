@@ -90,8 +90,10 @@ public class LoginController {
 	@GetMapping("idcheck.do")
 	public String idcheck(String User_id) {
 		System.out.println("LoginController idcheck " + new Date());
+
 		
 		boolean isS = service.idcheck(User_id);
+
 		if(isS) {
 			return "NO";
 		}

@@ -79,13 +79,13 @@ td{
         </table>
     </form>
 
+
+<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
 <script>
 	function regi() {
 		location.href = "regi.do";
 	}
-</script>
 
-<script type="text/javascript">
 let User_id = $.cookie("User_id");    // 쿠키에서 id를 산출
 if(User_id != null){    // 쿠키에 저장한 id가 있다
     $("#User_id").val( User_id );
