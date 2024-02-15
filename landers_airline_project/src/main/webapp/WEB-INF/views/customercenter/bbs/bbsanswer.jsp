@@ -34,10 +34,61 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <style type="text/css">
-th{
-	background: royalblue;
-	color: white;
+
+.center{
+	margin: auto;
+	width: 1000px;
 }
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+.table-fill {
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 100px;
+  margin: auto;
+  max-width: 1000px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+.table-fill th {
+  color:#ffffff;
+  width: 200px;
+  background: #e0757d;
+  border: 2px solid #4f4f4f;
+  font-size:18px;
+  font-weight: 300;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+/*   vertical-align:middle; */
+}
+  
+.table-fill tr {
+  border: 1px solid #4f4f4f;
+  background: #ffc7cb;
+  font-size:15px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+.table-fill td {
+  padding:15px;
+  text-align:left;
+/*   vertical-align:middle; */
+  font-weight:400;
+  font-size:17px;
+  border: 1px solid;
+}
+
 pre{
 	white-space: pre-wrap;
 	word-break:break-all;
@@ -48,14 +99,12 @@ pre{
 </head>
 <body>
 
-<div id="app" class="container">
+<div class="center">
 <br/>
 
-<h2>기본글</h2>
+<br/> <h2 style="text-align: left;">기본글</h2> <br/>
 
-<table class="table table-sm">
-<col width="150px"/><col width="500px"/>
-
+<table class="table-fill">
 <tr>
 	<th>작성자</th>
 	<td><%=dto.getId() %></td>
@@ -69,17 +118,20 @@ pre{
 	<td><%=dto.getReadcount() %></td>
 </tr>
 <tr>	
+	<th>제목</th>
 	<td colspan="2" style="font-size: 22px;font-weight: bold;"><%=dto.getTitle() %></td>
 </tr>
-<tr>	
-	<td colspan="2"><pre style="font-size: 20px;font-family: 고딕, arial;background-color: white"><%=dto.getContent() %></pre></td>
+<tr style="height: 300px; background: white">
+	<th>내용</th>
+	<td colspan="2" style="vertical-align: text-top;">		
+		<pre style="font-size: 16px;font-family: 고딕, arial;"><%=dto.getContent() %></pre>
+	</td>
 </tr>
-</table>
+</table><br/>
 
 
 <hr/>
 <br/>
-
 <h2>답글</h2>
 
 <form action="bbsanswerAf.do" method="post">
@@ -108,8 +160,9 @@ pre{
 </table>
 
 <div align="right">
-	<input type="submit" class="btn btn-primary" value="작성완료">
+	<input type="submit" class="btn btn-primary" style="background-color: #9A161F; border-color: #9A161F" value="작성완료">
 </div>
+<br/><br/><br/>
 
 </form>
 

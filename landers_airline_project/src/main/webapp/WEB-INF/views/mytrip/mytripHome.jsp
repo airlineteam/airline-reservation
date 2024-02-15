@@ -27,10 +27,26 @@ th, td{
 }
 .tdlist{
    padding-left:5px;
-   border: 0px;
 }
-.center {
+
+
+.tt{
+   margin: 0 auto;
+   text-align:center;
+   background-color: #9a161f;
+   border: none;
+
 }
+
+#tt{
+   width:100%;
+}
+
+.tta{
+	text-decoration: none;
+	color: white;
+}
+
 p.h1{
 	margin-left: 500px;
 	padding-top: 50px;
@@ -73,6 +89,7 @@ p.h1{
 .ttt{
 	margin-top : 20px;
 	margin-bottom: 20px;
+
 }
 
 </style>
@@ -114,7 +131,6 @@ System.out.println(year + " " + month);
 <table class="ttt" border="1">
 <col width="120"/><col width="120"/><col width="120"/><col width="120"/>
 <col width="120"/><col width="120"/><col width="120"/>
-
 <tr height="80">
    <td colspan="7" align="center">
       <%=pp %>&nbsp;<%=p %>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -127,7 +143,7 @@ System.out.println(year + " " + month);
    </td>
 </tr>
 
-<tr height="30" >
+<tr height="30" style="background-color: #9A161F; color: white;" >
    <th class="text-center">일</th>
    <th class="text-center">월</th>
    <th class="text-center">화</th>
@@ -150,9 +166,9 @@ for(int i = 1;i < dayOfWeek; i++){
 int lastday = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 for(int i = 1;i <= lastday; i++){
    %>
-   <td style="color: #3c3c3c;padding-top: 5px">
+   <td style="padding-top: 5px">
       <%=CalendarUtil.daylist(year, month, i) %>&nbsp;&nbsp;<%=CalendarUtil.calwrite(year, month, i) %>
-      <%=CalendarUtil.makeTable(year, month, i, list) %>
+   <%=CalendarUtil.makeTable(year, month, i, list) %>
    </td>
    <%
    if((i + dayOfWeek -1) % 7 == 0 && i != lastday){

@@ -38,7 +38,7 @@ header{
 	background-color: #ffffff;
 }
 footer{	
-	height: 350px;
+	height: 500px;
 	background-color: #eeeeee;
 } 
 </style>

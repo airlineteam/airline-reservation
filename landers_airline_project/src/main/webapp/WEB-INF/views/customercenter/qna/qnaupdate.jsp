@@ -38,10 +38,16 @@ if ( login == null || !login.getUser_id().equals(dto.getId()) ) {
 
 <style type="text/css">
 
-.centerBox{
+.center{
 	margin: auto;
-	width: 500px;
-	text-align: center;
+	width: 1000px;
+}
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
 
 .table-fill {
@@ -88,9 +94,9 @@ if ( login == null || !login.getUser_id().equals(dto.getId()) ) {
 </head>
 <body>
 
-
-<br/> <h1>QnA 수정</h1>
+<div class="center">
 <br/>
+<br/> <h2 style="text-align: left;">QnA 수정</h2> <br/>
 
 <form action="qnaupdateAf.do" id="frm" method="get">
 <input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
@@ -136,7 +142,7 @@ if ( login == null || !login.getUser_id().equals(dto.getId()) ) {
 
 
 </form>
-
+</div>
 
 <script type="text/javascript">
 $(document).ready(function() {	

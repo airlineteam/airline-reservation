@@ -74,6 +74,7 @@ public class BbsController {
 		System.out.println("BbsController bbsdetail " + new Date());
 		
 		BbsDto dto = service.bbsdetail(seq);
+		boolean isS = service.bbsreadcount(seq);
 		model.addAttribute("dto", dto);
 		model.addAttribute("main","bbs/bbsdetail");
 		
@@ -112,8 +113,9 @@ public class BbsController {
 		
 		BbsDto dto = service.bbsdetail(seq);		
 		model.addAttribute("dto", dto);
+		model.addAttribute("main","bbs/bbsupdate");
 		
-		return "customercenter/bbs/bbsupdate";
+		return "customercenter/main";
 	}
 	
 	@GetMapping("bbsupdateAf.do")
