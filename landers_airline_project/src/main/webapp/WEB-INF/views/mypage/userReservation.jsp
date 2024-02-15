@@ -1,3 +1,4 @@
+<%@page import="utill.price_util"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -234,9 +235,6 @@ td.text-right {
 				비행기번호
 			</th>
 			<th class="text-left">
-				좌석번호
-			</th>
-			<th class="text-left">
 				환불
 			</th>
 		</tr>
@@ -260,16 +258,13 @@ td.text-right {
 						<%=dto.getSchedule_id() %>
 					</td>
 					<td class="text-left">
-						<%=dto.getFinal_price() %>
+						<%=price_util.price_idot(dto.getFinal_price()) %>원
 					</td>
 					<td class="text-left">
 						<%=dto.getFinal_date() %>
 					</td>
 					<td class="text-left">
 						<%=dto.getFlight_id() %>
-					</td>
-					<td class="text-left">
-						<%=dto.getSeat_id() %>
 					</td>
 					<td class="text-left">
 						<button type="button" class="btn btn-danger"  onclick="myRefund(<%=dto.getTicket_id() %>)">환불요청</button>

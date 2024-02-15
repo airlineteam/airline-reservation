@@ -145,8 +145,9 @@ public class MytripController {
 	   model.addAttribute("year", year);
 	   model.addAttribute("month", month);
 	   model.addAttribute("day", day);
+	   model.addAttribute("main", "calwrite");
 	   
-	   return "mytrip/calwrite";
+	   return "mytrip/main";
    }
    
    @PostMapping("calendarwriteAf.do")

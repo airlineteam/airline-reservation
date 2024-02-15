@@ -40,4 +40,22 @@ public class price_util {
 		        return "Invalid Input";
 		    }
 	}
+	
+	public static String price_idot(int price) {
+		 try {
+		        // Parse the input string as a number
+			 	String pricee = Integer.toString(price);
+		        double amount = Double.parseDouble(pricee);
+		        
+		        // Use NumberFormat to format the number with commas
+		        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+		        formatter.applyPattern("#,###");
+		        
+		        return formatter.format(amount);
+		    } catch (NumberFormatException e) {
+		        // Handle the case where the input is not a valid number
+		        e.printStackTrace();
+		        return "Invalid Input";
+		    }
+	}
 }
