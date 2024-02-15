@@ -57,8 +57,7 @@ th, td{
 	text-decoration: none;
 	color: white;
 }
-.center {
-}
+
 p.h1{
 	margin-left: 500px;
 	padding-top: 50px;
