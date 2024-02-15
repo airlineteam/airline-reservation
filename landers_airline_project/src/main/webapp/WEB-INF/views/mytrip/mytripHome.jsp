@@ -1,13 +1,23 @@
+<%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="com.landers.airline.dto.CalendarDto"%>
 <%@page import="java.util.List"%>
 <%@page import="util.CalendarUtil"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+UserDto login = (UserDto)session.getAttribute("login");
+if ( login == null ) {
+	%>
+	    <script type="text/javascript">
+	        alert('로그인이 필요합니다.');
+	        location.href = "login.do";
+	    </script>
+	<%
+	    return; // 페이지 렌더링 중지
+	}
+%>
 
-<%--
-   MemberDto login = (MemberDto)session.getAttribute("login");
---%>    
     
 <!DOCTYPE html>
 <html>
@@ -30,6 +40,7 @@ th, td{
    padding-left:5px;
 }
 
+
 .tt{
    margin: 0 auto;
    text-align:center;
@@ -45,13 +56,61 @@ th, td{
 .tta{
 	text-decoration: none;
 	color: white;
+
+.center {
+}
+p.h1{
+	margin-left: 500px;
+	padding-top: 50px;
+}
+.img{
+	position: relative;
+}
+
+.intro{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 400px;
+	float: left;
+}
+
+.intro .card{
+	flex: 1;
+	text-align: center;
+	margin: 150px 40px;
+	 border: none;
+}
+
+.intro .card img{
+	width: 70px;
+	height: 70px;
+	margin: auto;
+	color: #444;
+	margin-bottom: 30px;
+}
+
+.intro .card h2{
+	letter-spacing: 0.2em;
+}
+
+.intro .card p{
+	font-size: 13px;
+}
+
+.ttt{
+	margin-top : 20px;
+	margin-bottom: 20px;
+
 }
 
 </style>
 
+
+
+
 </head>
 <body>
-
 
 <%
 List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
@@ -69,11 +128,19 @@ Calendar cal = (Calendar)request.getAttribute("cal");
 
 System.out.println(year + " " + month);
 
+
+
 %>
+<section class="intro">
+	<div class="card">
+		<img src="./images/airplane.svg">
+		<h2>LANDERS</h2>
+		<p>무엇과도 바꿀 수 없는 핵심 가치인 '안전'과 '고객중심서비스'를 등대삼아, 앞으로도 고객 여러분들이 선택한 Landers Airline이 항공업계를 주도하는 글로벌 선도 항공사로 자리매김할 수 있도록 최선의 노력을 다 하겠습니다.</p>
+	</div>
+</section>
+<div class="center">
 
-
-<div class="month"><font size="100px"><a href="#" class="nav"><i class="fas fa-angle-left"></i></a><div><%=month %></font>  <span class="year"><%=year %> </span></div><a href="#" class="nav"><i class="fas fa-angle-right"></i></a>
-<table border="1">
+<table class="ttt" border="1">
 <col width="120"/><col width="120"/><col width="120"/><col width="120"/>
 <col width="120"/><col width="120"/><col width="120"/>
 <tr height="80">
@@ -134,9 +201,11 @@ for(int i = 0;i < 7 - weekday; i++){
 %>
 </tr>
 
+</div>
+</div>
 </table>
 
-</div>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
 </body>
 </html>

@@ -9,7 +9,7 @@
 	 	parameterType="com.landers.airline.dto.ManagerQnaParam"
 			resultType="com.landers.airline.dto.ManagerQnaDto">
 	select seq, id, ref, step, depth, 
-			title, content, wdate, del, readcount, category
+			title, content, wdate, del, readcount, category, complete
 	from qna
 	<if test="choice != null and choice != '' and search != null and search != ''">
 		<if test="choice == 'title'">
@@ -44,7 +44,7 @@
 </select>
 
 <select id="qnadetail" parameterType="Integer" resultType="com.landers.airline.dto.ManagerQnaDto">
-	select seq, id, ref, step, depth, title, content, wdate, del, readcount, category
+	select seq, id, ref, step, depth, title, content, wdate, del, readcount, category, complete
 	from qna
 	where seq=#{seq}
 </select>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+<%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="com.landers.airline.dto.TicketDto"%>
 <%@page import="com.landers.airline.dto.TicketParam"%>
 
@@ -9,6 +10,8 @@
 <%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <%
+
+	UserDto login = (UserDto)session.getAttribute("login");
     List<TicketDto> list = (List<TicketDto>)request.getAttribute("list");
 
 	int pageTicket = (Integer)request.getAttribute("pageTicket");
@@ -345,7 +348,9 @@ $("#pagination").twbsPagination({
 		let choice = document.getElementById("choice").value;
 		let search = document.getElementById("search").value;
 		
-		location.href = "myTicket.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1);
+		let user_id = "<%=login.getUser_id()%>";
+		
+		location.href = "myTicket.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1) + "&user_id=" + user_id;
 	}	
 });
 </script>

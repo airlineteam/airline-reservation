@@ -80,6 +80,13 @@ td{
 	</td>
 </tr>
 <tr>
+	<th>패스워드 확인</th>
+	<td>
+		<input type="password" class="form-control" name="user_pw2" id="user_pw2" size="20" style="width:200px;" onkeyup="passConfrim()"><br>
+		<span id ="confirmMsg"></span>
+	</td>
+</tr>
+<tr>
 	<th>이름</th>
 	<td>
 		<input type="text" class="form-control" name="user_name" id="user_name" size="20" style="width:200px;">
@@ -95,8 +102,9 @@ td{
 	<th>주소</th>
 	<td>
 		<!-- <input type="text" class="form-control" name="user_address" id="user_address" size="20" style="width:200px;"> -->
-		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" size="5" readonly style="background:lightgray;">
-		<input type="button" class="btn btn-danger" onclick="sample6_execDaumPostcode()" size="20" value="우편번호 찾기"><br>
+		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" size="20" readonly style="background:lightgray; width:150px;">
+		<br>
+		<input type="button" class="btn btn-danger" onclick="sample6_execDaumPostcode()" size="20" value="우편번호 찾기" style="padding: 5px 20px;"><br><br>
 		<input type="text" class="form-control" name="user_address" id="user_address" size="20" placeholder="주소">
 		<input type="text" class="form-control"  name="user_address" id="user_address" size="20" placeholder="상세주소">
 	</td>
@@ -111,6 +119,30 @@ td{
 </table>
 </form>
 <!-- </div> -->
+
+<script>
+	/* 자바 스크립트 함수 선언(비밀번호 확인) */
+
+	function passConfrim() {
+	/* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
+	/* document : 현재 문서를 의미함. 작성되고 있는 문서를 뜻함. */
+	/* getElementByID('아이디') : 아이디에 적힌 값을 가진 id의 value를 get을 해서 password 변수 넣기 */	
+	
+		var user_pw = document.getElementById('user_pw');					//비밀번호 
+		var user_pw2 = document.getElementById('user_pw2');	//비밀번호 확인 값
+		var confrimMsg = document.getElementById('confirmMsg');				//확인 메세지
+		var correctColor = "royalblue";	//맞았을 때 출력되는 색깔.
+		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+		
+		if(user_pw.value == user_pw2.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
+			confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */
+			confirmMsg.innerHTML ="비밀번호 일치";/* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
+		}else{
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML ="비밀번호 불일치";
+		}
+	}
+</script>
 
 
 <script type="text/javascript">

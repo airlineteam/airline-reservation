@@ -74,8 +74,16 @@ public class QnaDaoImpl implements QnaDao{
 	public int qnadelete(int seq) {		
 		return session.update(ns + "qnadelete", seq);
 	}
+
+	@Override
+	public int qnareadcount(int seq) {
+		return session.update(ns + "qnareadcount", seq);		
+	}
 	
-	
+	@Override
+	public int qnacomplete(int seq) {
+		return session.update(ns + "qnacomplete", seq);		
+	}
 }
 
 

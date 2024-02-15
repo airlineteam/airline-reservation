@@ -72,7 +72,9 @@ public class QnaController {
 	public String qnadetail(int seq, Model model) {
 		System.out.println("QnaController qnadetail " + new Date());
 		
+		
 		QnaDto dto = service.qnadetail(seq);
+		boolean isS = service.qnareadcount(seq);
 		model.addAttribute("dto", dto);
 		model.addAttribute("main","qna/qnadetail");
 		
@@ -177,6 +179,17 @@ public class QnaController {
 		
 		return "message";
 	}
+	
+	@GetMapping("qnacomplete.do")
+	public String qnacomplete(int seq, Model model) {
+		System.out.println("QnaController qnaupdate() " + new Date());
+		
+		boolean isS = service.qnacomplete(seq);
+		model.addAttribute("main", "qna/qnadetail");
+		
+		return "customercenter/main";
+	}
+	
 	@GetMapping("qnadelete.do")
 	public String qnadelete(int seq) {
 		System.out.println("QnaController qnadelete() " + new Date());

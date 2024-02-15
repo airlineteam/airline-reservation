@@ -37,25 +37,65 @@ if ( login == null || !login.getUser_id().equals(dto.getId()) ) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <style type="text/css">
-th{
-	background-color: #007bff;
-	color: white;
+
+.centerBox{
+	margin: auto;
+	width: 500px;
 	text-align: center;
-	vertical-align: middle;
 }
+
+.table-fill {
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 100px;
+  margin: auto;
+  max-width: 1000px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+.table-fill th {
+  color:#ffffff;
+  width: 200px;
+  background: #e0757d;
+  border: 2px solid #4f4f4f;
+  font-size:18px;
+  font-weight: 300;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+/*   vertical-align:middle; */
+}
+  
+.table-fill tr {
+  border: 1px solid #4f4f4f;
+  font-size:15px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+.table-fill td {
+  padding:15px;
+  text-align:left;
+/*   vertical-align:middle; */
+  font-weight:400;
+  font-size:17px;
+}
+
 </style>
 </head>
 <body>
 
 
-<div id="app" class="container">
-<h1>QnA 수정</h1>
+<br/> <h1>QnA 수정</h1>
 <br/>
 
 <form action="qnaupdateAf.do" id="frm" method="get">
 <input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
 
-<table class="table table-sm">
+<table class="table-fill">
 <col width="100px"><col width="500px">
 
 <tr>
@@ -83,15 +123,19 @@ th{
 		<textarea rows="18" id="content" name="content" class="form-control"><%=dto.getContent()  %></textarea>
 	</td>
 </tr>
-<tr>
-	<td colspan="2" align="right" style="padding-top: 20px">
-		<button type="button" class="btn btn-primary">글수정 완료</button>
-	</td>
-</tr>
 
+    <tr style="border-left: 1px solid #fff; border-right: 1px solid #fff; border-bottom: 1px solid #fff">
+        <td style="padding-top: 20px; padding-left: 46%; border-left: 1px solid #fff">
+            <button type="button" class="btn btn-primary" style="width: 100px; background-color: #9A161F; border-color: #9A161F">수정 완료</button>
+        </td>
+    </tr>
 </table>
+
+
+<br/><br/><br/>
+
+
 </form>
-</div>
 
 
 <script type="text/javascript">
