@@ -52,10 +52,10 @@ ol li{list-style: none;}
       </h1>
       <ul id="gnb">
          <li class="dept1">
-            <a href="bbslist.do">고객센터</a>
+            <a href="#">고객센터</a>
             <ul class="inner_menu">
                <li class="dept2">
-                  <a href="#">공지사항</a>
+                  <a href="bbslist.do">공지사항</a>
                </li>
                <li class="dept2">
                   <a href="faqlist.do">FAQ</a>
