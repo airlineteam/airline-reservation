@@ -19,66 +19,7 @@ if (selectedSeats == null) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>좌석 선택</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-
-	
-        /* White background layout with effects */
-        .white-layout {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1); 
-        }
-
-        .seat-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between; /* Ensure space between columns */
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .seat {
-            width: 23%; /* Approximately 4 columns in a row */
-            height: 60px;
-            border: 2px solid #3498db;
-            margin-bottom: 10px;
-            text-align: center;
-            line-height: 50px;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
-        }
-
-        .seat:hover {
-            transform: scale(1.1);
-            background-color: #c95f66;
-            color: white;
-            border-color: #2980b9;
-        }
-        
-        .selected {
-            background-color: #9A161F;
-            color: white;
-            border-color: #27ae60;
-        }
-
-        .unavailable {
-            background-color: lightgray;
-            color: black;
-            cursor: not-allowed;
-            border-color: #c0392b;
-        }
-
-        .btn-submit {
-            margin-top: 20px;
-            width: 100%;
-            background-color: #9A161F;
-        }
-
-        .btn-submit:hover {
-            background-color: #7F0E16; 
-        }
-    </style>
+    <link href="reservationcss/seat.css" rel="stylesheet">
 </head>
 <body>
 <div class="cont" style="background-color: #f8f9fa;">

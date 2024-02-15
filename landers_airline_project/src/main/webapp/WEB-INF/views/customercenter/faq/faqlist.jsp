@@ -81,47 +81,59 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.accordion{
-	width: 700px;
-	text-align: center;
+.accordion {
+  width: 1000px;
+  margin-left: 10px;
 }
-input[id*="faq_"]{
-	display: none;
+
+input[id*="faq_"] {
+  display: none;
 }
-input[id*="faq_"] + label{
-	display: block;
-	padding: 20px;
-	border: 1px solid #232188;
-	color:#fff;
-	font-weight:900;
-	background:#e0757d;
-	cursor:pointer;	
+
+input[id*="faq_"] + label {
+  display: block;
+  padding: 20px;
+  border: 1px solid #232188;
+  border-bottom: 0;
+  color: #fff;
+  font-weight: 900;
+  background: #9a161f;
+  cursor: pointer;
+  position: relative;
 }
-input[id*="faq_"] + label em{
-	position: absolute;
-	top:50%;
-	right: 10px;
-	width: 300px;
-	height: 300px;
-	margin-top: -15px;
-	display: inline-block;
-	background: url('images/arrow_down.png');
+
+input[id*="faq_"] + label em {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  display: inline-block;
+  background-image: url('images/faqarrow.png');
+  background-size: 100%;
+  transition: transform 0.35s; /* Added transition property */
 }
-input[id*="faq_"] + label + div{
-	max-height: 0;
-	transition: all .355;
-	overflow: hidden;
-	background: #ebf8ff;
-	font-size: 11px;
+
+input[id*="faq_"]:checked + label em {
+  transform: rotate(180deg); /* Rotate arrow when checkbox is checked */
 }
-input[id*="faq_"] + label + div p{
-	display: inline-block;
+
+input[id*="faq_"] + label + div {
+  max-height: 0;
+  transition: all 0.35s;
+  overflow: hidden;
+  background: #ebf8ff;
+  font-size: 11px;
 }
-input[id*="faq_"]:checked + label + div{
-	max-height: 100px;
-} 
-input[id*="faq_"]:checked + label em{
-	background-position: 0 -300px;
+
+input[id*="faq_"] + label + div p {
+  display: inline-block;
+  padding: 20px;
+}
+
+input[id*="faq_"]:checked + label + div {
+  max-height: 100px;
 }
 </style>
 
@@ -133,32 +145,23 @@ input[id*="faq_"]:checked + label em{
 <div class="center">
 <br/> <h2 style="text-align: left;">자주 묻는 질문</h2> <br/>
 
-
+<!--  
 	<input type="checkbox" id="faq_999">
 	<label for="faq_999">컨텐츠 제목 부분<em></em></label>
 	<div><p>답변내용이 들어갈 자리인 부분</p></div>
-
+-->
 <div class="accordion">
 <%
-if(list == null || list.size() == 0){
-	%>	
-	<label for="noContent">작성된 글이 없습니다.<em></em></label>
-	<div><p> - </p></div>
-	<%
-}else{
 	for(int i = 0;i < list.size(); i++){
 		FaqDto faq = list.get(i);
 			if(faq.getDel() == 0){
 				%>
-				<input type="checkbox" id="faq_<%=i %>">
+				<input type="checkbox" name="accordion" id="faq_<%=i %>">
 				<label for="faq_<%=i %>"><%=faq.getTitle() %><em></em></label>
 				<div><p><%=faq.getContent() %></p></div><br/>
 				<%
-			}else{
-				
 			}
 	}
-}
 %>
 </div>
 <br/><br/>
