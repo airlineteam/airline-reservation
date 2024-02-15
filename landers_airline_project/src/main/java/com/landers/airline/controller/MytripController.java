@@ -44,9 +44,19 @@ public class MytripController {
    }
    */
    @GetMapping("mytrip.do")
-   public String calendarlist(Model model, HttpSession session, String syear, String smonth, CalendarDto dto) {
+   public String calendarlist(Model model, HttpServletRequest request, String syear, String smonth, CalendarDto dto) {
       System.out.println("MytripController calendarlist() " + new Date());
       System.out.println(syear + "/" + smonth);
+      
+      UserDto login = (UserDto)request.getSession().getAttribute("login");
+      if(login == null || login.getUser_id().equals("")) {
+    	  return "redirect:/login.do";
+      }
+      
+      
+      dto.setUser_id(login.getUser_id());
+      
+      
       
       Calendar cal = Calendar.getInstance();
 	  cal.set(Calendar.DATE, 1);
@@ -96,8 +106,7 @@ public class MytripController {
 								+ 		"<img src='./images/last.png' width='20px' height='20px'>"
 								+ "</a>",  year+1, month);
       
-      UserDto login = (UserDto)session.getAttribute("login");
-      dto.setUser_id(login.getUser_id());
+
       
       String wdate = "";
       
