@@ -300,11 +300,11 @@
                         // 각 카테고리에 대한 카운트를 가져와서 데이터 배열에 추가
                         int complimentCount = 0, complaintCount = 0, inquiryCount = 0;
                         for (QnaChartDto qnaDto : qna) {
-                            if (qnaDto.getCategory().equals("칭찬")) {
+                            if (qnaDto.getCategory().equals("문의")) {
                                 complimentCount++;
-                            } else if (qnaDto.getCategory().equals("불만")) {
+                            } else if (qnaDto.getCategory().equals("칭찬")) {
                                 complaintCount++;
-                            } else if (qnaDto.getCategory().equals("문의")) {
+                            } else if (qnaDto.getCategory().equals("불만")) {
                                 inquiryCount++;
                             }
                         }
