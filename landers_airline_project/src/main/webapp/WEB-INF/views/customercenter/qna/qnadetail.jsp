@@ -72,8 +72,6 @@ pre{
 	word-break:break-all;
 	overflow: auto;
 }
-
-
 </style>
 
 </head>
@@ -168,7 +166,7 @@ function backToList_Qna() {
 <table>
 <col width="1500px"/><col width="150px"/>
 <tr>
-	<td>답변</td>
+	<td><b>댓글</b></td>
 </tr> 
 <tr>
 	<td>
@@ -190,6 +188,7 @@ function backToList_Qna() {
 <tbody id="tbody"></tbody>
 </table>
 
+
 </div>
 </div>
 
@@ -198,70 +197,26 @@ function backToList_Qna() {
 
 $(document).ready(function () {
 	
-	<%-- $.ajax({
-		url:"commentList.do",
-		type:"get",
-		data:{ seq:<%=dto.getSeq() %>  },
-		success:function( list ){
-			
-			
-			let loginId = "<%=login.getUser_id() %>";
-			let dtoId = "<%=dto.getId() %>"; 
-		
-			
-			$.each(list, function (i, item) {
-				let str = "<tr id='tableReply'>";
-				str += "<td style='color: #ffffff; background-color: #bf696f;'>작성자: " + item.id + "</td>";
-				str += "<td style='color: #ffffff; background-color: #bf696f;'>작성일: " + item.wdate + "</td>";
-				
-				// 로그인한 사용자의 ID와 댓글 작성자의 ID가 일치하는 경우에만 삭제 버튼 표시
-				 if (login != null && login.getUser_id().equals(dto.getId())) {
-				if(loginId != '' && loginId === item.id){
-					str += "<td><button class='deleteBtn' data-comment-id='" + item.seq + "'>x</button></td>";
-				}
-				}
-				
-				str += "<td>" + item.seq + "</td>" + "</tr>";
-				str += "<tr>";
-				str += "<td colspan='2' style='background-color: #f5f5f5;'>" + item.content + "</td>";			
-				str += "</tr>";
-				str += "<tr>";
-				str += "<td colspan='2'>";								
-				str += "</td>";			
-				str += "</tr>";
-				
-				$("#tbody").append(str);
-			});	
-
-			
-						
-		},
-		error:function(){
-			alert('error');
-		}		
-	});	 --%>
+	// 댓글 불러오기 함수 comment() 실행
 	comment();
 	
 	// 삭제 버튼 클릭 이벤트 처리
 	$(document).on("click", ".deleteBtn", function() {
-	// $(".deleteBtn").on("click", function() {
-		alert('deleteBtn');
 		let seq = $(this).data("comment-id");
-		alert(seq);
 		deleteComment(seq);
 	});
 	
 	function deleteComment(seq) {
 		$.ajax({
 			url: "commentDelete.do",
-			type: "post",
+			type: "get",
 			data: { seq: seq },
 			success: function(response) {
-				// 삭제가 성공하면 화면에서 해당 댓글을 제거
-				$("#tbody").find("button[data-comment-id='" + seq + "']").closest("tr").remove();
+				alert('댓글이 삭제되었습니다.');
+				comment();
 			},
 			error: function() {
-				alert('error');
+				alert('deleteComment() error');
 			}
 		});
 	}
@@ -273,11 +228,10 @@ $(document).ready(function () {
 			type:"get",
 			data:{ seq:<%=dto.getSeq() %>  },
 			success:function( list ){
-				alert(JSON.stringify(list));
 				
 				let loginId = "<%=login.getUser_id() %>";
 				let dtoId = "<%=dto.getId() %>"; 
-			
+				$("#tbody").empty();	// 재 실행시 tbody 안의 모든 댓글 초기화
 				
 				$.each(list, function (i, item) {
 					let str = "<tr id='tableReply'>";
@@ -290,8 +244,6 @@ $(document).ready(function () {
 						str += "<td><button class='deleteBtn' data-comment-id='" + item.seq + "'>x</button></td>";
 					}
 					<%-- } --%>
-					
-					str += "<td>" + item.seq + "</td>" + "</tr>";
 					str += "<tr>";
 					str += "<td colspan='2' style='background-color: #f5f5f5;'>" + item.content + "</td>";			
 					str += "</tr>";
@@ -319,20 +271,16 @@ $(document).ready(function () {
 			type:"post",
 			data:{ "comseq":comseq, "id":id, "content":$("#content").val() },
 			success:function(data){
-				alert("success");
-				alert(data);
 				comment();
 			},
 			error:function(){
 				alert("error");
 			}
-		})
-		
-		
+		})		
 	}
 	
 </script>
-
+<br/><br/><br/>
 </body>
 </html>
 
