@@ -40,6 +40,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style type="text/css">
+
 body {
   background-color: #ffffff;
   font-family: "Roboto", helvetica, arial, sans-serif;
@@ -180,7 +181,7 @@ td.text-center {
 td.text-right {
   text-align: right;
 }
-<style>
+
 .page-link {
   color: #000; 
   background-color: #fff;

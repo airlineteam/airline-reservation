@@ -32,15 +32,158 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <style type="text/css">
-th{
-	background: #9A161F;
-	color: white;
+body {
+  background-color: #ffffff;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
-pre{
-	white-space: pre-wrap;
-	word-break:break-all;
-	overflow: auto;
+
+div.table-title {
+   display: block;
+  margin: auto;
+  max-width: 400px;
+  padding:5px;
+  width: 100%;
 }
+
+.table-title h3 {
+   color: #9A161F;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 200px;
+  margin: auto;
+  max-width: 1000px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#ffffff;
+  background: #a12a32;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:18px;
+  font-weight: 300;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:15px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#EBEBEB;
+  padding:15px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:400;
+  font-size:17px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+<style>
+.page-link {
+  color: #000; 
+  background-color: #fff;
+  border: 1px solid #ccc; 
+}
+
+.page-item.active .page-link {
+ z-index: 1;
+ color: #555;
+ font-weight:bold;
+ background-color: #f1f1f1;
+ border-color: #ccc;
+}
+
+
+
+
 </style>
 
 </head>
@@ -48,12 +191,13 @@ pre{
 
 
 <div id="app" class="container">
-<br/>
+<br/><br>
 
 
+<table class="table-fill">
 
-<table class="table table-sm">
-<col width="150px"/><col width="500px"/>
+
+<col width="50px"/><col width="300px"/>
 
 <tr>
 	<th>작성자</th>
@@ -67,17 +211,24 @@ pre{
 	<th>조회수</th>
 	<td><%=dto.getReadcount() %></td>
 </tr>
-<tr>	
-	<td colspan="2" style="font-size: 22px;font-weight: bold;"><%=dto.getTitle() %></td>
-</tr>
 <tr>
-	<td colspan="2" style="font-size: 120%">		
-		<pre style="font-size: 20px;font-family: 고딕, arial;background-color: white"><%=dto.getContent() %></pre>
+	<th>제목</th>
+	<td><%=dto.getTitle() %></td>
+</tr>
+
+
+
+
+<tr style="background-color: write;">
+	<td class="content" colspan="2" style="font-size: 120%">		
+		<pre style="font-size: 20px;font-family: 고딕, arial; "><%=dto.getContent() %></pre>
 	</td>
 </tr>
-</table>
 
-<div align="right">
+
+</table>
+<br><br>
+<div align="right" >
 
 <%
 if (login != null && login.getUser_role() == 0) {
@@ -89,8 +240,6 @@ if (login != null && login.getUser_role() == 0) {
 <%
 }
 %>
-
-
 
 </div>
 
