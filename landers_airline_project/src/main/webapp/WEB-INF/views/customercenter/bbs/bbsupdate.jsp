@@ -25,7 +25,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 수정</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -36,25 +36,71 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 <style type="text/css">
-th{
-	background-color: #007bff;
-	color: white;
-	text-align: center;
-	vertical-align: middle;
+
+.center{
+	margin: auto;
+	width: 1000px;
 }
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+.table-fill {
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 100px;
+  margin: auto;
+  max-width: 1000px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+.table-fill th {
+  color:#ffffff;
+  width: 200px;
+  background: #e0757d;
+  border: 2px solid #4f4f4f;
+  font-size:18px;
+  font-weight: 300;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+/*   vertical-align:middle; */
+}
+  
+.table-fill tr {
+  border: 1px solid #4f4f4f;
+  font-size:15px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+.table-fill td {
+  padding:15px;
+  text-align:left;
+/*   vertical-align:middle; */
+  font-weight:400;
+  font-size:17px;
+}
+
 </style>
 </head>
 <body>
 
-
-<div id="app" class="container">
-<h1>글수정</h1>
+<div class="center">
 <br/>
+<br/> <h2 style="text-align: left;">공지사항 수정</h2> <br/>
 
 <form action="bbsupdateAf.do" id="frm" method="get">
 <input type="hidden" name="seq" value="<%=dto.getSeq() %>" >
 
-<table class="table table-sm">
+<table class="table-fill">
 <col width="100px"><col width="500px">
 
 <tr>
@@ -75,16 +121,18 @@ th{
 		<textarea rows="18" id="content" name="content" class="form-control"><%=dto.getContent()  %></textarea>
 	</td>
 </tr>
-<tr>
-	<td colspan="2" align="right" style="padding-top: 20px">
-		<button type="button" class="btn btn-primary">글수정 완료</button>
-	</td>
-</tr>
 
+    <tr style="border-left: 1px solid #fff; border-right: 1px solid #fff; border-bottom: 1px solid #fff">
+        <td style="padding-top: 20px; padding-left: 46%; border-left: 1px solid #fff">
+            <button type="button" class="btn btn-primary" style="width: 100px; background-color: #9A161F; border-color: #9A161F">수정 완료</button>
+        </td>
+    </tr>
 </table>
+
+
+<br/><br/><br/>
 </form>
 </div>
-
 
 <script type="text/javascript">
 $(document).ready(function() {	

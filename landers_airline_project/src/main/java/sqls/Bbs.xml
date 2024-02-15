@@ -88,6 +88,15 @@
 	where seq=#{seq}
 </update>
 
+
+<!-- 조회수 증가 -->
+<update id="bbsreadcount" parameterType="Integer">
+	update bbs
+	set readcount = readcount + 1
+	where seq=#{seq}
+</update>
+
+
 </mapper>
 
 

@@ -65,38 +65,64 @@
 }
 </style>
 
+
+
+
 <style type="text/css">
 .center{
 	margin: auto;
 	width: 1000px;
 	text-align: center;
 }
-th{
-	background: #e0757d;
-	color: white;
-}
-tr{
-	line-height: 12px;
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
 
-header, main, footer{
-	margin: 0 auto;
-	width: 1400px;
+.accordion{
+	width: 700px;
 	text-align: center;
 }
-main{
-	text-align: left;
+input[id*="faq_"]{
+	display: none;
 }
-
-header{	
-	height: 100px;
-	background-color: #ffffff;
+input[id*="faq_"] + label{
+	display: block;
+	padding: 20px;
+	border: 1px solid #232188;
+	color:#fff;
+	font-weight:900;
+	background:#e0757d;
+	cursor:pointer;	
 }
-footer{	
-	height: 100px;
-	background-color: #eeeeee;
+input[id*="faq_"] + label em{
+	position: absolute;
+	top:50%;
+	right: 10px;
+	width: 300px;
+	height: 300px;
+	margin-top: -15px;
+	display: inline-block;
+	background: url('images/arrow_down.png');
+}
+input[id*="faq_"] + label + div{
+	max-height: 0;
+	transition: all .355;
+	overflow: hidden;
+	background: #ebf8ff;
+	font-size: 11px;
+}
+input[id*="faq_"] + label + div p{
+	display: inline-block;
+}
+input[id*="faq_"]:checked + label + div{
+	max-height: 100px;
 } 
-
+input[id*="faq_"]:checked + label em{
+	background-position: 0 -300px;
+}
 </style>
 
 </head>
@@ -106,80 +132,36 @@ footer{
 
 <div class="center">
 <br/> <h2 style="text-align: left;">자주 묻는 질문</h2> <br/>
-<table class="table table-hover">
-<col width="70"/><col width="550"/><col width="100"/><col width="200"/>
-<thead>
-	<tr>
-		<th>번호</th><th>제목</th><th>조회수</th><th>등록일</th>
-	</tr>
-</thead>
-<tbody>
+
+
+	<input type="checkbox" id="faq_999">
+	<label for="faq_999">컨텐츠 제목 부분<em></em></label>
+	<div><p>답변내용이 들어갈 자리인 부분</p></div>
+
+<div class="accordion">
 <%
 if(list == null || list.size() == 0){
-	%>
-	<tr>
-		<td colspan="4">작성된 글이 없습니다</td>
-	</tr>
+	%>	
+	<label for="noContent">작성된 글이 없습니다.<em></em></label>
+	<div><p> - </p></div>
 	<%
 }else{
 	for(int i = 0;i < list.size(); i++){
 		FaqDto faq = list.get(i);
-		%>
-		<tr>
-			<td><%=list.size() - i %></td>
-			<td style="text-align: left;">
-			<%
 			if(faq.getDel() == 0){
-				%>			
-				<a href="faqdetail.do?seq=<%=faq.getSeq() %>">
-					<%=BbsUtil.arrow(faq.getDepth()) %>
-					<%=BbsUtil.dot3(faq.getTitle()) %>
-				</a>
+				%>
+				<input type="checkbox" id="faq_<%=i %>">
+				<label for="faq_<%=i %>"><%=faq.getTitle() %><em></em></label>
+				<div><p><%=faq.getContent() %></p></div><br/>
 				<%
 			}else{
-				%>	
-				<%=BbsUtil.arrow(faq.getDepth()) %>
-				<font color="#ff0000">***** 이 글은 작성자에 의해서 삭제되었습니다 *****</font>	
-				<%
-			}
-			%>
 				
-			</td>
-			<td><%=faq.getReadcount() %></td>
-			<td><%=faq.getWdate().substring(0, 10) %></td>
-		</tr>		
-		<%
+			}
 	}
 }
 %>
-</tbody>
-</table>
-
-<br/>
-
-<div class="container">
-    <nav aria-label="Page navigation">
-        <ul class="pagination" id="pagination" style="justify-content:center"></ul>
-    </nav>
 </div>
-
-
-<br/>
-<div class="form-row align-items-center d-flex justify-content-center align-items-center container">
-	<select id="choice" class="form-control" style="width:auto;">
-		<option value="start">검색</option>
-		<option value="title">제목</option>
-		<option value="content">내용</option>
-	</select>
-	
-	<div class="col-sm-3 my-1" style="width:auto;">
-		<input type="text" class="form-control" id="search" value="<%=search %>">
-	</div>
-	
-	<button type="button" class="btn btn-primary" onclick="searchBtn()" style="background-color: #9A161F; border-color: #9A161F">
-	검색
-	</button><br/>
-</div>
+<br/><br/>
 
 <%
 if (login != null && login.getUser_role() == 0) {
@@ -232,6 +214,7 @@ $("#pagination").twbsPagination({
 });
 </script>
 
+<br/><br/><br/>
 </body>
 </html>
 

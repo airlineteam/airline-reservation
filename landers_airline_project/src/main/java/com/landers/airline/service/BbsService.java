@@ -16,6 +16,8 @@ public interface BbsService {
 	
 	boolean bbsupdate(BbsDto dto);
 	boolean bbsdelete(int seq);
+	
+	boolean bbsreadcount(int seq);
 }
 
 

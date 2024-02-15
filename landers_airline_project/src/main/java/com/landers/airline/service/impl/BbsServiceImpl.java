@@ -54,5 +54,11 @@ public class BbsServiceImpl implements BbsService{
 		return count>0?true:false;
 	}
 	
+	@Override
+	public boolean bbsreadcount(int seq) {
+		int count = dao.bbsreadcount(seq);
+		return count>0?true:false;
+	}
+	
 	
 }
