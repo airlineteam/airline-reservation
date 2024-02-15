@@ -130,7 +130,7 @@
 
 <div class="small--board">
 			<div>
-				<h5 class="small--board--title">올해 총매출액</h5>
+				<h5 class="small--board--title">이번달 총매출액</h5>
 			 <p class="number--value--p">
             <%
                 ManagerDto totalSalesDto = list.get(list.size() - 1);
@@ -249,7 +249,7 @@
         var cityChartData = {
         	    labels: ['인천', '김포', '양양', '청주', '대구', '무안', '김해', '제주'],
         	    datasets: [{
-        	        label: '인기 도시 순위',
+        	        label: '도시별 여행건수',
         	        backgroundColor: '#BDBDBD',
         	        borderColor: '#BDBDBD',
         	        borderWidth: 1,
@@ -321,7 +321,7 @@
                 options: {
                     animations: {
                       tension: {
-                        duration: 1000,
+                        duration:2000,
                         easing: 'linear',
                         from: 1,
                         to: 0,

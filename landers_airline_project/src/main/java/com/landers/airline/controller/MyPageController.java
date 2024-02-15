@@ -108,9 +108,9 @@ public class MyPageController {
 	}
 	 
 	 @GetMapping("myTicket.do")
-		public String myTicket(TicketDto dto, Model model, TicketParam param) {
+		public String myTicket( Model model, TicketParam param) {
 			System.out.println("mypageController TicketList " + new Date());
-			List<TicketDto> list = service.myTicket(dto);
+			List<TicketDto> list = service.Ticketlist(param);
 			System.out.println(list.toString());
 			
 			// 글의 총수

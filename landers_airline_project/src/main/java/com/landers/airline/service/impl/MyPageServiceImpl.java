@@ -61,4 +61,9 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.allTicket(param);
 	}
 
+	@Override
+	public List<TicketDto> Ticketlist(TicketParam param) {
+		return dao.Ticketlist(param);
+	}
+
 }

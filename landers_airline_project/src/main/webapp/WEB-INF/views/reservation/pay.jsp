@@ -173,9 +173,11 @@
     .custom-btn:hover {
         background-color: #750f16; /* Adjusted hover color */
     }
+
 </style>
 </head>
 <body>
+<div class="loader"></div>
 <div class="cont">
 <div class="container mt-5 custom-container">
     <div class="container mt-5">

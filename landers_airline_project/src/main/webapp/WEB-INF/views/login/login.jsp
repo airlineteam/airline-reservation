@@ -38,7 +38,7 @@ td{
 }
 .table {
         width: 550px;
-        margin: 20px auto;
+        margin: 25px auto;
         border-collapse: collapse;
     }
     
@@ -47,10 +47,7 @@ td{
 }
 </style>
 
-<!-- </head>
-<body> -->
 
-<!-- <div class="center"> -->
     <div class="login-header">
         <h2 style="color: #9A161F; margin: 50px auto;">Login</h2>
     </div>
@@ -83,13 +80,15 @@ td{
     </form>
     <br/><br/><br/>
 <!-- </div> -->
+
+
+
+<script src="http://lab.alexcican.com/set_cookies/cookie.js" type="text/javascript" ></script>
 <script>
 	function regi() {
 		location.href = "regi.do";
 	}
-</script>
 
-<script type="text/javascript">
 let User_id = $.cookie("User_id");    // 쿠키에서 id를 산출
 if(User_id != null){    // 쿠키에 저장한 id가 있다
     $("#User_id").val( User_id );

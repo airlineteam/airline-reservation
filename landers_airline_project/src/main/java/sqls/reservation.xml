@@ -21,7 +21,8 @@
 		AND arrival_airport = #{arrival_airport}
 		AND emptynum >= #{person_num}
 		AND SUBSTRING(departure_date, 1, 8) = SUBSTRING(#{departure_date}, 1, 8)
-		AND SUBSTRING(departure_date, 9, 4) >= SUBSTRING(#{departure_date}, 9, 4);
+		AND SUBSTRING(departure_date, 9, 4) >= SUBSTRING(#{departure_date}, 9, 4)
+		ORDER BY departure_date asc
 	</select>
 
 	<update id="emptynum" parameterType="com.landers.airline.dto.flightParam">

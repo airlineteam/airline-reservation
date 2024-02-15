@@ -3,6 +3,7 @@ package com.landers.airline.dao;
 
 import java.util.List;
 
+
 import com.landers.airline.dto.RefundDto;
 import com.landers.airline.dto.TicketDto;
 import com.landers.airline.dto.TicketParam;
@@ -23,6 +24,8 @@ public interface MyPageDao {
 	int userRefund(RefundDto dto);
 	
 	int allTicket(TicketParam param);
+	
+	List<TicketDto> Ticketlist(TicketParam param);
 
 
 }
