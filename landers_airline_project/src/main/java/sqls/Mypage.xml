@@ -42,9 +42,6 @@
 		<if test="choice == 'schedule_id'">
 			where schedule_id like concat('%', #{search}, '%')
 		</if>
-		<if test="choice == 'user_id'">
-			where user_id=#{search}
-		</if>
 	</if>
 	order by final_date ASC
 	limit ${(pageNumber * 10)}, 10

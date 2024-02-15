@@ -28,8 +28,25 @@ th, td{
 }
 .tdlist{
    padding-left:5px;
-   border: 0px;
 }
+
+.tt{
+   margin: 0 auto;
+   text-align:center;
+   background-color: #9a161f;
+   border: none;
+
+}
+
+#tt{
+   width:100%;
+}
+
+.tta{
+	text-decoration: none;
+	color: white;
+}
+
 </style>
 
 </head>
@@ -54,189 +71,11 @@ System.out.println(year + " " + month);
 
 %>
 
-<%--
-   Calendar cal = Calendar.getInstance();
-   cal.set(Calendar.DATE, 1);
-   
-   String syear = (String)request.getAttribute("year");
-   String smonth = (String)request.getAttribute("month");
-   
-   // 현재 연도와 월을 구한다   -> 처음 이 페이지가 실행시에 적용
-   int year = cal.get(Calendar.YEAR);
-   if(syear != null){   // 넘어 온 파라미터 값이 있음
-      year = Integer.parseInt(syear);
-   }
-   int month = cal.get(Calendar.MONTH) + 1;   // 0 ~ 11 까지이므로
-   if(syear != null){
-      month = Integer.parseInt(smonth);
-   }
-   
-   if(month < 1){
-      month = 12;
-      year--;
-   }
-   if(month > 12){
-      month = 1;
-      year++;
-   }
-
-   System.out.println(year + " " + month);
-   System.out.println(year + " " + month);
-   cal.set(year, month-1, 1);
-   
-   // 요일
-   int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-   
-   // <<   year--
-   String pp = String.format("<a href='calendarlist.do?year=%d&month=%d' style='text-decoration:none'>"
-                     +       "<img src='./images/left.png' width='20px' height='20px'>"
-                     + "</a>",  year-1, month);
-   
-   // <   month--
-   String p = String.format("<a href='calendarlist.do?year=%d&month=%d' style='text-decoration:none'>"
-                     +       "<img src='./images/prev.png' width='20px' height='20px'>"
-                     + "</a>",  year, month-1);
-   
-   // >   month++
-   String n = String.format("<a href='calendarlist.do?year=%d&month=%d' style='text-decoration:none'>"
-                     +       "<img src='./images/next.png' width='20px' height='20px'>"
-                     + "</a>",  year, month+1);
-   
-   // >>   year++
-   String nn = String.format("<a href='calendarlist.do?year=%d&month=%d' style='text-decoration:none'>"
-                     +       "<img src='./images/last.png' width='20px' height='20px'>"
-                     + "</a>",  year+1, month);
-   
-//   CalendarDao dao = CalendarDao.getInstance();         // 202401
-//   List<CalendarDto> list = dao.getCalendarList(login.getId(), year + CalendarUtil.two(month + ""));
-
-   List<CalendarDto> list = (List<CalendarDto>)request.getAttribute("list");
-/*
-   String pp = (String)request.getAttribute("pp");
-   String p = (String)request.getAttribute("p");
-   String n = (String)request.getAttribute("n");
-   String nn = (String)request.getAttribute("nn");
-   
-   int year = (Integer)request.getAttribute("year");
-   int month = (Integer)request.getAttribute("month");
-   int dayOfWeek = (Integer)request.getAttribute("dayOfWeek");
-*/   
-//   Calendar cal = (Calendar)request.getAttribute("cal");
---%>
-<!-- <div class="calendar">
-  <div class="month"><a href="#" class="nav"><i class="fas fa-angle-left"></i></a><div>January <span class="year">2019</span></div><a href="#" class="nav"><i class="fas fa-angle-right"></i></a></div>
-  <div class="days">
-    <span>Mon</span>
-    <span>Tue</span>
-    <span>Wed</span>
-    <span>Thu</span>
-    <span>Fri</span>
-    <span>Sat</span>
-    <span>Sun</span>
-  </div>
-  <div class="dates">
-      <button>
-        <time>1</time>
-      </button>
-      <button>
-        <time>2</time>
-      </button>
-      <button>
-        <time>3</time>
-      </button>
-      <button>
-        <time>4</time>
-      </button>
-      <button>
-        <time>5</time>
-      </button>
-      <button>
-        <time>6</time>
-      </button>
-      <button>
-        <time>7</time>
-      </button>
-      <button>
-        <time>8</time>
-      </button>
-      <button>
-        <time>9</time>
-      </button>
-      <button>
-        <time>10</time>
-      </button>
-      <button>
-        <time>11</time>
-      </button>
-      <button>
-        <time>12</time>
-      </button>
-      <button>
-        <time>13</time>
-      </button>
-      <button>
-        <time>14</time>
-      </button>
-      <button>
-        <time>15</time>
-      </button>
-      <button>
-        <time>16</time>
-      </button>
-      <button>
-        <time>17</time>
-      </button>
-      <button class="today">
-        <time>18</time>
-      </button>
-      <button>
-        <time>19</time>
-      </button>
-      <button>
-        <time>20</time>
-      </button>
-      <button>
-        <time>21</time>
-      </button>
-      <button>
-        <time>22</time>
-      </button>
-      <button>
-        <time>23</time>
-      </button>
-      <button>
-        <time>24</time>
-      </button>
-      <button>
-        <time>25</time>
-      </button>
-      <button>
-        <time>26</time>
-      </button>
-      <button>
-        <time>27</time>
-      </button>
-      <button>
-        <time>28</time>
-      </button>
-      <button>
-        <time>29</time>
-      </button>
-      <button>
-        <time>30</time>
-      </button>
-      <button>
-        <time>31</time>
-      </button>
-  </div>
-</div>
- -->
 
 <div class="month"><font size="100px"><a href="#" class="nav"><i class="fas fa-angle-left"></i></a><div><%=month %></font>  <span class="year"><%=year %> </span></div><a href="#" class="nav"><i class="fas fa-angle-right"></i></a>
 <table border="1">
 <col width="120"/><col width="120"/><col width="120"/><col width="120"/>
 <col width="120"/><col width="120"/><col width="120"/>
-
 <tr height="80">
    <td colspan="7" align="center">
       <%=pp %>&nbsp;<%=p %>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -249,7 +88,7 @@ System.out.println(year + " " + month);
    </td>
 </tr>
 
-<tr height="30" >
+<tr height="30" style="background-color: #9A161F; color: white;" >
    <th class="text-center">일</th>
    <th class="text-center">월</th>
    <th class="text-center">화</th>
@@ -272,9 +111,9 @@ for(int i = 1;i < dayOfWeek; i++){
 int lastday = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 for(int i = 1;i <= lastday; i++){
    %>
-   <td style="color: #3c3c3c;padding-top: 5px">
+   <td style="padding-top: 5px">
       <%=CalendarUtil.daylist(year, month, i) %>&nbsp;&nbsp;<%=CalendarUtil.calwrite(year, month, i) %>
-      <%=CalendarUtil.makeTable(year, month, i, list) %>
+   <%=CalendarUtil.makeTable(year, month, i, list) %>
    </td>
    <%
    if((i + dayOfWeek -1) % 7 == 0 && i != lastday){

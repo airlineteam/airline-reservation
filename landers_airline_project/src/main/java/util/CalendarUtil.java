@@ -64,14 +64,14 @@ public class CalendarUtil {
 		// 202401180415
 		String dates = (year + "") + two(month + "") + two(day + "");
 		
-		str += "<table>";
+		str += "<table id='tt' class='tt'>";
 		
 		for(CalendarDto dto : list) {
 			if(dto.getWdate().substring(0, 8).equals(dates)) {
 				str += "<tr>";
-				str += "	<td class='tdlist'>";
-				str += "		<a href='calendardetail.do?seq=" + dto.getSeq() + "'>";
-				str += "			<font style='font-size:10px;color:blue'>";
+				str += "	<td>";
+				str += "		<a class='tta' href='calendardetail.do?seq=" + dto.getSeq() + "'>";
+				str += "			<font style='font-size:10px; font-family:bold'>";
 				str += 					dot3( dto.getTitle() );
 				str += "			</font>";
 				str += "		</a>";
