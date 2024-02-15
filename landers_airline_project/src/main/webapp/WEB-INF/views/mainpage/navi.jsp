@@ -25,7 +25,7 @@ ol li{list-style: none;}
 }
 
 
-#header{display: flex;justify-content: space-between;align-items: center;padding: 1rem;position: relative; background-color: #9a161f; font-size: 15px;}
+#header{display: flex;justify-content: space-between;align-items: center;padding: 13px;position: relative; background-color: #9a161f; font-size: 15px;}
 #header #gnb{display: flex;z-index: 99;margin-left: auto;}
 #header #gnb > .dept1 {text-align: left; color: white} 
 #header #gnb > .dept1 > a {padding: 0 1rem;} 
@@ -67,7 +67,7 @@ ol li{list-style: none;}
          </li>
          <% if (login != null && !login.equals("") && login.getUser_role() == 0) { %>
          <li class="dept1">
-            <a href="#">관리자페이지</a>
+            <a href="managerHome.do">관리자페이지</a>
             <ul class="inner_menu">
                <li class="dept2">
                   <a href="MemberManager.do">회원관리</a>

@@ -25,21 +25,21 @@ ol li{list-style: none;}
 }
 
 
-#header{display: flex;justify-content: space-between;align-items: center;padding: 1rem;position: relative; background-color: #9a161f; font-size: 15px;}
+#header{display: flex;justify-content: space-between;align-items: center;padding: 10px 9px 0 9px;;position: relative; background-color: #9a161f; font-size: 15px;}
 #header #gnb{display: flex;z-index: 99;margin-left: auto;}
 #header #gnb > .dept1 {text-align: left; color: white} 
 #header #gnb > .dept1 > a {padding: 0 1rem;} 
 #header #gnb > .dept1 {position: relative;padding: 1rem 2rem;text-align: center;}
 #header #gnb > .dept1 > a.active{color: red;font-weight: bold}
 
-#header #gnb .inner_menu {position: absolute;top: 70%;left:50%;transform: translateX(-50%);width:100%;padding-top:3rem;display: none;}
+#header #gnb .inner_menu {position: absolute;top: 70%;left:50%;transform: translateX(-50%);width:100%;padding-top:3rem; padding-right: 2rem; display: none;}
 #header #gnb  .dept2 {padding: 1rem 0;color: white;}
 #header #gnb  .dept2 > a:hover,
 #header #gnb  .dept2 > a:active,
 #header #gnb  .dept2 > a:focus {font-weight: bold}
 
 
-.hd_bg{background: rgba(118,12,12,0.7);;width: 100%;height: 0;left: 0;z-index: 1;position: absolute;}
+.hd_bg{background: rgba(118,12,12,0.7);width: 100%;height: 0;left: 0;z-index: 1;position: absolute;}
 
 
 </style>
@@ -67,7 +67,7 @@ ol li{list-style: none;}
          </li>
          <% if (login != null && !login.equals("") && login.getUser_role() == 0) { %>
          <li class="dept1">
-            <a href="#">관리자페이지</a>
+            <a href="managerHome.do">관리자페이지</a>
             <ul class="inner_menu">
                <li class="dept2">
                   <a href="MemberManager.do">회원관리</a>
