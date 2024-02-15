@@ -210,9 +210,37 @@ td {
 .home-button:hover{
 	background-color: #7F0E16;
 }
+
+.loader {
+
+  border: 16px solid #f3f3f3; /* Light grey - border 전체 색상 지정*/ 
+  border-top: 16px solid #3498db; /* Blue - 로딩 영역 색상 지정 */ 
+  border-radius: 50%; /* 둥근 모서리 효과 */
+  width: 120px; /* 크기 지정 */
+  height: 120px;
+  animation: spin 2s linear infinite; 
+  /* 키프레임 애니메이션값 2초 가속도없이 일정하게 연속적인 로딩 */
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+}
+
+
+.loading-container {
+    background-color: rgba(169, 169, 169, 0.5); /* Transparent gray color */
+}
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 </style>
 </head>
 <body>
+<div class="loader"></div>
 	<!-- Start Ticket -->
 	<div class="ticket-wrapper">
 		<table class="ticket-table">
@@ -308,8 +336,18 @@ td {
 <script type="text/javascript">
     function home(event) {
         event.preventDefault();
-        location.href = "./home.do"; // or "home.do" depending on your project structure
+        location.href = "./home.do"; 
     }
+    const container = $('.container');
+    const html = $('html');
+
+    html.css({'overflow' : 'hidden'}); // Prevent scrolling during loading
+
+    $(window).on('load', function(){
+        $('.loader').delay(1000).fadeOut();
+        container.removeClass('loading-container'); // Remove the loading container class
+        html.css('overflow', 'auto'); // Restore scrolling after loader is hidden
+    });
 </script>
 
 </body>
