@@ -16,12 +16,13 @@ public class ManagerQnaDto {
 	private int del;
 	private int readcount;
 	private String category;
+	private int complete;
 	
 	public ManagerQnaDto() {
 			}
 
 	public ManagerQnaDto(int seq, String id, int ref, int step, int depth, String title, String content, String wdate,
-			int del, int readcount, String category) {
+			int del, int readcount, String category, int complete) {
 		super();
 		this.seq = seq;
 		this.id = id;
@@ -34,6 +35,7 @@ public class ManagerQnaDto {
 		this.del = del;
 		this.readcount = readcount;
 		this.category = category;
+		this.complete = complete;
 	}
 
 	public int getSeq() {
@@ -124,12 +126,23 @@ public class ManagerQnaDto {
 		this.category = category;
 	}
 
+	
+	public int getComplete() {
+		return complete;
+	}
+
+	public void setComplete(int complete) {
+		this.complete = complete;
+	}
+
 	@Override
 	public String toString() {
 		return "ManagerQnaDto [seq=" + seq + ", id=" + id + ", ref=" + ref + ", step=" + step + ", depth=" + depth
 				+ ", title=" + title + ", content=" + content + ", wdate=" + wdate + ", del=" + del + ", readcount="
-				+ readcount + ", category=" + category + "]";
+				+ readcount + ", category=" + category + ", complete=" + complete + "]";
 	}
+	
+	
 	
 }
 

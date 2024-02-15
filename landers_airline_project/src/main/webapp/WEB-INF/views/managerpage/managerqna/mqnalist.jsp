@@ -251,7 +251,14 @@ if(list == null || list.size() == 0){
 					<span style="color: #000000;">
 					<%=BbsUtil.arrow(qna.getDepth()) %>
 					<%=BbsUtil.dot3(qna.getTitle()) %>
-					</span>
+					</span>		
+					
+					<!-- 답변완료 된 글 답변완료 표시 -->
+					<span style="margin-left: 5px; margin-bottom: 5px">
+					<%if(qna.getComplete() > 0){%>
+					<img src="./images/answer_complete.png" style="width: 60px; height: 20px">
+					<%}%>
+					</span>	
 				</a>
 				<%
 			}else{

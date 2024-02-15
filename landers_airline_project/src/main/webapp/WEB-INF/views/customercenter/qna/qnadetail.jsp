@@ -48,7 +48,6 @@
 .center{
 	margin: auto;
 	width: 1000px;
-	text-align: center;
 }
 
 body {
@@ -58,15 +57,48 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-th{
-	padding-left: 5%;
-	background: #9A161F;
-	color: white;
+.table-fill {
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 100px;
+  margin: auto;
+  max-width: 1000px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+.table-fill th {
+  color:#ffffff;
+  width: 200px;
+  background: #e0757d;
+  border: 2px solid #4f4f4f;
+  font-size:18px;
+  font-weight: 300;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+/*   vertical-align:middle; */
+}
+  
+.table-fill tr {
+  border: 1px solid #4f4f4f;
+  background: #ffc7cb;
+  font-size:15px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+.table-fill td {
+  padding:15px;
+  text-align:left;
+/*   vertical-align:middle; */
+  font-weight:400;
+  font-size:17px;
+  border: 1px solid;
 }
 
-td{
-	text-align: left;
-}
 pre{
 	white-space: pre-wrap;
 	word-break:break-all;
@@ -78,12 +110,11 @@ pre{
 <body>
 
 <div class="center">
-<div id="app" class="container">
 
 <br/> <h2 style="text-align: left;">Q & A 게시판</h2> <br/>
 
-<table class="table table-sm">
-<tr style="background-color: aqua">
+<table class="table-fill">
+<tr style="height: 10px">
 	<th>작성자</th>
 	<td><%=dto.getId() %></td>
 </tr>
@@ -93,15 +124,15 @@ pre{
 </tr>
 <tr>	
 	<th>제목</th>
-	<td colspan="2" style="font-size: 22px;font-weight: bold;"><%=dto.getTitle() %></td>
+	<td colspan="2" style="font-size: 20px;font-weight: bold;"><%=dto.getTitle() %></td>
 </tr>
-<tr style="height: ">
+<tr style="height: 400px; background: white">
 	<th>내용</th>
-	<td colspan="2" style="font-size: 120%">		
-		<pre style="font-size: 20px;font-family: 고딕, arial;background-color: white"><%=dto.getContent() %></pre>
+	<td colspan="2" style="vertical-align: text-top;">		
+		<pre style="font-size: 16px;font-family: 고딕, arial;"><%=dto.getContent() %></pre>
 	</td>
 </tr>
-</table>
+</table><br/>
 
 <div align="right">
 <%
@@ -116,7 +147,11 @@ if(login.getUser_id().equals(dto.getId())){
 %>
 <button type="button" class="btn btn-primary" style="background-color: #9A161F; border-color: #9A161F" onclick="backToList_Qna()">목록</button>
 
-</div>
+<!-- 로그인 id가 관리자이고 아직 답변이 달리지 않은 상태일 때, 답변완료 버튼 표시 -->
+<%if(login.getUser_role() == 0 && dto.getComplete() == 0) {%>
+<button type="button" class="btn btn-primary" style="background-color: #cf1925; border-color: #cf1925" onclick="qnaComplete(<%=dto.getSeq() %>)">답변완료</button>
+<%} %>
+
 </div>
 
 <script type="text/javascript">
@@ -131,6 +166,9 @@ function deleteQna( seq ) {
 }
 function backToList_Qna() {
 	location.href = "qnalist.do";
+}
+function qnaComplete(seq){
+	location.href = "qnacomplete.do?seq=" + seq;
 }
 </script>
 
@@ -162,11 +200,11 @@ function backToList_Qna() {
 </form>
  --%>
  
- 
+<br/><br/>
 <table>
 <col width="1500px"/><col width="150px"/>
 <tr>
-	<td><b>댓글</b></td>
+	<td style="text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5)"><b>< 댓글 ></b></td>
 </tr> 
 <tr>
 	<td>
@@ -241,7 +279,7 @@ $(document).ready(function () {
 					// 로그인한 사용자의 ID와 댓글 작성자의 ID가 일치하는 경우에만 삭제 버튼 표시
 					<%--  if (login != null && login.getUser_id().equals(dto.getId())) { --%>
 					if(loginId != '' && loginId === item.id){
-						str += "<td><button class='deleteBtn' data-comment-id='" + item.seq + "'>x</button></td>";
+						str += "<td><button class='deleteBtn' data-comment-id='" + item.seq + "' style='width: 26px'>x</button></td>";
 					}
 					<%-- } --%>
 					str += "<tr>";
@@ -253,9 +291,7 @@ $(document).ready(function () {
 					str += "</tr>";
 					
 					$("#tbody").append(str);
-				});	
-
-				
+				});					
 							
 			},
 			error:function(){

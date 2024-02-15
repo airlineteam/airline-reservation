@@ -21,6 +21,9 @@ public interface QnaService {
 	
 	boolean qnaupdate(QnaDto dto);
 	boolean qnadelete(int seq);
+	
+	boolean qnareadcount(int seq);
+	boolean qnacomplete(int seq);
 }
 
 

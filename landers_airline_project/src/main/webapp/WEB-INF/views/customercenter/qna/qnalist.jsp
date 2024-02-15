@@ -87,7 +87,6 @@ body {
   background: white;
   border-radius:3px;
   border-collapse: collapse;
-  height: 200px;
   margin: auto;
   max-width: 1000px;
   padding:5px;
@@ -98,7 +97,7 @@ body {
  
 th {
   color:#ffffff;
-  background: #a12a32;
+  background: #e0757d;
   font-size:18px;
   font-weight: 100;
   padding:20px;
@@ -253,11 +252,18 @@ if(list == null || list.size() == 0){
 				
 					<span style="color: #000000;">
 					<%=BbsUtil.arrow(qna.getDepth()) %>
-					<%=BbsUtil.dot3(qna.getTitle()) %>
-					</span>
+					<%=BbsUtil.dot3(qna.getTitle()) %>					
+					</span>			
+					
+					<!-- 답변완료 된 글 답변완료 표시 -->
+					<span style="margin-left: 5px; margin-bottom: 5px">
+					<%if(qna.getComplete() > 0){%>
+					<img src="./images/answer_complete.png" style="width: 60px; height: 20px">
+					<%}%>
+					</span>		
 				</a>
 				<%
-			}else{
+			} else{
 				%>	
 				<%=BbsUtil.arrow(qna.getDepth()) %>
 				<font color="#ff0000">***** 이 글은 작성자에 의해서 삭제되었습니다 *****</font>	
@@ -285,8 +291,13 @@ if(list == null || list.size() == 0){
         <%
 		if (login != null) {
 		%>	
+			<br/>
 		    <button type="button" class="btn btn-primary" onclick="writeQna()" style="background-color: #9A161F; border-color: #9A161F">
 		        글쓰기
+		    </button>
+		    &nbsp; &nbsp; &nbsp;
+		    <button type="button" class="btn btn-primary" onclick="myQna()" style="background-color: #9A161F; border-color: #9A161F">
+		        내 문의 내역
 		    </button>
 		<% } %>
     </nav>   
@@ -331,6 +342,10 @@ function searchBtn() {
 	location.href = "qnalist.do?choice=" + choice + "&search=" + search;
 }
 
+function myQna(){
+	let myId = "<%=login.getUser_id() %>";
+	location.href = "qnalist.do?choice=writer" + "&search=" + myId;
+}
 
 $("#pagination").twbsPagination({
 	startPage: <%=pageNumber+1 %>,
