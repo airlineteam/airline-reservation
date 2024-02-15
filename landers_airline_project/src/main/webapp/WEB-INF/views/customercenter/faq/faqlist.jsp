@@ -124,7 +124,8 @@ input[id*="faq_"] + label + div {
   transition: all 0.35s;
   overflow: hidden;
   background: #ebf8ff;
-  font-size: 11px;
+  font-size: 15px;
+  font-family: "Roboto", helvetica, arial, sans-serif;
 }
 
 input[id*="faq_"] + label + div p {
