@@ -59,7 +59,10 @@ public class BbsDaoImpl implements BbsDao{
 		return session.update(ns + "bbsdelete", seq);
 	}
 	
-	
+	@Override
+	public int bbsreadcount(int seq) {
+		return session.update(ns + "bbsreadcount", seq);		
+	}
 }
 
 

@@ -16,7 +16,9 @@ public interface BbsDao {
 	int BbsAnswerInsert(BbsDto dto);
 	
 	int bbsupdate(BbsDto dto);
-	int bbsdelete(int seq);
+	int bbsdelete(int seq);	
+
+	int bbsreadcount(int seq);
 }
 
 

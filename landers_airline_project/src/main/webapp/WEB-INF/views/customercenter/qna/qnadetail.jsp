@@ -114,7 +114,7 @@ pre{
 <br/> <h2 style="text-align: left;">Q & A 게시판</h2> <br/>
 
 <table class="table-fill">
-<tr style="height: 10px">
+<tr>
 	<th>작성자</th>
 	<td><%=dto.getId() %></td>
 </tr>

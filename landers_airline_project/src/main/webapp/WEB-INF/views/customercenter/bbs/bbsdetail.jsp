@@ -24,10 +24,61 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <style type="text/css">
-th{
-	background: #9A161F;
-	color: white;
+
+.center{
+	margin: auto;
+	width: 1000px;
 }
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+.table-fill {
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 100px;
+  margin: auto;
+  max-width: 1000px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+.table-fill th {
+  color:#ffffff;
+  width: 200px;
+  background: #e0757d;
+  border: 2px solid #4f4f4f;
+  font-size:18px;
+  font-weight: 300;
+  padding:20px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+/*   vertical-align:middle; */
+}
+  
+.table-fill tr {
+  border: 1px solid #4f4f4f;
+  background: #ffc7cb;
+  font-size:15px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+.table-fill td {
+  padding:15px;
+  text-align:left;
+/*   vertical-align:middle; */
+  font-weight:400;
+  font-size:17px;
+  border: 1px solid;
+}
+
 pre{
 	white-space: pre-wrap;
 	word-break:break-all;
@@ -39,14 +90,10 @@ pre{
 <body>
 
 
-<div id="app" class="container">
-<br/>
+<div class="center">
+<br/><h2>공지사항</h2> <br/>
 
-<h2>상세 글보기</h2>
-
-<table class="table table-sm">
-<col width="150px"/><col width="500px"/>
-
+<table class="table-fill">
 <tr>
 	<th>작성자</th>
 	<td><%=dto.getId() %></td>
@@ -59,42 +106,35 @@ pre{
 	<th>조회수</th>
 	<td><%=dto.getReadcount() %></td>
 </tr>
-<tr>	
+<tr>
+	<th>제목</th>
 	<td colspan="2" style="font-size: 22px;font-weight: bold;"><%=dto.getTitle() %></td>
 </tr>
-<tr>
-	<td colspan="2" style="font-size: 120%">		
-		<%-- <textarea rows="12" cols="35" class="form-control"
-			style="background-color: #fff; font: 20px" readonly><%=dto.getContent() %></textarea> --%>
-			
-		<%-- <%=dto.getContent() %> --%>
-		
-		<%-- <pre>
-			<%=dto.getContent() %>
-		</pre> --%>		
-		
-		<pre style="font-size: 20px;font-family: 고딕, arial;background-color: white"><%=dto.getContent() %></pre>
+<tr style="height: 400px; background: white">
+	<th>내용</th>
+	<td colspan="2" style="vertical-align: text-top;">		
+		<pre style="font-size: 16px;font-family: 고딕, arial;"><%=dto.getContent() %></pre>
 	</td>
 </tr>
-</table>
+</table><br/>
 
 <div align="right">
-
-<button type="button" class="btn btn-primary" onclick="answerBbs(<%=dto.getSeq() %>)">답글</button>
 
 <%
 if (login != null){
 	if(login.getUser_id().equals(dto.getId())){
-		%>	
-		<button type="button" class="btn btn-primary" onclick="updateBbs(<%=dto.getSeq() %>)">수정</button>
+		%>
+		<button type="button" class="btn btn-primary" style="background-color: #9A161F; border-color: #9A161F" onclick="answerBbs(<%=dto.getSeq() %>)">답글</button>
 		
-		<button type="button" class="btn btn-primary" onclick="deleteBbs(<%=dto.getSeq() %>)">삭제</button>
+		<button type="button" class="btn btn-primary" style="background-color: #9A161F; border-color: #9A161F" onclick="updateBbs(<%=dto.getSeq() %>)">수정</button>
+		
+		<button type="button" class="btn btn-primary" style="background-color: #9A161F; border-color: #9A161F" onclick="deleteBbs(<%=dto.getSeq() %>)">삭제</button>
 		<%
 	}
 }
 
 %>
-<button type="button" class="btn btn-primary" onclick="backToList_Bbs()">목록</button>
+<button type="button" class="btn btn-primary" style="background-color: #9A161F; border-color: #9A161F" onclick="backToList_Bbs()">목록</button>
 
 </div>
 

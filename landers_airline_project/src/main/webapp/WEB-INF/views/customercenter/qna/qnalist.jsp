@@ -218,7 +218,7 @@ a:hover {
 <div class="center">
 <br/> <h2 style="text-align: left;">Q & A 게시판</h2> <br/>
 
-<table class="table-fill" id="refundTable">
+<table class="table-fill">
 <thead>
 	<tr>
 		<th>번호</th><th>제목</th><th>조회수</th><th>작성자</th><th>등록일</th>
