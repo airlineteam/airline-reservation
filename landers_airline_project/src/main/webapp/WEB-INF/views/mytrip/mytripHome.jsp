@@ -56,7 +56,7 @@ th, td{
 .tta{
 	text-decoration: none;
 	color: white;
-
+}
 .center {
 }
 p.h1{
