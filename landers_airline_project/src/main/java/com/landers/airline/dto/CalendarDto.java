@@ -4,50 +4,38 @@ import java.io.Serializable;
 
 public class CalendarDto implements Serializable{
 
-	private int calendar_id;
-	private int ticket_id;
+	private int seq;
+	private String user_id;
 	private String title;
 	private String content;
 	private String wdate;		
 	
 	public CalendarDto() {
 	}
-	
-	
 
-	public CalendarDto(int calendar_id, String title, String content, String wdate) {
+	public CalendarDto(int seq, String user_id, String title, String content, String wdate) {
 		super();
-		this.calendar_id = calendar_id;
+		this.seq = seq;
+		this.user_id = user_id;
 		this.title = title;
 		this.content = content;
 		this.wdate = wdate;
 	}
 
-
-
-	public CalendarDto(int calendar_id, int ticket_id, String title, String content, String wdate) {
-		super();
-		this.calendar_id = calendar_id;
-		this.ticket_id = ticket_id;
-		this.title = title;
-		this.content = content;
-		this.wdate = wdate;
+	public int getSeq() {
+		return seq;
 	}
 
-	public int getCalendar_id() {
-		return calendar_id;
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 
-	public void setCalendar_id(int calendar_id) {
-		this.calendar_id = calendar_id;
+	public String getUser_id() {
+		return user_id;
 	}
 
-	public int getTicket_id() {
-		return ticket_id;
-	}
-
-	public void setTicket_id(int ticket_id) {
-		this.ticket_id = ticket_id;
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getTitle() {
@@ -76,7 +64,12 @@ public class CalendarDto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "CalendarDto [calendar_id=" + calendar_id + ", ticket_id=" + ticket_id + ", title=" + title
-				+ ", content=" + content + ", wdate=" + wdate + "]";
+		return "CalendarDto [seq=" + seq + ", user_id=" + user_id + ", title=" + title + ", content=" + content
+				+ ", wdate=" + wdate + "]";
 	}
+
+	
+	
+	
+
 }

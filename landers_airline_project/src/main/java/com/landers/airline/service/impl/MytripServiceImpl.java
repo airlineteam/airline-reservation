@@ -16,10 +16,33 @@ public class MytripServiceImpl implements MytripService{
 	MytripDao dao;
 
 	@Override
-	public List<CalendarDto> insertmytrip(String user_id) {
+	public List<CalendarDto> insertmytrip(CalendarDto dto) {
 		
-		return dao.insertmytrip(user_id);
+		return dao.insertmytrip(dto);
 	}
 
+	@Override
+	public boolean writemytrip(CalendarDto dto) {
+		int count = dao.writemytrip(dto);
+		return count>0;
+	}
+
+	@Override
+	public CalendarDto showmytrip(int seq) {
+		return dao.showmytrip(seq);
+	}
+
+	@Override
+	public boolean deletemytrip(int seq) {
+		return dao.deletemytrip(seq)>0;
+	}
+
+	@Override
+	public boolean updatemytrip(CalendarDto dto) {
+		return  dao.updatemytrip(dto)>0;
+	}
+
+	
+	
 	
 }

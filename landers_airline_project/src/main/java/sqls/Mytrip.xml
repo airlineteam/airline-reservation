@@ -3,11 +3,43 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mytrip">
-<select id="insertmytrip" parameterType="String" resultType="com.landers.airline.dto.CalendarDto">
-select c.calendar_id as calendar_id, c.ticket_id as ticket_id, c.title as title, c.content as content, c.wdate as wdate
+
+<select id="insertmytrip" parameterType="com.landers.airline.dto.CalendarDto" resultType="com.landers.airline.dto.CalendarDto">
+<!-- select c.calendar_id as calendar_id, c.ticket_id as ticket_id, c.title as title, c.content as content, c.wdate as wdate
 		from calendar c
         inner join ticket t 
         on c.ticket_id = t.ticket_id
-        where t.user_id = #{user_id}
+        where t.user_id = #{user_id} -->
+select seq,title, content, wdate
+from 
+(select row_number()over(partition by substr(wdate, 1, 8) order by wdate asc) as rnum,
+c.seq as seq, c.title as title, c.content as content, c.wdate as wdate
+from calendar c
+where user_id=#{user_id} and substr(wdate, 1, 6)=#{wdate}) a
+where rnum between 1 and 5
 </select>
+
+<insert id="writemytrip" parameterType="com.landers.airline.dto.CalendarDto">
+	insert into calendar(user_id, title, content, wdate)
+	values(#{user_id},#{title},#{content}, #{wdate})
+</insert>
+
+<select id="showmytrip" parameterType="Integer" resultType="com.landers.airline.dto.CalendarDto">
+	select seq,user_id, title, content, wdate
+	from calendar
+	where seq=#{seq}
+</select>
+
+<delete id="deletemytrip" parameterType="Integer">
+	delete from calendar 
+	where seq=#{seq}
+
+</delete>
+
+<update id="updatemytrip" parameterType="com.landers.airline.dto.CalendarDto">
+	update calendar
+	set	title=#{title}, content=#{content}, wdate=#{wdate}
+	where seq=#{seq}
+</update>
+
 </mapper>
