@@ -108,7 +108,7 @@ ol li{list-style: none;}
    <!--//header-->
 
 <script type="text/javascript">
-$(document).ready(function() {
+
     var gnb = $('#gnb');
     var innerMenu = $('.inner_menu');
     var hdBg = $('.hd_bg');
@@ -140,7 +140,7 @@ $(document).ready(function() {
             'height': '0'
         }, 300);
     });
-});
+
 
 </script>
 </body>
