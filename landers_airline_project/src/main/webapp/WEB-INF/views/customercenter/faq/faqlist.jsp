@@ -110,7 +110,7 @@ input[id*="faq_"] + label em {
   height: 30px;
   margin-top: -15px;
   display: inline-block;
-  background-image: url('images/faqarrow.png');
+  background-image: url('images/caret-up-square.svg');
   background-size: 100%;
   transition: transform 0.35s; /* Added transition property */
 }
