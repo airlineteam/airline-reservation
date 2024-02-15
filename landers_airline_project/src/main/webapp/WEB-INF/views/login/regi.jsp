@@ -65,7 +65,7 @@ td{
 		회원가입
 	</th>
 </tr>
-<tr>
+<tr  style="border-bottom: 1px solid #ccc;">
 	<th>아이디</th>
 	<td>
 		<input type="text" class="form-control" name="user_id" id="user_id" size="20" style="width:200px;">
@@ -79,26 +79,26 @@ td{
 		<input type="password" class="form-control" name="user_pw" id="user_pw" size="20" style="width:200px;">
 	</td>
 </tr>
-<tr>
+<tr style="border-bottom: 1px solid #ccc;">
 	<th>패스워드 확인</th>
 	<td>
 		<input type="password" class="form-control" name="user_pw2" id="user_pw2" size="20" style="width:200px;" onkeyup="passConfrim()"><br>
 		<span id ="confirmMsg"></span>
 	</td>
 </tr>
-<tr>
+<tr  style="border-bottom: 1px solid #ccc;">
 	<th>이름</th>
 	<td>
 		<input type="text" class="form-control" name="user_name" id="user_name" size="20" style="width:200px;">
 	</td>
 </tr>
-<tr>
+<tr  style="border-bottom: 1px solid #ccc;">
 	<th>전화번호</th>
 	<td>
 		<input type="text" class="form-control" name="user_phone" id="user_phone" size="20" style="width:200px;">
 	</td>
 </tr>
-<tr>
+<tr >
 	<th>주소</th>
 	<td>
 		<!-- <input type="text" class="form-control" name="user_address" id="user_address" size="20" style="width:200px;"> -->
@@ -109,7 +109,7 @@ td{
 		<input type="text" class="form-control"  name="user_address" id="user_address" size="20" placeholder="상세주소">
 	</td>
 </tr>
-<tr>
+<tr style="border-bottom: 1px solid #ccc;">
 	<td colspan="2">
 		<div align="center">
 			<input type="button" id="regibtn" class="btn btn-danger" value="회원가입">
@@ -186,6 +186,9 @@ $(document).ready(function () {
             return false; // 페이지 넘기지 않음
         }else if( $("#user_pw").val().trim() === "" ){
             alert("비밀번호를 넣어주세요");
+            return false; // 페이지 넘기지 않음
+        }else if( $("#user_address").val().trim() === "" ){
+            alert("비밀번호 확인은 필수입니다.");
             return false; // 페이지 넘기지 않음
         }else if( $("#user_name").val().trim() === "" ){
             alert("이름을 넣어주세요");

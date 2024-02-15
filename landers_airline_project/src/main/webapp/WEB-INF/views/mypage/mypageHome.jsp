@@ -55,6 +55,7 @@ td{
 <body>
 
 
+
 <div class="center">
 
 <form action="userUpdate.do" id="frm" method="post">
@@ -66,31 +67,31 @@ td{
 		회원정보
 	</th>
 </tr>
-<tr>
+<tr style="border-bottom: 1px solid #ccc;">
 	<th>아이디</th>
 	<td>
 		<input type="text" class="form-control" name="user_id" id="user_id" size="20" value="<%= mylist.getUser_id()%>" readonly style="background:lightgray;">
 	</td>
 </tr>
-<tr>
+<tr style="border-bottom: 1px solid #ccc;">
 	<th>패스워드</th>
 	<td>
 		<input type="text" class="form-control" name="user_pw" size="20" value="<%= mylist.getUser_pw()%>">
 	</td>
 </tr>
-<tr>
+<tr style="border-bottom: 1px solid #ccc;">
 	<th>이름</th>
 	<td>
 		<input type="text" class="form-control" name="user_name" size="20" value="<%= mylist.getUser_name()%>">
 	</td>
 </tr>
-<tr>
+<tr style="border-bottom: 1px solid #ccc;">
 	<th>전화번호</th>
 	<td>
 		<input type="text" class="form-control" name="user_phone" size="20" value="<%= mylist.getUser_phone()%>">
 	</td>
 </tr>
-<tr>
+<tr >
 	<th>주소</th>
 	<td style="text-align: left;">
 		<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" size="5" readonly style="background:lightgray; width:150px;">
@@ -100,7 +101,7 @@ td{
 		<input type="text" class="form-control"  name="user_address" id="user_address" size="20" placeholder="상세주소">
 	</td>
 </tr>
-<tr>
+<tr style="border-bottom: 1px solid #ccc;">
 	<td colspan="2">
 		<div align="center">
 			<input type="submit" class="btn" value="수정">&nbsp;&nbsp;&nbsp;&nbsp;
