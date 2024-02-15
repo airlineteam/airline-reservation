@@ -1,8 +1,7 @@
 package com.landers.airline.dto;
 
-import java.io.Serializable;
 
-public class TicketParam implements Serializable{
+public class TicketParam{
 
 	private String choice;
 	private String search;

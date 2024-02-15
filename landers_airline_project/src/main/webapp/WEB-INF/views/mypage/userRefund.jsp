@@ -50,38 +50,42 @@ table{
 <div class="center">
 
 <form action="userRefund.do?ticket_id=<%=ticket_id %>" id="frm" method="post">
-
-<table class="table table-bordered">
-<col width="200"/><col width="500"/>
-
-<tbody>
-<tr>
-	<th colspan = 2 style="background: #9A161F; color: white;">
-		환불
-	</th>
-</tr>
-<tr>
-	<th>아이디</th>
-	<td>
-		<input type="text" id="user_id" name="user_id" class="form-control" value="<%=login.getUser_id() %>" readonly />
-	</td>
-</tr>
-<tr>
-	<th>환불사유</th>
-	<td>
-		<input type="text" id="content" name="content" class="form-control"/>
-	</td>	
-</tr>
-
-
-</tbody>
-</table>
+<div style="margin-top: 50px;">
+	<table class="table table-bordered">
+	<col width="200"/><col width="500"/>
+	
+	<tbody>
+	<tr>
+		<th colspan = 2 style="background: #9A161F; color: white;">
+			환불
+		</th>
+	</tr>
+	<tr>
+		<th>아이디</th>
+		<td>
+			<input type="text" id="user_id" name="user_id" class="form-control" value="<%=login.getUser_id() %>" readonly />
+		</td>
+	</tr>
+	<tr>
+		<th>환불사유</th>
+		<td>
+			<input type="text" id="content" name="content" class="form-control"/>
+		</td>	
+	</tr>
+	
+	
+	</tbody>
+	</table>
+</div>
 <br/>
 
 <input type="submit" id="refundBtn" class="btn btn-danger" value="환불요청"/>
 
 
 </form>
+<br>
+<br>
+<br>
 </div>
 
 <script type="text/javascript">

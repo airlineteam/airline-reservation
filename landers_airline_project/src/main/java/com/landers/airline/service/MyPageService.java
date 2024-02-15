@@ -24,6 +24,8 @@ public interface MyPageService {
 	boolean userRefund(RefundDto dto);
 	
 	int allTicket(TicketParam param);
+	
+	List<TicketDto> Ticketlist(TicketParam param);
 
 
 }

@@ -25,9 +25,20 @@
 <html>
 <head>
 <title>환불요청</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style type="text/css">
-body {
-  background-color: #9E9E9E;
+ body {
   font-family: "Roboto", helvetica, arial, sans-serif;
   font-size: 15px;
   font-weight: 300;
@@ -168,18 +179,32 @@ td.text-right {
 }
 
 
+.page-link {
+  color: #000; 
+  background-color: #fff;
+  border: 1px solid #ccc; 
+}
+
+.page-item.active .page-link {
+ z-index: 1;
+ color: #555;
+ font-weight:bold;
+ background-color: #f1f1f1;
+ border-color: #ccc;
+ 
+}
+
+.page-link:focus, .page-link:hover {
+  color: #000;
+  background-color: #fafafa; 
+  border-color: #ccc;
+} 
 </style>
-
-
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  
-<meta charset="UTF-8">
 
 </head>
 <body>
+
+<div style="margin-top: 50px;">
 
 <table class="table-fill" id="refundTable">
 	<thead>
@@ -220,7 +245,7 @@ td.text-right {
 				%>
 				<tr>
 					<td class="text-left">
-						<%=i+1 %>
+						<%=i + 1 %>
 					</td>
 					<td class="text-left" hidden>
 						<%=dto.getTicket_id() %>
@@ -253,32 +278,39 @@ td.text-right {
  </tbody>
 </table>
 
-<br/>
+</div>
+
+<br><br>
 
 <div class="container">
-    <nav aria-label="Page navigation">
-        <ul class="pagination" id="pagination" style="justify-content:center"></ul>
+    <nav aria-label="Page navigation" >
+        <ul class="pagination my" id="pagination" style="justify-content:center "></ul>
     </nav>
 </div>
 
 
-<br/>
-<div class="form-row align-items-center d-flex justify-content-center align-items-center container">
-	<select id="choice" class="form-control" style="width:auto;">
-		<option value="start">검색</option>
-		<option value="ticket_id">티켓번호</option>
-		<option value="schedule_id">스케줄</option>
-	</select>
-	
-	<div class="col-sm-3 my-1" style="width:auto;">
-		<input type="text" class="form-control" id="search" value="<%=search %>">
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-10">
+			<div class="form-row align-items-center d-flex justify-content-center align-items-center container">
+				<select id="choice" class="form-control" style="width:auto;">
+					<option value="start">검색</option>
+					<option value="ticket_id">티켓번호</option>
+					<option value="schedule_id">스케줄</option>
+				</select>
+				
+				<div class="col-sm-3 my-1" style="width:auto;">
+					<input type="text" class="form-control" id="search" value="<%=search %>">
+				</div>
+				
+				<button type="button" class="btn btn-primary" onclick="searchBtn()" style="background-color: #9A161F; border-color: #9A161F">
+				검색
+				</button>
+			</div>
+		</div>
 	</div>
-	
-	<button type="button" class="btn btn-primary" onclick="searchBtn()" style="background-color: #9A161F; border-color: #9A161F">
-	검색
-	</button><br/>
 </div>
-	
+<br/><br/>
 <script type="text/javascript">
 
 function myRefund(ticket_id) {

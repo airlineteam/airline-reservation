@@ -16,39 +16,42 @@
 
 <style type="text/css">
 .center{
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    border: 1px solid #a1a1a1;
-    padding: 10px;
-    border-radius: 30px;
-}
-.login-header {
-    margin-bottom: 20px;
-    text-align: center;
+	width: 100%;
+	text-align: center;
 }
 th{
 	background: #e0757d;
 	color: white;
 	border: none;
+	line-height: 40px;
 }
 tr{
 	line-height: 12px;
+	border: none;
 }
 td{
 	line-height: 12px;
 	border: none;
 }
 .table {
-        width: 550px;
-        margin: 20px auto;
+        width: 700px;
+        margin: 100px auto;
         border-collapse: collapse;
-    }
+        border: none;
     
- .table th, .table td {
-    border: none; /* 테두리 제거 */
+    }
+
+.thh{
+	line-height: 50px;
+	
+
+}
+
+.btn {
+    padding: 10px 40px;
+    font-size: 16px;
+    background: #a12a32;
+    color: white;
 }
 </style>
 
@@ -66,7 +69,7 @@ td{
 
 <table class="table">
 <tr>
-	<th colspan = 2 style="background: rgb(220,53,69); color: white; text-align:center;">
+	<th colspan = 2 style="background: #9A161F; color: white; text-align:center; font-size:20px">
 		회원가입
 	</th>
 </tr>
