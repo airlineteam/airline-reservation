@@ -30,23 +30,25 @@
 	order by final_date ASC
 </select>
 
+
 <select id="Ticketlist"
 	 	parameterType="com.landers.airline.dto.TicketParam"
 			resultType="com.landers.airline.dto.TicketDto">
 	select ticket_id, user_id, schedule_id, final_price, final_date, flight_id, seat_id
 	from ticket
+	where user_id=#{user_id}
 	<if test="choice != null and choice != '' and search != null and search != ''">
 		<if test="choice == 'ticket_id'">
-			where ticket_id like concat('%', #{search}, '%')
+			and ticket_id like concat('%', #{search}, '%')
 		</if>
 		<if test="choice == 'schedule_id'">
-			where schedule_id like concat('%', #{search}, '%')
+			and schedule_id like concat('%', #{search}, '%')
 		</if>
 		<if test="choice == 'user_id'">
-			where user_id=#{search}
+			and user_id=#{search}
 		</if>
 	</if>
-	order by final_date ASC
+	order by final_date ASC 
 	limit ${(pageNumber * 10)}, 10
 </select>
 
