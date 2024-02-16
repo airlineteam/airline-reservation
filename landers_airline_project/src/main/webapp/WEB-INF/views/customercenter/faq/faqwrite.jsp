@@ -46,9 +46,9 @@ th{
 </head>
 <body>
 
-<h2>글쓰기</h2>
 
 <div class="center">
+<br/> <h2 style="text-align: left;">자주 묻는 질문 추가</h2> <br/>
 
 <form id="frm" method="post">
 
@@ -79,9 +79,9 @@ th{
 </table>
 <br/>
 
-<button type="button" id="writeBtn" class="btn btn-primary">글쓰기</button>
-
+<button type="button" id="writeBtn" class="btn btn-primary" style="background-color: #9A161F; border-color: #9A161F">글쓰기</button>
 </form>
+<br/><br/><br/>
 </div>
 
 <script type="text/javascript">

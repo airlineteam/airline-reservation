@@ -30,18 +30,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<style type="text/css">
-.center{
-	margin: auto;
-	width: 800px;
-	text-align: center;
-}
-
-
-table{
-	margin: 10px;
-}
-</style>
+<link href="mypagecss/userRefund.css" rel="stylesheet">
 
 </head>
 <body>

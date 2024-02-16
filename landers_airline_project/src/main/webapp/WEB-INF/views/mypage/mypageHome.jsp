@@ -8,53 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<style type="text/css">
-.center{
-	width: 100%;
-	text-align: center;
-}
-th{
-	background: #e0757d;
-	color: white;
-	border: none;
-	line-height: 40px;
-}
-tr{
-	line-height: 12px;
-	border: none;
-}
-td{
-	line-height: 12px;
-	border: none;
-}
-.table {
-        width: 700px;
-        margin: 100px auto;
-        border-collapse: collapse;
-        border: none;
-    
-    }
-
-.thh{
-	line-height: 50px;
-	
-
-}
-
-.btn {
-    padding: 10px 40px;
-    font-size: 16px;
-    background: #a12a32;
-    color: white;
-}
-
-</style>
-
 </head>
+
+<link href="mypagecss/mypageHome.css" rel="stylesheet">
+
+
 <body>
-
-
 
 <div class="center">
 
