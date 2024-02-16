@@ -4,7 +4,7 @@
 <%
 	String main = (String)request.getAttribute("main");
 	if(main == null || main.equals("")){
-		main = "home";
+		main = "faq/faqlist";
 	}
 %>        
     

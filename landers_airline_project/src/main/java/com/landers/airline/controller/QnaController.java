@@ -182,12 +182,17 @@ public class QnaController {
 	
 	@GetMapping("qnacomplete.do")
 	public String qnacomplete(int seq, Model model) {
-		System.out.println("QnaController qnaupdate() " + new Date());
+		System.out.println("QnaController qnacomplete() " + new Date());
 		
 		boolean isS = service.qnacomplete(seq);
-		model.addAttribute("main", "qna/qnadetail");
+		String qnaupdateMsg = "COMPLETE_SUCCESS";
+		if(!isS) {
+			qnaupdateMsg = "COMPLETE_FAIL";
+		}
+		model.addAttribute("qnacompleteMsg", qnaupdateMsg);
+		model.addAttribute("seq", seq);
 		
-		return "customercenter/main";
+		return "message";
 	}
 	
 	@GetMapping("qnadelete.do")
