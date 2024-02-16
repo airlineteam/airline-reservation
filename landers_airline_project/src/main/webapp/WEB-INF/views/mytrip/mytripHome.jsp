@@ -122,8 +122,9 @@ System.out.println(year + " " + month);
 <section class="intro">
 	<div class="card">
 		<img src="./images/airplane.svg">
-		<h2>나의 일정관리</h2>
-		<p>나 만의 여행일정을 기록해보세요!</p>
+		<h2>My Schedule</h2><br/>
+		비행기 아이콘을 눌러<br/> 나 만의 여행일정을 기록해보세요!
+		<br/>여행을 통한 색다른 경험과 추억을 선사해드립니다.
 	</div>
 </section>
 <div class="center">
