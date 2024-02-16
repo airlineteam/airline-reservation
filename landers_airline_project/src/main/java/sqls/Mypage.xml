@@ -38,11 +38,11 @@
 	from ticket
 	where user_id=#{user_id}
 	<if test="choice != null and choice != '' and search != null and search != ''">
-		<if test="choice == 'ticket_id'">
-			and ticket_id like concat('%', #{search}, '%')
+		<if test="choice == 'user_id'">
+			and user_id like concat('%', #{search}, '%')
 		</if>
-		<if test="choice == 'schedule_id'">
-			and schedule_id like concat('%', #{search}, '%')
+		<if test="choice == 'flight_id'">
+			and flight_id like concat('%', #{search}, '%')
 		</if>
 		<if test="choice == 'user_id'">
 			and user_id=#{search}
@@ -67,15 +67,16 @@
 <select id="allTicket" parameterType="com.landers.airline.dto.TicketParam" resultType="Integer">
 	select count(*)
 	from ticket
+	where user_id=#{user_id}
 	<if test="choice != null and choice != '' and search != null and search != ''">
-		<if test="choice == 'ticket_id'">
-			where ticket_id like concat('%', #{search}, '%')
+		<if test="choice == 'user_id'">
+			and user_id like concat('%', #{search}, '%')
 		</if>
-		<if test="choice == 'schedule_id'">
-			where schedule_id like concat('%', #{search}, '%')
+		<if test="choice == 'flight_id'">
+			and flight_id like concat('%', #{search}, '%')
 		</if>
 		<if test="choice == 'user_id'">
-			where user_id=#{search}
+			and user_id=#{search}
 		</if>
 	</if>
 </select>

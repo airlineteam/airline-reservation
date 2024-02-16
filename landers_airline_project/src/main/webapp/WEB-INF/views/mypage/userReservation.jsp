@@ -1,3 +1,4 @@
+<%@page import="com.landers.airline.dto.RefundDto"%>
 <%@page import="utill.price_util"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -23,8 +24,9 @@
 	String search = param.getSearch();
 	if(search == null || search.equals("")){
 		search = "";
-		choice = "start";
-}
+		choice = "user_id";
+	}
+	
 %>
 <html>
 <head>
@@ -78,10 +80,20 @@
 		</tr>
 	<thead>
 	<tbody class="table-hover">
-		<%
-		for(int i = 0; i < list.size(); i++){
-			TicketDto dto = list.get(i);
-				%>
+<%
+
+		if(list == null || list.size() == 0){
+	%>
+			<tr>
+				<td colspan="6">일치하는 항목이 없습니다</td>
+			</tr>
+			<%
+			}else{
+				
+				for(int i = 0;i < list.size(); i++){
+					TicketDto dto = list.get(i);
+			%>
+		                        
 				<tr>
 					<td class="text-left">
 						<%=i + 1 %>
@@ -108,8 +120,11 @@
 						<button type="button" class="btn btn-danger"  onclick="myRefund(<%=dto.getTicket_id() %>)">환불요청</button>
 					</td>
 				</tr>
-				<%		
-					}
+						<%		
+		                    }
+		                
+		        
+		    }
 				%>
  </tbody>
 </table>
@@ -130,9 +145,8 @@
 		<div class="col-md-10">
 			<div class="form-row align-items-center d-flex justify-content-center align-items-center container">
 				<select id="choice" class="form-control" style="width:auto;">
-					<option value="start">검색</option>
-					<option value="ticket_id">티켓번호</option>
-					<option value="schedule_id">스케줄</option>
+					<option value="user_id">아이디</option>
+					<option value="flight_id">비행기번호</option>
 				</select>
 				
 				<div class="col-sm-3 my-1" style="width:auto;">
@@ -163,8 +177,9 @@ if(search != null){
 function searchBtn() {
 	let choice = document.getElementById("choice").value;
 	let search = document.getElementById("search").value;
+	let user_id = "<%=login.getUser_id()%>";
 	
-	location.href = "myTicket.do?choice=" + choice + "&search=" + search;
+	location.href = "myTicket.do?choice=" + choice + "&search=" + search + "&user_id=" + user_id;
 }
 
 $("#pagination").twbsPagination({
