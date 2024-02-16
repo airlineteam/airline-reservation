@@ -145,7 +145,8 @@ public class MytripController {
 	   model.addAttribute("year", year);
 	   model.addAttribute("month", month);
 	   model.addAttribute("day", day);
-	   model.addAttribute("main", "calwrite");
+
+	   model.addAttribute("main","calwrite");
 	   
 	   return "mytrip/main";
    }
@@ -153,7 +154,8 @@ public class MytripController {
    @PostMapping("calendarwriteAf.do")
    public String calendarwriteAf(Model model, CalendarDto dto, String date, String time) {
 	   System.out.println("MytripController calendarwriteAf() " + new Date());
-
+//	   System.out.println(time);
+	   
 	   String wdate = date.replace("-", "") + time.replace(":", "");
 	   dto.setWdate(wdate);
 	  
@@ -206,7 +208,7 @@ public class MytripController {
 	   model.addAttribute("dto", dto);
        model.addAttribute("main", "calupdate");
 	   
-	   return "mytrip/calupdate";
+	   return "mytrip/main";
    }
    
    @PostMapping("calendarupdateAf.do")

@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>일정관리 홈</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -122,8 +122,8 @@ System.out.println(year + " " + month);
 <section class="intro">
 	<div class="card">
 		<img src="./images/airplane.svg">
-		<h2>LANDERS</h2>
-		<p>무엇과도 바꿀 수 없는 핵심 가치인 '안전'과 '고객중심서비스'를 등대삼아, 앞으로도 고객 여러분들이 선택한 Landers Airline이 항공업계를 주도하는 글로벌 선도 항공사로 자리매김할 수 있도록 최선의 노력을 다 하겠습니다.</p>
+		<h2>나의 일정관리</h2>
+		<p>나 만의 여행일정을 기록해보세요!</p>
 	</div>
 </section>
 <div class="center">
@@ -192,8 +192,6 @@ for(int i = 0;i < 7 - weekday; i++){
 </div>
 </div>
 </table>
-
-
 
 </body>
 </html>

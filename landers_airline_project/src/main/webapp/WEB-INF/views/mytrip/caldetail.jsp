@@ -47,7 +47,8 @@
 </tr>
 <tr>
 	<th>일정</th>
-	<td align="left"><%=CalendarUtil.toDates(dto.getWdate()) %></td>
+<%-- 	<td align="left"><%=CalendarUtil.toDates(dto.getWdate()) %></td> --%>
+<td align="left"><%=dto.getWdate() %></td>
 </tr>
 <tr>
 	<th>제목</th>
@@ -58,7 +59,7 @@
 <tr>
 	<th>내용</th>
 	<td>
-		<textarea rows="15" cols="50" class="form-control" readonly="readonly"><%=dto.getContent() %></textarea>
+		<textarea rows="15" cols="50" class="form-control" readonly="readonly" placeholder="내용을 기입"><%=dto.getContent() %></textarea>
 	</td>
 </tr>
 </table>
