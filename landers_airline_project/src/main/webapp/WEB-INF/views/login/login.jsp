@@ -1,51 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title> -->
 
-<style type="text/css">
-.center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    border: 1px solid #a1a1a1;
-    padding: 10px;
-    border-radius: 30px;
 
-}
+<link href="logincss/login.css" rel="stylesheet">
 
-.login-header {
-    margin-bottom: 20px;
-    text-align: center;
-}
 
-th{
-	background: #e0757d;
-	color: white;
-	border: none;
-}
-tr{
-	line-height: 12px;
-}
-td{
-	line-height: 12px;
-	border: none;
-}
-.table {
-        width: 550px;
-        margin: 25px auto;
-        border-collapse: collapse;
-    }
-    
- .table th, .table td {
-    border: none; /* 테두리 제거 */
-}
-</style>
 
 
     <div class="login-header">
@@ -80,6 +39,7 @@ td{
     </form>
     <br/><br/><br/>
 <!-- </div> -->
+
 
 
 

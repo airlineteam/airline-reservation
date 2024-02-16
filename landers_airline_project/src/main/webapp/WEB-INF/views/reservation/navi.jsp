@@ -91,7 +91,7 @@ ol li{list-style: none;}
          <%} %>
          <% if (login != null && !login.equals("")) { %>
          <li class="dept1">
-            <a href="#">마이페이지</a>
+            <a href="mylist.do?user_id=<%=login.getUser_id()%>">마이페이지</a>
             <ul class="inner_menu">
                <li class="dept2">               
                   <a href="mylist.do?user_id=<%=login.getUser_id() %>">마이페이지</a>
