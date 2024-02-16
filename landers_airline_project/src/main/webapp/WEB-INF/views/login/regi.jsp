@@ -1,60 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title> -->
 
-<style type="text/css">
-.center{
-	width: 100%;
-	text-align: center;
-}
-th{
-	background: #e0757d;
-	color: white;
-	border: none;
-	line-height: 40px;
-}
-tr{
-	line-height: 12px;
-	border: none;
-}
-td{
-	line-height: 12px;
-	border: none;
-}
-.table {
-        width: 700px;
-        margin: 100px auto;
-        border-collapse: collapse;
-        border: none;
-    
-    }
 
-.thh{
-	line-height: 50px;
-	
-
-}
-
-.btn {
-    padding: 10px 40px;
-    font-size: 16px;
-    background: #a12a32;
-    color: white;
-}
-</style>
-
-<!-- </head>
-<body> -->
-
-<!-- <div class="center"> -->
-
-<!-- <div class="login-header">
-        <h2 style="color: #9A161F; margin: 50px auto;">회원가입</h2>
-    </div> -->
+<link href="logincss/regi.css" rel="stylesheet">
 
 <form action="regiAf.do" id="frm" method="post">
 <br/>
