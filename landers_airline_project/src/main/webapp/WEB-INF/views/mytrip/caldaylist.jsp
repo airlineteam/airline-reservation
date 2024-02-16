@@ -30,24 +30,7 @@
 
 
 <style type="text/css">
-.center{
-	margin: auto;
-	width: 1000px;
-	text-align: center;
-}
-th{
-	background: royalblue;
-	color: white;
-} 
-tr {
-   line-height: 12px;   
-=======
-<title>일별일정보기</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<style type="text/css">
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 .center{
 	margin-top: 10px;
@@ -236,51 +219,7 @@ h3 {
 </head>
 <body>
 
-<h2>일별일정</h2>
-<br>
-<h3><%=year %>년 <%=month %>월 <%=day %>일의 일정</h3>
-<br>
 
-<div class="center">
-
-<table class="table table-hover">
-<col width="100"><col width="450"><col width="300">
-<tr>
-	<th>번호</th><th>제목</th><th>시간</th>
-</tr>
-
-<%
-for(int i = 0; i < list.size(); i++){
-	CalendarDto dto = list.get(i);
-	%>
-	<tr>
-		<td><%=(i + 1) %></td>
-		<td align="left">
-			<a href="calendar?param=caldetail&seq=<%=dto.getSeq() %>">
-				<%=dto.getTitle() %>
-			</a>
-		</td>
-		<td><%=CalendarUtil.toDates(dto.getWdate()) %></td>		
-	</tr>
-	<%
-}
-%>
-</table>
-<br>
-
-<a href="calendar?param=calendarList">일정목록</a>
-
-</div>
-
-</body>
-</html>
-
-
-
-
-
-
-=======
 <br/><br/><br/>
 <h3><font style="font-family: fantasy"><< <%=year %>년 <%=month %>월 <%=day %>일의 일정 >></font></h3>
 
