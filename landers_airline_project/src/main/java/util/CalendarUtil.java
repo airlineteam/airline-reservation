@@ -37,7 +37,7 @@ public class CalendarUtil {
 	public static String daylist(int year, int month, int day) {
 		String str = "";
 		
-		str += String.format("&nbsp;<a href='calendar?param=caldaylist&year=%d&month=%d&day=%d' style='color:#333;text-decoration:none'><b>", 
+		str += String.format("&nbsp;<a href='caldaylist.do?year=%d&month=%d&day=%d' style='color:#333;text-decoration:none'><b>", 
 								year, month, day);
 		str += String.format("%2d", day);
 		str += "</b></a>";
