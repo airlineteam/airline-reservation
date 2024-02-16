@@ -1,7 +1,9 @@
 package com.landers.airline.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,13 @@ public class MytripDaoImpl implements MytripDao{
 	public int updatemytrip(CalendarDto dto) {
 		return session.update("mytrip.updatemytrip", dto);
 	}
+
+	@Override
+	public List<CalendarDto> caldaylist(@Param("yyyymmdd") String yyyymmdd, @Param("id") String id) {
+	    return session.selectList("mytrip.caldaylist", Map.of("yyyymmdd", yyyymmdd, "id", id));
+	}
+
+	
 
 
 	

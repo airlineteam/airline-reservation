@@ -17,4 +17,8 @@ public interface MytripService {
 	boolean deletemytrip(int seq);
 
 	boolean updatemytrip(CalendarDto dto);
+	
+	List<CalendarDto> caldaylist(String yyyymmdd, String id);
+	
+	
 }
