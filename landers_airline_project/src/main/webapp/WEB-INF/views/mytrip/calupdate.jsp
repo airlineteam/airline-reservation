@@ -19,7 +19,9 @@
 .center{
 	margin: auto;
 	width: 800px;
-	text-align: center;		
+	text-align: center;	
+	margin-top: 100px;	
+	margin-bottom: 100px;	
 }
 th{
 	background: white;
@@ -37,11 +39,11 @@ String time = (String)request.getAttribute("time");
 CalendarDto dto = (CalendarDto)request.getAttribute("dto");
 %>
  
-<h1>일정수정</h1>
+
 
 <div class="center">
 
-<form action="calendarupdateAf.do" method="post">
+<form id="frm" action="calendarupdateAf.do" method="post">
 
 <table class="table table-bordered">
 <col width="200"><col width="500">
@@ -65,23 +67,41 @@ CalendarDto dto = (CalendarDto)request.getAttribute("dto");
 <tr>
 	<th>제목</th>
 	<td>
-		<input type="text" size="60" name="title" class="form-control" value="<%=dto.getTitle() %>">
+		<input type="text" size="60" id="title" name="title" class="form-control" value="<%=dto.getTitle() %>">
 	</td>
 </tr>
 <tr>
 	<th>내용</th>
 	<td>
-		<textarea rows="15" cols="60" name="content" class="form-control" ><%=dto.getContent() %></textarea>
+		<textarea rows="15" cols="60" id="content" name="content" class="form-control" ><%=dto.getContent() %></textarea>
 	</td>
 </tr>
 </table>
 
-<input type="submit" value="수정완료" class="btn btn-primary" style="background-color:#9A161F; border-color:#9A161F">
+<button type="button" id="updateBtn" class="btn btn-primary" style="background-color:#9A161F; border-color:#9A161F">수정완료</button>
 
 </form>
 
 </div>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#updateBtn").on("click", function () {
+		// 제목이 비어 있는지 첵크
+		if( $("#title").val().trim() === "" ){
+			alert("제목을 기입해 주십시오");
+			return;
+		}		
+		// 내용이 비어 있는지 첵크
+		if( $("#content").val().trim() === "" ){
+			alert("내용을 기입해 주십시오");
+			return;
+		}
+		
+		$("#frm").attr("action", "calendarupdateAf.do").submit();
+	});	
+})
+</script>
 </body>
 </html>
 

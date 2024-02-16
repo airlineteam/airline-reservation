@@ -1,7 +1,9 @@
-<%@page import="com.landers.airline.dto.CalendarDto"%>
 
+<%@page import="com.landers.airline.dto.CalendarDto"%>
 <%@page import="java.util.List"%>
+
 <%@page import="util.CalendarUtil"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -65,7 +67,7 @@ for(int i = 0; i < list.size(); i++){
 	<tr>
 		<td><%=(i + 1) %></td>
 		<td align="left">
-			<a href="calendar?param=caldetail&seq=<%=dto.getCalendar_id() %>">
+			<a href="calendar?param=caldetail&seq=<%=dto.getSeq() %>">
 				<%=dto.getTitle() %>
 			</a>
 		</td>

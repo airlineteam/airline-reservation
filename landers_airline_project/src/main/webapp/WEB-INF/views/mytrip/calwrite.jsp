@@ -28,9 +28,11 @@
 
 <style type="text/css">
 .center{
-   margin: auto;
-   width: 800px;
-   text-align: center;      
+	margin: auto;
+	width: 800px;
+	text-align: center;	
+	margin-top: 100px;	
+	margin-bottom: 100px;	
 }
 th{
    background: white;
@@ -42,11 +44,11 @@ th{
 </head>
 <body>
 
-<h2>일정추가</h2>
+
 
 <div class="center">
 
-<form action="calendarwriteAf.do" method="post">
+<form id="frm" action="calendarwriteAf.do" method="post">
 
 <table class="table table-bordered">
 <col width="200"><col width="500">
@@ -69,18 +71,18 @@ th{
 <tr>
    <th>제목</th>
    <td>
-      <input type="text" name="title" size="80" class="form-control" >
+      <input type="text" id="title" name="title" size="80" class="form-control" >
    </td>
 </tr>
 <tr>
    <th>내용</th>
    <td>
-      <textarea rows="15" cols="80" name="content" class="form-control" ></textarea>
+      <textarea rows="15" cols="80" id="content" name="content" class="form-control" ></textarea>
    </td>
 </tr>
 </table>
 
-<button type="submit" class="btn btn-primary" style="background-color:#9A161F; border-color:#9A161F">일정추가</button>
+<button type="submit" id="writeBtn" class="btn btn-primary" style="background-color:#9A161F; border-color:#9A161F">일정추가</button>
 
 </form>
 </div>
@@ -103,6 +105,23 @@ $(document).ready(function(){
 function two( str ) {
    return str.length>1?str:"0"+str;
 }
+$(document).ready(function(){
+	
+	$("#writeBtn").on("click", function () {
+		// 제목이 비어 있는지 첵크
+		if( $("#title").val().trim() === "" ){
+			alert("제목을 기입해 주십시오");
+			return;
+		}		
+		// 내용이 비어 있는지 첵크
+		if( $("#content").val().trim() === "" ){
+			alert("내용을 기입해 주십시오");
+			return;
+		}
+		
+		$("#frm").attr("action", "calendarwriteAf.do").submit();
+	});	
+})
 </script>
 
 
