@@ -25,10 +25,16 @@
 %>   
 <html>
 <head>
-<link href="managercss/mqnalist.css" rel="stylesheet">
+
 
 <meta charset="UTF-8">
 <title>QnA</title>
+
+
+
+
+</head>
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -40,9 +46,7 @@
 
 <script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-</head>
+<link href="managercss/mqnalist.css" rel="stylesheet">
 <body>
 
 <br><br>

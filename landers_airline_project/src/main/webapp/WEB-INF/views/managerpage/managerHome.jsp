@@ -51,7 +51,7 @@
 
 <div class="small--board">
 			<div>
-				<h5 class="small--board--title">이번달 총매출액</h5>
+				<h5 class="small--board--title">이번 달 총매출액</h5>
 			 <p class="number--value--p">
             <%
                 ManagerDto totalSalesDto = list.get(list.size() - 1);
@@ -66,7 +66,7 @@
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">올해 고객의 문의</h5>
+				<h5 class="small--board--title">이번 달 고객의 문의</h5>
 				<p class="number--value--p">
 				<%
                 // 문의 카테고리의 총 카운트 계산
@@ -86,7 +86,7 @@
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">올해 고객의 칭찬</h5>
+				<h5 class="small--board--title">이번 달 고객의 칭찬</h5>
 				<p class="number--value--p">
 				 <%
                 // 칭찬 카테고리의 총 카운트 계산
@@ -106,7 +106,7 @@
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">올해 고객의 불만</h5>
+				<h5 class="small--board--title">이번 달 고객의 불만</h5>
 				<p class="number--value--p">
 				 <%
                 // 불만 카테고리의 총 카운트 계산
