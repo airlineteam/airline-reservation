@@ -1,3 +1,4 @@
+<%@page import="utill.price_util"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -28,6 +29,7 @@
 <html>
 <head>
 <title>환불요청</title>
+</head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -40,171 +42,8 @@
 <script type="text/javascript" src="./js/jquery.twbsPagination.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<style type="text/css">
- body {
-  font-family: "Roboto", helvetica, arial, sans-serif;
-  font-size: 15px;
-  font-weight: 300;
-  text-rendering: optimizeLegibility;
-}
+<link href="mypagecss/userReservation.css" rel="stylesheet">
 
-div.table-title {
-   display: block;
-  margin: auto;
-  max-width: 400px;
-  padding:5px;
-  width: 100%;
-}
-
-.table-title h3 {
-   color: #9A161F;
-   font-size: 30px;
-   font-weight: 400;
-   font-style:normal;
-   font-family: "Roboto", helvetica, arial, sans-serif;
-   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-   text-transform:uppercase;
-}
-
-
-
-.table-fill {
-  background: white;
-  border-radius:3px;
-  border-collapse: collapse;
-  height: 200px;
-  margin: auto;
-  max-width: 1000px;
-  padding:5px;
-  width: 100%;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  animation: float 5s infinite;
-}
- 
-th {
-  color:#ffffff;
-  background: #a12a32;
-  border-bottom:4px solid #9ea7af;
-  border-right: 1px solid #343a45;
-  font-size:18px;
-  font-weight: 100;
-  padding:20px;
-  text-align:left;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  vertical-align:middle;
-}
-
-th:first-child {
-  border-top-left-radius:3px;
-}
- 
-th:last-child {
-  border-top-right-radius:3px;
-  border-right:none;
-}
-  
-tr {
-  border-top: 1px solid #C1C3D1;
-  border-bottom-: 1px solid #C1C3D1;
-  color:#666B85;
-  font-size:15px;
-  font-weight:normal;
-  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
-}
- 
-tr:hover td {
-  background:#9E9E9E;
-  color:#FFFFFF;
-  border-top: 1px solid #22262e;
-}
- 
-tr:first-child {
-  border-top:none;
-}
-
-tr:last-child {
-  border-bottom:none;
-}
- 
-tr:nth-child(odd) td {
-  background:#EBEBEB;
-}
- 
-tr:nth-child(odd):hover td {
-  background:#9E9E9E;
-}
-
-tr:last-child td:first-child {
-  border-bottom-left-radius:3px;
-}
- 
-tr:last-child td:last-child {
-  border-bottom-right-radius:3px;
-}
- 
-td {
-  background:#FFFFFF;
-  padding:15px;
-  text-align:left;
-  vertical-align:middle;
-  font-weight:300;
-  font-size:17px;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
-  border-right: 1px solid #C1C3D1;
-}
-
-td:last-child {
-  border-right: 0px;
-}
-
-th.text-left {
-  text-align: left;
-}
-
-th.text-center {
-  text-align: center;
-}
-
-th.text-right {
-  text-align: right;
-}
-
-td.text-left {
-  text-align: left;
-}
-
-td.text-center {
-  text-align: center;
-}
-
-td.text-right {
-  text-align: right;
-}
-
-
-.page-link {
-  color: #000; 
-  background-color: #fff;
-  border: 1px solid #ccc; 
-}
-
-.page-item.active .page-link {
- z-index: 1;
- color: #555;
- font-weight:bold;
- background-color: #f1f1f1;
- border-color: #ccc;
- 
-}
-
-.page-link:focus, .page-link:hover {
-  color: #000;
-  background-color: #fafafa; 
-  border-color: #ccc;
-} 
-</style>
-
-</head>
 <body>
 
 <div style="margin-top: 50px;">
@@ -234,9 +73,6 @@ td.text-right {
 				비행기번호
 			</th>
 			<th class="text-left">
-				좌석번호
-			</th>
-			<th class="text-left">
 				환불
 			</th>
 		</tr>
@@ -260,16 +96,13 @@ td.text-right {
 						<%=dto.getSchedule_id() %>
 					</td>
 					<td class="text-left">
-						<%=dto.getFinal_price() %>
+						<%=price_util.price_idot(dto.getFinal_price()) %>원
 					</td>
 					<td class="text-left">
 						<%=dto.getFinal_date() %>
 					</td>
 					<td class="text-left">
 						<%=dto.getFlight_id() %>
-					</td>
-					<td class="text-left">
-						<%=dto.getSeat_id() %>
 					</td>
 					<td class="text-left">
 						<button type="button" class="btn btn-danger"  onclick="myRefund(<%=dto.getTicket_id() %>)">환불요청</button>

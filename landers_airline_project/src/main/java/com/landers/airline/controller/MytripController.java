@@ -145,6 +145,7 @@ public class MytripController {
 	   model.addAttribute("year", year);
 	   model.addAttribute("month", month);
 	   model.addAttribute("day", day);
+
 	   model.addAttribute("main","calwrite");
 	   
 	   return "mytrip/main";
@@ -225,6 +226,28 @@ public class MytripController {
 	   return "redirect:/mytrip.do";
    }
    
-   
-   
+   @GetMapping("caldaylist.do")
+   public String caldaylist (Model model, HttpServletRequest request,String year, String month, String day) {
+	   System.out.println(year + month + day);
+	   
+	   String yyyymmdd = year + CalendarUtil.two(month + "") + CalendarUtil.two(day + "");
+	   yyyymmdd += "0000";
+	   System.out.println("yyyymmdd: " +  yyyymmdd);
+	   
+	   String id = ((UserDto)request.getSession().getAttribute("login")).getUser_id();
+	   System.out.println("id: " +  id);
+	   List<CalendarDto> list = service.caldaylist(yyyymmdd,id);
+	   System.out.println("caldaytlist:" + list.toString());
+	   
+	   
+	   
+	   model.addAttribute("list",list);
+	   model.addAttribute("main", "caldaylist");
+	   model.addAttribute("year",year);
+	   model.addAttribute("month",month);
+	   model.addAttribute("day",day);
+	   model.addAttribute("main","caldaylist");
+	   
+	   return "mytrip/main";
+   }
 }

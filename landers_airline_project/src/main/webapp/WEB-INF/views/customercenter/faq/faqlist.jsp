@@ -71,7 +71,7 @@
 <style type="text/css">
 .center{
 	margin: auto;
-	width: 1000px;
+	width: 900px;
 	text-align: center;
 }
 body {
@@ -81,47 +81,87 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.accordion{
-	width: 700px;
-	text-align: center;
+.accordion {
+  width: 900px;
+  margin-left: 10px;
 }
-input[id*="faq_"]{
-	display: none;
+
+input[id*="faq_"] {
+  display: none;
 }
-input[id*="faq_"] + label{
-	display: block;
-	padding: 20px;
-	border: 1px solid #232188;
-	color:#fff;
-	font-weight:900;
-	background:#e0757d;
-	cursor:pointer;	
+
+/* FAQ 질문창 */
+input[id*="faq_"] + label {
+  display: block;
+  padding: 20px;
+  border: 1px solid #232188;
+  border-bottom: 0;
+  color: #fff;
+  font-weight: 900;
+  background: #c4474f;
+  cursor: pointer;
+  position: relative;
 }
-input[id*="faq_"] + label em{
-	position: absolute;
-	top:50%;
-	right: 10px;
-	width: 300px;
-	height: 300px;
-	margin-top: -15px;
-	display: inline-block;
-	background: url('images/arrow_down.png');
+
+input[id*="faq_"] + label em {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  display: inline-block;
+  background-image: url('images/caret-up-square.svg');
+  background-size: 100%;
+  transition: transform 0.5s; /* Added transition property */
 }
-input[id*="faq_"] + label + div{
-	max-height: 0;
-	transition: all .355;
-	overflow: hidden;
-	background: #ebf8ff;
-	font-size: 11px;
+
+
+#upBtn{
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  width: 60px;
+  height: 30px;
+  margin-top: -15px;
+  margin-right: 80px;
+  display: inline-block;
+  background-size: 100%;
 }
-input[id*="faq_"] + label + div p{
-	display: inline-block;
+
+#delBtn{
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  width: 60px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: 50px;
+  display: inline-block;
+  background-size: 100%;
 }
-input[id*="faq_"]:checked + label + div{
-	max-height: 100px;
-} 
-input[id*="faq_"]:checked + label em{
-	background-position: 0 -300px;
+
+input[id*="faq_"]:checked + label em {
+  transform: rotate(180deg); /* Rotate arrow when checkbox is checked */
+}
+
+/* FAQ 설명란 */
+input[id*="faq_"] + label + div {
+  max-height: 0;
+  transition: all 0.5s;
+  overflow: hidden;
+  background: #fff7f8;
+  font-size: 16px;
+}
+
+input[id*="faq_"] + label + div pre {
+  display: inline-block;
+  padding: 20px;
+  
+}
+
+input[id*="faq_"]:checked + label + div {
+  max-height: 500px;
 }
 </style>
 
@@ -133,32 +173,36 @@ input[id*="faq_"]:checked + label em{
 <div class="center">
 <br/> <h2 style="text-align: left;">자주 묻는 질문</h2> <br/>
 
-
+<!--  
 	<input type="checkbox" id="faq_999">
 	<label for="faq_999">컨텐츠 제목 부분<em></em></label>
 	<div><p>답변내용이 들어갈 자리인 부분</p></div>
-
+-->
 <div class="accordion">
 <%
-if(list == null || list.size() == 0){
-	%>	
-	<label for="noContent">작성된 글이 없습니다.<em></em></label>
-	<div><p> - </p></div>
-	<%
-}else{
 	for(int i = 0;i < list.size(); i++){
 		FaqDto faq = list.get(i);
 			if(faq.getDel() == 0){
 				%>
-				<input type="checkbox" id="faq_<%=i %>">
-				<label for="faq_<%=i %>"><%=faq.getTitle() %><em></em></label>
-				<div><p><%=faq.getContent() %></p></div><br/>
-				<%
-			}else{
+				<input type="checkbox" name="accordion" id="faq_<%=i %>">
+				<label for="faq_<%=i %>"><%=faq.getTitle() %>
 				
+				<em></em>
+				
+				<%if (login != null && login.getUser_role() == 0) {	%>
+					 <button type="button" id="upBtn" class="btn btn-primary" onclick="updateFaq(<%=faq.getSeq() %>)" style="background-color: #9A161F; border-color: #9A161F">
+				        수정
+				     </button>
+				     <button type="button" id="delBtn" class="btn btn-primary" onclick="deleteFaq(<%=faq.getSeq() %>)" style="background-color: #9A161F; border-color: #9A161F">
+				        삭제
+				     </button>
+				<%} %>
+				
+				</label>
+				<div><pre><%=faq.getContent() %></pre></div><br/>
+				<%
 			}
 	}
-}
 %>
 </div>
 <br/><br/>
@@ -168,7 +212,7 @@ if (login != null && login.getUser_role() == 0) {
 	System.out.println(login.getUser_role());
 %>	
     <button type="button" class="btn btn-primary" onclick="writeFaq()" style="background-color: #9A161F; border-color: #9A161F">
-        글쓰기
+        글 추가
     </button>
 <%
 }
@@ -179,39 +223,12 @@ if (login != null && login.getUser_role() == 0) {
 function writeFaq() {
 	location.href = "faqwrite.do";
 }
-
-let search = "<%=search %>";
-if(search != null){
-	let choice = document.getElementById("choice");
-	choice.value = "<%=choice %>";
-	choice.setAttribute("selected", "selected");
+function updateFaq( seq ) {
+	location.href = "faqupdate.do?seq=" + seq;
 }
-
-function searchBtn() {
-	let choice = document.getElementById("choice").value;
-	let search = document.getElementById("search").value;
-	
-	location.href = "faqlist.do?choice=" + choice + "&search=" + search;
+function deleteFaq( seq ) {
+	location.href = "faqdelete.do?seq=" + seq;
 }
-
-
-$("#pagination").twbsPagination({
-	startPage: <%=pageNumber+1 %>,
-	totalPages: <%=pageFaq %>,
-	visiblePages: 10,
-	first: '<span sris-hidden="true">«</span>',
-	prev:"이전",
-	next:"다음",
-	last: '<span sris-hidden="true">»</span>',
-	initiateStartPageClick:false,			// 처음 실행시에 자동실행이 되지 않도록 한다
-	onPageClick:function(event, page){
-		// alert(page);
-		let choice = document.getElementById("choice").value;
-		let search = document.getElementById("search").value;
-		
-		location.href = "faqlist.do?choice=" + choice + "&search=" + search + "&pageNumber=" + (page-1);
-	}	
-});
 </script>
 
 <br/><br/><br/>

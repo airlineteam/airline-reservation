@@ -1,0 +1,46 @@
+@charset "UTF-8";
+    .cont {
+        background-color: #f8f9fa;
+        padding-top: 56px; /* Height of the fixed navbar */
+    }
+
+    .custom-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 100px; 
+        max-width: 1000px; 
+    }
+
+    h1 {
+        color: #007bff;
+    }
+
+    form {
+        margin-top: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .custom-btn {
+        background-color: #9A161F;
+        border: none;
+        color: #ffffff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin-top: 20px; /* Adjust the margin from the top */
+        width: 100%; /* Make the button width 100% */
+    }
+
+    .custom-btn:hover {
+        background-color: #750f16; /* Adjusted hover color */
+    }

@@ -42,6 +42,13 @@ public class MytripServiceImpl implements MytripService{
 		return  dao.updatemytrip(dto)>0;
 	}
 
+	@Override
+	public List<CalendarDto> caldaylist(String yyyymmdd, String id) {
+		return dao.caldaylist(yyyymmdd, id);
+	}
+
+
+
 	
 	
 	

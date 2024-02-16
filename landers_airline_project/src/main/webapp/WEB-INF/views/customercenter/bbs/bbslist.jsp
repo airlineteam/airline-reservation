@@ -96,7 +96,7 @@ body {
  
 th {
   color:#ffffff;
-  background: #e0757d;
+  background: #c4474f;
   font-size:18px;
   font-weight: 100;
   padding:20px;

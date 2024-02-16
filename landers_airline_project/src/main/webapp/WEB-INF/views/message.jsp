@@ -235,6 +235,26 @@ if(qnaupdateMsg.equals("UPDATE_SUCCESS")){
 }
 }
 
+// QnA 답변완료
+String qnacompleteMsg = (String)request.getAttribute("qnacompleteMsg");
+if(qnacompleteMsg != null && qnacompleteMsg.equals("") == false){
+	Integer seq = (Integer)request.getAttribute("seq");
+if(qnacompleteMsg.equals("COMPLETE_SUCCESS")){
+	%>
+	<script type="text/javascript">
+	alert("답변완료.");
+	location.href = "./qnadetail.do?seq=" + <%=seq %>;
+	</script>
+	<%
+}else{
+	%>
+	<script type="text/javascript">
+	alert("답변완료가 성공적으로 처리되지 않았습니다.");
+	location.href = "./qnaupdate.do?seq=" + <%=seq %>;
+	</script>
+	<%
+}
+}
 	
 // 공지사항 글 삭제
 String bbsdeleteMsg = (String)request.getAttribute("bbsdeleteMsg");

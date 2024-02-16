@@ -37,92 +37,13 @@
 %>    
 <html lang="ko">
 <head>
+<link href="managercss/managerHome.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자페이지</title>
     <!-- Chart.js CDN 포함 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-       
-      .small--board {
-	background-color: white;
-	height: 80px;
-	width: 300px;
-	box-shadow: 0 0 3px 3px #e5e5e5;
-	padding: 15px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	float: left;
-	margin: 30px 15px 20px 15px;
-}
-
-.icon--div {
-	border-radius: 50%;
-	background-color: #f0f0f0;
-	width: 50px;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-
-.img1{
-	width: 75%; 
-
-}
-.img2{
-	width: 80%;
-}
-.img3{
-	width: 100%;
-	height: 115%;
-}
-.img4{
-	width: 65%;
-}
-.middle--board {
-	background-color: white;
-	height: 400px;
-	width: 660px;
-	box-shadow: 0 0 3px 3px #e5e5e5;
-	margin: 20px 15px 20px 15px;
-	padding: 14px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-
-
-.long--board {
-	background-color: white;
-	height: 400px;
-	width: 1290px;
-	box-shadow: 0 0 3px 3px #e5e5e5;
-	padding: 12px;
-	margin: 20px 15px 20px 15px;
-}
-
-#salesChart {
-	width: 1230px !important;
-	
-}
-#customerFeedbackChart{
-	width: 600px !important;
-}
-#customerFeedbackData{
-	width: 600px !important;
-}
-
-    </style>
+    
 </head>
 
 </head>
@@ -130,7 +51,7 @@
 
 <div class="small--board">
 			<div>
-				<h5 class="small--board--title">이번달 총매출액</h5>
+				<h5 class="small--board--title">이번 달 총매출액</h5>
 			 <p class="number--value--p">
             <%
                 ManagerDto totalSalesDto = list.get(list.size() - 1);
@@ -145,7 +66,7 @@
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">올해 고객의 문의</h5>
+				<h5 class="small--board--title">이번 달 고객의 문의</h5>
 				<p class="number--value--p">
 				<%
                 // 문의 카테고리의 총 카운트 계산
@@ -165,7 +86,7 @@
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">올해 고객의 칭찬</h5>
+				<h5 class="small--board--title">이번 달 고객의 칭찬</h5>
 				<p class="number--value--p">
 				 <%
                 // 칭찬 카테고리의 총 카운트 계산
@@ -185,7 +106,7 @@
 		</div>	
 		<div class="small--board">
 			<div>
-				<h5 class="small--board--title">올해 고객의 불만</h5>
+				<h5 class="small--board--title">이번 달 고객의 불만</h5>
 				<p class="number--value--p">
 				 <%
                 // 불만 카테고리의 총 카운트 계산
