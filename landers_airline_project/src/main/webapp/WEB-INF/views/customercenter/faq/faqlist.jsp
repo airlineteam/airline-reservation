@@ -113,7 +113,7 @@ input[id*="faq_"] + label em {
   display: inline-block;
   background-image: url('images/caret-up-square.svg');
   background-size: 100%;
-  transition: transform 0.35s; /* Added transition property */
+  transition: transform 0.5s; /* Added transition property */
 }
 
 
@@ -148,20 +148,20 @@ input[id*="faq_"]:checked + label em {
 /* FAQ 설명란 */
 input[id*="faq_"] + label + div {
   max-height: 0;
-  transition: all 0.35s;
+  transition: all 0.5s;
   overflow: hidden;
   background: #fff7f8;
   font-size: 16px;
 }
 
-input[id*="faq_"] + label + div p {
+input[id*="faq_"] + label + div pre {
   display: inline-block;
   padding: 20px;
   
 }
 
 input[id*="faq_"]:checked + label + div {
-  max-height: 100px;
+  max-height: 500px;
 }
 </style>
 
@@ -199,7 +199,7 @@ input[id*="faq_"]:checked + label + div {
 				<%} %>
 				
 				</label>
-				<div><p><%=faq.getContent() %></p></div><br/>
+				<div><pre><%=faq.getContent() %></pre></div><br/>
 				<%
 			}
 	}

@@ -10,6 +10,16 @@
 <%
 	UserDto login = (UserDto)session.getAttribute("login");
 
+	if (login == null || login.getUser_id() == null) {
+	%>
+	    <script type="text/javascript">
+	        alert('로그인 후 이용 가능합니다!');
+	        location.href = "login.do";
+	    </script>
+	<%
+	    return; // 페이지 렌더링 중지
+	}
+
 	List<QnaDto> list = (List<QnaDto>)request.getAttribute("list");
 	int pageQna = (Integer)request.getAttribute("pageQna");
 	

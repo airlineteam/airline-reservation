@@ -63,7 +63,7 @@
 		<a href="mylist.do?user_id=<%=login.getUser_id() %>"><b><%=login.getUser_name() %></b>님 환영합니다!</a>&nbsp;&nbsp;&nbsp;
 		
         <a href="logOut.do">로그아웃</a>&nbsp;&nbsp;&nbsp;
-		<a href="customerHome.do">고객센터</a>&nbsp;&nbsp;&nbsp;
+		<a href="faqlist.do">고객센터</a>&nbsp;&nbsp;&nbsp;
         <%if(login.getUser_role() == 0){ %>    	
         <a href="managerHome.do" style="color: #9a161f">관리자모드</a>&nbsp;&nbsp;&nbsp;
     	<%} %>
