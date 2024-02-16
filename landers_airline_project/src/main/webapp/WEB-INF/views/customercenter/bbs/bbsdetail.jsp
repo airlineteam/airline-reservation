@@ -52,7 +52,7 @@ body {
 .table-fill th {
   color:#ffffff;
   width: 200px;
-  background: #e0757d;
+  background: #c4474f;
   border: 2px solid #4f4f4f;
   font-size:18px;
   font-weight: 300;
@@ -64,7 +64,7 @@ body {
   
 .table-fill tr {
   border: 1px solid #4f4f4f;
-  background: #ffc7cb;
+  background: #fff7f8;
   font-size:15px;
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);

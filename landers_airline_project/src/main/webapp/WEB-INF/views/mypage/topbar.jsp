@@ -49,7 +49,7 @@
 		</svg>&nbsp;&nbsp;
        	<a href="login.do">로그인</a>&nbsp;&nbsp;&nbsp;
 		<a href="regi.do">회원가입</a>&nbsp;&nbsp;&nbsp;
-		<a href="customerHome.do">고객센터</a>&nbsp;&nbsp;&nbsp;
+		<a href="faqlist.do">고객센터</a>&nbsp;&nbsp;&nbsp;
 	<%}else{ %>
 	
 		<!-- person icon -->
