@@ -155,7 +155,7 @@ public class MyPageController {
 		 String refundMsg = "REFUND_SUCCESS";
 		 if(isS == false) { refundMsg = "REFUND_FAIL"; }
 		 
-
+		 
 		 model.addAttribute("refundMsg", refundMsg);
 		 model.addAttribute("user_id", dto);
 		 
