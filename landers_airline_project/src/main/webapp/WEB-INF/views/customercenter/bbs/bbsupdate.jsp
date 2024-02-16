@@ -64,7 +64,7 @@ body {
 .table-fill th {
   color:#ffffff;
   width: 200px;
-  background: #e0757d;
+  background: #c4474f;
   border: 2px solid #4f4f4f;
   font-size:18px;
   font-weight: 300;

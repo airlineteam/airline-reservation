@@ -72,7 +72,7 @@ body {
 .table-fill th {
   color:#ffffff;
   width: 200px;
-  background: #e0757d;
+  background: #c4474f;
   border: 2px solid #4f4f4f;
   font-size:18px;
   font-weight: 300;
@@ -84,7 +84,7 @@ body {
   
 .table-fill tr {
   border: 1px solid #4f4f4f;
-  background: #ffc7cb;
+  background: #fff7f8;
   font-size:15px;
   font-weight:normal;
   text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
@@ -149,7 +149,7 @@ if(login.getUser_id().equals(dto.getId())){
 
 <!-- 로그인 id가 관리자이고 아직 답변이 달리지 않은 상태일 때, 답변완료 버튼 표시 -->
 <%if(login.getUser_role() == 0 && dto.getComplete() == 0) {%>
-<button type="button" class="btn btn-primary" style="background-color: #cf1925; border-color: #cf1925" onclick="qnaComplete(<%=dto.getSeq() %>)">답변완료</button>
+<button type="button" class="btn btn-primary" style="background-color: #9A161F; border-color: #9A161F" onclick="qnaComplete(<%=dto.getSeq() %>)">답변완료</button>
 <%} %>
 
 </div>
