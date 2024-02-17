@@ -1,3 +1,4 @@
+<%@page import="utill.price_util"%>
 <%@page import="com.landers.airline.dto.UserDto"%>
 <%@page import="com.landers.airline.dto.QnaChartDto"%>
 <%@page import="java.util.stream.Collectors"%>
@@ -55,7 +56,7 @@
 			 <p class="number--value--p">
             <%
                 ManagerDto totalSalesDto = list.get(list.size() - 1);
-                out.print(totalSalesDto.getTotalPrice());
+                out.print(price_util.price_Ldot(totalSalesDto.getTotalPrice()));
             %>
             	원
         </p>

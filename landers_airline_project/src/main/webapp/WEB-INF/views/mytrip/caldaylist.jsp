@@ -248,7 +248,7 @@ if(list == null || list.size() == 0) {
 			<th><%=(i + 1) %></th>
 			<td align="left">
 				<span id="txx">
-				<a href="./calendardetail.do&seq=<%=dto.getSeq() %>">
+				<a href="./calendardetail.do?seq=<%=dto.getSeq() %>">
 					<%=dto.getTitle() %>
 				</a>
 				</span>
