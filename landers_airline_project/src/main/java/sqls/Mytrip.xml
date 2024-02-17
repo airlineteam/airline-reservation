@@ -47,5 +47,6 @@ where rnum between 1 and 5
 	from calendar
 	where SUBSTRING(wdate, 1, 8) = SUBSTRING(#{yyyymmdd}, 1, 8)
 		AND SUBSTRING(wdate, 9, 4) >= SUBSTRING(#{yyyymmdd}, 9, 4) and user_id=#{id}
+	ORDER BY wdate asc;
 </select>
 </mapper>
