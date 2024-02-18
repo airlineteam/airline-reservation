@@ -70,11 +70,18 @@ public class ReservationServiceImpl implements ReservationService {
 		return dao.emptynumcount(param);
 	}
 
+	@Override
+	public String departure(int flight_id) {
+		return dao.departure(flight_id);
+	}
+
+	@Override
+	public int reservationCal(String reservationCalendar, String user_id) {
+		return dao.reservationCal(reservationCalendar, user_id);
+	}
+
 	
-//	@Override
-//	public List<Integer> searchId(FlightinfoDto dto) {
-//		return dao.searchId(dto);
-//	}
+
 
 
 	

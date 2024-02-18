@@ -26,5 +26,7 @@ public interface ReservationService {
 	
 	int emptynumcount(flightParam param);
 	
-//	List<Integer> searchId(FlightinfoDto dto);
+	String departure(int flight_id);
+	
+	int reservationCal(String reservationCalendar, String user_id);
 }

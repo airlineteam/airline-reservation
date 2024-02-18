@@ -103,10 +103,25 @@
             selectedSeats = encodeURIComponent(selectedSeats);
             flightId = encodeURIComponent(flightId);
 
-            var redirectUrl = "payresult.do?selectedSeats=" + selectedSeats + "&flight_id=" + flightId +"&user_id=" + userId
-                    + "&final_price=" + totalAmount + "&person_num=" + person_num;
+            var form = document.createElement("form");
+            form.setAttribute("method", "post");
+            form.setAttribute("action", "payresult.do");
 
-            location.href = redirectUrl;
+            addInputField(form, "selectedSeats", selectedSeats);
+            addInputField(form, "flight_id", flightId);
+            addInputField(form, "user_id", userId);
+            addInputField(form, "final_price", totalAmount);
+            addInputField(form, "person_num", person_num);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+        function addInputField(form, name, value) {
+            var input = document.createElement("input");
+            input.setAttribute("type", "hidden");
+            input.setAttribute("name", name);
+            input.setAttribute("value", value);
+            form.appendChild(input);
         }
     </script>
 

@@ -71,12 +71,22 @@
 	</insert>
 
 
-	<select id="ticketinfo" parameterType="Integer"
-		resultType="com.landers.airline.dto.TicketDto">
+	<select id="ticketinfo" parameterType="Integer" resultType="com.landers.airline.dto.TicketDto">
 		SELECT ticket_id, user_id, schedule_id, final_price, final_date, flight_id,
 		seat_id
 		FROM ticket
 		WHERE flight_id=#{flight_id}
 	</select>
+	
+	<select id="departure" parameterType="Integer" resultType="String">
+		SELECT departure_date
+		FROM flight_info
+		WHERE flight_id=#{flight_id}
+	</select>
+	
+	<insert id="reservationCal" parameterType="map">
+		insert into calendar(title, content, wdate, user_id)
+		values("비행기예약","비행기예약", #{reservationCalendar},#{user_id})
+	</insert>
 
 </mapper>

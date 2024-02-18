@@ -98,7 +98,7 @@ public class ReservationController {
 	    return "reservation/main";
 	}
 	
-	@RequestMapping(value = "payresult.do", method = RequestMethod.GET)
+	@RequestMapping(value = "payresult.do", method = RequestMethod.POST)
 	public String payresult(@RequestParam(value = "selectedSeats") List<String> selectedSeats,
 	                         @RequestParam(value = "flight_id") int flight_id, 
 	                         @RequestParam(value = "person_num") int person_num, 
@@ -121,6 +121,14 @@ public class ReservationController {
 		 FlightinfoDto flight = service.flightInfo(flight_id);
 		 
 		 int emptynum = service.emptynumcount(param);
+		 
+		 
+		 String user_id = dto.getUser_id();
+		 System.out.println(user_id);
+		 String reservationCalendar = service.departure(flight_id);
+		 System.out.println(reservationCalendar);
+		 int cccount = service.reservationCal(reservationCalendar, user_id);
+		 
 		 
 		// TicketDto ticket = service.ticketinfo(flight_id);
 		 

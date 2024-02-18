@@ -36,8 +36,7 @@ if(list == null || list.isEmpty()) {
 <title>항공 조회 결과</title>
 </head>
 <body>
-<div class="container">
-<div class="container loading-container">
+<div class="loading-container">
     <div class="loader"></div>
 
     <div class="cont">
@@ -106,17 +105,14 @@ if(list == null || list.isEmpty()) {
         </div>
     </div>
 </div>
-</div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-const container = $('.container');
 const html = $('html');
 
 html.css({'overflow' : 'hidden'}); // Prevent scrolling during loading
 
 $(window).on('load', function(){
     $('.loader').delay(1000).fadeOut();
-    container.removeClass('loading-container'); // Remove the loading container class
     html.css('overflow', 'auto'); // Restore scrolling after loader is hidden
 });
 </script>

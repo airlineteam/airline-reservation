@@ -63,13 +63,15 @@ public class ReservationDaoImpl implements ReservationDao {
 		return session.update("reservation.emptynum", param);
 	}
 
-	
+	@Override
+	public String departure(int flight_id) {
+		return session.selectOne("reservation.departure", flight_id);
+	}
 
-	
-//	@Override
-//	public List<Integer> searchId(FlightinfoDto dto) {
-//		return session.selectList("reservation.searchId",dto);
-//	}
+	@Override
+	public int reservationCal(String reservationCalendar, String user_id) {
+		return session.insert("reservation.reservationCal", Map.of("reservationCalendar", reservationCalendar, "user_id", user_id));
+	}
 
 	
 	

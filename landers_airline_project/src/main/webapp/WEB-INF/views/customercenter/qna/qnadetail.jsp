@@ -177,29 +177,7 @@ function qnaComplete(seq){
 <%-- 댓글 --%>
 <div id="app" class="container">
 
-<%-- 
-<form action="qnaCommentWriteAf.do" method="post">
-<input type="hidden" name="comseq" value="<%=dto.getSeq() %>">
-<input type="hidden" name="id" value="<%=login.getUser_id() %>">
 
-<table>
-<col width="1500px"/><col width="150px"/>
-<tr>
-	<td>답변</td>
-</tr> 
-<tr>
-	<td>
-		<textarea rows="3" class="form-control" name="content"></textarea>
-	</td>
-	<td style="padding-left: 30px">
-		<button type="submit" class="btn btn-primary btn-block p-4" style="background-color: #9A161F; border-color: #9A161F">등록</button>
-	</td>
-</tr>
-
-</table>
-</form>
- --%>
- 
 <br/><br/>
 <table>
 <col width="1500px"/><col width="150px"/>
